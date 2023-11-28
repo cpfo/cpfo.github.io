@@ -390,6 +390,12 @@
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>python基础</title>
@@ -544,6 +550,91 @@
 </ol>
 <p>list, tuple, dict, set 的区别</p>
 <p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python高级特性</title>
+    <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
+<span id="more"></span>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>取一个list或tuple的部分元素，对于指定索引范围的操作，python提供了切片(Slice)操作符。</p>
+<p>比如一个list如下</p>
+<blockquote>
+<p>L&#x3D;[1,2,3,4,5,6,7,8,9]</p>
+</blockquote>
+<p>可以如下操作</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:4]</span></span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p><code>L[0:4]</code> 表示 从索引<code>0</code> 开始，直到索引<code>4</code> 未知，不包含结尾的索引<code>4</code> ， 所以取的是索引位置  <code>0</code> <code>1</code> <code>2</code> <code>3</code> 对应的元素。</p>
+<p>如果第一个索引位置是0 ， 也可以省略</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:2]</span></span><br><span class="line">[1, 2]</span><br></pre></td></tr></table></figure>
+<p>python支持按照倒序通过索引获取元素，同样也支持按照倒序进行切片。 倒序的第一个索引是 <code>-1</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-2:]</span></span><br><span class="line">[8, 9]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-4:-2]</span></span><br><span class="line">[6, 7]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:-2]</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
+
+<p>使用场景</p>
+<p>比如创建一个0-99的数列。</p>
+<blockquote>
+<p>L&#x3D;list(range(100))</p>
+</blockquote>
+<p>取前10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10]</span></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<p>后10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-10:]</span></span><br><span class="line">[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</span><br></pre></td></tr></table></figure>
+<p>前10个数，每两个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10:2]</span></span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
+<p>所有数，每5个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[::5]</span></span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
+
+<p>只写 <code>[:]</code> 原样复制一个list</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:]</span></span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br></pre></td></tr></table></figure>
+<p>tuple 也可以做上述操作，只是tuple切片的结果依然是tuple。</p>
+<p>字符串 <code>xxxxx</code> 也可以看成是一种list，每个元素就是一个字符,  也可以进行切片。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[0:1]</span></span><br><span class="line">&#x27;a&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[2:]</span></span><br><span class="line">&#x27;cdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::]</span></span><br><span class="line">&#x27;abcdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::3]</span></span><br><span class="line">&#x27;adg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过for循环来遍历集合，成为迭代。</p>
+<p>在python中， 迭代是通过 <code>for ... in</code>  来完成的。和 java的迭代类似。</p>
+<p>dict的迭代</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代 key</span></span><br><span class="line">d = &#123;&quot;k1&quot;:&quot;v1&quot;, &quot;k2&quot; : &quot;v2&quot;, &quot;k3&quot;:&quot;v3&quot;&#125;</span><br><span class="line">for k in d:</span><br><span class="line">    print(k)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代value</span></span><br><span class="line">for v in d.values():</span><br><span class="line">    print(v)</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时迭代 key和value</span></span><br><span class="line">for k, v in d.items():</span><br><span class="line">    print(k, v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>dict 默认迭代的是 <code>key</code>， 迭代出的顺序可能不一样。</p>
+<p>字符串也可以进行迭代，输出每一个字符。  </p>
+<p>只要一个对象是可迭代的， <code>for</code> 循环就可以运行。</p>
+<p>通过 <code>collections.abc</code> 模块的 <code>Iterable</code> 判断对象是否是可迭代的。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections.abc import Iterable</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(<span class="string">&#x27;abc&#x27;</span>, Iterable) <span class="comment"># str是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], Iterable) <span class="comment"># list是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(123, Iterable) <span class="comment"># 整数是否可迭代</span></span></span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>对list使用下标循环， 可以使用 <code>enumerate</code> 将list转换为 索引-元素对</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line">for i, v in enumerate(L):</span><br><span class="line">    print(i, v) </span><br></pre></td></tr></table></figure>
+
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> 可以用<code>list(range(1, 11))</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(range(1, 11))</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<p>生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11)]</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
+<p>把要生成的元素<code>x*x</code> 放在前面， 后面跟上 <code>for</code> 循环。 </p>
+<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11) <span class="keyword">if</span> x % 2 == 0]</span></span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
+
+<p><strong>if else</strong></p>
+<p>列表生成式， for 后面的<code>if</code> 是筛选条件， 所以不能加上 <code>else</code>， 否则无法筛选。</p>
+<p><code>for</code> 前面的<code>if</code> 是表达式， 必须加上else </p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>列表生成式，直接把元素都创建出来了，会占用内存，数量也会受到内存的限制。</p>
+<p>所以，如果元素按照某种算法推算出来，在循环中不断推算出后面的元素，就不必创建完整的list， 这种一边循环一边计算的机制，称为生成器 generator</p>
+<p>创建 generator 有很多种方法，可以把生成式的 <code>[]</code> 改成 <code>()</code> ，就创建了一个 generator</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(10))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g</span></span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x000001A96593F780&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> g:</span></span><br><span class="line">...   print(i)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以调用 <code>next(g)</code> 方法获取下一个元素， 也可以使用for 循环进行迭代。</p>
+<p>要把普通函数改造成 generator函数，需要加上 <code>yield</code> 关键字。</p>
+<p>generator函数在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
+<p><strong>调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以直接作用于<code>for</code> 循环的对象，统称为可迭代对象<code>Iterable</code></p>
+<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>. 可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象</p>
+<p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
+<p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
+<p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
 ]]></content>
       <categories>
         <category>技术</category>
