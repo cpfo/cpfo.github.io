@@ -54,27 +54,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>git的使用</title>
     <url>/git-command/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
@@ -162,6 +141,27 @@
       <tags>
         <tag>Git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>hexo-next主题配置方式</title>
@@ -274,6 +274,43 @@
       </tags>
   </entry>
   <entry>
+    <title>(转)生命是一场幻觉，而你是我的光</title>
+    <url>/%E7%94%9F%E5%91%BD%E6%98%AF%E4%B8%80%E5%9C%BA%E5%B9%BB%E8%A7%89/</url>
+    <content><![CDATA[<p>一年前，或者是更久的日子之前，我被自己困在时间的孤岛，我自言自语说我等待你，沧海桑田也等待你。</p>
+<span id="more"></span>
+
+<p>湖泊伪装成天空，命运扮演作旅程，浮尘掩盖了爱情的真相，阳光也欺骗我单一的触觉。于是我决意要盲目，就算看不到每天清晨露珠含泪中升起的朝阳，就算看不到青苔掩映中蔷薇的绽放，就算看不到北风呼啸着带来晶莹的雪花，就算看不到流星，雾霭，彩虹，极光。</p>
+<p>我宁愿想象，想象你的眉目，你的笑容，你的低声私语，你神情忧伤时故作的嘴角轻扬。 </p>
+<p>你的眼神深邃，瞳仁漆黑，在深夜里亦有着柔和光亮。你在黑夜中凝视我的目光，让我看到了石头开花，向日葵在月光下不再枯萎，金鱼在逆流的河水中游得欢畅。</p>
+<p>你的心是曼陀罗和玫瑰开遍的城堡，多情处缱绻婉转，清醒时棱角分明。你对这世间有着辽远的理想，你清醒自若，淡泊如菊。你行走在我不可知的道路上，温柔敦厚却又骨感峥嵘。你是这样的令人欢喜，让我青了眉黛，软了腰肢，黑了长发，到了最美丽的岁月来等待你。</p>
+<p>你曾经握着我的手对我说要一直这样走下去。曾经，多美的一个词。让我误以为时光悄然凝固，不曾想到现世的物是人非。你已经离去，我却停留在时光的原地。</p>
+<p>曾经呵，欲语笑微微，春秋几度。</p>
+<p>何故何故，心绪倾潮难覆。</p>
+<p>谁还记得，是谁先说永远的爱我；是谁站在我的身后，默然陪我看天桥下的车水马龙。是谁，教会我岁月静好，现世安稳这样令人心驰神往的句子，让我记忆离乱之时却还能些许的忆起过往的素年锦时。</p>
+<p>这些都已经不重要，你离开我已经一年的时光。并不是生离死别，却是漠然退出。</p>
+<p>如同玫瑰离开极北的酷寒之地，苍鹰飞离乱石横生的山岗，鲜衣怒马的少年仗剑江湖，扬鞭飞奔出破败的村庄。你不必留恋我，我不须苛责你。因着我已经不能温暖你，而你也不会关怀我。</p>
+<p>多少次我试图走近你都发现是徒劳。你是青铜方鼎上篆刻的铭文，你是古老旗袍上镌绣的水墨画。你存活在遥远的时空之中，神秘而又令人向往。</p>
+<p>多少次我试图忘记你亦是徒劳。你是清冷月光下探丸取命的刺客，你是烟雾缭绕中静燃犀角的阴阳师，你存活在我记忆的最原始的荒原，可淡不可忘。</p>
+<p>多年之前，我驻足在你迁徙过的水泽，你是随季节而安的候鸟，栖水而立的英姿黯淡了岸边的垂杨。</p>
+<p>多年之前，我喝下你杯中停留的酒，你是寂寞忧伤的诗人，茕然立于花下，怅然低吟：落花人独立，微雨燕双飞。</p>
+<p>多年之前，我就记得你的模样。</p>
+<p>你是烟花肆意绽放时的盛大明媚，我是尽头零落渺小的瞬间光亮。你是茫然深海中坚贞矗立的灯塔，我是在彼岸盛开没有来路也没有归途的花。</p>
+<p>你因期待而告别，因爱而受苦。我发誓我要追随于你，你却迷失在鲜艳的理想之中。</p>
+<p>月光死了，诗人死了，爱情死了。凤凰不再涅槃，风信子不再重生。你是守护水仙的神祗，不爱黎明曙光，不爱山林苍莽，却爱上水中的自己。一切最终源于虚妄，归于虚妄。</p>
+<p>我还能有怎样的幻想？我唯独只相信时间残忍，可以带走一切最初的模样，你的模样，我的模样。</p>
+<p>我这样荼蘼不醒的过活，怎么样都还是一样。</p>
+<p>下辈子愿做樱花碾落成泥土，愿做游鱼泅渡冰冷刺骨的深海，愿做白头翁断翅悲鸣，愿做骆驼刺在风沙中孤独终生。</p>
+<p>唯愿得与你相见。等待某天樱花落满你的肩头，等待某天翘首看到你远洋的轮渡，等待某天鸣叫着在你居住的上空盘旋，等待某天奄奄一息遇见在沙漠中行走的你，而你微微颔首，低下沉稳的额。</p>
+<p>生命不过是一场幻觉，可是我要你在。</p>
+]]></content>
+      <categories>
+        <category>文章</category>
+      </categories>
+      <tags>
+        <tag>文章</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python函数</title>
     <url>/python/python%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>主要介绍python中函数的定义，调用， python的内置函数等。</p>
@@ -361,43 +398,6 @@
       </tags>
   </entry>
   <entry>
-    <title>(转)生命是一场幻觉，而你是我的光</title>
-    <url>/%E7%94%9F%E5%91%BD%E6%98%AF%E4%B8%80%E5%9C%BA%E5%B9%BB%E8%A7%89/</url>
-    <content><![CDATA[<p>一年前，或者是更久的日子之前，我被自己困在时间的孤岛，我自言自语说我等待你，沧海桑田也等待你。</p>
-<span id="more"></span>
-
-<p>湖泊伪装成天空，命运扮演作旅程，浮尘掩盖了爱情的真相，阳光也欺骗我单一的触觉。于是我决意要盲目，就算看不到每天清晨露珠含泪中升起的朝阳，就算看不到青苔掩映中蔷薇的绽放，就算看不到北风呼啸着带来晶莹的雪花，就算看不到流星，雾霭，彩虹，极光。</p>
-<p>我宁愿想象，想象你的眉目，你的笑容，你的低声私语，你神情忧伤时故作的嘴角轻扬。 </p>
-<p>你的眼神深邃，瞳仁漆黑，在深夜里亦有着柔和光亮。你在黑夜中凝视我的目光，让我看到了石头开花，向日葵在月光下不再枯萎，金鱼在逆流的河水中游得欢畅。</p>
-<p>你的心是曼陀罗和玫瑰开遍的城堡，多情处缱绻婉转，清醒时棱角分明。你对这世间有着辽远的理想，你清醒自若，淡泊如菊。你行走在我不可知的道路上，温柔敦厚却又骨感峥嵘。你是这样的令人欢喜，让我青了眉黛，软了腰肢，黑了长发，到了最美丽的岁月来等待你。</p>
-<p>你曾经握着我的手对我说要一直这样走下去。曾经，多美的一个词。让我误以为时光悄然凝固，不曾想到现世的物是人非。你已经离去，我却停留在时光的原地。</p>
-<p>曾经呵，欲语笑微微，春秋几度。</p>
-<p>何故何故，心绪倾潮难覆。</p>
-<p>谁还记得，是谁先说永远的爱我；是谁站在我的身后，默然陪我看天桥下的车水马龙。是谁，教会我岁月静好，现世安稳这样令人心驰神往的句子，让我记忆离乱之时却还能些许的忆起过往的素年锦时。</p>
-<p>这些都已经不重要，你离开我已经一年的时光。并不是生离死别，却是漠然退出。</p>
-<p>如同玫瑰离开极北的酷寒之地，苍鹰飞离乱石横生的山岗，鲜衣怒马的少年仗剑江湖，扬鞭飞奔出破败的村庄。你不必留恋我，我不须苛责你。因着我已经不能温暖你，而你也不会关怀我。</p>
-<p>多少次我试图走近你都发现是徒劳。你是青铜方鼎上篆刻的铭文，你是古老旗袍上镌绣的水墨画。你存活在遥远的时空之中，神秘而又令人向往。</p>
-<p>多少次我试图忘记你亦是徒劳。你是清冷月光下探丸取命的刺客，你是烟雾缭绕中静燃犀角的阴阳师，你存活在我记忆的最原始的荒原，可淡不可忘。</p>
-<p>多年之前，我驻足在你迁徙过的水泽，你是随季节而安的候鸟，栖水而立的英姿黯淡了岸边的垂杨。</p>
-<p>多年之前，我喝下你杯中停留的酒，你是寂寞忧伤的诗人，茕然立于花下，怅然低吟：落花人独立，微雨燕双飞。</p>
-<p>多年之前，我就记得你的模样。</p>
-<p>你是烟花肆意绽放时的盛大明媚，我是尽头零落渺小的瞬间光亮。你是茫然深海中坚贞矗立的灯塔，我是在彼岸盛开没有来路也没有归途的花。</p>
-<p>你因期待而告别，因爱而受苦。我发誓我要追随于你，你却迷失在鲜艳的理想之中。</p>
-<p>月光死了，诗人死了，爱情死了。凤凰不再涅槃，风信子不再重生。你是守护水仙的神祗，不爱黎明曙光，不爱山林苍莽，却爱上水中的自己。一切最终源于虚妄，归于虚妄。</p>
-<p>我还能有怎样的幻想？我唯独只相信时间残忍，可以带走一切最初的模样，你的模样，我的模样。</p>
-<p>我这样荼蘼不醒的过活，怎么样都还是一样。</p>
-<p>下辈子愿做樱花碾落成泥土，愿做游鱼泅渡冰冷刺骨的深海，愿做白头翁断翅悲鸣，愿做骆驼刺在风沙中孤独终生。</p>
-<p>唯愿得与你相见。等待某天樱花落满你的肩头，等待某天翘首看到你远洋的轮渡，等待某天鸣叫着在你居住的上空盘旋，等待某天奄奄一息遇见在沙漠中行走的你，而你微微颔首，低下沉稳的额。</p>
-<p>生命不过是一场幻觉，可是我要你在。</p>
-]]></content>
-      <categories>
-        <category>文章</category>
-      </categories>
-      <tags>
-        <tag>文章</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python函数式编程</title>
     <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
@@ -427,94 +427,71 @@
 <p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python高级特性</title>
-    <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
-<span id="more"></span>
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
 
-<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>取一个list或tuple的部分元素，对于指定索引范围的操作，python提供了切片(Slice)操作符。</p>
-<p>比如一个list如下</p>
+<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
+<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
+<p><strong>闭包</strong></p>
 <blockquote>
-<p>L&#x3D;[1,2,3,4,5,6,7,8,9]</p>
+<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
 </blockquote>
-<p>可以如下操作</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:4]</span></span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
-<p><code>L[0:4]</code> 表示 从索引<code>0</code> 开始，直到索引<code>4</code> 未知，不包含结尾的索引<code>4</code> ， 所以取的是索引位置  <code>0</code> <code>1</code> <code>2</code> <code>3</code> 对应的元素。</p>
-<p>如果第一个索引位置是0 ， 也可以省略</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:2]</span></span><br><span class="line">[1, 2]</span><br></pre></td></tr></table></figure>
-<p>python支持按照倒序通过索引获取元素，同样也支持按照倒序进行切片。 倒序的第一个索引是 <code>-1</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-2:]</span></span><br><span class="line">[8, 9]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-4:-2]</span></span><br><span class="line">[6, 7]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:-2]</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
-
-<p>也可以对空集合进行切片, 对空集合直接只用索引访问会报错，但是切片不会。 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:1]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:1]</span></span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
-
-<p>使用场景</p>
-<p>比如创建一个0-99的数列。</p>
+<p><strong>nonlocal</strong></p>
+<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
 <blockquote>
-<p>L&#x3D;list(range(100))</p>
+<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
 </blockquote>
-<p>取前10个</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10]</span></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
+<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
+<blockquote>
+<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
+</blockquote>
+<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
+<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
+<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
+<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>也可以把匿名函数作为返回值返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
+<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 
-<p>后10个</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-10:]</span></span><br><span class="line">[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</span><br></pre></td></tr></table></figure>
-<p>前10个数，每两个取一个：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10:2]</span></span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
-<p>所有数，每5个取一个：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[::5]</span></span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
+<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
+<blockquote>
+<p>now &#x3D; log(now)</p>
+</blockquote>
+<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
+<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 
-<p>只写 <code>[:]</code> 原样复制一个list</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:]</span></span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br></pre></td></tr></table></figure>
-<p>tuple 也可以做上述操作，只是tuple切片的结果依然是tuple。</p>
-<p>字符串 <code>xxxxx</code> 也可以看成是一种list，每个元素就是一个字符,  也可以进行切片。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[0:1]</span></span><br><span class="line">&#x27;a&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[2:]</span></span><br><span class="line">&#x27;cdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::]</span></span><br><span class="line">&#x27;abcdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::3]</span></span><br><span class="line">&#x27;adg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
+<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
+<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
+<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
 
-<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过for循环来遍历集合，成为迭代。</p>
-<p>在python中， 迭代是通过 <code>for ... in</code>  来完成的。和 java的迭代类似。</p>
-<p>dict的迭代</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代 key</span></span><br><span class="line">d = &#123;&quot;k1&quot;:&quot;v1&quot;, &quot;k2&quot; : &quot;v2&quot;, &quot;k3&quot;:&quot;v3&quot;&#125;</span><br><span class="line">for k in d:</span><br><span class="line">    print(k)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代value</span></span><br><span class="line">for v in d.values():</span><br><span class="line">    print(v)</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时迭代 key和value</span></span><br><span class="line">for k, v in d.items():</span><br><span class="line">    print(k, v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>dict 默认迭代的是 <code>key</code>， 迭代出的顺序可能不一样。</p>
-<p>字符串也可以进行迭代，输出每一个字符。  </p>
-<p>只要一个对象是可迭代的， <code>for</code> 循环就可以运行。</p>
-<p>通过 <code>collections.abc</code> 模块的 <code>Iterable</code> 判断对象是否是可迭代的。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections.abc import Iterable</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(<span class="string">&#x27;abc&#x27;</span>, Iterable) <span class="comment"># str是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], Iterable) <span class="comment"># list是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(123, Iterable) <span class="comment"># 整数是否可迭代</span></span></span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
 
-<p>对list使用下标循环， 可以使用 <code>enumerate</code> 将list转换为 索引-元素对</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line">for i, v in enumerate(L):</span><br><span class="line">    print(i, v) </span><br></pre></td></tr></table></figure>
+<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
 
-<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> 可以用<code>list(range(1, 11))</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(range(1, 11))</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
-<p>生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11)]</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
-<p>把要生成的元素<code>x*x</code> 放在前面， 后面跟上 <code>for</code> 循环。 </p>
-<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11) <span class="keyword">if</span> x % 2 == 0]</span></span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
+<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
+<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>if else</strong></p>
-<p>列表生成式， for 后面的<code>if</code> 是筛选条件， 所以不能加上 <code>else</code>， 否则无法筛选。</p>
-<p><code>for</code> 前面的<code>if</code> 是表达式， 必须加上else </p>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>列表生成式，直接把元素都创建出来了，会占用内存，数量也会受到内存的限制。</p>
-<p>所以，如果元素按照某种算法推算出来，在循环中不断推算出后面的元素，就不必创建完整的list， 这种一边循环一边计算的机制，称为生成器 generator</p>
-<p>创建 generator 有很多种方法，可以把生成式的 <code>[]</code> 改成 <code>()</code> ，就创建了一个 generator</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(10))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g</span></span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x000001A96593F780&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> g:</span></span><br><span class="line">...   print(i)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>可以调用 <code>next(g)</code> 方法获取下一个元素， 也可以使用for 循环进行迭代。</p>
-<p>要把普通函数改造成 generator函数，需要加上 <code>yield</code> 关键字。</p>
-<p>generator函数在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
-<p><strong>调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以直接作用于<code>for</code> 循环的对象，统称为可迭代对象<code>Iterable</code></p>
-<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>. 可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象</p>
-<p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
-<p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
-<p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
+<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
+<blockquote>
+<p>max2 &#x3D; functools.partial(max, 10)</p>
+</blockquote>
+<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
+<p>实际的结果是 <code>10</code></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -676,6 +653,94 @@
 </ol>
 <p>list, tuple, dict, set 的区别</p>
 <p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python高级特性</title>
+    <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
+<span id="more"></span>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>取一个list或tuple的部分元素，对于指定索引范围的操作，python提供了切片(Slice)操作符。</p>
+<p>比如一个list如下</p>
+<blockquote>
+<p>L&#x3D;[1,2,3,4,5,6,7,8,9]</p>
+</blockquote>
+<p>可以如下操作</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:4]</span></span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p><code>L[0:4]</code> 表示 从索引<code>0</code> 开始，直到索引<code>4</code> 未知，不包含结尾的索引<code>4</code> ， 所以取的是索引位置  <code>0</code> <code>1</code> <code>2</code> <code>3</code> 对应的元素。</p>
+<p>如果第一个索引位置是0 ， 也可以省略</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:2]</span></span><br><span class="line">[1, 2]</span><br></pre></td></tr></table></figure>
+<p>python支持按照倒序通过索引获取元素，同样也支持按照倒序进行切片。 倒序的第一个索引是 <code>-1</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-2:]</span></span><br><span class="line">[8, 9]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-4:-2]</span></span><br><span class="line">[6, 7]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:-2]</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
+
+<p>也可以对空集合进行切片, 对空集合直接只用索引访问会报错，但是切片不会。 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:1]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:1]</span></span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p>使用场景</p>
+<p>比如创建一个0-99的数列。</p>
+<blockquote>
+<p>L&#x3D;list(range(100))</p>
+</blockquote>
+<p>取前10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10]</span></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<p>后10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-10:]</span></span><br><span class="line">[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</span><br></pre></td></tr></table></figure>
+<p>前10个数，每两个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10:2]</span></span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
+<p>所有数，每5个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[::5]</span></span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
+
+<p>只写 <code>[:]</code> 原样复制一个list</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:]</span></span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br></pre></td></tr></table></figure>
+<p>tuple 也可以做上述操作，只是tuple切片的结果依然是tuple。</p>
+<p>字符串 <code>xxxxx</code> 也可以看成是一种list，每个元素就是一个字符,  也可以进行切片。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[0:1]</span></span><br><span class="line">&#x27;a&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[2:]</span></span><br><span class="line">&#x27;cdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::]</span></span><br><span class="line">&#x27;abcdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::3]</span></span><br><span class="line">&#x27;adg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过for循环来遍历集合，成为迭代。</p>
+<p>在python中， 迭代是通过 <code>for ... in</code>  来完成的。和 java的迭代类似。</p>
+<p>dict的迭代</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代 key</span></span><br><span class="line">d = &#123;&quot;k1&quot;:&quot;v1&quot;, &quot;k2&quot; : &quot;v2&quot;, &quot;k3&quot;:&quot;v3&quot;&#125;</span><br><span class="line">for k in d:</span><br><span class="line">    print(k)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代value</span></span><br><span class="line">for v in d.values():</span><br><span class="line">    print(v)</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时迭代 key和value</span></span><br><span class="line">for k, v in d.items():</span><br><span class="line">    print(k, v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>dict 默认迭代的是 <code>key</code>， 迭代出的顺序可能不一样。</p>
+<p>字符串也可以进行迭代，输出每一个字符。  </p>
+<p>只要一个对象是可迭代的， <code>for</code> 循环就可以运行。</p>
+<p>通过 <code>collections.abc</code> 模块的 <code>Iterable</code> 判断对象是否是可迭代的。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections.abc import Iterable</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(<span class="string">&#x27;abc&#x27;</span>, Iterable) <span class="comment"># str是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], Iterable) <span class="comment"># list是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(123, Iterable) <span class="comment"># 整数是否可迭代</span></span></span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>对list使用下标循环， 可以使用 <code>enumerate</code> 将list转换为 索引-元素对</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line">for i, v in enumerate(L):</span><br><span class="line">    print(i, v) </span><br></pre></td></tr></table></figure>
+
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> 可以用<code>list(range(1, 11))</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(range(1, 11))</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<p>生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11)]</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
+<p>把要生成的元素<code>x*x</code> 放在前面， 后面跟上 <code>for</code> 循环。 </p>
+<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11) <span class="keyword">if</span> x % 2 == 0]</span></span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
+
+<p><strong>if else</strong></p>
+<p>列表生成式， for 后面的<code>if</code> 是筛选条件， 所以不能加上 <code>else</code>， 否则无法筛选。</p>
+<p><code>for</code> 前面的<code>if</code> 是表达式， 必须加上else </p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>列表生成式，直接把元素都创建出来了，会占用内存，数量也会受到内存的限制。</p>
+<p>所以，如果元素按照某种算法推算出来，在循环中不断推算出后面的元素，就不必创建完整的list， 这种一边循环一边计算的机制，称为生成器 generator</p>
+<p>创建 generator 有很多种方法，可以把生成式的 <code>[]</code> 改成 <code>()</code> ，就创建了一个 generator</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(10))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g</span></span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x000001A96593F780&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> g:</span></span><br><span class="line">...   print(i)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以调用 <code>next(g)</code> 方法获取下一个元素， 也可以使用for 循环进行迭代。</p>
+<p>要把普通函数改造成 generator函数，需要加上 <code>yield</code> 关键字。</p>
+<p>generator函数在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
+<p><strong>调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以直接作用于<code>for</code> 循环的对象，统称为可迭代对象<code>Iterable</code></p>
+<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>. 可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象</p>
+<p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
+<p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
+<p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
 ]]></content>
       <categories>
         <category>技术</category>
