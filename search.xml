@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Sublime使用</title>
     <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
@@ -51,6 +29,28 @@
       </categories>
       <tags>
         <tag>Sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>docsify</tag>
       </tags>
   </entry>
   <entry>
@@ -510,109 +510,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python函数式编程</title>
-    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
-<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
-<span id="more"></span>
-
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
-<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
-<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
-</blockquote>
-<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
-<p>比如将一个整数集合转换为字符串</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
-<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
-<blockquote>
-<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
-</blockquote>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
-<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
-<p>filter的关键在于正确实现一个筛选函数。</p>
-<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
-<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
-<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
-<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
-
-<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
-<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
-<p><strong>闭包</strong></p>
-<blockquote>
-<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
-</blockquote>
-<p><strong>nonlocal</strong></p>
-<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
-<blockquote>
-<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
-</blockquote>
-<p>例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
-<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
-<blockquote>
-<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
-</blockquote>
-<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
-<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
-<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
-<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>也可以把匿名函数作为返回值返回</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
-<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
-<blockquote>
-<p>now &#x3D; log(now)</p>
-</blockquote>
-<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
-<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
-<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
-<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
-<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
-<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
-
-<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
-
-<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
-
-<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
-<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
-<blockquote>
-<p>max2 &#x3D; functools.partial(max, 10)</p>
-</blockquote>
-<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
-<p>实际的结果是 <code>10</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python基础</title>
     <url>/python/python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
@@ -774,6 +671,109 @@
       </tags>
   </entry>
   <entry>
+    <title>python函数式编程</title>
+    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
+<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
+<span id="more"></span>
+
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
+<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
+<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
+</blockquote>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
+<p>比如将一个整数集合转换为字符串</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
+<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
+<blockquote>
+<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
+</blockquote>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
+<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
+<p>filter的关键在于正确实现一个筛选函数。</p>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
+<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
+<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
+<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+
+<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
+<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
+<p><strong>闭包</strong></p>
+<blockquote>
+<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+</blockquote>
+<p><strong>nonlocal</strong></p>
+<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
+<blockquote>
+<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
+<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
+<blockquote>
+<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
+</blockquote>
+<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
+<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
+<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
+<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>也可以把匿名函数作为返回值返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
+<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
+<blockquote>
+<p>now &#x3D; log(now)</p>
+</blockquote>
+<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
+<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
+<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
+<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
+<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
+
+<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
+
+<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
+<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
+<blockquote>
+<p>max2 &#x3D; functools.partial(max, 10)</p>
+</blockquote>
+<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
+<p>实际的结果是 <code>10</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python模块</title>
     <url>/python/python%E6%A8%A1%E5%9D%97/</url>
     <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
@@ -811,6 +811,111 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
 
 <p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python面向对象高级编程</title>
+    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+  </entry>
+  <entry>
+    <title>python面向对象编程</title>
+    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
+<span id="more"></span>
+
+<h1 id="OOP概念"><a href="#OOP概念" class="headerlink" title="OOP概念"></a>OOP概念</h1><p>OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
+<p>面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。</p>
+<p>OOP设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。</p>
+<p>下面举例说明面向过程和面向对象的在程序流程上的不同。</p>
+<p>假设我们要处理学生的成绩表，为了表示一个学生的成绩，面向过程的程序可以用一个dict表示：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">std1 = &#123; &#x27;name&#x27;: &#x27;Michael&#x27;, &#x27;score&#x27;: 98 &#125;</span><br><span class="line">std2 = &#123; &#x27;name&#x27;: &#x27;Bob&#x27;, &#x27;score&#x27;: 81 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而处理学生成绩可以通过函数实现，比如打印学生的成绩：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def print_score(std):</span><br><span class="line">    print(&#x27;%s: %s&#x27; % (std[&#x27;name&#x27;], std[&#x27;score&#x27;]))</span><br></pre></td></tr></table></figure>
+<p>如果采用OOP的设计思想，首先思考的不是程序的执行流程，而是 <code>Student</code> 这种数据类型应该被视为一个对象。这个对象拥有<code>name</code>和<code>score</code>这两个属性（Property）。如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个<code>print_score</code>消息，让对象自己把自己的数据打印出来。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_score</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (self.name, self.score))</span><br></pre></td></tr></table></figure>
+<p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。面向对象的程序写出来就像这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bart = Student(<span class="string">&#x27;Bart Simpson&#x27;</span>, <span class="number">59</span>)</span><br><span class="line">lisa = Student(<span class="string">&#x27;Lisa Simpson&#x27;</span>, <span class="number">87</span>)</span><br><span class="line">bart.print_score()</span><br><span class="line">lisa.print_score()</span><br></pre></td></tr></table></figure>
+
+<p>类（Class）和实例（Instance）, Class是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念，而实例（Instance）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。</p>
+<p>所以，面向对象的设计思想是抽象出Class，根据Class创建Instance。</p>
+<p>面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。</p>
+<p>封装，继承，多态，三大特点，和java一样。</p>
+<h1 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h1><p>面向对象最重要的概念就是类（Class）和实例（Instance），类是抽象的模板。</p>
+<p>在Python中，定义类是通过<code>class</code>关键字</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p><code>class</code>后面紧接着是类名，即<code>Student</code>，类名通常是大写开头的单词，紧接着是<code>(object)</code>，表示该类是从哪个类继承下来的，通常，如果没有合适的继承类，就使用<code>object</code>类，这是所有类最终都会继承的类。</p>
+<p>定义好了类，就可以通过类创建出实例。创建实例是通过类名+()实现的。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student</span></span><br><span class="line">&lt;class &#x27;__main__.Student&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s</span></span><br><span class="line">&lt;__main__.Student object at 0x000001A965ADA690&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实例创建后可以自由地给实例变量绑定属性。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name</span></span><br><span class="line">&#x27;张三&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<code>__init__</code>方法，在创建实例的时候，就把<code>name</code>，<code>score</code>等属性绑上去：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>特殊方法“__init__”前后分别有两个下划线！！！</p>
+</blockquote>
+<p><code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
+<p>有了<code>__init__</code>方法，在创建实例的时候，必须传入与<code>__init__</code>方法匹配的参数，但<code>self</code>不需要传，Python解释器自己会把实例变量传进去：</p>
+<p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量<code>self</code>，并且，调用时，不用传递该参数。</p>
+<p><strong>数据封装</strong></p>
+<p>封装通过将数据和对数据的操作（方法）捆绑在一起，形成一个独立的、可复用的单位，对外部隐藏内部实现细节，只暴露出简单的接口供其他代码使用。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; class Student(object):</span></span><br><span class="line">...   def hello(self):</span><br><span class="line">...     print(&#x27;hello&#x27;)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1 = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello</span></span><br><span class="line">&lt;bound method Student.hello of &lt;__main__.Student object at 0x0000015DEB716B10&gt;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello()</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<p>通过实例变量访问方法时，如果不加括号，输出的是方法的信息，要调用方法必须要加上<code>()</code></p>
+<h1 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h1><p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。</p>
+<p>这样就确保外部无法随意修改对象内部的状态。</p>
+<p>如果想要访问或者修改对象内部的数据，可以给类增加 get 和 set 方法， 和java类似。可以在方法中对参数做校验。</p>
+<p>变量名类似<code>__xxx__</code>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<code>__name__</code>、<code>__score__</code>这样的变量名。</p>
+<p>以一个下划线开头的实例变量名，比如<code>_name</code>，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，这样的变量不能随意访问。</p>
+<p>Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量，但是强烈不建议这么做。</p>
+<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p><strong>继承</strong></p>
+<p>当我们定义一个class时，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）</p>
+<p>继承有什么好处？最大的好处是子类获得了父类的全部功能。继承可以实现代码的重用和扩展。</p>
+<p><strong>多态</strong></p>
+<p>子类重写父类方法。</p>
+<p>子类的实例的数据类型也可以看做是父类的数据类型，反过来不行。</p>
+<p>多态的好处，当函数需要接收子类时，只需要定义时接收父类就行。调用函数时，可以传入不同的子类的实例。</p>
+<blockquote>
+<p>java中叫 父类引用指向子类对象？</p>
+</blockquote>
+<p><strong>静态语言 vs 动态语言</strong></p>
+<p>对于静态语言（例如Java）来说，如果需要传入<code>Animal</code>类型，则传入的对象必须是<code>Animal</code>类型或者它的子类，否则，将无法调用<code>run()</code>方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：</p>
+<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<p>Python的“file-like object“就是一种鸭子类型。</p>
+<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1><p><strong>type()</strong></p>
+<p>使用 <code>type()</code> 方法， 可以判断某个对象是什么类型。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(11)</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(L)</span></span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(<span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line">&lt;class &#x27;str&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func():</span></span><br><span class="line">...   pass</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func())</span></span><br><span class="line">&lt;class &#x27;NoneType&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func)</span></span><br><span class="line">&lt;class &#x27;function&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(abs)</span></span><br><span class="line">&lt;class &#x27;builtin_function_or_method&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>type()</code> 返回的是对象的Class类型。可以进行 <code>==</code> 比较，判断是否是相同的类。</p>
+<p><strong>使用isinstance()</strong></p>
+<p>如果有继承关系，使用<code>type()</code> 就不方便判断了， 可以使用 <code>isinstance()</code></p>
+<p><code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</p>
+<p>能用<code>type()</code>判断的基本类型也可以用<code>isinstance()</code>判断。并且还可以判断一个变量是否是某些类型中的一种。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (list, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (dict, tuple))</span></span><br><span class="line">False</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (set, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>所以可以优先使用 <code>isinstance()</code>来判断类型。</p>
+<p><strong>使用dir()</strong></p>
+<p>使用<code>dir()</code> 方法可以获取一个对象的所有属性和方法，返回的是一个包含字符串的list。</p>
+<p>仅仅把属性和方法列出来是不够的，配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态</p>
+<p>如果试图获取不存在的属性，会抛出AttributeError的错误， 可以在方法中加上默认值。 例如：<code>getattr(obj, &#39;z&#39;, 404)</code></p>
+<p>也可以使用 <code>hasattr()</code>，<code>getattr()</code> 判断和获取对象的方法。</p>
+<h1 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h1><p>给实例绑定属性的方法是通过实例变量，或者通过self变量。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，如果<code>Student</code>类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归<code>Student</code>类所有</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    name = <span class="string">&#x27;Student&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>类属性，类的所有实例都可以访问到。和java中继承很相似。</p>
+<p>在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，避免出现错误。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -900,81 +1005,6 @@
 <p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
 <p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
 ]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python面向对象编程</title>
-    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
-<span id="more"></span>
-
-<h1 id="OOP概念"><a href="#OOP概念" class="headerlink" title="OOP概念"></a>OOP概念</h1><p>OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
-<p>面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。</p>
-<p>OOP设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。</p>
-<p>下面举例说明面向过程和面向对象的在程序流程上的不同。</p>
-<p>假设我们要处理学生的成绩表，为了表示一个学生的成绩，面向过程的程序可以用一个dict表示：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">std1 = &#123; &#x27;name&#x27;: &#x27;Michael&#x27;, &#x27;score&#x27;: 98 &#125;</span><br><span class="line">std2 = &#123; &#x27;name&#x27;: &#x27;Bob&#x27;, &#x27;score&#x27;: 81 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>而处理学生成绩可以通过函数实现，比如打印学生的成绩：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def print_score(std):</span><br><span class="line">    print(&#x27;%s: %s&#x27; % (std[&#x27;name&#x27;], std[&#x27;score&#x27;]))</span><br></pre></td></tr></table></figure>
-<p>如果采用OOP的设计思想，首先思考的不是程序的执行流程，而是 <code>Student</code> 这种数据类型应该被视为一个对象。这个对象拥有<code>name</code>和<code>score</code>这两个属性（Property）。如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个<code>print_score</code>消息，让对象自己把自己的数据打印出来。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_score</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (self.name, self.score))</span><br></pre></td></tr></table></figure>
-<p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。面向对象的程序写出来就像这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bart = Student(<span class="string">&#x27;Bart Simpson&#x27;</span>, <span class="number">59</span>)</span><br><span class="line">lisa = Student(<span class="string">&#x27;Lisa Simpson&#x27;</span>, <span class="number">87</span>)</span><br><span class="line">bart.print_score()</span><br><span class="line">lisa.print_score()</span><br></pre></td></tr></table></figure>
-
-<p>类（Class）和实例（Instance）, Class是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念，而实例（Instance）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。</p>
-<p>所以，面向对象的设计思想是抽象出Class，根据Class创建Instance。</p>
-<p>面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。</p>
-<p>封装，继承，多态，三大特点，和java一样。</p>
-<h1 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h1><p>面向对象最重要的概念就是类（Class）和实例（Instance），类是抽象的模板。</p>
-<p>在Python中，定义类是通过<code>class</code>关键字</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p><code>class</code>后面紧接着是类名，即<code>Student</code>，类名通常是大写开头的单词，紧接着是<code>(object)</code>，表示该类是从哪个类继承下来的，通常，如果没有合适的继承类，就使用<code>object</code>类，这是所有类最终都会继承的类。</p>
-<p>定义好了类，就可以通过类创建出实例。创建实例是通过类名+()实现的。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student</span></span><br><span class="line">&lt;class &#x27;__main__.Student&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s</span></span><br><span class="line">&lt;__main__.Student object at 0x000001A965ADA690&gt;</span><br></pre></td></tr></table></figure>
-
-<p>实例创建后可以自由地给实例变量绑定属性。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name</span></span><br><span class="line">&#x27;张三&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<code>__init__</code>方法，在创建实例的时候，就把<code>name</code>，<code>score</code>等属性绑上去：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>特殊方法“__init__”前后分别有两个下划线！！！</p>
-</blockquote>
-<p><code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
-<p>有了<code>__init__</code>方法，在创建实例的时候，必须传入与<code>__init__</code>方法匹配的参数，但<code>self</code>不需要传，Python解释器自己会把实例变量传进去：</p>
-<p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量<code>self</code>，并且，调用时，不用传递该参数。</p>
-<p><strong>数据封装</strong></p>
-<p>封装通过将数据和对数据的操作（方法）捆绑在一起，形成一个独立的、可复用的单位，对外部隐藏内部实现细节，只暴露出简单的接口供其他代码使用。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; class Student(object):</span></span><br><span class="line">...   def hello(self):</span><br><span class="line">...     print(&#x27;hello&#x27;)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1 = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello</span></span><br><span class="line">&lt;bound method Student.hello of &lt;__main__.Student object at 0x0000015DEB716B10&gt;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello()</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-<p>通过实例变量访问方法时，如果不加括号，输出的是方法的信息，要调用方法必须要加上<code>()</code></p>
-<h1 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h1><p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。</p>
-<p>这样就确保外部无法随意修改对象内部的状态。</p>
-<p>如果想要访问或者修改对象内部的数据，可以给类增加 get 和 set 方法， 和java类似。可以在方法中对参数做校验。</p>
-<p>变量名类似<code>__xxx__</code>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<code>__name__</code>、<code>__score__</code>这样的变量名。</p>
-<p>以一个下划线开头的实例变量名，比如<code>_name</code>，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，这样的变量不能随意访问。</p>
-<p>Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量，但是强烈不建议这么做。</p>
-<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p><strong>继承</strong></p>
-<p>当我们定义一个class时，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）</p>
-<p>继承有什么好处？最大的好处是子类获得了父类的全部功能。继承可以实现代码的重用和扩展。</p>
-<p><strong>多态</strong></p>
-<p>子类重写父类方法。</p>
-<p>子类的实例的数据类型也可以看做是父类的数据类型，反过来不行。</p>
-<p>多态的好处，当函数需要接收子类时，只需要定义时接收父类就行。调用函数时，可以传入不同的子类的实例。</p>
-<blockquote>
-<p>java中叫 父类引用指向子类对象？</p>
-</blockquote>
-<p><strong>静态语言 vs 动态语言</strong></p>
-<p>对于静态语言（例如Java）来说，如果需要传入<code>Animal</code>类型，则传入的对象必须是<code>Animal</code>类型或者它的子类，否则，将无法调用<code>run()</code>方法。</p>
-<p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：</p>
-<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
-<p>Python的“file-like object“就是一种鸭子类型。</p>
-<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1>]]></content>
       <categories>
         <category>技术</category>
       </categories>

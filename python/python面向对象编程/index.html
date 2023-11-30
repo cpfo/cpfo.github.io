@@ -29,7 +29,7 @@
 <meta property="og:description" content="面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-29T08:10:51.000Z">
-<meta property="article:modified_time" content="2023-11-29T10:41:28.617Z">
+<meta property="article:modified_time" content="2023-11-30T09:23:35.010Z">
 <meta property="article:author" content="chenpf">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OOP%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">OOP概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">类和实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">访问限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">继承和多态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E4%BF%A1%E6%81%AF"><span class="nav-number">5.</span> <span class="nav-text">获取对象信息</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OOP%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">OOP概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">类和实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">访问限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">继承和多态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E4%BF%A1%E6%81%AF"><span class="nav-number">5.</span> <span class="nav-text">获取对象信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">实例属性和类属性</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -222,9 +222,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-11-29 16:10:51 / 修改时间：18:41:28" itemprop="dateCreated datePublished" datetime="2023-11-29T16:10:51+08:00">2023-11-29</time>
+      <time title="创建时间：2023-11-29 16:10:51" itemprop="dateCreated datePublished" datetime="2023-11-29T16:10:51+08:00">2023-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-30 17:23:35" itemprop="dateModified" datetime="2023-11-30T17:23:35+08:00">2023-11-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -264,14 +270,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.5k</span>
+      <span>4.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -345,7 +351,32 @@
 <p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：</p>
 <p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
 <p>Python的“file-like object“就是一种鸭子类型。</p>
-<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1>
+<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1><p><strong>type()</strong></p>
+<p>使用 <code>type()</code> 方法， 可以判断某个对象是什么类型。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(11)</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(L)</span></span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(<span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line">&lt;class &#x27;str&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func():</span></span><br><span class="line">...   pass</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func())</span></span><br><span class="line">&lt;class &#x27;NoneType&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func)</span></span><br><span class="line">&lt;class &#x27;function&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(abs)</span></span><br><span class="line">&lt;class &#x27;builtin_function_or_method&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>type()</code> 返回的是对象的Class类型。可以进行 <code>==</code> 比较，判断是否是相同的类。</p>
+<p><strong>使用isinstance()</strong></p>
+<p>如果有继承关系，使用<code>type()</code> 就不方便判断了， 可以使用 <code>isinstance()</code></p>
+<p><code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</p>
+<p>能用<code>type()</code>判断的基本类型也可以用<code>isinstance()</code>判断。并且还可以判断一个变量是否是某些类型中的一种。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (list, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (dict, tuple))</span></span><br><span class="line">False</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (set, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>所以可以优先使用 <code>isinstance()</code>来判断类型。</p>
+<p><strong>使用dir()</strong></p>
+<p>使用<code>dir()</code> 方法可以获取一个对象的所有属性和方法，返回的是一个包含字符串的list。</p>
+<p>仅仅把属性和方法列出来是不够的，配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态</p>
+<p>如果试图获取不存在的属性，会抛出AttributeError的错误， 可以在方法中加上默认值。 例如：<code>getattr(obj, &#39;z&#39;, 404)</code></p>
+<p>也可以使用 <code>hasattr()</code>，<code>getattr()</code> 判断和获取对象的方法。</p>
+<h1 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h1><p>给实例绑定属性的方法是通过实例变量，或者通过self变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，如果<code>Student</code>类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归<code>Student</code>类所有</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    name = <span class="string">&#x27;Student&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>类属性，类的所有实例都可以访问到。和java中继承很相似。</p>
+<p>在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，避免出现错误。</p>
+
     </div>
 
     
@@ -366,6 +397,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/" rel="next" title="python面向对象高级编程">
+                  python面向对象高级编程 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -397,13 +431,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">34k</span>
+    <span title="站点总字数">35k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">31 分钟</span>
+    <span title="站点阅读时长">32 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
