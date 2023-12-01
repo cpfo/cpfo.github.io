@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Sublime使用</title>
-    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
-<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
-</ol>
-<span id="more"></span>
-
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li>可以直接打开图片</li>
-<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
-</ol>
-<ul>
-<li>输入@+函数名可以快速找到函数。</li>
-<li>输入#+文本可以快速进行文件内文本匹配</li>
-<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
-<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
-<ol>
-<li>快速复制当前行 CTRL + SHIFT + D</li>
-<li>删除当前行 CTRL + SHIFT + K</li>
-</ol>
-]]></content>
-      <categories>
-        <category>编辑器</category>
-      </categories>
-      <tags>
-        <tag>Sublime</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用docsify搭建github pages页面</title>
     <url>/docsify-config/</url>
     <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
@@ -143,6 +112,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Sublime使用</title>
+    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
+<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
+</ol>
+<span id="more"></span>
+
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>可以直接打开图片</li>
+<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
+</ol>
+<ul>
+<li>输入@+函数名可以快速找到函数。</li>
+<li>输入#+文本可以快速进行文件内文本匹配</li>
+<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
+<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
+<ol>
+<li>快速复制当前行 CTRL + SHIFT + D</li>
+<li>删除当前行 CTRL + SHIFT + K</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编辑器</category>
+      </categories>
+      <tags>
+        <tag>Sublime</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -162,116 +162,6 @@
 
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>hexo-next主题配置方式</title>
-    <url>/hexo-next-theme/</url>
-    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
-<span id="more"></span>
-
-
-<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
-<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
-<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
-<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
-<li>使用npm-upgrade，升级依赖的插件。</li>
-<li>npm update -g，更新全局插件。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
-<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
-<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
-<li>npm安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-symbols-count-time -g</p>
-</blockquote>
-<ol start="2">
-<li>修改hexo的主配置，添加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>查看next的配置文件中的内容</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
-<li>安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-generator-searchdb</p>
-</blockquote>
-<ol start="2">
-<li>开启next的搜索配置</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
-<ol>
-<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
-</li>
-<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
-</li>
-</ol>
-<blockquote>
-<p>npm install @waline&#x2F;hexo-next</p>
-</blockquote>
-<ol start="3">
-<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>重新生成</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
-<p>注册登录之后， 就可以对评论进行管理了。</p>
-<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
-<p>首先需要在项目目录下面安装依赖</p>
-<blockquote>
-<p> npm i hexo-filter-mermaid-diagrams</p>
-</blockquote>
-<p>然后在配置中开启</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
-<p><strong>流程图</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
-
-
-<pre class="mermaid">graph TD
-Start --> Stop</pre>
-
-<p><strong>时间轴</strong></p>
-<pre class="mermaid">timeline
-      title History of Social Media Platform
-      2002 : LinkedIn
-      2004 : Facebook
-           : Google
-      2005 : Youtube
-      2006 : Twitter</pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux常用操作</title>
@@ -383,6 +273,116 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-next主题配置方式</title>
+    <url>/hexo-next-theme/</url>
+    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
+<span id="more"></span>
+
+
+<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
+<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
+<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
+<li>使用npm-upgrade，升级依赖的插件。</li>
+<li>npm update -g，更新全局插件。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
+<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
+<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
+<li>npm安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-symbols-count-time -g</p>
+</blockquote>
+<ol start="2">
+<li>修改hexo的主配置，添加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看next的配置文件中的内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
+<li>安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-generator-searchdb</p>
+</blockquote>
+<ol start="2">
+<li>开启next的搜索配置</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
+<ol>
+<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
+</li>
+<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
+</li>
+</ol>
+<blockquote>
+<p>npm install @waline&#x2F;hexo-next</p>
+</blockquote>
+<ol start="3">
+<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重新生成</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
+<p>注册登录之后， 就可以对评论进行管理了。</p>
+<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
+<p>首先需要在项目目录下面安装依赖</p>
+<blockquote>
+<p> npm i hexo-filter-mermaid-diagrams</p>
+</blockquote>
+<p>然后在配置中开启</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
+<p><strong>流程图</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
+
+
+<pre class="mermaid">graph TD
+Start --> Stop</pre>
+
+<p><strong>时间轴</strong></p>
+<pre class="mermaid">timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+           : Google
+      2005 : Youtube
+      2006 : Twitter</pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -799,101 +799,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python模块</title>
-    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
-<span id="more"></span>
-
-<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
-<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
-<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
-<p>也可以有多级目录，组成多级层次的包结构。</p>
-<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
-<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
-<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
-<p>第6行使用<code>__author__</code>变量把作者写进去</p>
-<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
-<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
-<p>最后的两行特殊的代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
-<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
-<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
-<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
-<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
-<blockquote>
-<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-</blockquote>
-<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
-<blockquote>
-<p>pip install xxx</p>
-</blockquote>
-<p><strong>模块搜索路径</strong></p>
-<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python面向对象高级编程</title>
-    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>封装、继承和多态只是面向对象程序设计中最基础的3个概念。在Python中，面向对象还有很多高级特性，下面会讨论多重继承、定制类、元类等概念。</p>
-<span id="more"></span>
-
-<h1 id="使用-slots"><a href="#使用-slots" class="headerlink" title="使用 slots"></a>使用 <strong>slots</strong></h1><p>正常情况下，可以给一个类的实例创建任何属性和方法，这就是动态语言的灵活性。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<p>绑定属性</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;Michael&#x27;</span> <span class="comment"># 动态给实例绑定一个属性</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(s.name)</span></span><br><span class="line">Michael</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>也可以绑定一个方法</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_age(self, age): <span class="comment"># 定义一个函数作为实例方法</span></span></span><br><span class="line">...     self.age = age</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from types import MethodType</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age = MethodType(set_age, s) <span class="comment"># 给实例绑定一个方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age(25) <span class="comment"># 调用实例方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.age <span class="comment"># 测试结果</span></span></span><br><span class="line">25</span><br></pre></td></tr></table></figure>
-<p>给实例绑定的方法，对另一个实例无效，所以可以绑定到类上。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_score(self, score):</span></span><br><span class="line">...     self.score = score</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student.set_score = set_score</span></span><br></pre></td></tr></table></figure>
-<p>通常情况下，上面的<code>set_score</code>方法可以直接定义在class中，但动态绑定允许我们在程序运行的过程中动态给class加上功能，这在静态语言中很难实现。</p>
-<p><strong>使用__slots__</strong></p>
-<p>如果我们想要限制实例的属性怎么办？比如，只允许对<code>Student</code>实例添加<code>name</code>和<code>age</code>属性。</p>
-<p>为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的<code>__slots__</code>变量，来限制该class实例能添加的属性：</p>
-<p><code>__slots__</code>定义的属性仅对当前类实例起作用，对继承的子类是不起作用的。子类实例允许定义的属性就是自身的<code>__slots__</code>加上父类的<code>__slots__</code>。</p>
-<p>验证如下:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p1 = Person()</span><br><span class="line">p1.name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line"><span class="comment"># 添加score属性会报错</span></span><br><span class="line"><span class="comment">#p1.score = 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;score&#x27;</span>)</span><br><span class="line"></span><br><span class="line">s1 = Student()</span><br><span class="line"></span><br><span class="line">s1.name = <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">s1.age = <span class="string">&#x27;14&#x27;</span></span><br><span class="line">s1.score = <span class="number">98</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s1.name, s1.age, s1.score)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="使用-property"><a href="#使用-property" class="headerlink" title="使用@property"></a>使用@property</h1><p>如果给属性加上访问限制，使用get set方法，也可以在赋值时检查数据的合理性。这样操作略显复杂。</p>
-<p>Python内置的<code>@property</code>装饰器就是负责把一个方法变成属性调用的</p>
-<p>把一个getter方法变成属性，只需要加上<code>@property</code>就可以了。我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self, value</span>):</span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">age</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2015</span> - self._birth</span><br></pre></td></tr></table></figure>
-<p>只定义getter方法，不定义setter方法就是一个只读属性，上面的<code>birth</code>是可读写属性，而<code>age</code>就是一个只读属性，因为<code>age</code>可以根据<code>birth</code>和当前时间计算出来。</p>
-<p>要特别注意：属性的方法名不要和实例变量重名，下面的就是错误的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 方法名称和实例变量均为birth:</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.birth</span><br></pre></td></tr></table></figure>
-
-<p>这是因为调用<code>s.birth</code>时，首先转换为方法调用，在执行<code>return self.birth</code>时，又视为访问<code>self</code>的属性，于是又转换为方法调用，造成无限递归，最终导致栈溢出报错<code>RecursionError</code></p>
-<h1 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h1><p>如果是单继承的话，层级结构如下。</p>
-<pre class="mermaid">graph TD
-动物 --> 会飞的
-动物 --> 会跑的
-会飞的 --> 鹦鹉
-会飞的 --> 老鹰
-会跑的 --> 狗
-会跑的 --> 猫</pre>
-<p>如果需要再添加新的继承关系，就会很复杂了， 所以可以采用多重继承的方式。 比如</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(Mammal, Runnable):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>通过多重继承，一个子类就可以同时获得多个父类的所有功能。</p>
-<p><strong>MixIn</strong></p>
-<p>在设计类的继承关系时，通常，主线都是单一继承下来的，例如，<code>Ostrich</code>继承自<code>Bird</code>。但是，如果需要“混入”额外的功能，通过多重继承就可以实现，比如，让<code>Ostrich</code>除了继承自<code>Bird</code>外，再同时继承<code>Runnable</code>。这种设计通常称之为<code>MixIn</code>。</p>
-<p>MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。</p>
-<p>由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。</p>
-<p>java中只允许单继承，但是可以通过 implements 多个接口来实现类似的功能。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>python面向对象编程</title>
     <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
@@ -992,6 +897,122 @@ Start --> Stop</pre>
       <tags>
         <tag>python</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>python模块</title>
+    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
+<span id="more"></span>
+
+<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
+<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
+<p>也可以有多级目录，组成多级层次的包结构。</p>
+<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
+<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
+<p>第6行使用<code>__author__</code>变量把作者写进去</p>
+<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p>最后的两行特殊的代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
+<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
+<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<blockquote>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+</blockquote>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
+<blockquote>
+<p>pip install xxx</p>
+</blockquote>
+<p><strong>模块搜索路径</strong></p>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python面向对象高级编程</title>
+    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>封装、继承和多态只是面向对象程序设计中最基础的3个概念。在Python中，面向对象还有很多高级特性，下面会讨论多重继承、定制类、元类等概念。</p>
+<span id="more"></span>
+
+<h1 id="使用-slots"><a href="#使用-slots" class="headerlink" title="使用 slots"></a>使用 <strong>slots</strong></h1><p>正常情况下，可以给一个类的实例创建任何属性和方法，这就是动态语言的灵活性。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>绑定属性</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;Michael&#x27;</span> <span class="comment"># 动态给实例绑定一个属性</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(s.name)</span></span><br><span class="line">Michael</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也可以绑定一个方法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_age(self, age): <span class="comment"># 定义一个函数作为实例方法</span></span></span><br><span class="line">...     self.age = age</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from types import MethodType</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age = MethodType(set_age, s) <span class="comment"># 给实例绑定一个方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age(25) <span class="comment"># 调用实例方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.age <span class="comment"># 测试结果</span></span></span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+<p>给实例绑定的方法，对另一个实例无效，所以可以绑定到类上。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_score(self, score):</span></span><br><span class="line">...     self.score = score</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student.set_score = set_score</span></span><br></pre></td></tr></table></figure>
+<p>通常情况下，上面的<code>set_score</code>方法可以直接定义在class中，但动态绑定允许我们在程序运行的过程中动态给class加上功能，这在静态语言中很难实现。</p>
+<p><strong>使用__slots__</strong></p>
+<p>如果我们想要限制实例的属性怎么办？比如，只允许对<code>Student</code>实例添加<code>name</code>和<code>age</code>属性。</p>
+<p>为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的<code>__slots__</code>变量，来限制该class实例能添加的属性：</p>
+<p><code>__slots__</code>定义的属性仅对当前类实例起作用，对继承的子类是不起作用的。子类实例允许定义的属性就是自身的<code>__slots__</code>加上父类的<code>__slots__</code>。</p>
+<p>验证如下:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p1 = Person()</span><br><span class="line">p1.name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line"><span class="comment"># 添加score属性会报错</span></span><br><span class="line"><span class="comment">#p1.score = 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;score&#x27;</span>)</span><br><span class="line"></span><br><span class="line">s1 = Student()</span><br><span class="line"></span><br><span class="line">s1.name = <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">s1.age = <span class="string">&#x27;14&#x27;</span></span><br><span class="line">s1.score = <span class="number">98</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s1.name, s1.age, s1.score)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="使用-property"><a href="#使用-property" class="headerlink" title="使用@property"></a>使用@property</h1><p>如果给属性加上访问限制，使用get set方法，也可以在赋值时检查数据的合理性。这样操作略显复杂。</p>
+<p>Python内置的<code>@property</code>装饰器就是负责把一个方法变成属性调用的</p>
+<p>把一个getter方法变成属性，只需要加上<code>@property</code>就可以了。我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self, value</span>):</span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">age</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2015</span> - self._birth</span><br></pre></td></tr></table></figure>
+<p>只定义getter方法，不定义setter方法就是一个只读属性，上面的<code>birth</code>是可读写属性，而<code>age</code>就是一个只读属性，因为<code>age</code>可以根据<code>birth</code>和当前时间计算出来。</p>
+<p>要特别注意：属性的方法名不要和实例变量重名，下面的就是错误的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 方法名称和实例变量均为birth:</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.birth</span><br></pre></td></tr></table></figure>
+
+<p>这是因为调用<code>s.birth</code>时，首先转换为方法调用，在执行<code>return self.birth</code>时，又视为访问<code>self</code>的属性，于是又转换为方法调用，造成无限递归，最终导致栈溢出报错<code>RecursionError</code></p>
+<h1 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h1><p>如果是单继承的话，层级结构如下。</p>
+<pre class="mermaid">graph TD
+动物 --> 会飞的
+动物 --> 会跑的
+会飞的 --> 鹦鹉
+会飞的 --> 老鹰
+会跑的 --> 狗
+会跑的 --> 猫</pre>
+<p>如果需要再添加新的继承关系，就会很复杂了， 所以可以采用多重继承的方式。 比如</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(Mammal, Runnable):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>通过多重继承，一个子类就可以同时获得多个父类的所有功能。</p>
+<p><strong>MixIn</strong></p>
+<p>在设计类的继承关系时，通常，主线都是单一继承下来的，例如，<code>Ostrich</code>继承自<code>Bird</code>。但是，如果需要“混入”额外的功能，通过多重继承就可以实现，比如，让<code>Ostrich</code>除了继承自<code>Bird</code>外，再同时继承<code>Runnable</code>。这种设计通常称之为<code>MixIn</code>。</p>
+<p>MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。</p>
+<p>由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。</p>
+<p>java中只允许单继承，但是可以通过 implements 多个接口来实现类似的功能。</p>
+<h1 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h1><p>看到类似<code>__slots__</code>这种形如<code>__xxx__</code>的变量或者函数名就要注意，这些在Python中是有特殊用途的。</p>
+<p><code>__slots__</code> 用于限制实例的属性</p>
+<p><code>__len__()</code> 让类作用于<code>len()</code>函数</p>
+<p>Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。</p>
+<p><code>__str__</code></p>
+<p>类似java的 <code>toString()</code>方法， 自定义对象的输出信息。可以将实例内部的信息输出。</p>
+<p><code>__str__()</code>返回用户看到的字符串，而<code>__repr__()</code>返回程序开发者看到的字符串(对象的内存地址信息等),比如<code>&lt;__main__.Student object at 0x000001A342D19F70&gt;</code>，也就是说 <code>__repr__()</code>是为调试服务的。</p>
+<p><code>__iter__</code></p>
+<p>如果一个类想被用于<code>for ... in</code>循环，类似<code>list</code>或<code>tuple</code>那样，就必须实现一个<code>__iter__()</code>方法，该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的<code>__next__()</code>方法拿到循环的下一个值，直到遇到StopIteration错误时退出循环。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Fib</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.a, self.b = <span class="number">0</span>, <span class="number">1</span> <span class="comment"># 初始化两个计数器a，b</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self <span class="comment"># 实例本身就是迭代对象，故返回自己</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__next__</span>(<span class="params">self</span>):</span><br><span class="line">        self.a, self.b = self.b, self.a + self.b <span class="comment"># 计算下一个值</span></span><br><span class="line">        <span class="keyword">if</span> self.a &gt; <span class="number">100000</span>: <span class="comment"># 退出循环的条件</span></span><br><span class="line">            <span class="keyword">raise</span> StopIteration()</span><br><span class="line">        <span class="keyword">return</span> self.a <span class="comment"># 返回下一个值</span></span><br></pre></td></tr></table></figure>
+
+<p><code>__getitem__</code></p>
+<p>如果需要像list那样按照下标取元素，就需要实现<code>__getitem__()</code>方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Fib</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, n</span>):</span><br><span class="line">        a, b = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+
+<p>如果把对象看成<code>dict</code>，<code>__getitem__()</code>的参数也可能是一个可以作key的object，例如<code>str</code></p>
+<p>与之相对应的是 <code>__setitem__()</code>，把对象当做list或者dict来进行赋值，<code>__delitem__()</code> 用于删除某个元素。</p>
+<p><code>__getattr__</code></p>
+<p>正常情况下，当我们调用类的方法或属性时，如果不存在，就会报错。Python提供了一个机制，那就是写一个<code>__getattr__()</code>方法，动态返回一个属性或者函数。</p>
+<p>这就可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段。</p>
+<p>这种特性可以用来针对完全动态的情况作调用。比如 url中的动态路径。</p>
+]]></content>
   </entry>
   <entry>
     <title>python高级特性</title>
