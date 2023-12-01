@@ -54,27 +54,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>git的使用</title>
     <url>/git-command/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
@@ -164,6 +143,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>hexo-next主题配置方式</title>
     <url>/hexo-next-theme/</url>
     <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
@@ -241,6 +241,30 @@
 </blockquote>
 <h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
 <p>注册登录之后， 就可以对评论进行管理了。</p>
+<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
+<p>首先需要在项目目录下面安装依赖</p>
+<blockquote>
+<p> npm i hexo-filter-mermaid-diagrams</p>
+</blockquote>
+<p>然后在配置中开启</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
+<p><strong>流程图</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
+
+
+<pre class="mermaid">graph TD
+Start --> Stop</pre>
+
+<p><strong>时间轴</strong></p>
+<pre class="mermaid">timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+           : Google
+      2005 : Youtube
+      2006 : Twitter</pre>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -511,6 +535,109 @@
       </tags>
   </entry>
   <entry>
+    <title>python函数式编程</title>
+    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
+<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
+<span id="more"></span>
+
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
+<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
+<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
+</blockquote>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
+<p>比如将一个整数集合转换为字符串</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
+<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
+<blockquote>
+<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
+</blockquote>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
+<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
+<p>filter的关键在于正确实现一个筛选函数。</p>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
+<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
+<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
+<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+
+<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
+<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
+<p><strong>闭包</strong></p>
+<blockquote>
+<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+</blockquote>
+<p><strong>nonlocal</strong></p>
+<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
+<blockquote>
+<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
+<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
+<blockquote>
+<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
+</blockquote>
+<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
+<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
+<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
+<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>也可以把匿名函数作为返回值返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
+<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
+<blockquote>
+<p>now &#x3D; log(now)</p>
+</blockquote>
+<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
+<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
+<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
+<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
+<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
+
+<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
+
+<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
+<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
+<blockquote>
+<p>max2 &#x3D; functools.partial(max, 10)</p>
+</blockquote>
+<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
+<p>实际的结果是 <code>10</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python基础</title>
     <url>/python/python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
@@ -672,109 +799,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python函数式编程</title>
-    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
-<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
-<span id="more"></span>
-
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
-<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
-<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
-</blockquote>
-<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
-<p>比如将一个整数集合转换为字符串</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
-<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
-<blockquote>
-<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
-</blockquote>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
-<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
-<p>filter的关键在于正确实现一个筛选函数。</p>
-<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
-<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
-<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
-<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
-
-<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
-<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
-<p><strong>闭包</strong></p>
-<blockquote>
-<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
-</blockquote>
-<p><strong>nonlocal</strong></p>
-<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
-<blockquote>
-<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
-</blockquote>
-<p>例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
-<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
-<blockquote>
-<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
-</blockquote>
-<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
-<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
-<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
-<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>也可以把匿名函数作为返回值返回</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
-<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
-<blockquote>
-<p>now &#x3D; log(now)</p>
-</blockquote>
-<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
-<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
-<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
-<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
-<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
-<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
-
-<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
-
-<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
-
-<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
-<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
-<blockquote>
-<p>max2 &#x3D; functools.partial(max, 10)</p>
-</blockquote>
-<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
-<p>实际的结果是 <code>10</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python模块</title>
     <url>/python/python%E6%A8%A1%E5%9D%97/</url>
     <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
@@ -823,7 +847,51 @@
   <entry>
     <title>python面向对象高级编程</title>
     <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
+    <content><![CDATA[<p>封装、继承和多态只是面向对象程序设计中最基础的3个概念。在Python中，面向对象还有很多高级特性，下面会讨论多重继承、定制类、元类等概念。</p>
+<span id="more"></span>
+
+<h1 id="使用-slots"><a href="#使用-slots" class="headerlink" title="使用 slots"></a>使用 <strong>slots</strong></h1><p>正常情况下，可以给一个类的实例创建任何属性和方法，这就是动态语言的灵活性。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>绑定属性</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;Michael&#x27;</span> <span class="comment"># 动态给实例绑定一个属性</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(s.name)</span></span><br><span class="line">Michael</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也可以绑定一个方法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_age(self, age): <span class="comment"># 定义一个函数作为实例方法</span></span></span><br><span class="line">...     self.age = age</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from types import MethodType</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age = MethodType(set_age, s) <span class="comment"># 给实例绑定一个方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.set_age(25) <span class="comment"># 调用实例方法</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.age <span class="comment"># 测试结果</span></span></span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+<p>给实例绑定的方法，对另一个实例无效，所以可以绑定到类上。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def set_score(self, score):</span></span><br><span class="line">...     self.score = score</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student.set_score = set_score</span></span><br></pre></td></tr></table></figure>
+<p>通常情况下，上面的<code>set_score</code>方法可以直接定义在class中，但动态绑定允许我们在程序运行的过程中动态给class加上功能，这在静态语言中很难实现。</p>
+<p><strong>使用__slots__</strong></p>
+<p>如果我们想要限制实例的属性怎么办？比如，只允许对<code>Student</code>实例添加<code>name</code>和<code>age</code>属性。</p>
+<p>为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的<code>__slots__</code>变量，来限制该class实例能添加的属性：</p>
+<p><code>__slots__</code>定义的属性仅对当前类实例起作用，对继承的子类是不起作用的。子类实例允许定义的属性就是自身的<code>__slots__</code>加上父类的<code>__slots__</code>。</p>
+<p>验证如下:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p1 = Person()</span><br><span class="line">p1.name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line"><span class="comment"># 添加score属性会报错</span></span><br><span class="line"><span class="comment">#p1.score = 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    __slots__ = (<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;score&#x27;</span>)</span><br><span class="line"></span><br><span class="line">s1 = Student()</span><br><span class="line"></span><br><span class="line">s1.name = <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">s1.age = <span class="string">&#x27;14&#x27;</span></span><br><span class="line">s1.score = <span class="number">98</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s1.name, s1.age, s1.score)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="使用-property"><a href="#使用-property" class="headerlink" title="使用@property"></a>使用@property</h1><p>如果给属性加上访问限制，使用get set方法，也可以在赋值时检查数据的合理性。这样操作略显复杂。</p>
+<p>Python内置的<code>@property</code>装饰器就是负责把一个方法变成属性调用的</p>
+<p>把一个getter方法变成属性，只需要加上<code>@property</code>就可以了。我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self, value</span>):</span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">age</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2015</span> - self._birth</span><br></pre></td></tr></table></figure>
+<p>只定义getter方法，不定义setter方法就是一个只读属性，上面的<code>birth</code>是可读写属性，而<code>age</code>就是一个只读属性，因为<code>age</code>可以根据<code>birth</code>和当前时间计算出来。</p>
+<p>要特别注意：属性的方法名不要和实例变量重名，下面的就是错误的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 方法名称和实例变量均为birth:</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">birth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.birth</span><br></pre></td></tr></table></figure>
+
+<p>这是因为调用<code>s.birth</code>时，首先转换为方法调用，在执行<code>return self.birth</code>时，又视为访问<code>self</code>的属性，于是又转换为方法调用，造成无限递归，最终导致栈溢出报错<code>RecursionError</code></p>
+<h1 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h1><p>如果是单继承的话，层级结构如下。</p>
+<pre class="mermaid">graph TD
+动物 --> 会飞的
+动物 --> 会跑的
+会飞的 --> 鹦鹉
+会飞的 --> 老鹰
+会跑的 --> 狗
+会跑的 --> 猫</pre>
+<p>如果需要再添加新的继承关系，就会很复杂了， 所以可以采用多重继承的方式。 比如</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(Mammal, Runnable):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>通过多重继承，一个子类就可以同时获得多个父类的所有功能。</p>
+<p><strong>MixIn</strong></p>
+<p>在设计类的继承关系时，通常，主线都是单一继承下来的，例如，<code>Ostrich</code>继承自<code>Bird</code>。但是，如果需要“混入”额外的功能，通过多重继承就可以实现，比如，让<code>Ostrich</code>除了继承自<code>Bird</code>外，再同时继承<code>Runnable</code>。这种设计通常称之为<code>MixIn</code>。</p>
+<p>MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。</p>
+<p>由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。</p>
+<p>java中只允许单继承，但是可以通过 implements 多个接口来实现类似的功能。</p>
+]]></content>
   </entry>
   <entry>
     <title>python面向对象编程</title>
