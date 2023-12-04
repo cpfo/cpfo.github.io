@@ -23,6 +23,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Sublime使用</title>
+    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
+<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
+</ol>
+<span id="more"></span>
+
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>可以直接打开图片</li>
+<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
+</ol>
+<ul>
+<li>输入@+函数名可以快速找到函数。</li>
+<li>输入#+文本可以快速进行文件内文本匹配</li>
+<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
+<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
+<ol>
+<li>快速复制当前行 CTRL + SHIFT + D</li>
+<li>删除当前行 CTRL + SHIFT + K</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编辑器</category>
+      </categories>
+      <tags>
+        <tag>Sublime</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git的使用</title>
     <url>/git-command/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
@@ -112,56 +143,114 @@
       </tags>
   </entry>
   <entry>
-    <title>Sublime使用</title>
-    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
-<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
-</ol>
+    <title>hexo-next主题配置方式</title>
+    <url>/hexo-next-theme/</url>
+    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
 <span id="more"></span>
 
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li>可以直接打开图片</li>
-<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
+
+<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
+<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
+<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
+<li>使用npm-upgrade，升级依赖的插件。</li>
+<li>npm update -g，更新全局插件。</li>
 </ol>
-<ul>
-<li>输入@+函数名可以快速找到函数。</li>
-<li>输入#+文本可以快速进行文件内文本匹配</li>
-<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
-<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
+<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
+<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
+<li>npm安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-symbols-count-time -g</p>
+</blockquote>
+<ol start="2">
+<li>修改hexo的主配置，添加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看next的配置文件中的内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
+<li>安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-generator-searchdb</p>
+</blockquote>
+<ol start="2">
+<li>开启next的搜索配置</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
 <ol>
-<li>快速复制当前行 CTRL + SHIFT + D</li>
-<li>删除当前行 CTRL + SHIFT + K</li>
+<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
+</li>
+<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
+</li>
 </ol>
+<blockquote>
+<p>npm install @waline&#x2F;hexo-next</p>
+</blockquote>
+<ol start="3">
+<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重新生成</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
+<p>注册登录之后， 就可以对评论进行管理了。</p>
+<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
+<p>首先需要在项目目录下面安装依赖</p>
+<blockquote>
+<p> npm i hexo-filter-mermaid-diagrams</p>
+</blockquote>
+<p>然后在配置中开启</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
+<p><strong>流程图</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
+
+
+<pre class="mermaid">graph TD
+Start --> Stop</pre>
+
+<p><strong>时间轴</strong></p>
+<pre class="mermaid">timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+           : Google
+      2005 : Youtube
+      2006 : Twitter</pre>
 ]]></content>
       <categories>
-        <category>编辑器</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>Sublime</tag>
+        <tag>hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>linux常用操作</title>
@@ -276,114 +365,25 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo-next主题配置方式</title>
-    <url>/hexo-next-theme/</url>
-    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
+    <title>Hello World</title>
+    <url>/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
-
-<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
-<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
-<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
-<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
-<li>使用npm-upgrade，升级依赖的插件。</li>
-<li>npm update -g，更新全局插件。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
-<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
-<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
-<li>npm安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-symbols-count-time -g</p>
-</blockquote>
-<ol start="2">
-<li>修改hexo的主配置，添加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>查看next的配置文件中的内容</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
-<li>安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-generator-searchdb</p>
-</blockquote>
-<ol start="2">
-<li>开启next的搜索配置</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
-<ol>
-<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
-</li>
-<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
-</li>
-</ol>
-<blockquote>
-<p>npm install @waline&#x2F;hexo-next</p>
-</blockquote>
-<ol start="3">
-<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>重新生成</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
-<p>注册登录之后， 就可以对评论进行管理了。</p>
-<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
-<p>首先需要在项目目录下面安装依赖</p>
-<blockquote>
-<p> npm i hexo-filter-mermaid-diagrams</p>
-</blockquote>
-<p>然后在配置中开启</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
-<p><strong>流程图</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<pre class="mermaid">graph TD
-Start --> Stop</pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p><strong>时间轴</strong></p>
-<pre class="mermaid">timeline
-      title History of Social Media Platform
-      2002 : LinkedIn
-      2004 : Facebook
-           : Google
-      2005 : Youtube
-      2006 : Twitter</pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
   </entry>
   <entry>
     <title>nginx拦截非法host的请求</title>
@@ -526,109 +526,6 @@ Start --> Stop</pre>
 </ol>
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python函数式编程</title>
-    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
-<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
-<span id="more"></span>
-
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
-<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
-<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
-</blockquote>
-<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
-<p>比如将一个整数集合转换为字符串</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
-<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
-<blockquote>
-<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
-</blockquote>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
-<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
-<p>filter的关键在于正确实现一个筛选函数。</p>
-<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
-<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
-<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
-<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
-
-<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
-<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
-<p><strong>闭包</strong></p>
-<blockquote>
-<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
-</blockquote>
-<p><strong>nonlocal</strong></p>
-<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
-<blockquote>
-<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
-</blockquote>
-<p>例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
-<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
-<blockquote>
-<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
-</blockquote>
-<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
-<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
-<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
-<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>也可以把匿名函数作为返回值返回</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
-<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
-<blockquote>
-<p>now &#x3D; log(now)</p>
-</blockquote>
-<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
-<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
-<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
-<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
-<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
-<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
-
-<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
-
-<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
-
-<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
-<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
-<blockquote>
-<p>max2 &#x3D; functools.partial(max, 10)</p>
-</blockquote>
-<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
-<p>实际的结果是 <code>10</code></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -790,6 +687,109 @@ Start --> Stop</pre>
 </ol>
 <p>list, tuple, dict, set 的区别</p>
 <p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python函数式编程</title>
+    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
+<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
+<span id="more"></span>
+
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
+<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
+<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
+</blockquote>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
+<p>比如将一个整数集合转换为字符串</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
+<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
+<blockquote>
+<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
+</blockquote>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
+<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
+<p>filter的关键在于正确实现一个筛选函数。</p>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
+<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
+<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
+<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+
+<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
+<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
+<p><strong>闭包</strong></p>
+<blockquote>
+<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+</blockquote>
+<p><strong>nonlocal</strong></p>
+<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
+<blockquote>
+<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
+<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
+<blockquote>
+<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
+</blockquote>
+<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
+<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
+<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
+<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>也可以把匿名函数作为返回值返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
+<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
+<blockquote>
+<p>now &#x3D; log(now)</p>
+</blockquote>
+<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
+<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
+<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
+<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
+<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
+
+<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
+
+<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
+<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
+<blockquote>
+<p>max2 &#x3D; functools.partial(max, 10)</p>
+</blockquote>
+<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
+<p>实际的结果是 <code>10</code></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1012,6 +1012,7 @@ Start --> Stop</pre>
 <p>正常情况下，当我们调用类的方法或属性时，如果不存在，就会报错。Python提供了一个机制，那就是写一个<code>__getattr__()</code>方法，动态返回一个属性或者函数。</p>
 <p>这就可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段。</p>
 <p>这种特性可以用来针对完全动态的情况作调用。比如 url中的动态路径。</p>
+<p><code>__call__</code></p>
 ]]></content>
   </entry>
   <entry>
