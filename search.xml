@@ -32,6 +32,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>使用docsify搭建github pages页面</title>
     <url>/docsify-config/</url>
     <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
@@ -141,137 +162,6 @@
       <tags>
         <tag>Git</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>hexo-next主题配置方式</title>
-    <url>/hexo-next-theme/</url>
-    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
-<span id="more"></span>
-
-
-<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
-<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
-<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
-<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
-<li>使用npm-upgrade，升级依赖的插件。</li>
-<li>npm update -g，更新全局插件。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
-<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
-<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
-<li>npm安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-symbols-count-time -g</p>
-</blockquote>
-<ol start="2">
-<li>修改hexo的主配置，添加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>查看next的配置文件中的内容</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
-<li>安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-generator-searchdb</p>
-</blockquote>
-<ol start="2">
-<li>开启next的搜索配置</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
-<ol>
-<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
-</li>
-<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
-</li>
-</ol>
-<blockquote>
-<p>npm install @waline&#x2F;hexo-next</p>
-</blockquote>
-<ol start="3">
-<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>重新生成</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
-<p>注册登录之后， 就可以对评论进行管理了。</p>
-<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
-<p>首先需要在项目目录下面安装依赖</p>
-<blockquote>
-<p> npm i hexo-filter-mermaid-diagrams</p>
-</blockquote>
-<p>然后在配置中开启</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
-<p><strong>流程图</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
-
-
-<pre class="mermaid">graph TD
-Start --> Stop</pre>
-
-<p><strong>时间轴</strong></p>
-<pre class="mermaid">timeline
-      title History of Social Media Platform
-      2002 : LinkedIn
-      2004 : Facebook
-           : Google
-      2005 : Youtube
-      2006 : Twitter</pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>linux常用操作</title>
@@ -386,28 +276,113 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>nginx拦截非法host的请求</title>
-    <url>/nginx-deny-host/</url>
-    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
+    <title>hexo-next主题配置方式</title>
+    <url>/hexo-next-theme/</url>
+    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
 <span id="more"></span>
 
-<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
+
+<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
+<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
+<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
+<li>使用npm-upgrade，升级依赖的插件。</li>
+<li>npm update -g，更新全局插件。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
+<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
+<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
+<li>npm安装插件</li>
+</ol>
 <blockquote>
-<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
+<p>npm install hexo-symbols-count-time -g</p>
 </blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
-<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
-<p>00block.conf 文件的配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改hexo的主配置，添加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看next的配置文件中的内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
+<li>安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-generator-searchdb</p>
+</blockquote>
+<ol start="2">
+<li>开启next的搜索配置</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
+<ol>
+<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
+</li>
+<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
+</li>
+</ol>
+<blockquote>
+<p>npm install @waline&#x2F;hexo-next</p>
+</blockquote>
+<ol start="3">
+<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重新生成</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
+<p>注册登录之后， 就可以对评论进行管理了。</p>
+<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
+<p>首先需要在项目目录下面安装依赖</p>
+<blockquote>
+<p> npm i hexo-filter-mermaid-diagrams</p>
+</blockquote>
+<p>然后在配置中开启</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
+<p><strong>流程图</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
 
 
-<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
+<pre class="mermaid">graph TD
+Start --> Stop</pre>
+
+<p><strong>时间轴</strong></p>
+<pre class="mermaid">timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+           : Google
+      2005 : Youtube
+      2006 : Twitter</pre>
 ]]></content>
       <categories>
-        <category>运维</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -445,6 +420,31 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>文章</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx拦截非法host的请求</title>
+    <url>/nginx-deny-host/</url>
+    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
+<span id="more"></span>
+
+<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
+<blockquote>
+<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
+<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
+<p>00block.conf 文件的配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -526,6 +526,167 @@ Start --> Stop</pre>
 </ol>
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python基础</title>
+    <url>/python/python%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
+<span id="more"></span>
+
+<h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><ul>
+<li><p>输入</p>
+<blockquote>
+<p>name &#x3D; input(‘请输入xx’)</p>
+</blockquote>
+</li>
+<li><p>输出</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;hello aa&#x27;</span>)</span></span><br><span class="line">hello aa</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;haha&#x27;</span>)</span></span><br><span class="line">hello 张三 haha</span><br></pre></td></tr></table></figure>
+<p><code>print()</code> 输出时，遇到逗号 <code>,</code> 会转换成空格</p>
+<h1 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h1><h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><ul>
+<li><strong>整数</strong></li>
+</ul>
+<p>十六进制，使用 <code>0x</code> 开头</p>
+<p>比较大的数，允许使用下划线 <code>_</code> 进行分隔，如 <code>10_000_000_000</code></p>
+<ul>
+<li><strong>浮点数</strong></li>
+</ul>
+<p>浮点数可以用数学写法，比如 <code>1.231</code>, 比较大的浮点数需要用科学计数法，把10用e替代， 比如 1.23x10^9，就是<code>1.23e9</code></p>
+<ul>
+<li><strong>字符串</strong></li>
+</ul>
+<p>字符串用单引号 <code>&#39;</code> 或者 双引号 <code>&quot;</code> 括起来，转义使用 <code>\</code> ，如果字符串里面有多个字符需要转义，可以使用 <code>r&#39;&#39;</code> ，表示<code>&#39;&#39;</code> 里面的字符串不转义。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(r<span class="string">&#x27;\r\n\t\r\n\t&#x27;</span>)</span></span><br><span class="line">\r\n\t\r\n\t</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>字符串转数字， int(123)</p>
+<ul>
+<li><strong>布尔值</strong></li>
+</ul>
+<p>使用 <code>True</code> 和 <code>False</code> 表示，注意大小写。</p>
+<p>布尔值可以使用 <code>and</code> <code>or</code> 和 <code>not</code> 进行运算。 <code>and</code>是与运算，<code>or</code>是或运算，<code>not</code>是非运算，单目运算，取反。</p>
+<ul>
+<li><strong>空值</strong></li>
+</ul>
+<p>空值使用 <code>None</code> 表示， 空值是一种特殊值。</p>
+<ul>
+<li><strong>变量</strong></li>
+</ul>
+<p>变量在程序中就是用一个变量名表示了，变量名必须是大小写英文、数字和<code>_</code>的组合，且不能用数字开头，和 java 一样</p>
+<p>在Python中，等号<code>=</code>是赋值语句，动态语言，同一个变量可以多次赋值，也可以赋不同类型的值。</p>
+<p>变量的指向:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; a = <span class="string">&#x27;ABC&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; b = a</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; a = <span class="string">&#x27;XYZ&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(b)</span></span><br><span class="line">ABC</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>内存中创建了 <code>ABC</code> 字符串</li>
+<li>内存中创建了名为 <code>a</code>的变量，并把它指向了 <code>ABC</code></li>
+<li>创建了<code>b</code>，并把<code>b</code>指向了<code>a</code>所指向的数据<code>ABC</code></li>
+<li>重新把 <code>a</code> 指向了 <code>XYZ</code></li>
+</ol>
+<ul>
+<li><strong>常量</strong></li>
+</ul>
+<p>用全部大写的变量名表示常量</p>
+<p>除法 分为 <code>/</code> 和 <code>//</code> 地板除， <code>/</code>结果是浮点数，即使能够整除，结果也是浮点数，<code>//</code> 结果是整数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 10/3</span></span><br><span class="line">3.3333333333333335</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 9/3</span></span><br><span class="line">3.0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 10//3</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h2><p>一个字节(byte)使用8位(bit)， <code>UTF-8</code> 变长编码。</p>
+<p>python的字符串类型是 <code>str</code>， 在内存中以Unicode表示，一个字符对应若干个字节。</p>
+<p>对 <code>bytes</code>类型的数据，使用 <code>b</code>前缀的单引号或者双引号表示。</p>
+<p>对单个字符的编码，<code>ord()</code> 函数获取字符的整数表示，<code>chr()</code>函数把编码转换为对应的字符。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; ord(<span class="string">&#x27;a&#x27;</span>)</span></span><br><span class="line">97</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; ord(<span class="string">&#x27;人&#x27;</span>)</span></span><br><span class="line">20154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chr(78)</span></span><br><span class="line">&#x27;N&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;\u4e2d\u6587&#x27;</span></span></span><br><span class="line">&#x27;中文&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以 <code>Unicode</code>表示的 <code>str</code> 可以使用 <code>encode()</code>函数编码为指定的 <code>bytes</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span></span><br><span class="line">b&#x27;abc&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span></span><br><span class="line">b&#x27;abc&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span></span><br><span class="line">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc12&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span></span><br><span class="line">b&#x27;abc12&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>相反， 从网络或者磁盘上读取到的字节流就是<code>bytes</code>，可以使用 <code>decode()</code> 方法转换为 <code>str</code></p>
+<p><code>len()</code> 函数可以计算 <code>str</code>的字符数，也可以计算 <code>bytes</code> 的字节数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;中文&#x27;</span>)</span></span><br><span class="line">2</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;abc&#x27;</span>)</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要坚持使用 UTF-8 格式的编码， 文件需要添加下面的开头</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env python3</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>格式化问题</strong></p>
+<p>格式化方法和C语言一致，用 <code>%</code> 实现。 <code>%s</code> 代表用字符串替换，<code>%d</code>代表用整数替换，<code>%f</code>代表用浮点数替换，<code>%x</code>代表用十六进制替换。</p>
+<blockquote>
+<p>‘Hi, %s, you have $%d.’ % (‘Michael’, 1000000)</p>
+</blockquote>
+<p>格式化整数和浮点数还可以指定是否补0和整数与小数的位数</p>
+<p>format()</p>
+<p>也可以使用字符串的<code>format()</code> 方法来实现，传入的参数依次替换字符串内的占位符。</p>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p><strong>if</strong></p>
+<p>注意和 java中条件判断写法的区别。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if &lt;条件判断1&gt;:</span><br><span class="line">    &lt;执行1&gt;</span><br><span class="line">elif &lt;条件判断2&gt;:</span><br><span class="line">    &lt;执行2&gt;</span><br><span class="line">elif &lt;条件判断3&gt;:</span><br><span class="line">    &lt;执行3&gt;</span><br><span class="line">else:</span><br><span class="line">    &lt;执行4&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>模式匹配</strong></p>
+<p>match case</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">age = 15</span><br><span class="line"></span><br><span class="line">match age:</span><br><span class="line">    case x if x &lt; 10:</span><br><span class="line">        print(f&#x27;&lt; 10 years old: &#123;x&#125;&#x27;)</span><br><span class="line">    case 10:</span><br><span class="line">        print(&#x27;10 years old.&#x27;)</span><br><span class="line">    case 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18:</span><br><span class="line">        print(&#x27;11~18 years old.&#x27;)</span><br><span class="line">    case 19:</span><br><span class="line">        print(&#x27;19 years old.&#x27;)</span><br><span class="line">    case _:</span><br><span class="line">        print(&#x27;not sure.&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>python的循环有2种，一种是 for…in 循环，亿次把集合中的元素迭代出来。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L = [&#x27;Bart&#x27;, &#x27;Lisa&#x27;, &#x27;Adam&#x27;]</span><br><span class="line">for n in L:</span><br><span class="line">    print(&#x27;Hello, %s!&#x27; % n)</span><br></pre></td></tr></table></figure>
+<p><strong>while</strong></p>
+<p>只要条件满足，就不断循环，条件不满足时，退出循环。</p>
+<p>循环控制， <code>break</code> 提前结束循环， <code>continue</code> 跳过当次循环，执行下一次循环。</p>
+<h2 id="list和tuple"><a href="#list和tuple" class="headerlink" title="list和tuple"></a>list和tuple</h2><p><strong>list</strong></p>
+<p>list是python内置的数据类型，列表，是有序集合。</p>
+<p>相关操作有</p>
+<ol>
+<li>使用 len(list) 获取元素个数</li>
+<li>使用索引访问元素，正序从 <code>0</code> 开始，倒序从 <code>-1</code> 开始</li>
+<li>list是一个可变的有序表，使用 <code>.append(element)</code>往list中添加元素</li>
+<li>也可以使用insert(index, 元素) 方法，将元素插入指定位置。</li>
+<li>使用 pop()方法删除末尾元素，pop(i) 方法删除指定位置的元素。</li>
+<li>使用 list[i] &#x3D; xxx， 直接替换对应位置的元素。</li>
+<li>list中元素的数据类型可以不同。</li>
+<li>list中的元素也可以是另一个list的引用。</li>
+<li>空list [] ， 长度为0</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[1]</span></span><br><span class="line">&#x27;b&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(names)</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[-1]</span></span><br><span class="line">&#x27;c&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.append(<span class="string">&#x27;d&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.insert(2, <span class="string">&#x27;f&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.pop()</span></span><br><span class="line">&#x27;d&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.pop(1)</span></span><br><span class="line">&#x27;b&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;f&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[1]= <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;张三&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>tuple</strong></p>
+<p>另一种有序列表叫元组，<code>tuple</code> ，tuple和list非常相似，但是tuple一旦被初始化，就不能修改。</p>
+<ol>
+<li>tuple 使用小括号进行初始化 <code>()</code></li>
+<li>只有一个元素的tuple需要加个逗号<code>,</code>，避免和数据公式中的小括号造成歧义。 (1,)</li>
+<li>tuple不可变 意思是元素的指向不可变。</li>
+</ol>
+<h2 id="dict和set"><a href="#dict和set" class="headerlink" title="dict和set"></a>dict和set</h2><p><strong>dict</strong></p>
+<p>dict全称dictionary，在其他语言中也称为map，是键值对的数据类型。</p>
+<blockquote>
+<p> d&#x3D;{‘k1’:1, ‘k2’:2, ‘k3’:3}</p>
+</blockquote>
+<p>相关操作</p>
+<ol>
+<li>dict中的key必须是 <strong>不可变对象</strong></li>
+<li>d[key]&#x3D;xxx 进行赋值。</li>
+<li>d[key]来获取对应的value，key不存在时会报错。</li>
+<li>用 <code>in</code> 判断key是否存在。</li>
+<li>可以使用 <code>get(key)</code>方法获取元素，key不存在会返回 <code>None</code></li>
+<li>可以使用 <code>get(key, -1)</code>方法获取元素，key不存在会返回指定的默认值。</li>
+<li>使用 <code>pop(key)</code> 来删除key。</li>
+<li>元素存放位置，使用hash算法。</li>
+</ol>
+<p><strong>set</strong></p>
+<p>set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。</p>
+<p>要创建一个set，需要提供一个list作为输入集合：</p>
+<p><code>s=set([1,2,3,4,5])</code> 或者 <code>s=&#123;1,2,3,4,5&#125;</code></p>
+<p>注意要加上 set， 否则就变成了 list了。</p>
+<p>set的特点</p>
+<ol>
+<li>元素无序，不可重复。</li>
+<li><code>add(key)</code> 添加元素。</li>
+<li><code>remove(key)</code> 移除元素。</li>
+<li>set 可以进行交集 <code>&amp;</code> 和 并集 <code>|</code> 的操作。</li>
+<li>set和dict的唯一区别仅在于没有存储对应的value。</li>
+</ol>
+<p>list, tuple, dict, set 的区别</p>
+<p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -717,194 +878,27 @@ Start --> Stop</pre>
 
 
 <p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
-<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p><strong>print</strong></p>
-<p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
-<p><strong>断言</strong></p>
-<p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
 <blockquote>
 <p>assert n !&#x3D; 0, ‘n is zero!’</p>
 </blockquote>
 <p><code>assert</code>的意思是，表达式<code>n != 0</code>应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
 <p>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code></p>
 <p>启动Python解释器时可以用<code>-O</code>(大写的英文O)参数来关闭<code>assert</code>， 关闭后 <code>assert</code> 可以当做 <code>pass</code></p>
-<p><strong>logging</strong></p>
-<p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
+<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br></pre></td></tr></table></figure>
 
 <p><code>logging</code> 可以控制日志的级别， 有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>, 也可以通过配置，将日志输出到不同的地方。</p>
-<p><strong>pdb</strong></p>
-<p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
+<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
 <p>以参数<code>-m pdb</code> 启动后，pdb定位到下一步要执行的代码，可以输入命令 <code>l</code>(小写的L) 来查看代码。输入命令<code>n</code>可以单步的执行代码。</p>
 <p>可以输入<code>p 变量名</code>来查看变量。输入命令<code>q</code> 来结束调试。</p>
-<p><strong>pdb.set_trace()</strong></p>
-<p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
+<h2 id="pdb-set-trace"><a href="#pdb-set-trace" class="headerlink" title="pdb.set_trace()"></a>pdb.set_trace()</h2><p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># err.py</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">n = <span class="built_in">int</span>(s)</span><br><span class="line">pdb.set_trace() <span class="comment"># 运行到这里会自动暂停</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> / n)</span><br></pre></td></tr></table></figure>
 <p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入<code>pdb</code>调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行</p>
-<p><strong>IDE调试</strong></p>
-<p>VS Code 插件。</p>
+<h2 id="IDE调试"><a href="#IDE调试" class="headerlink" title="IDE调试"></a>IDE调试</h2><p>VS Code 插件。</p>
 <p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
 <h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><h1 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h1>]]></content>
-  </entry>
-  <entry>
-    <title>python基础</title>
-    <url>/python/python%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
-<span id="more"></span>
-
-<h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><ul>
-<li><p>输入</p>
-<blockquote>
-<p>name &#x3D; input(‘请输入xx’)</p>
-</blockquote>
-</li>
-<li><p>输出</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;hello aa&#x27;</span>)</span></span><br><span class="line">hello aa</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;haha&#x27;</span>)</span></span><br><span class="line">hello 张三 haha</span><br></pre></td></tr></table></figure>
-<p><code>print()</code> 输出时，遇到逗号 <code>,</code> 会转换成空格</p>
-<h1 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h1><h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><ul>
-<li><strong>整数</strong></li>
-</ul>
-<p>十六进制，使用 <code>0x</code> 开头</p>
-<p>比较大的数，允许使用下划线 <code>_</code> 进行分隔，如 <code>10_000_000_000</code></p>
-<ul>
-<li><strong>浮点数</strong></li>
-</ul>
-<p>浮点数可以用数学写法，比如 <code>1.231</code>, 比较大的浮点数需要用科学计数法，把10用e替代， 比如 1.23x10^9，就是<code>1.23e9</code></p>
-<ul>
-<li><strong>字符串</strong></li>
-</ul>
-<p>字符串用单引号 <code>&#39;</code> 或者 双引号 <code>&quot;</code> 括起来，转义使用 <code>\</code> ，如果字符串里面有多个字符需要转义，可以使用 <code>r&#39;&#39;</code> ，表示<code>&#39;&#39;</code> 里面的字符串不转义。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(r<span class="string">&#x27;\r\n\t\r\n\t&#x27;</span>)</span></span><br><span class="line">\r\n\t\r\n\t</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>字符串转数字， int(123)</p>
-<ul>
-<li><strong>布尔值</strong></li>
-</ul>
-<p>使用 <code>True</code> 和 <code>False</code> 表示，注意大小写。</p>
-<p>布尔值可以使用 <code>and</code> <code>or</code> 和 <code>not</code> 进行运算。 <code>and</code>是与运算，<code>or</code>是或运算，<code>not</code>是非运算，单目运算，取反。</p>
-<ul>
-<li><strong>空值</strong></li>
-</ul>
-<p>空值使用 <code>None</code> 表示， 空值是一种特殊值。</p>
-<ul>
-<li><strong>变量</strong></li>
-</ul>
-<p>变量在程序中就是用一个变量名表示了，变量名必须是大小写英文、数字和<code>_</code>的组合，且不能用数字开头，和 java 一样</p>
-<p>在Python中，等号<code>=</code>是赋值语句，动态语言，同一个变量可以多次赋值，也可以赋不同类型的值。</p>
-<p>变量的指向:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; a = <span class="string">&#x27;ABC&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; b = a</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; a = <span class="string">&#x27;XYZ&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(b)</span></span><br><span class="line">ABC</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>内存中创建了 <code>ABC</code> 字符串</li>
-<li>内存中创建了名为 <code>a</code>的变量，并把它指向了 <code>ABC</code></li>
-<li>创建了<code>b</code>，并把<code>b</code>指向了<code>a</code>所指向的数据<code>ABC</code></li>
-<li>重新把 <code>a</code> 指向了 <code>XYZ</code></li>
-</ol>
-<ul>
-<li><strong>常量</strong></li>
-</ul>
-<p>用全部大写的变量名表示常量</p>
-<p>除法 分为 <code>/</code> 和 <code>//</code> 地板除， <code>/</code>结果是浮点数，即使能够整除，结果也是浮点数，<code>//</code> 结果是整数。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 10/3</span></span><br><span class="line">3.3333333333333335</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 9/3</span></span><br><span class="line">3.0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 10//3</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h2><p>一个字节(byte)使用8位(bit)， <code>UTF-8</code> 变长编码。</p>
-<p>python的字符串类型是 <code>str</code>， 在内存中以Unicode表示，一个字符对应若干个字节。</p>
-<p>对 <code>bytes</code>类型的数据，使用 <code>b</code>前缀的单引号或者双引号表示。</p>
-<p>对单个字符的编码，<code>ord()</code> 函数获取字符的整数表示，<code>chr()</code>函数把编码转换为对应的字符。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; ord(<span class="string">&#x27;a&#x27;</span>)</span></span><br><span class="line">97</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; ord(<span class="string">&#x27;人&#x27;</span>)</span></span><br><span class="line">20154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chr(78)</span></span><br><span class="line">&#x27;N&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;\u4e2d\u6587&#x27;</span></span></span><br><span class="line">&#x27;中文&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>以 <code>Unicode</code>表示的 <code>str</code> 可以使用 <code>encode()</code>函数编码为指定的 <code>bytes</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span></span><br><span class="line">b&#x27;abc&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span></span><br><span class="line">b&#x27;abc&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span></span><br><span class="line">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abc12&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span></span><br><span class="line">b&#x27;abc12&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>相反， 从网络或者磁盘上读取到的字节流就是<code>bytes</code>，可以使用 <code>decode()</code> 方法转换为 <code>str</code></p>
-<p><code>len()</code> 函数可以计算 <code>str</code>的字符数，也可以计算 <code>bytes</code> 的字节数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;中文&#x27;</span>)</span></span><br><span class="line">2</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;abc&#x27;</span>)</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>要坚持使用 UTF-8 格式的编码， 文件需要添加下面的开头</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env python3</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>格式化问题</strong></p>
-<p>格式化方法和C语言一致，用 <code>%</code> 实现。 <code>%s</code> 代表用字符串替换，<code>%d</code>代表用整数替换，<code>%f</code>代表用浮点数替换，<code>%x</code>代表用十六进制替换。</p>
-<blockquote>
-<p>‘Hi, %s, you have $%d.’ % (‘Michael’, 1000000)</p>
-</blockquote>
-<p>格式化整数和浮点数还可以指定是否补0和整数与小数的位数</p>
-<p>format()</p>
-<p>也可以使用字符串的<code>format()</code> 方法来实现，传入的参数依次替换字符串内的占位符。</p>
-<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p><strong>if</strong></p>
-<p>注意和 java中条件判断写法的区别。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if &lt;条件判断1&gt;:</span><br><span class="line">    &lt;执行1&gt;</span><br><span class="line">elif &lt;条件判断2&gt;:</span><br><span class="line">    &lt;执行2&gt;</span><br><span class="line">elif &lt;条件判断3&gt;:</span><br><span class="line">    &lt;执行3&gt;</span><br><span class="line">else:</span><br><span class="line">    &lt;执行4&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>模式匹配</strong></p>
-<p>match case</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">age = 15</span><br><span class="line"></span><br><span class="line">match age:</span><br><span class="line">    case x if x &lt; 10:</span><br><span class="line">        print(f&#x27;&lt; 10 years old: &#123;x&#125;&#x27;)</span><br><span class="line">    case 10:</span><br><span class="line">        print(&#x27;10 years old.&#x27;)</span><br><span class="line">    case 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18:</span><br><span class="line">        print(&#x27;11~18 years old.&#x27;)</span><br><span class="line">    case 19:</span><br><span class="line">        print(&#x27;19 years old.&#x27;)</span><br><span class="line">    case _:</span><br><span class="line">        print(&#x27;not sure.&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>python的循环有2种，一种是 for…in 循环，亿次把集合中的元素迭代出来。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L = [&#x27;Bart&#x27;, &#x27;Lisa&#x27;, &#x27;Adam&#x27;]</span><br><span class="line">for n in L:</span><br><span class="line">    print(&#x27;Hello, %s!&#x27; % n)</span><br></pre></td></tr></table></figure>
-<p><strong>while</strong></p>
-<p>只要条件满足，就不断循环，条件不满足时，退出循环。</p>
-<p>循环控制， <code>break</code> 提前结束循环， <code>continue</code> 跳过当次循环，执行下一次循环。</p>
-<h2 id="list和tuple"><a href="#list和tuple" class="headerlink" title="list和tuple"></a>list和tuple</h2><p><strong>list</strong></p>
-<p>list是python内置的数据类型，列表，是有序集合。</p>
-<p>相关操作有</p>
-<ol>
-<li>使用 len(list) 获取元素个数</li>
-<li>使用索引访问元素，正序从 <code>0</code> 开始，倒序从 <code>-1</code> 开始</li>
-<li>list是一个可变的有序表，使用 <code>.append(element)</code>往list中添加元素</li>
-<li>也可以使用insert(index, 元素) 方法，将元素插入指定位置。</li>
-<li>使用 pop()方法删除末尾元素，pop(i) 方法删除指定位置的元素。</li>
-<li>使用 list[i] &#x3D; xxx， 直接替换对应位置的元素。</li>
-<li>list中元素的数据类型可以不同。</li>
-<li>list中的元素也可以是另一个list的引用。</li>
-<li>空list [] ， 长度为0</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[1]</span></span><br><span class="line">&#x27;b&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; len(names)</span></span><br><span class="line">3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[-1]</span></span><br><span class="line">&#x27;c&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.append(<span class="string">&#x27;d&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.insert(2, <span class="string">&#x27;f&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.pop()</span></span><br><span class="line">&#x27;d&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names.pop(1)</span></span><br><span class="line">&#x27;b&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;f&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names[1]= <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; names</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;张三&#x27;, &#x27;c&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>tuple</strong></p>
-<p>另一种有序列表叫元组，<code>tuple</code> ，tuple和list非常相似，但是tuple一旦被初始化，就不能修改。</p>
-<ol>
-<li>tuple 使用小括号进行初始化 <code>()</code></li>
-<li>只有一个元素的tuple需要加个逗号<code>,</code>，避免和数据公式中的小括号造成歧义。 (1,)</li>
-<li>tuple不可变 意思是元素的指向不可变。</li>
-</ol>
-<h2 id="dict和set"><a href="#dict和set" class="headerlink" title="dict和set"></a>dict和set</h2><p><strong>dict</strong></p>
-<p>dict全称dictionary，在其他语言中也称为map，是键值对的数据类型。</p>
-<blockquote>
-<p> d&#x3D;{‘k1’:1, ‘k2’:2, ‘k3’:3}</p>
-</blockquote>
-<p>相关操作</p>
-<ol>
-<li>dict中的key必须是 <strong>不可变对象</strong></li>
-<li>d[key]&#x3D;xxx 进行赋值。</li>
-<li>d[key]来获取对应的value，key不存在时会报错。</li>
-<li>用 <code>in</code> 判断key是否存在。</li>
-<li>可以使用 <code>get(key)</code>方法获取元素，key不存在会返回 <code>None</code></li>
-<li>可以使用 <code>get(key, -1)</code>方法获取元素，key不存在会返回指定的默认值。</li>
-<li>使用 <code>pop(key)</code> 来删除key。</li>
-<li>元素存放位置，使用hash算法。</li>
-</ol>
-<p><strong>set</strong></p>
-<p>set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。</p>
-<p>要创建一个set，需要提供一个list作为输入集合：</p>
-<p><code>s=set([1,2,3,4,5])</code> 或者 <code>s=&#123;1,2,3,4,5&#125;</code></p>
-<p>注意要加上 set， 否则就变成了 list了。</p>
-<p>set的特点</p>
-<ol>
-<li>元素无序，不可重复。</li>
-<li><code>add(key)</code> 添加元素。</li>
-<li><code>remove(key)</code> 移除元素。</li>
-<li>set 可以进行交集 <code>&amp;</code> 和 并集 <code>|</code> 的操作。</li>
-<li>set和dict的唯一区别仅在于没有存储对应的value。</li>
-</ol>
-<p>list, tuple, dict, set 的区别</p>
-<p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
   </entry>
   <entry>
     <title>python面向对象编程</title>
