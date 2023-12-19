@@ -1,59 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Sublime使用</title>
-    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
-<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
-</ol>
-<span id="more"></span>
-
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li>可以直接打开图片</li>
-<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
-</ol>
-<ul>
-<li>输入@+函数名可以快速找到函数。</li>
-<li>输入#+文本可以快速进行文件内文本匹配</li>
-<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
-<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
-<ol>
-<li>快速复制当前行 CTRL + SHIFT + D</li>
-<li>删除当前行 CTRL + SHIFT + K</li>
-</ol>
-]]></content>
-      <categories>
-        <category>编辑器</category>
-      </categories>
-      <tags>
-        <tag>Sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git的使用</title>
     <url>/git-command/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
@@ -143,30 +90,56 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo使用</title>
-    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+    <title>Sublime使用</title>
+    <url>/SublimeText%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
+<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
+</ol>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>可以直接打开图片</li>
+<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
+</ol>
+<ul>
+<li>输入@+函数名可以快速找到函数。</li>
+<li>输入#+文本可以快速进行文件内文本匹配</li>
+<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
+<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
+<ol>
+<li>快速复制当前行 CTRL + SHIFT + D</li>
+<li>删除当前行 CTRL + SHIFT + K</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编辑器</category>
+      </categories>
+      <tags>
+        <tag>Sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>docsify</tag>
       </tags>
   </entry>
   <entry>
@@ -271,6 +244,33 @@ Start --> Stop</pre>
            : Google
       2005 : Youtube
       2006 : Twitter</pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo使用</title>
+    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -644,6 +644,52 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>python模块</title>
+    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
+<span id="more"></span>
+
+<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
+<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
+<p>也可以有多级目录，组成多级层次的包结构。</p>
+<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
+<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
+<p>第6行使用<code>__author__</code>变量把作者写进去</p>
+<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p>最后的两行特殊的代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
+<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
+<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<blockquote>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+</blockquote>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
+<blockquote>
+<p>pip install xxx</p>
+</blockquote>
+<p><strong>模块搜索路径</strong></p>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python基础</title>
     <url>/python/python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
@@ -805,52 +851,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python模块</title>
-    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
-<span id="more"></span>
-
-<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
-<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
-<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
-<p>也可以有多级目录，组成多级层次的包结构。</p>
-<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
-<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
-<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
-<p>第6行使用<code>__author__</code>变量把作者写进去</p>
-<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
-<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
-<p>最后的两行特殊的代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
-<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
-<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
-<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
-<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
-<blockquote>
-<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-</blockquote>
-<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
-<blockquote>
-<p>pip install xxx</p>
-</blockquote>
-<p><strong>模块搜索路径</strong></p>
-<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python的IO编程</title>
     <url>/python/python%E7%9A%84IO%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>IO在计算机中指Input&#x2F;Output，也就是输入和输出。如磁盘IO，网络IO等。Stream（流）是一个很重要的概念，输入流和输出流。</p>
@@ -896,7 +896,119 @@ Start --> Stop</pre>
 <p>所以还是使用<code>with</code>最保险</p>
 <p>要写入特定编码的文本文件，可以给<code>open()</code>函数传入<code>encoding</code>参数</p>
 <p>以 <code>&#39;w&#39;</code>模式写文件时，每次写入会覆盖，可以将<code>&#39;w&#39;</code> 改为 <code>&#39;a&#39;</code> 来使用追加模式写入。</p>
+<h1 id="StringIO和BytesIO"><a href="#StringIO和BytesIO" class="headerlink" title="StringIO和BytesIO"></a>StringIO和BytesIO</h1><h2 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h2><p>很多时候，数据读写不一定是文件，也可以在内存中读写。</p>
+<p>StringIO就是在内存中读写str。要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from io import StringIO</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = StringIO()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;大&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;\n&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;家好&#x27;</span>)</span></span><br><span class="line">2</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.getvalue()</span></span><br><span class="line">&#x27;大\n家好&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>getvalue()</code>方法用于获得写入后的str。</p>
+<p>要读取StringIO，可以用一个str初始化StringIO，然后，像读文件一样读取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = StringIO(<span class="string">&#x27;大\n家\n好&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    s = f.readline()</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(s.strip())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h2><p>StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。</p>
+<p>BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：</p>
+<p>写入的不是str，而是经过UTF-8编码的bytes</p>
+<p>和StringIO类似，可以用一个bytes初始化BytesIO，然后，像读文件一样读取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = BytesIO()</span><br><span class="line">f.write(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.getvalue())</span><br><span class="line"><span class="built_in">print</span>(f.getvalue().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用bytes初始化</span></span><br><span class="line">f = BytesIO(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.read())</span><br></pre></td></tr></table></figure>
+
+<h1 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h1><p>内置的<code>os</code>模块可以直接调用操作系统提供的接口操作文件和目录。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import os</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;posix&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.uname()</span></span><br><span class="line">(&#x27;Linux&#x27;, &#x27;dev&#x27;, &#x27;3.10.0-1160.90.1.el7.x86_64&#x27;, &#x27;#1 SMP Thu May 4 15:21:22 UTC 2023&#x27;, &#x27;x86_64&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;nt&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果是<code>posix</code>，说明系统是<code>Linux</code>、<code>Unix</code>或<code>Mac OS X</code>，如果是<code>nt</code>，就是<code>Windows</code>系统。</p>
+<p>要获取详细的系统信息，可以调用<code>uname()</code>函数, windows系统不支持该函数。<code>os</code>模块的某些函数是跟操作系统相关的</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>os.environ</code> 可以查看全部的环境变量。要获取某个环境变量的值，可以调用<code>os.environ.get(&#39;key&#39;)</code>：</p>
+<h2 id="操作文件和目录-1"><a href="#操作文件和目录-1" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>操作文件和目录的函数一部分放在os模块中，一部分放在os.path模块中。</p>
+<p>把两个路径合成一个时，不要直接拼字符串，而要通过<code>os.path.join()</code>函数，这样可以正确处理不同操作系统的路径分隔符。</p>
+<p>拆分路径的时候，要使用<code>os.path.split()</code>，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名。</p>
+<p><code>os.path.splitext()</code>可以直接得到文件的扩展名。</p>
+<p>这些合并、拆分路径的函数并不要求目录和文件要真实存在，它们只对字符串进行操作。</p>
+<p><code>os.rename()</code> 对文件重命名。<code>os.remove</code> 删除文件。</p>
+<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><p>程序运行的过程中，所有的变量都是在内存中。在程序运行结束后，变量就会被操作系统回收。</p>
+<p>把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思</p>
+<p>序列化之后，就可以把序列化的内容写入到磁盘，或者通过网络传输。</p>
+<p>把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。</p>
+<h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><p>Python提供了<code>pickle</code>模块来实现序列化。</p>
+<p><code>pickle.dumps()</code>方法把任意对象序列化成一个<code>bytes</code>，然后，就可以把这个<code>bytes</code>写入文件。</p>
+<p>或者用另一个方法<code>pickle.dump()</code>直接把对象序列化后写入一个file-like Object：</p>
+<p>当我们要把对象从磁盘读到内存时，可以先把内容读到一个<code>bytes</code>，然后用<code>pickle.loads()</code>方法反序列化出对象，也可以直接用<code>pickle.load()</code>方法从一个file-like Object中直接反序列化出对象。</p>
+<p>通过这种方式反序列化的变量内容相同，但是实际上不是同一个变量了。</p>
+<p>Pickle的序列化只能用于python，可能python的不同版本也不兼容，也不能跨语言。所以不能保存重要的数据。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(pickle.dumps(l))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列化到文件中</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">pickle.dump(l, f)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反序列化 先读取成bytes</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">b = f.read()</span><br><span class="line">data = pickle.loads(b)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#直接从文件反序列化</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">d = pickle.load(f)</span><br><span class="line"><span class="built_in">print</span>(d)</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">b&#x27;\x80\x04\x95\x17\x00\x00\x00\x00\......省略....&#x27;</span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON。</p>
+<p>JSON和Python内置的数据类型对应如下</p>
+<table>
+<thead>
+<tr>
+<th align="left">JSON类型</th>
+<th align="left">Python类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">{}</td>
+<td align="left">dict</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">list</td>
+</tr>
+<tr>
+<td align="left">“string”</td>
+<td align="left">str</td>
+</tr>
+<tr>
+<td align="left">12.3</td>
+<td align="left">int或float</td>
+</tr>
+<tr>
+<td align="left">true&#x2F;false</td>
+<td align="left">True&#x2F;False</td>
+</tr>
+<tr>
+<td align="left">null</td>
+<td align="left">None</td>
+</tr>
+</tbody></table>
+<p>Python内置的json模块提供了非常完善的Python对象到JSON格式的转换。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d = dict(name=<span class="string">&#x27;张三&#x27;</span>, age=20, height=130.5, interest=[<span class="string">&#x27;篮球&#x27;</span>, <span class="string">&#x27;唱歌&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;\\u5f20\\u4e09&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;\\u7bee\\u7403&quot;, &quot;\\u5531\\u6b4c&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d,ensure_ascii=False)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s=json.dumps(d)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.loads(s)</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>dumps()</code>方法返回一个<code>str</code>，内容是标准的json，类似的 <code>dump()</code>方法可以直接把json写入到<code>file-like Object</code></p>
+<p>使用<code>loads()</code>方法把json字符串反序列化，或者使用<code>load()</code>方法从<code>file-like Object</code>中读取字符串并反序列化。</p>
+<h2 id="JSON进阶"><a href="#JSON进阶" class="headerlink" title="JSON进阶"></a>JSON进阶</h2><p><code>dict</code>对象可以直接序列化为JSON的<code>&#123;&#125;</code>，不过，很多时候，我们更喜欢用class表示对象，比如定义Student类，然后序列化：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>, <span class="number">20</span>, <span class="number">88</span>)</span><br><span class="line"><span class="built_in">print</span>(json.dumps(s))</span><br></pre></td></tr></table></figure>
+
+<p>运行时，会报<code>TypeError</code>，是因为<code>Student</code>对象不是一个可序列化为JSON的对象。</p>
+<p><code>dumps()</code>函数有很多可选参数，可以用来定制json序列化。</p>
+<p>选参数<code>default</code>就是把任意一个对象变成一个可序列为JSON的对象，我们只需要为<code>Student</code>专门写一个转换函数，再把函数传进去即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">student2dict</span>(<span class="params">std</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>: std.name,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span>: std.age,</span><br><span class="line">        <span class="string">&#x27;score&#x27;</span>: std.score</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(json.dumps(s, default=student2dict))</span><br></pre></td></tr></table></figure>
+
+<p>不过，如果遇到其他类的实例，依然无法序列化，可以默认把任意<code>class</code>的实例变为<code>dict</code></p>
+<blockquote>
+<p>print(json.dumps(s, default&#x3D;lambda obj: obj.<strong>dict</strong>))</p>
+</blockquote>
+<p>因为通常<code>class</code>的实例都有一个<code>__dict__</code>属性，它就是一个<code>dict</code>，用来存储实例变量。也有少数例外，比如定义了<code>__slots__</code>的class。</p>
+<p>如果我们要把JSON反序列化为一个<code>Student</code>对象实例，<code>loads()</code>方法首先转换出一个<code>dict</code>对象，然后，我们传入的<code>object_hook</code>函数负责把<code>dict</code>转换为<code>Student</code>实例</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; stu = json.loads(s, object_hook=dict2student)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(stu)</span></span><br><span class="line">&lt;__main__.Student object at 0x000002615C4962A0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(json.dumps(stu, default=lambda obj: obj.__dict__, ensure_ascii=False))</span></span><br><span class="line">&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;score&quot;: 130.5&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>ensure_ascii</code>用于指定在对JSON进行编码时是否对非ASCII字符进行转义，确保生成的JSON字符串中只包含ASCII字符。</p>
+<p><code>ensure_ascii</code>参数默认值为True，表示会对非ASCII字符进行转义，将其表示为<code>\uXXXX</code>的形式。 如果将<code>ensure_ascii</code>参数设置为<code>False</code>，则表示不对非ASCII字符进行转义。非ASCII字符将以原样包含在生成的JSON字符串中。</p>
+<p>通常情况下，需要保持默认值，这样可以确保生成的JSON字符串是有效的ASCII字符串，可以在不同的系统之间进行传输和解析。</p>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python进程和线程</title>
+    <url>/python/python%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<p>多任务操作系统，可以同时执行多个任务，单核CPU是通过进程调度，多个任务交替执行的。</p>
+<p>一个任务就是一个进程，进程是操作系统分配资源的基本单位，具有独立的内存空间和资源，进程可以看做一个独立的程序，比如微信，qq等，一个进程可以包含多个线程，至少一个线程，线程是进程内的执行单位，共享进程的资源。</p>
+<span id="more"></span>]]></content>
       <categories>
         <category>技术</category>
       </categories>
