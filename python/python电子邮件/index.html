@@ -21,28 +21,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="nginx拦截非法host的请求">
-<meta property="og:url" content="http://example.com/nginx-deny-host/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="python电子邮件">
+<meta property="og:url" content="http://example.com/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-20T08:58:44.000Z">
-<meta property="article:modified_time" content="2023-11-20T09:25:34.684Z">
+<meta property="article:published_time" content="2024-01-09T07:56:43.000Z">
+<meta property="article:modified_time" content="2024-01-09T07:59:15.325Z">
 <meta property="article:author" content="chenpf">
-<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/nginx-deny-host/">
+<link rel="canonical" href="http://example.com/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/nginx-deny-host/","path":"nginx-deny-host/","title":"nginx拦截非法host的请求"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/","path":"python/python电子邮件/","title":"python电子邮件"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>nginx拦截非法host的请求 | 笔记</title>
+<title>python电子邮件 | 笔记</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -130,7 +128,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -143,7 +141,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/nginx-deny-host/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +204,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="nginx拦截非法host的请求 | 笔记">
+      <meta itemprop="name" content="python电子邮件 | 笔记">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          nginx拦截非法host的请求
+          python电子邮件
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +221,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-11-20 16:58:44 / 修改时间：17:25:34" itemprop="dateCreated datePublished" datetime="2023-11-20T16:58:44+08:00">2023-11-20</time>
+      <time title="创建时间：2024-01-09 15:56:43 / 修改时间：15:59:15" itemprop="dateCreated datePublished" datetime="2024-01-09T15:56:43+08:00">2024-01-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,7 +229,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
         </span>
     </span>
 
@@ -252,8 +249,8 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/nginx-deny-host/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/nginx-deny-host/" itemprop="commentCount"></span>
+    <a title="waline" href="/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -264,7 +261,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>867</span>
+      <span>0</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -281,21 +278,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
-<span id="more"></span>
-
-<p>比如在hosts文件中指定ip对应 <a target="_blank" rel="noopener" href="http://www.abc.com/">www.abc.com</a> </p>
-<blockquote>
-<p>xx.xx.xx.xx <a target="_blank" rel="noopener" href="http://www.abc.com/">www.abc.com</a></p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
-<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
-<p>00block.conf 文件的配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
-
+    <div class="post-body" itemprop="articleBody"><span id="more"></span>
     </div>
 
     
@@ -304,20 +287,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/nginx/" rel="tag"># nginx</a>
+              <a href="/tags/python/" rel="tag"># python</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/docsify-config/" rel="prev" title="使用docsify搭建github pages页面">
-                  <i class="fa fa-angle-left"></i> 使用docsify搭建github pages页面
+                <a href="/python/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="prev" title="python网络编程">
+                  <i class="fa fa-angle-left"></i> python网络编程
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/python/python%E5%9F%BA%E7%A1%80/" rel="next" title="python基础">
-                  python基础 <i class="fa fa-angle-right"></i>
+                <a href="/python/python%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="python访问数据库">
+                  python访问数据库 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -416,7 +399,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"pinglun-iota.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/nginx-deny-host/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"pinglun-iota.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {
