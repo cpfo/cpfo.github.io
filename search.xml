@@ -32,33 +32,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo使用</title>
-    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用docsify搭建github pages页面</title>
     <url>/docsify-config/</url>
     <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
@@ -280,6 +253,31 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>nginx拦截非法host的请求</title>
+    <url>/nginx-deny-host/</url>
+    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
+<span id="more"></span>
+
+<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
+<blockquote>
+<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
+<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
+<p>00block.conf 文件的配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux常用操作</title>
     <url>/linux%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>主要记录一些日常用到的shell命令操作。</p>
@@ -392,28 +390,30 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>nginx拦截非法host的请求</title>
-    <url>/nginx-deny-host/</url>
-    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
+    <title>hexo使用</title>
+    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
-<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
-<blockquote>
-<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
-<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
-<p>00block.conf 文件的配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
-        <category>运维</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -451,6 +451,21 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>文章</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-venv虚拟环境</title>
+    <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
+<p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -533,6 +548,120 @@ Start --> Stop</pre>
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python函数式编程</title>
+    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
+<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
+<span id="more"></span>
+
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
+<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
+<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
+</blockquote>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
+<p>比如将一个整数集合转换为字符串</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
+<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
+<blockquote>
+<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
+</blockquote>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
+<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
+<p>filter的关键在于正确实现一个筛选函数。</p>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
+<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
+<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
+<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+
+<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
+<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
+<p><strong>闭包</strong></p>
+<blockquote>
+<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+</blockquote>
+<p><strong>nonlocal</strong></p>
+<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
+<blockquote>
+<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
+<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
+<blockquote>
+<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
+</blockquote>
+<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
+<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
+<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
+<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>也可以把匿名函数作为返回值返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
+<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
+<blockquote>
+<p>now &#x3D; log(now)</p>
+</blockquote>
+<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
+<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
+<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
+<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
+<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
+
+<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
+
+<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
+<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
+<blockquote>
+<p>max2 &#x3D; functools.partial(max, 10)</p>
+</blockquote>
+<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
+<p>实际的结果是 <code>10</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python图形界面</title>
+    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -693,109 +822,6 @@ Start --> Stop</pre>
 </ol>
 <p>list, tuple, dict, set 的区别</p>
 <p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python函数式编程</title>
-    <url>/python/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>我们通过把大段的代码拆分成函数，通过一层层的函数调用，来把复杂的任务分解成简单的任务，这种分解可以称为面向过程的程序设计。</p>
-<p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p>
-<span id="more"></span>
-
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量名可以指向函数，函数名其实就是指向函数的一个变量。</p>
-<p>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map&#x2F;reduce"></a>map&#x2F;reduce</h2><blockquote>
-<p>MapReduce 的原理在于将大规模的数据处理任务划分为多个并行的 Map 和 Reduce 操作，充分利用了集群中的计算资源，实现了高效的分布式计算。通过将数据处理过程分解为 Map 和 Reduce 两个阶段，并在其中引入数据的分组和排序操作，MapReduce 能够有效地处理大规模数据集，并具备容错性和可扩展性。</p>
-</blockquote>
-<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
-<p>比如将一个整数集合转换为字符串</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = map(str, L)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(r)</span></span><br><span class="line">[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p><code>map()</code> 作为高阶函数，把运算规则抽象化了。</p>
-<p><code>reduce</code> 把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上, 这个函数必须接收两个参数，<code>reduce</code>把<strong>结果</strong>继续和序列的下一个元素做累积计算，其效果就是</p>
-<blockquote>
-<p>reduce(f, [x1, x2, x3, x4]) &#x3D; f(f(f(x1, x2), x3), x4)</p>
-</blockquote>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p><code>filter()</code> 函数用于过滤序列。</p>
-<p><code>filter()</code>也接收一个函数和一个序列。<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</p>
-<p>filter的关键在于正确实现一个筛选函数。</p>
-<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><p>内置的<code>sorted()</code>函数可以对list进行排序。默认按照升序排列。</p>
-<p><code>sorted()</code>函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序, key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
-<p><code>sorted()</code>对字符串排序，是按照ASCII的大小比较的, 可以使用<code>ord()</code>函数将字母转为数字来查看大小。由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母Z会排在小写字母a的前面。</p>
-<p>反向排序，可以传入第三个参数 <code>reverse=True</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sorted([<span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;Zoo&#x27;</span>, <span class="string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)</span></span><br><span class="line">[&#x27;Zoo&#x27;, &#x27;Credit&#x27;, &#x27;bob&#x27;, &#x27;about&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><p>高阶函数可以把函数作为结果返回，不是直接返回的值，调用函数时，返回的是函数，只有当再次调用返回函数时，才会进行计算。例如 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def lazy_sum(*args):</span><br><span class="line">    def sum():</span><br><span class="line">        ax = 0</span><br><span class="line">        for n in args:</span><br><span class="line">            ax = ax + n</span><br><span class="line">        return ax</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
-
-<p>在函数 <code>lazy_sum</code>中又定义了函数<code>sum</code>，内部函数可以引用外部函数的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为 “闭包(Closure)”</p>
-<p>每次调用 <code>lazy_sum()</code>时，返回的是一个新的函数，两次调用的结果不相等。</p>
-<p><strong>闭包</strong></p>
-<blockquote>
-<p> 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
-</blockquote>
-<p><strong>nonlocal</strong></p>
-<p>使用闭包时，内层函数引用了外层函数的局部变量，读取时没问题，如果修改，会报错</p>
-<blockquote>
-<p>UnboundLocalError: cannot access local variable ‘x’ where it is not associated with a value</p>
-</blockquote>
-<p>例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def inc():</span><br><span class="line">    x = 0</span><br><span class="line">    def fn():</span><br><span class="line">        # nonlocal x</span><br><span class="line">        x = x + 1</span><br><span class="line">        return x</span><br><span class="line">    return fn</span><br><span class="line"></span><br><span class="line">f = inc()</span><br><span class="line">print(f()) # 1</span><br><span class="line">print(f()) # 2</span><br></pre></td></tr></table></figure>
-<p>原因是 <code>x</code> 作为局部变量没有初始化，需要在fn函数内部加上一个 <code>nonlocal x</code> 的声明，加上后，解释器会把<code>fn()</code>内部的 <code>x</code> 看做外层函数的局部变量。</p>
-<blockquote>
-<p> 使用闭包时，对外层变量赋值前，需要先使用nonlocal声明该变量不是当前函数的局部变量。</p>
-</blockquote>
-<h1 id="匿名函数lambda"><a href="#匿名函数lambda" class="headerlink" title="匿名函数lambda"></a>匿名函数lambda</h1><p>我们在传入函数时，有时候不需要显示的定义函数，直接传入匿名函数更方便。例如</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
-<p>匿名函数 <code>lambda x: x * x</code> 实际上就是</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">    return x * x</span><br></pre></td></tr></table></figure>
-<p>关键字 <code>lambda</code> 表示匿名函数，冒号前面的 <code>x</code> 表示参数。匿名函数只能有一个表达式，不用return， 返回值就是表达式的结果。</p>
-<p>匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = lambda x : x + x</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f</span></span><br><span class="line">&lt;function &lt;lambda&gt; at 0x000001A9659FA160&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f(5)</span></span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>也可以把匿名函数作为返回值返回</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def build(x, y):</span><br><span class="line">    return lambda: x * x + y * y</span><br></pre></td></tr></table></figure>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>由于函数是一个对象，函数可以赋值给一个变量，通过变量也能调用该函数。函数对象有一个 <code>__name__</code> 属性，可以拿到函数名。</p>
-<p>假设要增加函数的功能，不修改函数的定义，这种在代码运行期间动态增加功能的方式，称为 “装饰器”(Decorator)。 类似java的 <code>AOP</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    # @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&#x27;call function %s&#x27; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>把<code>@log</code> 放到 <code>now()</code>函数的定义处，相当于执行了</p>
-<blockquote>
-<p>now &#x3D; log(now)</p>
-</blockquote>
-<p>原来的<code>now</code>函数依然存在，只是现在的 <code>now</code> 指向了新的函数。就是 <code>log</code> 中返回的 <code>wrapper</code> 函数。</p>
-<p>如果decorator本身需要传入参数，就需要再包一层函数。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        # @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print(&#x27;%s %s()&#x27; % (text, func.__name__))</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&#x27;执行了&#x27;)</span><br><span class="line">def now():</span><br><span class="line">    print(&#x27;2023-11-01&#x27;)</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
-
-<p>上面的2种写法，会导致调用函数时，返回的<code>__name__</code> 发生变化，因为实际上函数名已经指向新的函数了。所以需要把原始函数的<code>__name__</code>等属性赋值给新函数， 否则有些依赖函数签名的代码会执行错误。</p>
-<p>使用内置的 <code>functools.wraps</code> 来进行处理。 如上面代码块中注释掉的部分。</p>
-<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p><code>functools</code> 模块提供了很多功能， 其中一个就是偏函数(Partial function)</p>
-<p>函数通过设定参数的默认值，可以降低调用难度，偏函数也可以做到，比如 <code>int()</code>类型转换</p>
-<p><strong>偏函数就是将某些参数固定住，简化调用</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=2)</span></span><br><span class="line">15</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=16)</span></span><br><span class="line">4369</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int(<span class="string">&#x27;1111&#x27;</span>, base=8)</span></span><br><span class="line">585</span><br></pre></td></tr></table></figure>
-
-<p>假设我们需要做大量的二进制转换，每次传入 <code>base=2</code>会很麻烦， 可以定义一个 int2() 函数， 默认把<code>base=2</code> 传入进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def int2(x, base=2):</span><br><span class="line">    return int(x, base)</span><br></pre></td></tr></table></figure>
-
-<p><code>functools.partial</code>就是帮助我们创建一个偏函数，不需要自己定义 <code>int2()</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import functools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8=functools.partial(int, base=8)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line">585</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;111100&#x27;</span>)</span></span><br><span class="line">37440</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;11001&#x27;</span>)</span></span><br><span class="line">4609</span><br></pre></td></tr></table></figure>
-
-<p>所以<code>functools.partial</code>的作用就是， 把一个函数的某些参数固定住(设置默认值)， 返回一个新函数，调用新函数会更简单。</p>
-<p>新函数仅仅是把参数设置了默认值，但是调用的时候依然可以传入其他的值.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; int8(<span class="string">&#x27;1111&#x27;</span>,  base=10)</span></span><br><span class="line">1111</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>创建偏函数时，实际上可以接收函数对象、<code>*args</code>和<code>**kw</code>这3个参数<br>当传入</p>
-<blockquote>
-<p>max2 &#x3D; functools.partial(max, 10)</p>
-</blockquote>
-<p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
-<p>实际的结果是 <code>10</code></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -995,6 +1021,51 @@ Start --> Stop</pre>
 <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
 <p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
 <h1 id="HTMLParser"><a href="#HTMLParser" class="headerlink" title="HTMLParser"></a>HTMLParser</h1><p>Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python常用第三方模块</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
+<span id="more"></span>
+
+<h1 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h1><p>PIL：Python Imaging Library，是图像处理库，但是仅支持到2.7，兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性。</p>
+<p>比如图片压缩和模糊</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>)</span><br><span class="line">w = img.width</span><br><span class="line">h = img.height</span><br><span class="line"><span class="built_in">print</span>(w, h)</span><br><span class="line">img.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 模糊滤镜</span></span><br><span class="line">img.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">img.save(<span class="string">&#x27;D:/newimg.jpg&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><p>requests 是一个第三方库，处理资源特别方便。</p>
+<p><strong>使用requests</strong></p>
+<p>requests自动检测编码，可以使用<code>encoding</code>属性查看</p>
+<p>无论响应是文本还是二进制内容，我们都可以用<code>content</code>属性获得<code>bytes</code>对象</p>
+<p>对于特定类型的响应，例如JSON，可以直接获取 ‘r.json()’</p>
+<p>需要传入HTTP Header时，我们传入一个dict作为<code>headers</code>参数</p>
+<p>requests默认使用<code>application/x-www-form-urlencoded</code>对POST数据编码。如果要传递JSON数据，可以直接传入json参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=params) <span class="comment"># 内部自动序列化为JSON</span></span><br></pre></td></tr></table></figure>
+<p>上传文件需要更复杂的编码格式，但是<code>requests</code>把它简化成<code>files</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; upload_files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = requests.post(url, files=upload_files)</span></span><br></pre></td></tr></table></figure>
+<p>在读取文件时，注意务必使用<code>&#39;rb&#39;</code>即二进制模式读取，这样获取的<code>bytes</code>长度才是文件的长度。</p>
+<p>requests对Cookie做了特殊处理，使得我们不必解析Cookie就可以轻松获取指定的Cookie：</p>
+<p>要指定超时，传入以秒为单位的<code>timeout</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">r = requests.get(url, timeout=2.5) # 2.5秒后超时</span><br></pre></td></tr></table></figure>
+<p>示例代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">reqHeader = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;chrome&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br><span class="line">headers = r.headers</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> headers.items():</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;=&#x27;</span>, v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.headers[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"><span class="comment"># cookie</span></span><br><span class="line"><span class="comment"># 打印所有的Cookie值</span></span><br><span class="line">cookies = r.cookies</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;输出cookie信息&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="built_in">print</span>(cookie.name, <span class="string">&#x27;:&#x27;</span>, cookie.value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.encoding)</span><br><span class="line"><span class="comment"># print(r.json())</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="chardet"><a href="#chardet" class="headerlink" title="chardet"></a>chardet</h1><p>虽然Python提供了Unicode表示的<code>str</code>和<code>bytes</code>两种数据类型，并且可以通过<code>encode()</code>和<code>decode()</code>方法转换，但是，在不知道编码的情况下，对<code>bytes</code>做<code>decode()</code>不好做。</p>
+<p>对于未知编码的<code>bytes</code>，要把它转换成<code>str</code>，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”。</p>
+<p>chardet 用来检测编码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import chardet</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(b<span class="string">&#x27;12ass&#x27;</span>)</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;ascii&#x27;, &#x27;confidence&#x27;: 1.0, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode())</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GB2312&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GBK&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;EUC-JP&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;EUC-JP&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;Japanese&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>confidence</code> 字段， 表示检测的概率， 最高是1.0</p>
+<h1 id="psutil"><a href="#psutil" class="headerlink" title="psutil"></a>psutil</h1><p>用Python来编写脚本简化日常的运维工作是Python的一个重要用途。psutil &#x3D; process and system utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用。</p>
+<p>获取cpu信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
+
+<p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
 ]]></content>
       <categories>
         <category>技术</category>
