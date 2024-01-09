@@ -32,117 +32,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git的使用</title>
-    <url>/git-command/</url>
-    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>配置可以通过gui工具进行。</li>
-<li>git config –list 查看所有配置</li>
-<li>git config user.name 查看用户名。</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
-<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
-<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
-</blockquote>
-</li>
-<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
-<li>文件跟踪和更新到仓库</li>
-</ul>
-<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
-<p>git文件状态变化周期.</p>
-<ul>
-<li><p><strong>git status</strong> 查看文件状态</p>
-</li>
-<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
-</li>
-<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
-</li>
-<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
-</li>
-<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
-</li>
-<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
-</li>
-</ul>
-<blockquote>
-<p>git log –pretty&#x3D;oneline</p>
-</blockquote>
-<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
-<ol>
-<li>修改上次的提交的内容</li>
-</ol>
-<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
-<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
-<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
-<ol start="2">
-<li>还原某次提交</li>
-</ol>
-<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
-<ol start="3">
-<li>撤销工作区中未提交的内容</li>
-</ol>
-<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
-<ol start="4">
-<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
-</ol>
-<ul>
-<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
-</ul>
-<ol start="5">
-<li>Redo after undo “local”</li>
-</ol>
-<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
-<p>reflog 记录有时限，且只在本地才有。</p>
-<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
-<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
-<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
-<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
-<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
-<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
-会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
-<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
-克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo-next主题配置方式</title>
     <url>/hexo-next-theme/</url>
     <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
@@ -250,6 +139,169 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>docsify</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo使用</title>
+    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git的使用</title>
+    <url>/git-command/</url>
+    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>配置可以通过gui工具进行。</li>
+<li>git config –list 查看所有配置</li>
+<li>git config user.name 查看用户名。</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
+<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
+<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
+</blockquote>
+</li>
+<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
+<li>文件跟踪和更新到仓库</li>
+</ul>
+<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
+<p>git文件状态变化周期.</p>
+<ul>
+<li><p><strong>git status</strong> 查看文件状态</p>
+</li>
+<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
+</li>
+<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
+</li>
+<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
+</li>
+<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
+</li>
+<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
+</li>
+</ul>
+<blockquote>
+<p>git log –pretty&#x3D;oneline</p>
+</blockquote>
+<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
+<ol>
+<li>修改上次的提交的内容</li>
+</ol>
+<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
+<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
+<ol start="2">
+<li>还原某次提交</li>
+</ol>
+<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
+<ol start="3">
+<li>撤销工作区中未提交的内容</li>
+</ol>
+<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
+<ol start="4">
+<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
+</ol>
+<ul>
+<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
+</ul>
+<ol start="5">
+<li>Redo after undo “local”</li>
+</ol>
+<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
+<p>reflog 记录有时限，且只在本地才有。</p>
+<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
+<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
+<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
+<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
+会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
+<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx拦截非法host的请求</title>
+    <url>/nginx-deny-host/</url>
+    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
+<span id="more"></span>
+
+<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
+<blockquote>
+<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
+<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
+<p>00block.conf 文件的配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -365,58 +417,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo使用</title>
-    <url>/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx拦截非法host的请求</title>
-    <url>/nginx-deny-host/</url>
-    <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
-<span id="more"></span>
-
-<p>比如在hosts文件中指定ip对应 <a href="http://www.abc.com/">www.abc.com</a> </p>
-<blockquote>
-<p>xx.xx.xx.xx <a href="http://www.abc.com/">www.abc.com</a></p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为nginx默认按照ASCII码的顺序来加载conf配置文件，所以可以通过创建一个00开头的conf文件，来保证是最先加载的，在该文件中指定默认的server_name,<br>来拦截所有的非法host的请求</p>
-<p>可以使用 <code>ls -nl</code> 来查看nginx conf文件的ASCII顺序。</p>
-<p>00block.conf 文件的配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">	listen 80 default_server;</span><br><span class="line">        server_name __;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">		deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 443 ssl default_server;</span><br><span class="line">        server_name _;</span><br><span class="line">        ssl_certificate cert/xxx.com.pem;</span><br><span class="line">        ssl_certificate_key cert/xxx.com.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                deny all;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>这样就可以禁止掉直接通过IP或者本地绑定域名的方式的非法请求。</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>(转)生命是一场幻觉，而你是我的光</title>
     <url>/%E7%94%9F%E5%91%BD%E6%98%AF%E4%B8%80%E5%9C%BA%E5%B9%BB%E8%A7%89/</url>
     <content><![CDATA[<p>一年前，或者是更久的日子之前，我被自己困在时间的孤岛，我自言自语说我等待你，沧海桑田也等待你。</p>
@@ -451,32 +451,6 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>文章</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python-venv虚拟环境</title>
-    <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
-<p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
-<span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python-web开发</title>
-    <url>/python/python-web%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -558,6 +532,75 @@ Start --> Stop</pre>
 </ol>
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-venv虚拟环境</title>
+    <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
+<p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-web开发</title>
+    <url>/python/python-web%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python图形界面</title>
+    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
+<span id="more"></span>
+
+<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
+<ul>
+<li>Tk</li>
+<li>wxWidgets</li>
+<li>Qt</li>
+<li>GTK</li>
+</ul>
+<p>等等。</p>
+<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
+<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
+<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
+<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
+<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
+<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
+<blockquote>
+<p>from tkinter import *</p>
+</blockquote>
+<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
+
+<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
+<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
+<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
+<p>第三步，实例化Application，并启动消息循环：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
+
+<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
+<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
+<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -661,49 +704,6 @@ Start --> Stop</pre>
 <p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
 <p>实际的结果是 <code>10</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python图形界面</title>
-    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
-    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
-<span id="more"></span>
-
-<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
-<ul>
-<li>Tk</li>
-<li>wxWidgets</li>
-<li>Qt</li>
-<li>GTK</li>
-</ul>
-<p>等等。</p>
-<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
-<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
-<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
-<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
-<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
-<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
-<blockquote>
-<p>from tkinter import *</p>
-</blockquote>
-<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
-
-<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
-<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
-<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
-<p>第三步，实例化Application，并启动消息循环：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
-
-<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
-<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
-<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -874,6 +874,117 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>python常用内建模块2</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%972/</url>
+    <content><![CDATA[<p>本章主要介绍 argparse， bass64， struct，hashlib， hmac的使用。</p>
+<span id="more"></span>
+
+<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><p>内置的<code>sys.argv</code>保留了完整的参数列表，我们可以从中解析出需要的参数，但是如果参数复杂点，解析起来就很麻烦了，可以使用<code>argparse</code></p>
+<p>假设需要编写一个mysql命令行登录程序，需要的参数如下</p>
+<blockquote>
+<p>mysql -h localhost –port 3306 -u root -p password</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse,sys</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(</span><br><span class="line">    prog=<span class="string">&#x27;命令行登录&#x27;</span>,</span><br><span class="line">    description=<span class="string">&#x27;命令行登录mysql数据库&#x27;</span>,</span><br><span class="line">    epilog=<span class="string">&#x27;Copyright,2023&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义关键字参数: ，此处不能用 -h简写，和 argparse的-h帮助参数冲突了。</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--host&#x27;</span>, default=<span class="string">&#x27;localhost&#x27;</span>)</span><br><span class="line"><span class="comment"># 此参数必须为int类型:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--port&#x27;</span>, default=<span class="string">&#x27;3306&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># 允许用户输入简写的-u:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-u&#x27;</span>, <span class="string">&#x27;--user&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--password&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析参数:</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;parsed args:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;host = <span class="subst">&#123;args.host&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;port = <span class="subst">&#123;args.port&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;user = <span class="subst">&#123;args.user&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;password = <span class="subst">&#123;args.password&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输入有效的参数，能解析出所需要的全部参数。参数不对或者缺失的话，也会有详细的提示</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python argparse-test.py --host localhost --port 3306 -u root</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line">命令行登录: error: the following arguments are required: -p/--password</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输入参数 <code>-h</code> 会有对应的提示信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">D:\workspace\python&gt;python argparse-test.py -h</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line"></span><br><span class="line">命令行登录mysql数据库</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  --host HOST</span><br><span class="line">  --port PORT</span><br><span class="line">  -u USER, --user USER</span><br><span class="line">  -p PASSWORD, --password PASSWORD</span><br><span class="line"></span><br><span class="line">Copyright,2023</span><br></pre></td></tr></table></figure>
+
+<p>只有当参数全部有效时，才会返回一个 <a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">NameSpace</a> 对象，获取对应的参数就把参数名当作属性获取，非常方便</p>
+<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>Base64是一种用64个字符来表示任意二进制数据的方法。A-Z、a-z、0-9、”+”和”&#x2F;“两个特殊字符，共计64个字符。因此，在URL安全的Base64编码中，常常将”+”替换为”-“，将”&#x2F;“替换为”_”，以避免引起冲突。</p>
+<p>Base64编码将每3个字节的数据转换为4个字符，因此每个字符提供了6个比特位的信息</p>
+<p>Base64对二进制数据进行处理，每3个字节一组，一共是<code>3x8=24bit</code>，划为4组，每组正好6个bit：</p>
+<p>这样我们得到4个数字作为索引，然后查表，获得相应的4个字符，就是编码后的字符串。</p>
+<p>示例参考 <a href="https://www.base64decode.org/">example</a>  页面的example部分。<code>Man</code>转换为base64结果为<code>TWFu</code></p>
+<p><img data-src="https://pic1.zhimg.com/80/v2-3b7c9b9441623c1c6b5b6099bb897cbc_720w.png" alt="示例图"> </p>
+<p>Base64编码会把3字节的二进制数据编码为4字节的文本数据，长度增加33%，好处是编码后的文本数据可以在邮件正文、网页等直接显示</p>
+<p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用<code>\x00</code>字节在末尾补足后，再在编码的末尾加上1个或2个<code>=</code>号，表示补了多少字节，解码的时候，会自动去掉。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; e64 = base64.b64encode(<span class="string">&#x27;hahaha\x00&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(e64)</span></span><br><span class="line">b&#x27;aGFoYWhhAA==&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d64 = base64.b64decode(b64)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64)</span></span><br><span class="line">b&#x27;hahaha&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">hahaha</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>url safe</code>url安全的base64编码。把字符<code>+</code>和<code>/</code>分别变成<code>-</code>和<code>_</code>。使用<code>base64.urlsafe_b64encode()</code>和<code>base64.urlsafe_b64decode()</code></p>
+<p>由于<code>=</code>字符也可能出现在Base64编码中，但&#x3D;用在URL、Cookie里面会造成歧义，所以，很多Base64编码后会把<code>=</code>去掉</p>
+<p>去掉<code>=</code>后怎么解码呢？因为Base64是把<code>3</code>个字节变为<code>4</code>个字节，所以，Base64编码的长度永远是4的倍数，因此，需要加上&#x3D;把Base64字符串的长度变为4的倍数，就可以正常解码了。</p>
+<h1 id="struct字节和二进制的转换"><a href="#struct字节和二进制的转换" class="headerlink" title="struct字节和二进制的转换"></a>struct字节和二进制的转换</h1><p>准确地讲，Python没有专门处理字节的数据类型。但由于b’str’可以表示字节，所以，字节数组＝二进制str。Python提供了一个<code>struct</code>模块来解决<code>bytes</code>和其他二进制数据类型的转换</p>
+<p><code>struct</code>的<code>pack</code>函数把任意数据类型变成<code>bytes</code></p>
+<p>pack的第一个参数是处理指令，<code>&#39;&gt;I&#39;</code>的意思是：</p>
+<p><code>&gt;</code> 表示字节顺序是big-endian，也就是网络序，<code>I</code>表示4字节无符号整数。</p>
+<p>后面的参数个数要和处理指令一致。</p>
+<p><code>unpack</code>把<code>bytes</code>变成相应的数据类型</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import struct</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.pack(<span class="string">&#x27;&gt;I&#x27;</span>, 2234324)</span></span><br><span class="line">b&#x27;\x00&quot;\x17\xd4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;I&#x27;</span>, b<span class="string">&#x27;\x00&quot;\x17\xd4&#x27;</span>)</span></span><br><span class="line">(2234324,)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;IH&#x27;</span>, b<span class="string">&#x27;\xf0\xf0\xf0\xf0\x80\x80&#x27;</span>)</span></span><br><span class="line">(4042322160, 32896)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>根据<code>&gt;IH</code>的说明，后面的<code>bytes</code>依次变为<code>I</code>：4字节无符号整数和<code>H</code>：2字节无符号整数。</p>
+<p>所以，尽管Python不适合编写底层操作字节流的代码，但在对性能要求不高的地方，利用struct就方便多了。</p>
+<p>struct支持的数据类型参考<a href="https://docs.python.org/3/library/struct.html#format-characters">format-characters</a> , </p>
+<h1 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h1><p><strong>摘要算法简介</strong></p>
+<p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
+<p>摘要算法，通过摘要函数，计算出固定长度的摘要，用于验证数据，防篡改。</p>
+<p>md5 和 sha1</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hashlib</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5=hashlib.md5()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5</span></span><br><span class="line">&lt;md5 _hashlib.HASH object @ 0x0000020B0560E8F0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(md5.hexdigest())</span></span><br><span class="line">098f6bcd4621d373cade4e832627b4f6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1 = hashlib.sha1()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(sha1.hexdigest())</span></span><br><span class="line">a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>摘要可能出现hash碰撞的情况，不同的内容计算出来的hash值相同。</p>
+<p><strong>摘要算法应用</strong></p>
+<p>明文密码加盐，然后计算hash值，进行比对，判断用户输入的密码是否正确</p>
+<h1 id="hmac"><a href="#hmac" class="headerlink" title="hmac"></a>hmac</h1><p>如果<code>salt</code>是我们自己随机生成的，通常我们计算MD5时采用<code>md5(message + salt)</code>。</p>
+<p>这实际上就是Hmac算法：Keyed-Hashing for Message Authentication。它通过一个标准算法，在计算哈希的过程中，把key混入计算过程中。</p>
+<p>Hmac算法针对所有哈希算法都通用，无论是MD5还是SHA-1。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hmac</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; message = b<span class="string">&#x27;test&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; key = b<span class="string">&#x27;hahah&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; h = hmac.new(key, message, digestmod=<span class="string">&#x27;SHA1&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(h.hexdigest())</span></span><br><span class="line">5ab4f2d179d1243d6ff9084a0ca659a99bbfcf3f</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可见使用hmac和普通hash算法非常类似。hmac输出的长度和原始哈希算法的长度一致。需要注意传入的key和message都是bytes类型，str类型需要首先编码为bytes</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python常用第三方模块</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
+<span id="more"></span>
+
+<h1 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h1><p>PIL：Python Imaging Library，是图像处理库，但是仅支持到2.7，兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性。</p>
+<p>比如图片压缩和模糊</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>)</span><br><span class="line">w = img.width</span><br><span class="line">h = img.height</span><br><span class="line"><span class="built_in">print</span>(w, h)</span><br><span class="line">img.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 模糊滤镜</span></span><br><span class="line">img.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">img.save(<span class="string">&#x27;D:/newimg.jpg&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><p>requests 是一个第三方库，处理资源特别方便。</p>
+<p><strong>使用requests</strong></p>
+<p>requests自动检测编码，可以使用<code>encoding</code>属性查看</p>
+<p>无论响应是文本还是二进制内容，我们都可以用<code>content</code>属性获得<code>bytes</code>对象</p>
+<p>对于特定类型的响应，例如JSON，可以直接获取 ‘r.json()’</p>
+<p>需要传入HTTP Header时，我们传入一个dict作为<code>headers</code>参数</p>
+<p>requests默认使用<code>application/x-www-form-urlencoded</code>对POST数据编码。如果要传递JSON数据，可以直接传入json参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=params) <span class="comment"># 内部自动序列化为JSON</span></span><br></pre></td></tr></table></figure>
+<p>上传文件需要更复杂的编码格式，但是<code>requests</code>把它简化成<code>files</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; upload_files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = requests.post(url, files=upload_files)</span></span><br></pre></td></tr></table></figure>
+<p>在读取文件时，注意务必使用<code>&#39;rb&#39;</code>即二进制模式读取，这样获取的<code>bytes</code>长度才是文件的长度。</p>
+<p>requests对Cookie做了特殊处理，使得我们不必解析Cookie就可以轻松获取指定的Cookie：</p>
+<p>要指定超时，传入以秒为单位的<code>timeout</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">r = requests.get(url, timeout=2.5) # 2.5秒后超时</span><br></pre></td></tr></table></figure>
+<p>示例代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">reqHeader = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;chrome&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br><span class="line">headers = r.headers</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> headers.items():</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;=&#x27;</span>, v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.headers[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"><span class="comment"># cookie</span></span><br><span class="line"><span class="comment"># 打印所有的Cookie值</span></span><br><span class="line">cookies = r.cookies</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;输出cookie信息&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="built_in">print</span>(cookie.name, <span class="string">&#x27;:&#x27;</span>, cookie.value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.encoding)</span><br><span class="line"><span class="comment"># print(r.json())</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="chardet"><a href="#chardet" class="headerlink" title="chardet"></a>chardet</h1><p>虽然Python提供了Unicode表示的<code>str</code>和<code>bytes</code>两种数据类型，并且可以通过<code>encode()</code>和<code>decode()</code>方法转换，但是，在不知道编码的情况下，对<code>bytes</code>做<code>decode()</code>不好做。</p>
+<p>对于未知编码的<code>bytes</code>，要把它转换成<code>str</code>，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”。</p>
+<p>chardet 用来检测编码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import chardet</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(b<span class="string">&#x27;12ass&#x27;</span>)</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;ascii&#x27;, &#x27;confidence&#x27;: 1.0, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode())</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GB2312&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GBK&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;EUC-JP&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;EUC-JP&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;Japanese&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>confidence</code> 字段， 表示检测的概率， 最高是1.0</p>
+<h1 id="psutil"><a href="#psutil" class="headerlink" title="psutil"></a>psutil</h1><p>用Python来编写脚本简化日常的运维工作是Python的一个重要用途。psutil &#x3D; process and system utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用。</p>
+<p>获取cpu信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
+
+<p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python常用内建模块1</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%971/</url>
     <content><![CDATA[<p>Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
@@ -953,72 +1064,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python常用内建模块2</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%972/</url>
-    <content><![CDATA[<p>本章主要介绍 argparse， bass64， struct，hashlib， hmac的使用。</p>
-<span id="more"></span>
-
-<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><p>内置的<code>sys.argv</code>保留了完整的参数列表，我们可以从中解析出需要的参数，但是如果参数复杂点，解析起来就很麻烦了，可以使用<code>argparse</code></p>
-<p>假设需要编写一个mysql命令行登录程序，需要的参数如下</p>
-<blockquote>
-<p>mysql -h localhost –port 3306 -u root -p password</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse,sys</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(</span><br><span class="line">    prog=<span class="string">&#x27;命令行登录&#x27;</span>,</span><br><span class="line">    description=<span class="string">&#x27;命令行登录mysql数据库&#x27;</span>,</span><br><span class="line">    epilog=<span class="string">&#x27;Copyright,2023&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义关键字参数: ，此处不能用 -h简写，和 argparse的-h帮助参数冲突了。</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--host&#x27;</span>, default=<span class="string">&#x27;localhost&#x27;</span>)</span><br><span class="line"><span class="comment"># 此参数必须为int类型:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--port&#x27;</span>, default=<span class="string">&#x27;3306&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># 允许用户输入简写的-u:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-u&#x27;</span>, <span class="string">&#x27;--user&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--password&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析参数:</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;parsed args:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;host = <span class="subst">&#123;args.host&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;port = <span class="subst">&#123;args.port&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;user = <span class="subst">&#123;args.user&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;password = <span class="subst">&#123;args.password&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>输入有效的参数，能解析出所需要的全部参数。参数不对或者缺失的话，也会有详细的提示</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python argparse-test.py --host localhost --port 3306 -u root</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line">命令行登录: error: the following arguments are required: -p/--password</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>输入参数 <code>-h</code> 会有对应的提示信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">D:\workspace\python&gt;python argparse-test.py -h</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line"></span><br><span class="line">命令行登录mysql数据库</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  --host HOST</span><br><span class="line">  --port PORT</span><br><span class="line">  -u USER, --user USER</span><br><span class="line">  -p PASSWORD, --password PASSWORD</span><br><span class="line"></span><br><span class="line">Copyright,2023</span><br></pre></td></tr></table></figure>
-
-<p>只有当参数全部有效时，才会返回一个 <a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">NameSpace</a> 对象，获取对应的参数就把参数名当作属性获取，非常方便</p>
-<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>Base64是一种用64个字符来表示任意二进制数据的方法。A-Z、a-z、0-9、”+”和”&#x2F;“两个特殊字符，共计64个字符。因此，在URL安全的Base64编码中，常常将”+”替换为”-“，将”&#x2F;“替换为”_”，以避免引起冲突。</p>
-<p>Base64编码将每3个字节的数据转换为4个字符，因此每个字符提供了6个比特位的信息</p>
-<p>Base64对二进制数据进行处理，每3个字节一组，一共是<code>3x8=24bit</code>，划为4组，每组正好6个bit：</p>
-<p>这样我们得到4个数字作为索引，然后查表，获得相应的4个字符，就是编码后的字符串。</p>
-<p>示例参考 <a href="https://www.base64decode.org/">example</a>  页面的example部分。<code>Man</code>转换为base64结果为<code>TWFu</code></p>
-<p><img data-src="https://pic1.zhimg.com/80/v2-3b7c9b9441623c1c6b5b6099bb897cbc_720w.png" alt="示例图"> </p>
-<p>Base64编码会把3字节的二进制数据编码为4字节的文本数据，长度增加33%，好处是编码后的文本数据可以在邮件正文、网页等直接显示</p>
-<p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用<code>\x00</code>字节在末尾补足后，再在编码的末尾加上1个或2个<code>=</code>号，表示补了多少字节，解码的时候，会自动去掉。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; e64 = base64.b64encode(<span class="string">&#x27;hahaha\x00&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(e64)</span></span><br><span class="line">b&#x27;aGFoYWhhAA==&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d64 = base64.b64decode(b64)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64)</span></span><br><span class="line">b&#x27;hahaha&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">hahaha</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>url safe</code>url安全的base64编码。把字符<code>+</code>和<code>/</code>分别变成<code>-</code>和<code>_</code>。使用<code>base64.urlsafe_b64encode()</code>和<code>base64.urlsafe_b64decode()</code></p>
-<p>由于<code>=</code>字符也可能出现在Base64编码中，但&#x3D;用在URL、Cookie里面会造成歧义，所以，很多Base64编码后会把<code>=</code>去掉</p>
-<p>去掉<code>=</code>后怎么解码呢？因为Base64是把<code>3</code>个字节变为<code>4</code>个字节，所以，Base64编码的长度永远是4的倍数，因此，需要加上&#x3D;把Base64字符串的长度变为4的倍数，就可以正常解码了。</p>
-<h1 id="struct字节和二进制的转换"><a href="#struct字节和二进制的转换" class="headerlink" title="struct字节和二进制的转换"></a>struct字节和二进制的转换</h1><p>准确地讲，Python没有专门处理字节的数据类型。但由于b’str’可以表示字节，所以，字节数组＝二进制str。Python提供了一个<code>struct</code>模块来解决<code>bytes</code>和其他二进制数据类型的转换</p>
-<p><code>struct</code>的<code>pack</code>函数把任意数据类型变成<code>bytes</code></p>
-<p>pack的第一个参数是处理指令，<code>&#39;&gt;I&#39;</code>的意思是：</p>
-<p><code>&gt;</code> 表示字节顺序是big-endian，也就是网络序，<code>I</code>表示4字节无符号整数。</p>
-<p>后面的参数个数要和处理指令一致。</p>
-<p><code>unpack</code>把<code>bytes</code>变成相应的数据类型</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import struct</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.pack(<span class="string">&#x27;&gt;I&#x27;</span>, 2234324)</span></span><br><span class="line">b&#x27;\x00&quot;\x17\xd4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;I&#x27;</span>, b<span class="string">&#x27;\x00&quot;\x17\xd4&#x27;</span>)</span></span><br><span class="line">(2234324,)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;IH&#x27;</span>, b<span class="string">&#x27;\xf0\xf0\xf0\xf0\x80\x80&#x27;</span>)</span></span><br><span class="line">(4042322160, 32896)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>根据<code>&gt;IH</code>的说明，后面的<code>bytes</code>依次变为<code>I</code>：4字节无符号整数和<code>H</code>：2字节无符号整数。</p>
-<p>所以，尽管Python不适合编写底层操作字节流的代码，但在对性能要求不高的地方，利用struct就方便多了。</p>
-<p>struct支持的数据类型参考<a href="https://docs.python.org/3/library/struct.html#format-characters">format-characters</a> , </p>
-<h1 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h1><p><strong>摘要算法简介</strong></p>
-<p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
-<p>摘要算法，通过摘要函数，计算出固定长度的摘要，用于验证数据，防篡改。</p>
-<p>md5 和 sha1</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hashlib</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5=hashlib.md5()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5</span></span><br><span class="line">&lt;md5 _hashlib.HASH object @ 0x0000020B0560E8F0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(md5.hexdigest())</span></span><br><span class="line">098f6bcd4621d373cade4e832627b4f6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1 = hashlib.sha1()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(sha1.hexdigest())</span></span><br><span class="line">a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>摘要可能出现hash碰撞的情况，不同的内容计算出来的hash值相同。</p>
-<p><strong>摘要算法应用</strong></p>
-<p>明文密码加盐，然后计算hash值，进行比对，判断用户输入的密码是否正确</p>
-<h1 id="hmac"><a href="#hmac" class="headerlink" title="hmac"></a>hmac</h1><p>如果<code>salt</code>是我们自己随机生成的，通常我们计算MD5时采用<code>md5(message + salt)</code>。</p>
-<p>这实际上就是Hmac算法：Keyed-Hashing for Message Authentication。它通过一个标准算法，在计算哈希的过程中，把key混入计算过程中。</p>
-<p>Hmac算法针对所有哈希算法都通用，无论是MD5还是SHA-1。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hmac</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; message = b<span class="string">&#x27;test&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; key = b<span class="string">&#x27;hahah&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; h = hmac.new(key, message, digestmod=<span class="string">&#x27;SHA1&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(h.hexdigest())</span></span><br><span class="line">5ab4f2d179d1243d6ff9084a0ca659a99bbfcf3f</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可见使用hmac和普通hash算法非常类似。hmac输出的长度和原始哈希算法的长度一致。需要注意传入的key和message都是bytes类型，str类型需要首先编码为bytes</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python常用内建模块3</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%973/</url>
     <content><![CDATA[<p>本章主要介绍itertools， contextlib， urllib，XML，HTMLParser的使用。</p>
@@ -1064,51 +1109,6 @@ Start --> Stop</pre>
 <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
 <p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
 <h1 id="HTMLParser"><a href="#HTMLParser" class="headerlink" title="HTMLParser"></a>HTMLParser</h1><p>Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python常用第三方模块</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
-<span id="more"></span>
-
-<h1 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h1><p>PIL：Python Imaging Library，是图像处理库，但是仅支持到2.7，兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性。</p>
-<p>比如图片压缩和模糊</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>)</span><br><span class="line">w = img.width</span><br><span class="line">h = img.height</span><br><span class="line"><span class="built_in">print</span>(w, h)</span><br><span class="line">img.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 模糊滤镜</span></span><br><span class="line">img.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">img.save(<span class="string">&#x27;D:/newimg.jpg&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><p>requests 是一个第三方库，处理资源特别方便。</p>
-<p><strong>使用requests</strong></p>
-<p>requests自动检测编码，可以使用<code>encoding</code>属性查看</p>
-<p>无论响应是文本还是二进制内容，我们都可以用<code>content</code>属性获得<code>bytes</code>对象</p>
-<p>对于特定类型的响应，例如JSON，可以直接获取 ‘r.json()’</p>
-<p>需要传入HTTP Header时，我们传入一个dict作为<code>headers</code>参数</p>
-<p>requests默认使用<code>application/x-www-form-urlencoded</code>对POST数据编码。如果要传递JSON数据，可以直接传入json参数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=params) <span class="comment"># 内部自动序列化为JSON</span></span><br></pre></td></tr></table></figure>
-<p>上传文件需要更复杂的编码格式，但是<code>requests</code>把它简化成<code>files</code>参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; upload_files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = requests.post(url, files=upload_files)</span></span><br></pre></td></tr></table></figure>
-<p>在读取文件时，注意务必使用<code>&#39;rb&#39;</code>即二进制模式读取，这样获取的<code>bytes</code>长度才是文件的长度。</p>
-<p>requests对Cookie做了特殊处理，使得我们不必解析Cookie就可以轻松获取指定的Cookie：</p>
-<p>要指定超时，传入以秒为单位的<code>timeout</code>参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">r = requests.get(url, timeout=2.5) # 2.5秒后超时</span><br></pre></td></tr></table></figure>
-<p>示例代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">reqHeader = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;chrome&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br><span class="line">headers = r.headers</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> headers.items():</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;=&#x27;</span>, v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.headers[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"><span class="comment"># cookie</span></span><br><span class="line"><span class="comment"># 打印所有的Cookie值</span></span><br><span class="line">cookies = r.cookies</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;输出cookie信息&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="built_in">print</span>(cookie.name, <span class="string">&#x27;:&#x27;</span>, cookie.value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.encoding)</span><br><span class="line"><span class="comment"># print(r.json())</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="chardet"><a href="#chardet" class="headerlink" title="chardet"></a>chardet</h1><p>虽然Python提供了Unicode表示的<code>str</code>和<code>bytes</code>两种数据类型，并且可以通过<code>encode()</code>和<code>decode()</code>方法转换，但是，在不知道编码的情况下，对<code>bytes</code>做<code>decode()</code>不好做。</p>
-<p>对于未知编码的<code>bytes</code>，要把它转换成<code>str</code>，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”。</p>
-<p>chardet 用来检测编码。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import chardet</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(b<span class="string">&#x27;12ass&#x27;</span>)</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;ascii&#x27;, &#x27;confidence&#x27;: 1.0, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode())</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GB2312&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GBK&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;EUC-JP&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;EUC-JP&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;Japanese&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>confidence</code> 字段， 表示检测的概率， 最高是1.0</p>
-<h1 id="psutil"><a href="#psutil" class="headerlink" title="psutil"></a>psutil</h1><p>用Python来编写脚本简化日常的运维工作是Python的一个重要用途。psutil &#x3D; process and system utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用。</p>
-<p>获取cpu信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
-
-<p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1219,17 +1219,6 @@ Start --> Stop</pre>
 
 <p>编译后生成Regular Expression对象，由于该对象自己包含了正则表达式，所以调用对应的方法时不用给出正则字符串。</p>
 ]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python电子邮件</title>
-    <url>/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1391,9 +1380,120 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>python电子邮件</title>
+    <url>/python/python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>使用SMTP发送邮件，使用POP3接收邮件。</p>
+<span id="more"></span>
+
+<h1 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h1><p>SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。</p>
+<p>Python对SMTP支持有<code>smtplib</code>和<code>email</code>两个模块，<code>email</code>负责构造邮件，<code>smtplib</code>负责发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line">msg = MIMEText(<span class="string">&#x27;测试下邮件发送&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>注意到构造<code>MIMEText</code>对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入<code>&#39;plain&#39;</code>表示纯文本，最终的MIME就是<code>&#39;text/plain&#39;</code>，最后一定要用<code>utf-8</code>编码保证多语言兼容性。</p>
+<p>然后，通过SMTP发出去：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr, parseaddr</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_format_addr</span>(<span class="params">s</span>):</span><br><span class="line">    name, addr = parseaddr(s)</span><br><span class="line">    <span class="keyword">return</span> formataddr((Header(name, <span class="string">&#x27;utf-8&#x27;</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入Email地址和口令:</span></span><br><span class="line">from_addr = <span class="string">&#x27;xxxxxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="comment"># 输入收件人地址:</span></span><br><span class="line">to_addr = <span class="string">&#x27;xxx@qq.com&#x27;</span></span><br><span class="line"><span class="comment"># 输入SMTP服务器地址:</span></span><br><span class="line">smtp_server = <span class="string">&#x27;xxx.xxx.com&#x27;</span></span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&#x27;哈哈哈哈哈&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;测试下邮件发送 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">25</span>) <span class="comment"># SMTP协议默认端口是25</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.login(from_addr, password)</span><br><span class="line">server.sendmail(from_addr, [to_addr], msg.as_string())</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+<p>我们用<code>set_debuglevel(1)</code>就可以打印出和SMTP服务器交互的所有信息。SMTP协议就是简单的文本命令和响应。<code>login()</code>方法用来登录SMTP服务器，<code>sendmail()</code>方法就是发邮件，由于可以一次发给多个人，所以传入一个<code>list</code>，邮件正文是一个<code>str</code>，<code>as_string()</code>把<code>MIMEText</code>对象变成<code>str</code>。</p>
+<p>必须把<code>From</code>、<code>To</code>和<code>Subject</code>添加到<code>MIMEText</code>中，才是一封完整的邮件， 否则无法显示主题，收件人等信息。</p>
+<h2 id="发送HTML邮件"><a href="#发送HTML邮件" class="headerlink" title="发送HTML邮件"></a>发送HTML邮件</h2><p>如果我们要发送HTML邮件，方法很简单，在构造<code>MIMEText</code>对象时，把<code>HTML</code>字符串传进去，再把第二个参数由<code>plain</code>变为<code>html</code>就可以了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEText(<span class="string">&#x27;&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送附件"><a href="#发送附件" class="headerlink" title="发送附件"></a>发送附件</h2><p>可以构造一个<code>MIMEMultipart</code>对象代表邮件本身，然后往里面加上一个<code>MIMEText</code>作为邮件正文，再继续往里面加上表示附件的<code>MIMEBase</code>对象即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart()</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;Python爱好者 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件正文是MIMEText:</span></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;send with file...&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加附件就是加上一个MIMEBase，从本地读取一个图片:</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 设置附件的MIME和文件名，这里是png类型:</span></span><br><span class="line">    mime = MIMEBase(<span class="string">&#x27;image&#x27;</span>, <span class="string">&#x27;jpg&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">    mime.set_payload(f.read())</span><br><span class="line">    <span class="comment"># 用Base64编码:</span></span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    <span class="comment"># 添加到MIMEMultipart:</span></span><br><span class="line">    msg.attach(mime)</span><br></pre></td></tr></table></figure>
+<p>然后，按正常发送流程把msg（注意类型已变为<code>MIMEMultipart</code>）发送出去，就可以收到如下带附件的邮件</p>
+<h2 id="发送图片"><a href="#发送图片" class="headerlink" title="发送图片"></a>发送图片</h2><p>如果要把一个图片嵌入到邮件正文中怎么做？直接在HTML邮件中链接图片地址行不行？答案是，大部分邮件服务商都会自动屏蔽带有外链的图片，因为不知道这些链接是否指向恶意网站。</p>
+<p>要把图片嵌入到邮件正文中，我们只需按照发送附件的方式，先把邮件作为附件添加进去，然后，在HTML中通过引用<code>src=&quot;cid:0&quot;</code>就可以把附件作为图片嵌入了。如果有多个图片，给它们依次编号，然后引用不同的<code>cid:x</code>即可。</p>
+<p>把上面代码加入<code>MIMEMultipart</code>的<code>MIMEText</code>从<code>plain</code>改为<code>html</code>，然后在适当的位置引用图片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;下面是一个图片&lt;/h1&gt;&lt;br/&gt;&lt;img src=&quot;cid:0&quot;&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="同时支持HTML和Plain格式"><a href="#同时支持HTML和Plain格式" class="headerlink" title="同时支持HTML和Plain格式"></a>同时支持HTML和Plain格式</h2><p>为了兼容旧设备，在发送HTML的同时再附加一个纯文本，如果收件人无法查看HTML格式的邮件，就可以自动降级查看纯文本邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart(<span class="string">&#x27;alternative&#x27;</span>)</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = ...</span><br><span class="line"></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 正常发送msg对象...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加密SMTP"><a href="#加密SMTP" class="headerlink" title="加密SMTP"></a>加密SMTP</h2><p>使用标准的25端口连接SMTP服务器时，使用的是明文传输，发送邮件的整个过程可能会被窃听。要更安全地发送邮件，可以加密SMTP会话，实际上就是先创建SSL安全连接，然后再使用SMTP协议发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">465</span>) </span><br><span class="line">server.starttls()</span><br></pre></td></tr></table></figure>
+<p>只需要在创建SMTP对象后，立刻调用starttls()方法，就创建了安全连接。后面的代码和前面的发送邮件代码完全一样。</p>
+<p>构造一个邮件对象就是一个<code>Messag</code>对象，如果构造一个<code>MIMEText</code>对象，就表示一个文本邮件对象，如果构造一个<code>MIMEImage</code>对象，就表示一个作为附件的图片，要把多个对象组合起来，就用<code>MIMEMultipart</code>对象，而<code>MIMEBase</code>可以表示任何对象。它们的继承关系如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Message</span><br><span class="line">+- MIMEBase</span><br><span class="line">   +- MIMEMultipart</span><br><span class="line">   +- MIMENonMultipart</span><br><span class="line">      +- MIMEMessage</span><br><span class="line">      +- MIMEText</span><br><span class="line">      +- MIMEImage</span><br></pre></td></tr></table></figure>
+<p>这种嵌套关系就可以构造出任意复杂的邮件。</p>
+<h1 id="POP3收取邮件"><a href="#POP3收取邮件" class="headerlink" title="POP3收取邮件"></a>POP3收取邮件</h1><p>Python内置一个<code>poplib</code>模块，实现了POP3协议，可以直接用来收邮件。</p>
+<p>注意到POP3协议收取的不是一个已经可以阅读的邮件本身，而是邮件的原始文本，这和SMTP协议很像，SMTP发送的也是经过编码后的一大段文本。</p>
+<p>要把POP3收取的文本变成可以阅读的邮件，还需要用email模块提供的各种类来解析原始文本，变成可阅读的邮件对象。</p>
+<p>所以，收取邮件分两步：</p>
+<p>第一步：用<code>poplib</code>把邮件的原始文本下载到本地；</p>
+<p>第二步：用<code>email</code>解析原始文本，还原为邮件对象。</p>
+<h2 id="通过POP3下载邮件"><a href="#通过POP3下载邮件" class="headerlink" title="通过POP3下载邮件"></a>通过POP3下载邮件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> poplib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入邮件地址, 口令和POP3服务器地址:</span></span><br><span class="line">email = <span class="built_in">input</span>(<span class="string">&#x27;Email: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">pop3_server = <span class="built_in">input</span>(<span class="string">&#x27;POP3 server: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到POP3服务器:</span></span><br><span class="line">server = poplib.POP3(pop3_server)</span><br><span class="line"><span class="comment"># 可以打开或关闭调试信息:</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 可选:打印POP3服务器的欢迎文字:</span></span><br><span class="line"><span class="built_in">print</span>(server.getwelcome().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份认证:</span></span><br><span class="line">server.user(email)</span><br><span class="line">server.pass_(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># stat()返回邮件数量和占用空间:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Messages: %s. Size: %s&#x27;</span> % server.stat())</span><br><span class="line"><span class="comment"># list()返回所有邮件的编号:</span></span><br><span class="line">resp, mails, octets = server.<span class="built_in">list</span>()</span><br><span class="line"><span class="comment"># 可以查看返回的列表类似[b&#x27;1 82923&#x27;, b&#x27;2 2184&#x27;, ...]</span></span><br><span class="line"><span class="built_in">print</span>(mails)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最新一封邮件, 注意索引号从1开始:</span></span><br><span class="line">index = <span class="built_in">len</span>(mails)</span><br><span class="line">resp, lines, octets = server.retr(index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lines存储了邮件的原始文本的每一行,</span></span><br><span class="line"><span class="comment"># 可以获得整个邮件的原始文本:</span></span><br><span class="line">msg_content = <span class="string">b&#x27;\r\n&#x27;</span>.join(lines).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 稍后解析出邮件:</span></span><br><span class="line">msg = Parser().parsestr(msg_content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以根据邮件索引号直接从服务器删除邮件:</span></span><br><span class="line"><span class="comment"># server.dele(index)</span></span><br><span class="line"><span class="comment"># 关闭连接:</span></span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+
+<p>用POP3获取邮件其实很简单，要获取所有邮件，只需要循环使用<code>retr()</code>把每一封邮件内容拿到即可。真正麻烦的是把邮件的原始内容解析为可以阅读的邮件对象。</p>
+<h2 id="解析邮件"><a href="#解析邮件" class="headerlink" title="解析邮件"></a>解析邮件</h2><p>解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">from email.parser import Parser</span><br><span class="line">from email.header import decode_header</span><br><span class="line">from email.utils import parseaddr</span><br><span class="line"></span><br><span class="line">import poplib</span><br></pre></td></tr></table></figure>
+<p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
+<p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
+<p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python网络编程</title>
     <url>/python/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
+    <content><![CDATA[<p>网络通信是两台计算机上的两个进程之间的通信。</p>
+<p>用Python进行网络编程，就是在Python程序本身这个进程内，连接别的服务器进程的通信端口进行通信。本章主要介绍TCP和UDP编程。</p>
+<span id="more"></span>
+
+<h1 id="TCP-IP简介"><a href="#TCP-IP简介" class="headerlink" title="TCP&#x2F;IP简介"></a>TCP&#x2F;IP简介</h1><p>互联网协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，大家把互联网的协议简称TCP&#x2F;IP协议。</p>
+<p>IP地址实际上是一个32位整数（称为IPv4），以字符串表示的IP地址如192.168.0.1实际上是把32位整数按8位分组后的数字表示，目的是便于阅读。</p>
+<p>一个TCP报文除了包含要传输的数据外，还包含源IP地址和目标IP地址，源端口和目标端口。</p>
+<h1 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h1><p>Socket是网络编程的一个抽象概念。通常我们用一个Socket表示“打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。</p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>大多数连接都是可靠的TCP连接。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。</p>
+<p>创建一个基于TCP连接的Socket，可以这样做</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入socket库:</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个socket:</span></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;www.baidu.com&#x27;</span>, <span class="number">80</span>))</span><br></pre></td></tr></table></figure>
+
+<p>创建<code>Socket</code>时，<code>AF_INET</code>指定使用<code>IPv4</code>协议，<code>SOCK_STREAM</code>指定使用面向流的TCP协议，这样，一个<code>Socket</code>对象就创建成功，但是还没有建立连接。</p>
+<p>客户端要主动发起TCP连接，必须知道服务器的IP地址和端口号。IP地址可以通过域名dns解析获取到，端口号一般是固定80和443。</p>
+<p>连接服务器的代码</p>
+<blockquote>
+<p>s.connect((‘<a href="http://www.baidu.com/">www.baidu.com</a>‘, 80))</p>
+</blockquote>
+<p>注意参数是一个<code>tuple</code>，包含地址和端口号。</p>
+<p>建立TCP连接后，我们就可以向服务器发送请求，要求返回首页的内容：</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。</p>
+<p>一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。</p>
+<p>是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。</p>
+<p>我们来编写一个简单的服务器程序，它接收客户端连接，把客户端发过来的字符串加上<code>Hello</code>再发回去。</p>
+<p>首先，创建一个基于IPv4和TCP协议的Socket：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们要绑定监听的地址和端口。服务器可能有多块网卡，可以绑定到某一块网卡的IP地址上，也可以用0.0.0.0绑定到所有的网络地址，还可以用127.0.0.1绑定到本机地址。127.0.0.1是一个特殊的IP地址，表示本机地址，如果绑定到这个地址，客户端必须同时在本机运行才能连接，也就是说，外部的计算机无法连接进来。</p>
+<p>端口号需要预先指定。因为我们写的这个服务不是标准服务，所以用<code>8888</code>这个端口号。请注意，小于<code>1024</code>的端口号必须要有管理员权限才能绑定：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 监听端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">8888</span>))</span><br></pre></td></tr></table></figure>
+<p>紧接着，调用listen()方法开始监听端口，传入的参数指定等待连接的最大数量：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s.listen(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Waiting for connection...&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>接下来，服务器程序通过一个永久循环来接受来自客户端的连接，<code>accept()</code>会等待并返回一个客户端的连接:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接受一个新连接:</span></span><br><span class="line">    sock, addr = s.accept()</span><br><span class="line">    <span class="comment"># 创建新线程来处理TCP连接:</span></span><br><span class="line">    t = threading.Thread(target=tcplink, args=(sock, addr))</span><br><span class="line">    t.start()</span><br></pre></td></tr></table></figure>
+
+<p>每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">tcplink</span>(<span class="params">sock, addr</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Accept new connection from %s:%s...&#x27;</span> % addr)</span><br><span class="line">    sock.send(<span class="string">b&#x27;Welcome!&#x27;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(<span class="number">1024</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> data.decode(<span class="string">&#x27;utf-8&#x27;</span>) == <span class="string">&#x27;exit&#x27;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sock.send((<span class="string">&#x27;Hello, %s!&#x27;</span> % data.decode(<span class="string">&#x27;utf-8&#x27;</span>)).encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    sock.close()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Connection from %s:%s closed.&#x27;</span> % addr)</span><br></pre></td></tr></table></figure>
+<p>连接建立后，服务器首先发一条欢迎消息，然后等待客户端数据，并加上<code>Hello</code>再发送给客户端。如果客户端发送了<code>exit</code>字符串，就直接关闭连接。</p>
+<p>要测试这个服务器程序，我们还需要编写一个客户端程序：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 接收欢迎消息:</span></span><br><span class="line"><span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b&#x27;Michael&#x27;</span>, <span class="string">b&#x27;Tracy&#x27;</span>, <span class="string">b&#x27;Sarah&#x27;</span>]:</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.send(data)</span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.send(<span class="string">b&#x27;exit&#x27;</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<p>我们需要打开两个命令行窗口，一个运行服务器程序，另一个运行客户端程序，就可以看到效果了</p>
+<h1 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h1><p>TCP是建立可靠连接，并且通信双方都可以以流的形式发送数据。相对TCP，UDP则是面向无连接的协议。</p>
+<p>使用UDP协议时，不需要建立连接，只需要知道对方的IP地址和端口号，就可以直接发数据包。但是，能不能到达就不知道了。</p>
+<p>虽然用UDP传输数据不可靠，但它的优点是和TCP比，速度快，对于不要求可靠到达的数据，就可以使用UDP协议。</p>
+<p>和TCP类似，使用UDP的通信双方也分为客户端和服务器。服务器首先需要绑定端口：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="comment"># 绑定端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br></pre></td></tr></table></figure>
+
+<p>创建Socket时，<code>SOCK_DGRAM</code>指定了这个Socket的类型是UDP。绑定端口和TCP一样，但是不需要调用<code>listen()</code>方法，而是直接接收来自任何客户端的数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Bind UDP on 9999...&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    data, addr = s.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Received from %s:%s.&#x27;</span> % addr)</span><br><span class="line">    s.sendto(<span class="string">b&#x27;Hello, %s!&#x27;</span> % data, addr)</span><br></pre></td></tr></table></figure>
+<p><code>recvfrom()</code>方法返回数据和客户端的地址与端口，这样，服务器收到数据后，直接调用<code>sendto()</code>就可以把数据用UDP发给客户端。</p>
+<p>客户端使用UDP时，首先仍然创建基于UDP的Socket，然后，不需要调用<code>connect()</code>，直接通过<code>sendto()</code>给服务器发数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>)):</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.sendto(<span class="built_in">str</span>(data).encode(<span class="string">&#x27;utf-8&#x27;</span>), (<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<p>从服务器接收数据仍然调用<code>recv()</code>方法。</p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1499,102 +1599,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python错误和调试</title>
-    <url>/python/python%E9%94%99%E8%AF%AF%E5%92%8C%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<p>在程序运行过程中，总会遇到各种各样的错误。有代码逻辑错误，有运行时错误，有用户输入错误等。</p>
-<p>此外，还可以通过使用<code>pdb</code>进行调试。</p>
-<span id="more"></span>
-
-
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="try"><a href="#try" class="headerlink" title="try"></a>try</h2><p>python提供了 <code>try...except...finally...</code> 来处理异常。</p>
-<p>不同的错误类型，可以由不同的<code>except</code>来处理。 <code>finally</code> 可以没有。</p>
-<p>如果没有错误发生，可以在except语句块后面加一个<code>else</code>，当没有错误发生时，会自动执行<code>else</code>语句</p>
-<p>错误其实也是class，所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，捕获父类之后，下面捕获子类的代码就不会执行到了。 和java类似。</p>
-<p>python常见的错误类型和继承关系 <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception-hierarchy</a></p>
-<p>示例如下</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">error_test</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;try...&#x27;</span>)</span><br><span class="line">        result = <span class="number">10</span> / <span class="built_in">int</span>(num)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结果是 %s&#x27;</span> % result)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> ve:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError: &#x27;</span>, ve )</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> zde:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ZeroDivisionError: &#x27;</span>, zde)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;无异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;finally...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">error_test(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">error_test(<span class="number">2</span>)</span><br><span class="line">error_test(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">error_test(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>如下面错误的堆栈信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;err.py&quot;, line 11, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File &quot;err.py&quot;, line 9, in main</span><br><span class="line">    bar(&#x27;0&#x27;)</span><br><span class="line">  File &quot;err.py&quot;, line 6, in bar</span><br><span class="line">    return foo(s) * 2</span><br><span class="line">  File &quot;err.py&quot;, line 3, in foo</span><br><span class="line">    return 10 / int(s)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Traceback (most recent call last):</p>
-</blockquote>
-<p>第一行，告诉我们这是错误的跟踪信息。 后面可以逐行分析， 最终找到错误的根源。</p>
-<blockquote>
-<p>出错的时候，一定要分析错误的调用栈信息，才能定位错误的位置。</p>
-</blockquote>
-<h2 id="记录错误"><a href="#记录错误" class="headerlink" title="记录错误"></a>记录错误</h2><p><code>logging</code> 模块可以记录错误信息。</p>
-<p>捕获错误，然后记录错误堆栈信息，让程序继续往下运行。</p>
-<h2 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h2><p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
-<p>只有在必要的时候才定义我们自己的错误类型。如果可以选择Python已有的内置的错误类型（比如<code>ValueError</code>，<code>TypeError</code>），尽量使用Python内置的错误类型。</p>
-<p>我们还可以捕获异常，记录之后将异常重新抛出，也可以转换为其他异常(要符合逻辑，不能随意转换)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError!&#x27;</span>)</span><br><span class="line">        <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">10</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    <span class="keyword">raise</span> ValueError(<span class="string">&#x27;input error!&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-<p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
-<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
-<blockquote>
-<p>assert n !&#x3D; 0, ‘n is zero!’</p>
-</blockquote>
-<p><code>assert</code>的意思是，表达式<code>n != 0</code>应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
-<p>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code></p>
-<p>启动Python解释器时可以用<code>-O</code>(大写的英文O)参数来关闭<code>assert</code>， 关闭后 <code>assert</code> 可以当做 <code>pass</code></p>
-<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br></pre></td></tr></table></figure>
-
-<p><code>logging</code> 可以控制日志的级别， 有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>, 也可以通过配置，将日志输出到不同的地方。</p>
-<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
-<p>以参数<code>-m pdb</code> 启动后，pdb定位到下一步要执行的代码，可以输入命令 <code>l</code>(小写的L) 来查看代码。输入命令<code>n</code>可以单步的执行代码。</p>
-<p>可以输入<code>p 变量名</code>来查看变量。输入命令<code>q</code> 来结束调试。</p>
-<h2 id="pdb-set-trace"><a href="#pdb-set-trace" class="headerlink" title="pdb.set_trace()"></a>pdb.set_trace()</h2><p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># err.py</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">n = <span class="built_in">int</span>(s)</span><br><span class="line">pdb.set_trace() <span class="comment"># 运行到这里会自动暂停</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> / n)</span><br></pre></td></tr></table></figure>
-<p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入<code>pdb</code>调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行</p>
-<h2 id="IDE调试"><a href="#IDE调试" class="headerlink" title="IDE调试"></a>IDE调试</h2><p>VS Code 插件。</p>
-<p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
-<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
-<p>单元测试通过后，如果对代码做了修改，可以重新跑一遍单元测试，看是否通过，来判断修改是否对原来的逻辑造成了影响。</p>
-<p>编写单元测试时，我们需要编写一个测试类，从<code>unittest.TestCase</code>继承</p>
-<p>以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
-<p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，最常用的断言就是<code>assertEqual()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.assertEqual(<span class="built_in">abs</span>(-<span class="number">1</span>), <span class="number">1</span>) <span class="comment"># 断言函数返回的结果与1相等</span></span><br></pre></td></tr></table></figure>
-
-<p>另一种重要的断言就是期待抛出指定类型的Error</p>
-<p><strong>运行单元测试</strong></p>
-<p>最简单的运行方式是在<code>mydict_test.py</code>的最后加上两行代码，这样就可以把文件当做正常脚本运行。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
-
-<p>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。</p>
-<p>这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试</p>
-<p><strong>setUp与tearDown</strong></p>
-<p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
-<p><code>setUp()</code>和<code>tearDown()</code>方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在<code>setUp()</code>方法中连接数据库，在<code>tearDown()</code>方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码</p>
-<p>类似 java单元测试中的 <code>@Before</code> 和 <code>@After</code></p>
-<h1 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h1><p>Python官方文档中的示例代码，比如 <a href="https://docs.python.org/3/library/re.html">re模块</a> 就带了很多示例代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.search(<span class="string">&#x27;(?&lt;=abc)def&#x27;</span>, <span class="string">&#x27;abcdef&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;def&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可以把这些示例代码在Python的交互式环境下输入并执行，结果与文档中的示例代码显示的一致。</p>
-<p>这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。</p>
-<p>既然这些代码本身就可以粘贴出来直接运行，也可以自动执行写在注释中的这些代码。</p>
-<p>当我们编写注释时，如果写上这样的注释</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">abs</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Function to get absolute value of number.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(-1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(0)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">else</span> (-n)</span><br></pre></td></tr></table></figure>
-
-<p>可以明确地告诉函数的调用者该函数的期望输入和输出</p>
-<p>并且，Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</p>
-<p>doctest严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用…表示中间一大段烦人的输出。</p>
-<p>示例</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculate 1*2*...*n</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(10)</span></span><br><span class="line"><span class="string">    3628800</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(-1)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">numList = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> numList:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%s的阶乘结果是%s&#x27;</span> % (i  ,fact(i) ))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> doctest</span><br><span class="line">    doctest.testmod()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>doctest不仅可以用来测试，还可以直接作为示例代码，通过某些文档生成工具，可以自动把包含doctest的注释提取出来。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python面向对象编程</title>
     <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
@@ -1686,6 +1690,190 @@ Start --> Stop</pre>
 
 <p>类属性，类的所有实例都可以访问到。和java中继承很相似。</p>
 <p>在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，避免出现错误。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python高级特性</title>
+    <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
+<span id="more"></span>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>取一个list或tuple的部分元素，对于指定索引范围的操作，python提供了切片(Slice)操作符。</p>
+<p>比如一个list如下</p>
+<blockquote>
+<p>L&#x3D;[1,2,3,4,5,6,7,8,9]</p>
+</blockquote>
+<p>可以如下操作</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:4]</span></span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p><code>L[0:4]</code> 表示 从索引<code>0</code> 开始，直到索引<code>4</code> 未知，不包含结尾的索引<code>4</code> ， 所以取的是索引位置  <code>0</code> <code>1</code> <code>2</code> <code>3</code> 对应的元素。</p>
+<p>如果第一个索引位置是0 ， 也可以省略</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:2]</span></span><br><span class="line">[1, 2]</span><br></pre></td></tr></table></figure>
+<p>python支持按照倒序通过索引获取元素，同样也支持按照倒序进行切片。 倒序的第一个索引是 <code>-1</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-2:]</span></span><br><span class="line">[8, 9]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-4:-2]</span></span><br><span class="line">[6, 7]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:-2]</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
+
+<p>也可以对空集合进行切片, 对空集合直接只用索引访问会报错，但是切片不会。 </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:1]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:1]</span></span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p>使用场景</p>
+<p>比如创建一个0-99的数列。</p>
+<blockquote>
+<p>L&#x3D;list(range(100))</p>
+</blockquote>
+<p>取前10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10]</span></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<p>后10个</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-10:]</span></span><br><span class="line">[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</span><br></pre></td></tr></table></figure>
+<p>前10个数，每两个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10:2]</span></span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
+<p>所有数，每5个取一个：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[::5]</span></span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
+
+<p>只写 <code>[:]</code> 原样复制一个list</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:]</span></span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br></pre></td></tr></table></figure>
+<p>tuple 也可以做上述操作，只是tuple切片的结果依然是tuple。</p>
+<p>字符串 <code>xxxxx</code> 也可以看成是一种list，每个元素就是一个字符,  也可以进行切片。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[0:1]</span></span><br><span class="line">&#x27;a&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[2:]</span></span><br><span class="line">&#x27;cdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::]</span></span><br><span class="line">&#x27;abcdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::3]</span></span><br><span class="line">&#x27;adg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过for循环来遍历集合，成为迭代。</p>
+<p>在python中， 迭代是通过 <code>for ... in</code>  来完成的。和 java的迭代类似。</p>
+<p>dict的迭代</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代 key</span></span><br><span class="line">d = &#123;&quot;k1&quot;:&quot;v1&quot;, &quot;k2&quot; : &quot;v2&quot;, &quot;k3&quot;:&quot;v3&quot;&#125;</span><br><span class="line">for k in d:</span><br><span class="line">    print(k)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代value</span></span><br><span class="line">for v in d.values():</span><br><span class="line">    print(v)</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时迭代 key和value</span></span><br><span class="line">for k, v in d.items():</span><br><span class="line">    print(k, v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>dict 默认迭代的是 <code>key</code>， 迭代出的顺序可能不一样。</p>
+<p>字符串也可以进行迭代，输出每一个字符。  </p>
+<p>只要一个对象是可迭代的， <code>for</code> 循环就可以运行。</p>
+<p>通过 <code>collections.abc</code> 模块的 <code>Iterable</code> 判断对象是否是可迭代的。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections.abc import Iterable</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(<span class="string">&#x27;abc&#x27;</span>, Iterable) <span class="comment"># str是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], Iterable) <span class="comment"># list是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(123, Iterable) <span class="comment"># 整数是否可迭代</span></span></span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>对list使用下标循环， 可以使用 <code>enumerate</code> 将list转换为 索引-元素对</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line">for i, v in enumerate(L):</span><br><span class="line">    print(i, v) </span><br></pre></td></tr></table></figure>
+
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> 可以用<code>list(range(1, 11))</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(range(1, 11))</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<p>生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11)]</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
+<p>把要生成的元素<code>x*x</code> 放在前面， 后面跟上 <code>for</code> 循环。 </p>
+<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11) <span class="keyword">if</span> x % 2 == 0]</span></span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
+
+<p><strong>if else</strong></p>
+<p>列表生成式， for 后面的<code>if</code> 是筛选条件， 所以不能加上 <code>else</code>， 否则无法筛选。</p>
+<p><code>for</code> 前面的<code>if</code> 是表达式， 必须加上else </p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>列表生成式，直接把元素都创建出来了，会占用内存，数量也会受到内存的限制。</p>
+<p>所以，如果元素按照某种算法推算出来，在循环中不断推算出后面的元素，就不必创建完整的list， 这种一边循环一边计算的机制，称为生成器 generator</p>
+<p>创建 generator 有很多种方法，可以把生成式的 <code>[]</code> 改成 <code>()</code> ，就创建了一个 generator</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(10))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g</span></span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x000001A96593F780&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> g:</span></span><br><span class="line">...   print(i)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以调用 <code>next(g)</code> 方法获取下一个元素， 也可以使用for 循环进行迭代。</p>
+<p>要把普通函数改造成 generator函数，需要加上 <code>yield</code> 关键字。</p>
+<p>generator函数在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
+<p><strong>调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以直接作用于<code>for</code> 循环的对象，统称为可迭代对象<code>Iterable</code></p>
+<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>. 可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象</p>
+<p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
+<p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
+<p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python错误和调试</title>
+    <url>/python/python%E9%94%99%E8%AF%AF%E5%92%8C%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<p>在程序运行过程中，总会遇到各种各样的错误。有代码逻辑错误，有运行时错误，有用户输入错误等。</p>
+<p>此外，还可以通过使用<code>pdb</code>进行调试。</p>
+<span id="more"></span>
+
+
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="try"><a href="#try" class="headerlink" title="try"></a>try</h2><p>python提供了 <code>try...except...finally...</code> 来处理异常。</p>
+<p>不同的错误类型，可以由不同的<code>except</code>来处理。 <code>finally</code> 可以没有。</p>
+<p>如果没有错误发生，可以在except语句块后面加一个<code>else</code>，当没有错误发生时，会自动执行<code>else</code>语句</p>
+<p>错误其实也是class，所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，捕获父类之后，下面捕获子类的代码就不会执行到了。 和java类似。</p>
+<p>python常见的错误类型和继承关系 <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception-hierarchy</a></p>
+<p>示例如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">error_test</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;try...&#x27;</span>)</span><br><span class="line">        result = <span class="number">10</span> / <span class="built_in">int</span>(num)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结果是 %s&#x27;</span> % result)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> ve:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError: &#x27;</span>, ve )</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> zde:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ZeroDivisionError: &#x27;</span>, zde)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;无异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;finally...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">error_test(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">error_test(<span class="number">2</span>)</span><br><span class="line">error_test(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">error_test(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>如下面错误的堆栈信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;err.py&quot;, line 11, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File &quot;err.py&quot;, line 9, in main</span><br><span class="line">    bar(&#x27;0&#x27;)</span><br><span class="line">  File &quot;err.py&quot;, line 6, in bar</span><br><span class="line">    return foo(s) * 2</span><br><span class="line">  File &quot;err.py&quot;, line 3, in foo</span><br><span class="line">    return 10 / int(s)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Traceback (most recent call last):</p>
+</blockquote>
+<p>第一行，告诉我们这是错误的跟踪信息。 后面可以逐行分析， 最终找到错误的根源。</p>
+<blockquote>
+<p>出错的时候，一定要分析错误的调用栈信息，才能定位错误的位置。</p>
+</blockquote>
+<h2 id="记录错误"><a href="#记录错误" class="headerlink" title="记录错误"></a>记录错误</h2><p><code>logging</code> 模块可以记录错误信息。</p>
+<p>捕获错误，然后记录错误堆栈信息，让程序继续往下运行。</p>
+<h2 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h2><p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
+<p>只有在必要的时候才定义我们自己的错误类型。如果可以选择Python已有的内置的错误类型（比如<code>ValueError</code>，<code>TypeError</code>），尽量使用Python内置的错误类型。</p>
+<p>我们还可以捕获异常，记录之后将异常重新抛出，也可以转换为其他异常(要符合逻辑，不能随意转换)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError!&#x27;</span>)</span><br><span class="line">        <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">10</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    <span class="keyword">raise</span> ValueError(<span class="string">&#x27;input error!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
+<blockquote>
+<p>assert n !&#x3D; 0, ‘n is zero!’</p>
+</blockquote>
+<p><code>assert</code>的意思是，表达式<code>n != 0</code>应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
+<p>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code></p>
+<p>启动Python解释器时可以用<code>-O</code>(大写的英文O)参数来关闭<code>assert</code>， 关闭后 <code>assert</code> 可以当做 <code>pass</code></p>
+<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br></pre></td></tr></table></figure>
+
+<p><code>logging</code> 可以控制日志的级别， 有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>, 也可以通过配置，将日志输出到不同的地方。</p>
+<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
+<p>以参数<code>-m pdb</code> 启动后，pdb定位到下一步要执行的代码，可以输入命令 <code>l</code>(小写的L) 来查看代码。输入命令<code>n</code>可以单步的执行代码。</p>
+<p>可以输入<code>p 变量名</code>来查看变量。输入命令<code>q</code> 来结束调试。</p>
+<h2 id="pdb-set-trace"><a href="#pdb-set-trace" class="headerlink" title="pdb.set_trace()"></a>pdb.set_trace()</h2><p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># err.py</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">n = <span class="built_in">int</span>(s)</span><br><span class="line">pdb.set_trace() <span class="comment"># 运行到这里会自动暂停</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> / n)</span><br></pre></td></tr></table></figure>
+<p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入<code>pdb</code>调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行</p>
+<h2 id="IDE调试"><a href="#IDE调试" class="headerlink" title="IDE调试"></a>IDE调试</h2><p>VS Code 插件。</p>
+<p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
+<p>单元测试通过后，如果对代码做了修改，可以重新跑一遍单元测试，看是否通过，来判断修改是否对原来的逻辑造成了影响。</p>
+<p>编写单元测试时，我们需要编写一个测试类，从<code>unittest.TestCase</code>继承</p>
+<p>以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
+<p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，最常用的断言就是<code>assertEqual()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.assertEqual(<span class="built_in">abs</span>(-<span class="number">1</span>), <span class="number">1</span>) <span class="comment"># 断言函数返回的结果与1相等</span></span><br></pre></td></tr></table></figure>
+
+<p>另一种重要的断言就是期待抛出指定类型的Error</p>
+<p><strong>运行单元测试</strong></p>
+<p>最简单的运行方式是在<code>mydict_test.py</code>的最后加上两行代码，这样就可以把文件当做正常脚本运行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+<p>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。</p>
+<p>这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试</p>
+<p><strong>setUp与tearDown</strong></p>
+<p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
+<p><code>setUp()</code>和<code>tearDown()</code>方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在<code>setUp()</code>方法中连接数据库，在<code>tearDown()</code>方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码</p>
+<p>类似 java单元测试中的 <code>@Before</code> 和 <code>@After</code></p>
+<h1 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h1><p>Python官方文档中的示例代码，比如 <a href="https://docs.python.org/3/library/re.html">re模块</a> 就带了很多示例代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.search(<span class="string">&#x27;(?&lt;=abc)def&#x27;</span>, <span class="string">&#x27;abcdef&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;def&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以把这些示例代码在Python的交互式环境下输入并执行，结果与文档中的示例代码显示的一致。</p>
+<p>这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。</p>
+<p>既然这些代码本身就可以粘贴出来直接运行，也可以自动执行写在注释中的这些代码。</p>
+<p>当我们编写注释时，如果写上这样的注释</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">abs</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Function to get absolute value of number.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(-1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(0)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">else</span> (-n)</span><br></pre></td></tr></table></figure>
+
+<p>可以明确地告诉函数的调用者该函数的期望输入和输出</p>
+<p>并且，Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</p>
+<p>doctest严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用…表示中间一大段烦人的输出。</p>
+<p>示例</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculate 1*2*...*n</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(10)</span></span><br><span class="line"><span class="string">    3628800</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(-1)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">numList = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> numList:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%s的阶乘结果是%s&#x27;</span> % (i  ,fact(i) ))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> doctest</span><br><span class="line">    doctest.testmod()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>doctest不仅可以用来测试，还可以直接作为示例代码，通过某些文档生成工具，可以自动把包含doctest的注释提取出来。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1800,93 +1988,5 @@ Start --> Stop</pre>
 <p><strong>metaclass</strong></p>
 <p>除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>python高级特性</title>
-    <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
-<span id="more"></span>
-
-<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>取一个list或tuple的部分元素，对于指定索引范围的操作，python提供了切片(Slice)操作符。</p>
-<p>比如一个list如下</p>
-<blockquote>
-<p>L&#x3D;[1,2,3,4,5,6,7,8,9]</p>
-</blockquote>
-<p>可以如下操作</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:4]</span></span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
-<p><code>L[0:4]</code> 表示 从索引<code>0</code> 开始，直到索引<code>4</code> 未知，不包含结尾的索引<code>4</code> ， 所以取的是索引位置  <code>0</code> <code>1</code> <code>2</code> <code>3</code> 对应的元素。</p>
-<p>如果第一个索引位置是0 ， 也可以省略</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:2]</span></span><br><span class="line">[1, 2]</span><br></pre></td></tr></table></figure>
-<p>python支持按照倒序通过索引获取元素，同样也支持按照倒序进行切片。 倒序的第一个索引是 <code>-1</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-2:]</span></span><br><span class="line">[8, 9]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-4:-2]</span></span><br><span class="line">[6, 7]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:-2]</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
-
-<p>也可以对空集合进行切片, 对空集合直接只用索引访问会报错，但是切片不会。 </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[0:1]</span></span><br><span class="line">[]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:1]</span></span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
-
-<p>使用场景</p>
-<p>比如创建一个0-99的数列。</p>
-<blockquote>
-<p>L&#x3D;list(range(100))</p>
-</blockquote>
-<p>取前10个</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10]</span></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
-
-<p>后10个</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[-10:]</span></span><br><span class="line">[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</span><br></pre></td></tr></table></figure>
-<p>前10个数，每两个取一个：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:10:2]</span></span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
-<p>所有数，每5个取一个：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[::5]</span></span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
-
-<p>只写 <code>[:]</code> 原样复制一个list</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L[:]</span></span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br></pre></td></tr></table></figure>
-<p>tuple 也可以做上述操作，只是tuple切片的结果依然是tuple。</p>
-<p>字符串 <code>xxxxx</code> 也可以看成是一种list，每个元素就是一个字符,  也可以进行切片。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[0:1]</span></span><br><span class="line">&#x27;a&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[2:]</span></span><br><span class="line">&#x27;cdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::]</span></span><br><span class="line">&#x27;abcdefg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;abcdefg&#x27;</span>[::3]</span></span><br><span class="line">&#x27;adg&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>通过for循环来遍历集合，成为迭代。</p>
-<p>在python中， 迭代是通过 <code>for ... in</code>  来完成的。和 java的迭代类似。</p>
-<p>dict的迭代</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代 key</span></span><br><span class="line">d = &#123;&quot;k1&quot;:&quot;v1&quot;, &quot;k2&quot; : &quot;v2&quot;, &quot;k3&quot;:&quot;v3&quot;&#125;</span><br><span class="line">for k in d:</span><br><span class="line">    print(k)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">迭代value</span></span><br><span class="line">for v in d.values():</span><br><span class="line">    print(v)</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时迭代 key和value</span></span><br><span class="line">for k, v in d.items():</span><br><span class="line">    print(k, v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>dict 默认迭代的是 <code>key</code>， 迭代出的顺序可能不一样。</p>
-<p>字符串也可以进行迭代，输出每一个字符。  </p>
-<p>只要一个对象是可迭代的， <code>for</code> 循环就可以运行。</p>
-<p>通过 <code>collections.abc</code> 模块的 <code>Iterable</code> 判断对象是否是可迭代的。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections.abc import Iterable</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(<span class="string">&#x27;abc&#x27;</span>, Iterable) <span class="comment"># str是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], Iterable) <span class="comment"># list是否可迭代</span></span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(123, Iterable) <span class="comment"># 整数是否可迭代</span></span></span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-
-<p>对list使用下标循环， 可以使用 <code>enumerate</code> 将list转换为 索引-元素对</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">L=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br><span class="line">for i, v in enumerate(L):</span><br><span class="line">    print(i, v) </span><br></pre></td></tr></table></figure>
-
-<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><p>要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> 可以用<code>list(range(1, 11))</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; list(range(1, 11))</span></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
-<p>生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11)]</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
-<p>把要生成的元素<code>x*x</code> 放在前面， 后面跟上 <code>for</code> 循环。 </p>
-<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 11) <span class="keyword">if</span> x % 2 == 0]</span></span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
-
-<p><strong>if else</strong></p>
-<p>列表生成式， for 后面的<code>if</code> 是筛选条件， 所以不能加上 <code>else</code>， 否则无法筛选。</p>
-<p><code>for</code> 前面的<code>if</code> 是表达式， 必须加上else </p>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>列表生成式，直接把元素都创建出来了，会占用内存，数量也会受到内存的限制。</p>
-<p>所以，如果元素按照某种算法推算出来，在循环中不断推算出后面的元素，就不必创建完整的list， 这种一边循环一边计算的机制，称为生成器 generator</p>
-<p>创建 generator 有很多种方法，可以把生成式的 <code>[]</code> 改成 <code>()</code> ，就创建了一个 generator</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(10))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; g</span></span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x000001A96593F780&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> i <span class="keyword">in</span> g:</span></span><br><span class="line">...   print(i)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>可以调用 <code>next(g)</code> 方法获取下一个元素， 也可以使用for 循环进行迭代。</p>
-<p>要把普通函数改造成 generator函数，需要加上 <code>yield</code> 关键字。</p>
-<p>generator函数在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
-<p><strong>调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>可以直接作用于<code>for</code> 循环的对象，统称为可迭代对象<code>Iterable</code></p>
-<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>. 可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象</p>
-<p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
-<p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
-<p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
   </entry>
 </search>
