@@ -32,6 +32,28 @@
       </tags>
   </entry>
   <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>docsify</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git的使用</title>
     <url>/git-command/</url>
     <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
@@ -118,28 +140,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
       </tags>
   </entry>
   <entry>
@@ -493,7 +493,7 @@ Start --> Stop</pre>
   <entry>
     <title>go语言结构和基础语法</title>
     <url>/go/go%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>简单介绍下go语言的程序结构</p>
+    <content><![CDATA[<p>简单介绍下go语言的程序结构，基础语法和数据类型。</p>
 <span id="more"></span>
 
 <h1 id="结构示例"><a href="#结构示例" class="headerlink" title="结构示例"></a>结构示例</h1><p>go语言的基础组成包含以下部分</p>
@@ -570,7 +570,113 @@ Start --> Stop</pre>
 <p>Go 语言中使用 <code>fmt.Sprintf</code> 或 <code>fmt.Printf</code> 格式化字符串并赋值给新串</p>
 <p><code>Sprintf</code> 根据格式化参数生成格式化的字符串并返回该字符串<br><code>Printf</code>  根据格式化参数生成格式化的字符串并写入标准输出</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*输出hello world*/</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;hello, world&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;hello, &quot;</span> + <span class="string">&quot;world&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> url = <span class="string">&quot;name=%s&amp;num=%d&quot;</span></span><br><span class="line">	<span class="keyword">var</span> num = <span class="number">1</span></span><br><span class="line">	<span class="keyword">var</span> name = <span class="string">&quot;张三&quot;</span></span><br><span class="line">	<span class="keyword">var</span> result = fmt.Sprintf(url, name, num)</span><br><span class="line">	fmt.Println(result)</span><br><span class="line">	fmt.Printf(url, name, num)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>数据类型用于声明函数和变量。数据类型是为了把数据分成内存大小不同的数据，编程的时候需要用大数据的时候才需要申请大内存，就可以充分利用内存。</p>
+<ol>
+<li>布尔型</li>
+</ol>
+<p>布尔型只能是true或者false， 例如 <code>var b bool = true</code></p>
+<ol start="2">
+<li>数字类型</li>
+</ol>
+<p>整型 int 和浮点型 float32、float64，Go 语言支持整型和浮点型数字，并且支持复数，其中位的运算采用补码。</p>
+<p>还区分有符号和无符号的</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uint8</td>
+<td>无符号 8 位整型 (0 到 255)</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>无符号 16 位整型 (0 到 65535)</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>无符号 32 位整型 (0 到 4294967295)</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>无符号 64 位整型</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>有符号 8 位整型 (-128 到 127)</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>有符号 16 位整型 (-32768 到 32767)</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>有符号 32 位整型 (-2147483648 到 2147483647)</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>有符号 64 位整型</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>字符串类型</li>
+</ol>
+<p>字符串就是一串固定长度的字符连接起来的字符序列。Go 的字符串是由单个字节连接起来的。使用 <code>UTF-8</code> 编码</p>
+<ol start="4">
+<li><p>派生类型</p>
+<ul>
+<li>指针类型（Pointer）</li>
+<li>数组类型</li>
+<li>结构化类型(struct)</li>
+<li>Channel 类型</li>
+<li>函数类型</li>
+<li>切片类型</li>
+<li>接口类型（interface）</li>
+<li>Map 类型</li>
+</ul>
+</li>
+</ol>
+<p>派生类型(也称为复合类型)</p>
+<ol start="5">
+<li>其他数字类型</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>类似 uint8</td>
+</tr>
+<tr>
+<td>rune</td>
+<td>类似 int32</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>32 或 64 位</td>
+</tr>
+<tr>
+<td>int</td>
+<td>与 uint 一样大小</td>
+</tr>
+<tr>
+<td>uintptr</td>
+<td>无符号整型，用于存放一个指针</td>
+</tr>
+</tbody></table>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
   </entry>
   <entry>
     <title>python-web开发</title>
@@ -665,6 +771,21 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>python-venv虚拟环境</title>
+    <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
+<p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python函数</title>
     <url>/python/python%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>主要介绍python中函数的定义，调用， python的内置函数等。</p>
@@ -743,21 +864,6 @@ Start --> Stop</pre>
 </ol>
 <h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
 <p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python-venv虚拟环境</title>
-    <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
-<p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
-<span id="more"></span>
-
 ]]></content>
       <categories>
         <category>技术</category>
@@ -904,72 +1010,6 @@ Start --> Stop</pre>
 <p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
 <h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
 <p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python常用内建模块2</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%972/</url>
-    <content><![CDATA[<p>本章主要介绍 argparse， bass64， struct，hashlib， hmac的使用。</p>
-<span id="more"></span>
-
-<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><p>内置的<code>sys.argv</code>保留了完整的参数列表，我们可以从中解析出需要的参数，但是如果参数复杂点，解析起来就很麻烦了，可以使用<code>argparse</code></p>
-<p>假设需要编写一个mysql命令行登录程序，需要的参数如下</p>
-<blockquote>
-<p>mysql -h localhost –port 3306 -u root -p password</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse,sys</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(</span><br><span class="line">    prog=<span class="string">&#x27;命令行登录&#x27;</span>,</span><br><span class="line">    description=<span class="string">&#x27;命令行登录mysql数据库&#x27;</span>,</span><br><span class="line">    epilog=<span class="string">&#x27;Copyright,2023&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义关键字参数: ，此处不能用 -h简写，和 argparse的-h帮助参数冲突了。</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--host&#x27;</span>, default=<span class="string">&#x27;localhost&#x27;</span>)</span><br><span class="line"><span class="comment"># 此参数必须为int类型:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--port&#x27;</span>, default=<span class="string">&#x27;3306&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># 允许用户输入简写的-u:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-u&#x27;</span>, <span class="string">&#x27;--user&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--password&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析参数:</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;parsed args:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;host = <span class="subst">&#123;args.host&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;port = <span class="subst">&#123;args.port&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;user = <span class="subst">&#123;args.user&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;password = <span class="subst">&#123;args.password&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>输入有效的参数，能解析出所需要的全部参数。参数不对或者缺失的话，也会有详细的提示</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python argparse-test.py --host localhost --port 3306 -u root</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line">命令行登录: error: the following arguments are required: -p/--password</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>输入参数 <code>-h</code> 会有对应的提示信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">D:\workspace\python&gt;python argparse-test.py -h</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line"></span><br><span class="line">命令行登录mysql数据库</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  --host HOST</span><br><span class="line">  --port PORT</span><br><span class="line">  -u USER, --user USER</span><br><span class="line">  -p PASSWORD, --password PASSWORD</span><br><span class="line"></span><br><span class="line">Copyright,2023</span><br></pre></td></tr></table></figure>
-
-<p>只有当参数全部有效时，才会返回一个 <a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">NameSpace</a> 对象，获取对应的参数就把参数名当作属性获取，非常方便</p>
-<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>Base64是一种用64个字符来表示任意二进制数据的方法。A-Z、a-z、0-9、”+”和”&#x2F;“两个特殊字符，共计64个字符。因此，在URL安全的Base64编码中，常常将”+”替换为”-“，将”&#x2F;“替换为”_”，以避免引起冲突。</p>
-<p>Base64编码将每3个字节的数据转换为4个字符，因此每个字符提供了6个比特位的信息</p>
-<p>Base64对二进制数据进行处理，每3个字节一组，一共是<code>3x8=24bit</code>，划为4组，每组正好6个bit：</p>
-<p>这样我们得到4个数字作为索引，然后查表，获得相应的4个字符，就是编码后的字符串。</p>
-<p>示例参考 <a href="https://www.base64decode.org/">example</a>  页面的example部分。<code>Man</code>转换为base64结果为<code>TWFu</code></p>
-<p><img data-src="https://pic1.zhimg.com/80/v2-3b7c9b9441623c1c6b5b6099bb897cbc_720w.png" alt="示例图"> </p>
-<p>Base64编码会把3字节的二进制数据编码为4字节的文本数据，长度增加33%，好处是编码后的文本数据可以在邮件正文、网页等直接显示</p>
-<p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用<code>\x00</code>字节在末尾补足后，再在编码的末尾加上1个或2个<code>=</code>号，表示补了多少字节，解码的时候，会自动去掉。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; e64 = base64.b64encode(<span class="string">&#x27;hahaha\x00&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(e64)</span></span><br><span class="line">b&#x27;aGFoYWhhAA==&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d64 = base64.b64decode(b64)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64)</span></span><br><span class="line">b&#x27;hahaha&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">hahaha</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>url safe</code>url安全的base64编码。把字符<code>+</code>和<code>/</code>分别变成<code>-</code>和<code>_</code>。使用<code>base64.urlsafe_b64encode()</code>和<code>base64.urlsafe_b64decode()</code></p>
-<p>由于<code>=</code>字符也可能出现在Base64编码中，但&#x3D;用在URL、Cookie里面会造成歧义，所以，很多Base64编码后会把<code>=</code>去掉</p>
-<p>去掉<code>=</code>后怎么解码呢？因为Base64是把<code>3</code>个字节变为<code>4</code>个字节，所以，Base64编码的长度永远是4的倍数，因此，需要加上&#x3D;把Base64字符串的长度变为4的倍数，就可以正常解码了。</p>
-<h1 id="struct字节和二进制的转换"><a href="#struct字节和二进制的转换" class="headerlink" title="struct字节和二进制的转换"></a>struct字节和二进制的转换</h1><p>准确地讲，Python没有专门处理字节的数据类型。但由于b’str’可以表示字节，所以，字节数组＝二进制str。Python提供了一个<code>struct</code>模块来解决<code>bytes</code>和其他二进制数据类型的转换</p>
-<p><code>struct</code>的<code>pack</code>函数把任意数据类型变成<code>bytes</code></p>
-<p>pack的第一个参数是处理指令，<code>&#39;&gt;I&#39;</code>的意思是：</p>
-<p><code>&gt;</code> 表示字节顺序是big-endian，也就是网络序，<code>I</code>表示4字节无符号整数。</p>
-<p>后面的参数个数要和处理指令一致。</p>
-<p><code>unpack</code>把<code>bytes</code>变成相应的数据类型</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import struct</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.pack(<span class="string">&#x27;&gt;I&#x27;</span>, 2234324)</span></span><br><span class="line">b&#x27;\x00&quot;\x17\xd4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;I&#x27;</span>, b<span class="string">&#x27;\x00&quot;\x17\xd4&#x27;</span>)</span></span><br><span class="line">(2234324,)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;IH&#x27;</span>, b<span class="string">&#x27;\xf0\xf0\xf0\xf0\x80\x80&#x27;</span>)</span></span><br><span class="line">(4042322160, 32896)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>根据<code>&gt;IH</code>的说明，后面的<code>bytes</code>依次变为<code>I</code>：4字节无符号整数和<code>H</code>：2字节无符号整数。</p>
-<p>所以，尽管Python不适合编写底层操作字节流的代码，但在对性能要求不高的地方，利用struct就方便多了。</p>
-<p>struct支持的数据类型参考<a href="https://docs.python.org/3/library/struct.html#format-characters">format-characters</a> , </p>
-<h1 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h1><p><strong>摘要算法简介</strong></p>
-<p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
-<p>摘要算法，通过摘要函数，计算出固定长度的摘要，用于验证数据，防篡改。</p>
-<p>md5 和 sha1</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hashlib</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5=hashlib.md5()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5</span></span><br><span class="line">&lt;md5 _hashlib.HASH object @ 0x0000020B0560E8F0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(md5.hexdigest())</span></span><br><span class="line">098f6bcd4621d373cade4e832627b4f6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1 = hashlib.sha1()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(sha1.hexdigest())</span></span><br><span class="line">a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>摘要可能出现hash碰撞的情况，不同的内容计算出来的hash值相同。</p>
-<p><strong>摘要算法应用</strong></p>
-<p>明文密码加盐，然后计算hash值，进行比对，判断用户输入的密码是否正确</p>
-<h1 id="hmac"><a href="#hmac" class="headerlink" title="hmac"></a>hmac</h1><p>如果<code>salt</code>是我们自己随机生成的，通常我们计算MD5时采用<code>md5(message + salt)</code>。</p>
-<p>这实际上就是Hmac算法：Keyed-Hashing for Message Authentication。它通过一个标准算法，在计算哈希的过程中，把key混入计算过程中。</p>
-<p>Hmac算法针对所有哈希算法都通用，无论是MD5还是SHA-1。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hmac</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; message = b<span class="string">&#x27;test&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; key = b<span class="string">&#x27;hahah&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; h = hmac.new(key, message, digestmod=<span class="string">&#x27;SHA1&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(h.hexdigest())</span></span><br><span class="line">5ab4f2d179d1243d6ff9084a0ca659a99bbfcf3f</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可见使用hmac和普通hash算法非常类似。hmac输出的长度和原始哈希算法的长度一致。需要注意传入的key和message都是bytes类型，str类型需要首先编码为bytes</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1140,76 +1180,63 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python常用内建模块1</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%971/</url>
-    <content><![CDATA[<p>Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
-<p>主要介绍了datetime和collections模块</p>
+    <title>python常用内建模块2</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%972/</url>
+    <content><![CDATA[<p>本章主要介绍 argparse， bass64， struct，hashlib， hmac的使用。</p>
 <span id="more"></span>
 
-<h1 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h1><p>datetime是Python处理日期和时间的标准库。</p>
-<p><strong>获取当前日期和时间</strong></p>
-<p><code>datetime.now()</code>返回的是当前日期和时间。</p>
-<p><strong>获取指定日期和时间</strong></p>
-<p>要指定某个日期和时间，我们直接用参数构造一个<code>datetime</code></p>
-<p><strong>datetime转换为timestamp</strong></p>
-<p>timestamp时间戳，timestamp的值与时区毫无关系，因为timestamp一旦确定，其UTC时间就确定了，注意时区的问题</p>
-<p>把一个<code>datetime</code>类型转换为<code>timestamp</code>只需要简单调用<code>timestamp()</code>方法：</p>
-<p>Python的timestamp是一个浮点数，整数位表示秒。</p>
-<p><strong>timestamp转换为datetime</strong></p>
-<p>要把<code>timestamp</code>转换为<code>datetime</code>，使用<code>datetime</code>提供的<code>fromtimestamp()</code>方法：</p>
-<p><code>timestamp</code>是一个浮点数，它没有时区的概念，而<code>datetime</code>是有时区的。上述转换是在timestamp和本地时间做转换。本地时间是指当前操作系统设定的时区</p>
-<p>timestamp也可以直接被转换到UTC标准时区的时间，使用<code>utcfromtimestamp()</code>方法，后续该方法可能会被移除。</p>
-<p><strong>str转换为datetime</strong></p>
-<p>把日期和时间的字符串转换为<code>datetime</code>，通过<code>datetime.strptime()</code>实现，需要一个日期和时间的格式化字符串：</p>
-<p>格式化字符串参考文档 <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior">strftime-strptime-behavior</a></p>
-<p><strong>datetime转换为str</strong></p>
-<p>使用<code>strftime()</code>函数实现，参数需要一个格式化的字符串，和转datetime的一样。</p>
-<p><code>now.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;)</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取当前日期和时间</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from datetime import datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; now = datetime.now()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now)</span></span><br><span class="line">2023-12-26 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(now))</span></span><br><span class="line">&lt;class &#x27;datetime.datetime&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取指定日期和时间</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; dt = datetime(2023,12,26,11,22,44)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(dt)</span></span><br><span class="line">2023-12-26 11:22:44</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">timestamp</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(dt.timestamp())</span></span><br><span class="line">1703560964.0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now.timestamp())</span></span><br><span class="line">1703561818.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">转datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; t = 1601234654.1243</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(datetime.fromtimestamp(t))</span></span><br><span class="line">2020-09-28 03:24:14.124300</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(datetime.utcfromtimestamp(t))</span></span><br><span class="line">2020-09-27 19:24:14.124300</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">字符串转datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; day  = datetime.strptime(<span class="string">&#x27;2023-12-01 12:11:01&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(day)</span></span><br><span class="line">2023-12-01 12:11:01</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(day))</span></span><br><span class="line">&lt;class &#x27;datetime.datetime&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">datetime转字符串</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now.strftime( <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span></span><br><span class="line">2023-12-26 11:36:58</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">datetime 加减计算</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now)</span></span><br><span class="line">2023-12-26 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; nd = now + timedelta(days = 2)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(nd)</span></span><br><span class="line">2023-12-28 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>datetime加减</strong></p>
-<p>加减可以直接用<code>+</code>和<code>-</code>运算符，不过需要导入<code>timedelta</code>这个类</p>
-<p><strong>本地时间转换为UTC时间</strong></p>
-<p>一个<code>datetime</code>类型有一个时区属性<code>tzinfo</code>，但是默认为<code>None</code>，可以给<code>datetime</code>设置一个时区。</p>
+<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><p>内置的<code>sys.argv</code>保留了完整的参数列表，我们可以从中解析出需要的参数，但是如果参数复杂点，解析起来就很麻烦了，可以使用<code>argparse</code></p>
+<p>假设需要编写一个mysql命令行登录程序，需要的参数如下</p>
 <blockquote>
-<p>tz_utc_8 &#x3D; timezone(timedelta(hours&#x3D;8)) # 创建时区UTC+8:00</p>
+<p>mysql -h localhost –port 3306 -u root -p password</p>
 </blockquote>
-<p><strong>时区转换</strong><br>可以先通过<code>utcnow()</code>拿到当前的UTC时间，再转换为任意时区的时间</p>
-<p>利用带时区的<code>datetime</code>，通过<code>astimezone()</code>方法，可以转换到任意时区</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from datetime import datetime, timedelta, timezone</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(utc_dt)</span></span><br><span class="line">2023-12-26 06:17:28.304592+00:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; bj_dt = utc_dt.astimezone(timezone(timedelta(hours=8)))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(bj_dt)</span></span><br><span class="line">2023-12-26 14:17:28.304592+08:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; tokyo_dt=bj_dt.astimezone(timezone(timedelta(hours=9)))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(tokyo_dt)</span></span><br><span class="line">2023-12-26 15:17:28.304592+09:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse,sys</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(</span><br><span class="line">    prog=<span class="string">&#x27;命令行登录&#x27;</span>,</span><br><span class="line">    description=<span class="string">&#x27;命令行登录mysql数据库&#x27;</span>,</span><br><span class="line">    epilog=<span class="string">&#x27;Copyright,2023&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义关键字参数: ，此处不能用 -h简写，和 argparse的-h帮助参数冲突了。</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--host&#x27;</span>, default=<span class="string">&#x27;localhost&#x27;</span>)</span><br><span class="line"><span class="comment"># 此参数必须为int类型:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--port&#x27;</span>, default=<span class="string">&#x27;3306&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># 允许用户输入简写的-u:</span></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-u&#x27;</span>, <span class="string">&#x27;--user&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--password&#x27;</span>, required=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析参数:</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印参数:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;parsed args:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;host = <span class="subst">&#123;args.host&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;port = <span class="subst">&#123;args.port&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;user = <span class="subst">&#123;args.user&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;password = <span class="subst">&#123;args.password&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="collections集合模块"><a href="#collections集合模块" class="headerlink" title="collections集合模块"></a>collections集合模块</h1><p><strong>namedtuple</strong></p>
-<p><code>tuple</code>可以表示不变集合，一个点的二维坐标就可以表示成 <code>p = (1, 2)</code>，但是看到 <code>(1, 2)</code> 很难看出是表示一个坐标的。定义一个calss又小题大做了，这时可以用<code>namedtuple</code></p>
-<p><code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tuple</code>元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
-<p>我们用<code>namedtuple</code>可以很方便地定义一种数据类型，它具备<code>tuple</code>的不变性，又可以根据属性来引用，使用十分方便。</p>
-<p>可以验证创建的<code>Point</code>对象是<code>tuple</code>的一种子类</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import namedtuple</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; p = Point(1,2)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; p.x</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(p)</span></span><br><span class="line">&lt;class &#x27;__main__.Point&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(p, tuple)</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输入有效的参数，能解析出所需要的全部参数。参数不对或者缺失的话，也会有详细的提示</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python argparse-test.py --host localhost --port 3306 -u root</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line">命令行登录: error: the following arguments are required: -p/--password</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输入参数 <code>-h</code> 会有对应的提示信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">D:\workspace\python&gt;python argparse-test.py -h</span><br><span class="line">usage: 命令行登录 [-h] [--host HOST] [--port PORT] -u USER -p PASSWORD</span><br><span class="line"></span><br><span class="line">命令行登录mysql数据库</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  --host HOST</span><br><span class="line">  --port PORT</span><br><span class="line">  -u USER, --user USER</span><br><span class="line">  -p PASSWORD, --password PASSWORD</span><br><span class="line"></span><br><span class="line">Copyright,2023</span><br></pre></td></tr></table></figure>
 
-<p><strong>deque</strong></p>
-<p>使用<code>list</code>存储数据时，按照索引访问快，但是插入和删除慢，数据量大的时候，效率很低。</p>
-<p><code>deque</code>是为了高效实现插入和删除操作的双向列表，适合用于队列和栈</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import deque</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q = deque([<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.append(<span class="string">&#x27;4&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.appendleft(<span class="string">&#x27;5&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q</span></span><br><span class="line">deque([&#x27;5&#x27;, &#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;])</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.pop()</span></span><br><span class="line">&#x27;4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.popleft()</span></span><br><span class="line">&#x27;5&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q</span></span><br><span class="line">deque([&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;])</span><br></pre></td></tr></table></figure>
-<p><code>deque</code>除了实现<code>list</code>的<code>append()</code>和<code>pop()</code>外，还支持<code>appendleft()</code>和<code>popleft()</code>，这样就可以非常高效地往头部添加或删除元素。</p>
-<p><strong>defaultdict</strong></p>
-<p>使用<code>dict</code>时，如果引用的Key不存在，就会抛出<code>KeyError</code>。如果希望key不存在时，返回一个默认值，就可以用<code>defaultdict</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import defaultdict</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d = defaultdict(lambda: <span class="string">&#x27;N/A&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key1&#x27;</span>] = <span class="string">&#x27;1&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key1&#x27;</span>]</span></span><br><span class="line">&#x27;1&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key2&#x27;</span>]</span></span><br><span class="line">&#x27;N/A&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>意默认值是调用函数返回的，而函数在创建<code>defaultdict</code>对象时传入。</p>
-<p><strong>OrderedDict</strong></p>
-<p><code>dict</code>的key是无序的，如果需要保持key的顺序，使用<code>OrderedDict</code></p>
-<p><code>OrderedDict</code>是按照key插入的顺序排序，而不是key本身的顺序。</p>
-<p><code>OrderedDict</code>可以实现一个FIFO（先进先出）的<code>dict</code>，当容量超出限制时，先删除最早添加的Key</p>
-<p><code>OrderedDict</code>在Python 3.7及以后的版本中，已经不再是必要的，因为从Python 3.7开始，普通的<code>dict</code>对象也会保持元素的插入顺序。</p>
-<p>如果想要按照字母顺序排序，可以先对dict排序，然后存入<code>OrderedDict</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"><span class="comment"># 创建一个普通的字典</span></span><br><span class="line">unsorted_dict = &#123;<span class="string">&#x27;apple&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;orange&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;pear&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="comment"># 按照键的字母顺序对字典进行排序</span></span><br><span class="line">sorted_dict = OrderedDict(<span class="built_in">sorted</span>(unsorted_dict.items()))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>只有当参数全部有效时，才会返回一个 <a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">NameSpace</a> 对象，获取对应的参数就把参数名当作属性获取，非常方便</p>
+<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>Base64是一种用64个字符来表示任意二进制数据的方法。A-Z、a-z、0-9、”+”和”&#x2F;“两个特殊字符，共计64个字符。因此，在URL安全的Base64编码中，常常将”+”替换为”-“，将”&#x2F;“替换为”_”，以避免引起冲突。</p>
+<p>Base64编码将每3个字节的数据转换为4个字符，因此每个字符提供了6个比特位的信息</p>
+<p>Base64对二进制数据进行处理，每3个字节一组，一共是<code>3x8=24bit</code>，划为4组，每组正好6个bit：</p>
+<p>这样我们得到4个数字作为索引，然后查表，获得相应的4个字符，就是编码后的字符串。</p>
+<p>示例参考 <a href="https://www.base64decode.org/">example</a>  页面的example部分。<code>Man</code>转换为base64结果为<code>TWFu</code></p>
+<p><img data-src="https://pic1.zhimg.com/80/v2-3b7c9b9441623c1c6b5b6099bb897cbc_720w.png" alt="示例图"> </p>
+<p>Base64编码会把3字节的二进制数据编码为4字节的文本数据，长度增加33%，好处是编码后的文本数据可以在邮件正文、网页等直接显示</p>
+<p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用<code>\x00</code>字节在末尾补足后，再在编码的末尾加上1个或2个<code>=</code>号，表示补了多少字节，解码的时候，会自动去掉。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; e64 = base64.b64encode(<span class="string">&#x27;hahaha\x00&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(e64)</span></span><br><span class="line">b&#x27;aGFoYWhhAA==&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d64 = base64.b64decode(b64)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64)</span></span><br><span class="line">b&#x27;hahaha&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(d64.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">hahaha</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>ChainMap</strong></p>
-<p><code>ChainMap</code>可以把一组<code>dict</code>串起来并组成一个逻辑上的<code>dict</code>。<code>ChainMap</code>本身也是一个<code>dict</code>，但是查找的时候，会按照顺序在内部的<code>dict</code>依次查找。</p>
-<p>什么时候使用ChainMap最合适？举个例子：应用程序往往都需要传入参数，参数可以通过命令行传入，可以通过环境变量传入，还可以有默认参数。我们可以用ChainMap实现参数的优先级查找，即先查命令行参数，如果没有传入，再查环境变量，如果没有，就使用默认参数。</p>
-<p><strong>Counter</strong></p>
-<p><code>Counter</code>是一个简单的计数器，<code>Counter</code>实际上也是<code>dict</code>的一个子类</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = Counter()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.update(<span class="string">&#x27;hahahshashsahashqh2qhewhfwh&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">&#x27;h&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;a&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;s&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;q&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;w&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;2&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;e&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;f&#x27;</span>: <span class="number">1</span>&#125;)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>url safe</code>url安全的base64编码。把字符<code>+</code>和<code>/</code>分别变成<code>-</code>和<code>_</code>。使用<code>base64.urlsafe_b64encode()</code>和<code>base64.urlsafe_b64decode()</code></p>
+<p>由于<code>=</code>字符也可能出现在Base64编码中，但&#x3D;用在URL、Cookie里面会造成歧义，所以，很多Base64编码后会把<code>=</code>去掉</p>
+<p>去掉<code>=</code>后怎么解码呢？因为Base64是把<code>3</code>个字节变为<code>4</code>个字节，所以，Base64编码的长度永远是4的倍数，因此，需要加上&#x3D;把Base64字符串的长度变为4的倍数，就可以正常解码了。</p>
+<h1 id="struct字节和二进制的转换"><a href="#struct字节和二进制的转换" class="headerlink" title="struct字节和二进制的转换"></a>struct字节和二进制的转换</h1><p>准确地讲，Python没有专门处理字节的数据类型。但由于b’str’可以表示字节，所以，字节数组＝二进制str。Python提供了一个<code>struct</code>模块来解决<code>bytes</code>和其他二进制数据类型的转换</p>
+<p><code>struct</code>的<code>pack</code>函数把任意数据类型变成<code>bytes</code></p>
+<p>pack的第一个参数是处理指令，<code>&#39;&gt;I&#39;</code>的意思是：</p>
+<p><code>&gt;</code> 表示字节顺序是big-endian，也就是网络序，<code>I</code>表示4字节无符号整数。</p>
+<p>后面的参数个数要和处理指令一致。</p>
+<p><code>unpack</code>把<code>bytes</code>变成相应的数据类型</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import struct</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.pack(<span class="string">&#x27;&gt;I&#x27;</span>, 2234324)</span></span><br><span class="line">b&#x27;\x00&quot;\x17\xd4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;I&#x27;</span>, b<span class="string">&#x27;\x00&quot;\x17\xd4&#x27;</span>)</span></span><br><span class="line">(2234324,)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; struct.unpack(<span class="string">&#x27;&gt;IH&#x27;</span>, b<span class="string">&#x27;\xf0\xf0\xf0\xf0\x80\x80&#x27;</span>)</span></span><br><span class="line">(4042322160, 32896)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>根据<code>&gt;IH</code>的说明，后面的<code>bytes</code>依次变为<code>I</code>：4字节无符号整数和<code>H</code>：2字节无符号整数。</p>
+<p>所以，尽管Python不适合编写底层操作字节流的代码，但在对性能要求不高的地方，利用struct就方便多了。</p>
+<p>struct支持的数据类型参考<a href="https://docs.python.org/3/library/struct.html#format-characters">format-characters</a> , </p>
+<h1 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h1><p><strong>摘要算法简介</strong></p>
+<p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
+<p>摘要算法，通过摘要函数，计算出固定长度的摘要，用于验证数据，防篡改。</p>
+<p>md5 和 sha1</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hashlib</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5=hashlib.md5()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; md5</span></span><br><span class="line">&lt;md5 _hashlib.HASH object @ 0x0000020B0560E8F0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(md5.hexdigest())</span></span><br><span class="line">098f6bcd4621d373cade4e832627b4f6</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1 = hashlib.sha1()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sha1.update(<span class="string">&#x27;test&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(sha1.hexdigest())</span></span><br><span class="line">a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>摘要可能出现hash碰撞的情况，不同的内容计算出来的hash值相同。</p>
+<p><strong>摘要算法应用</strong></p>
+<p>明文密码加盐，然后计算hash值，进行比对，判断用户输入的密码是否正确</p>
+<h1 id="hmac"><a href="#hmac" class="headerlink" title="hmac"></a>hmac</h1><p>如果<code>salt</code>是我们自己随机生成的，通常我们计算MD5时采用<code>md5(message + salt)</code>。</p>
+<p>这实际上就是Hmac算法：Keyed-Hashing for Message Authentication。它通过一个标准算法，在计算哈希的过程中，把key混入计算过程中。</p>
+<p>Hmac算法针对所有哈希算法都通用，无论是MD5还是SHA-1。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import hmac</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; message = b<span class="string">&#x27;test&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; key = b<span class="string">&#x27;hahah&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; h = hmac.new(key, message, digestmod=<span class="string">&#x27;SHA1&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(h.hexdigest())</span></span><br><span class="line">5ab4f2d179d1243d6ff9084a0ca659a99bbfcf3f</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可见使用hmac和普通hash算法非常类似。hmac输出的长度和原始哈希算法的长度一致。需要注意传入的key和message都是bytes类型，str类型需要首先编码为bytes</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1433,62 +1460,49 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>python网络编程</title>
-    <url>/python/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>网络通信是两台计算机上的两个进程之间的通信。</p>
-<p>用Python进行网络编程，就是在Python程序本身这个进程内，连接别的服务器进程的通信端口进行通信。本章主要介绍TCP和UDP编程。</p>
+    <title>python正则表达式</title>
+    <url>/python/python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p>字符串是编程时涉及到的最多的一种数据结构，对字符串进行操作的需求几乎无处不在。</p>
+<p>正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。</p>
 <span id="more"></span>
 
-<h1 id="TCP-IP简介"><a href="#TCP-IP简介" class="headerlink" title="TCP&#x2F;IP简介"></a>TCP&#x2F;IP简介</h1><p>互联网协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，大家把互联网的协议简称TCP&#x2F;IP协议。</p>
-<p>IP地址实际上是一个32位整数（称为IPv4），以字符串表示的IP地址如192.168.0.1实际上是把32位整数按8位分组后的数字表示，目的是便于阅读。</p>
-<p>一个TCP报文除了包含要传输的数据外，还包含源IP地址和目标IP地址，源端口和目标端口。</p>
-<h1 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h1><p>Socket是网络编程的一个抽象概念。通常我们用一个Socket表示“打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。</p>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>大多数连接都是可靠的TCP连接。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。</p>
-<p>创建一个基于TCP连接的Socket，可以这样做</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入socket库:</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个socket:</span></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;www.baidu.com&#x27;</span>, <span class="number">80</span>))</span><br></pre></td></tr></table></figure>
+<p>正则表达式基础的表示方式，如数字，开头，结尾等，可以参考相关文档。</p>
+<p><a href="https://www.runoob.com/regexp/regexp-syntax.html">菜鸟教程-正则表达式</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions">Regular_expressions</a></p>
+<h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><p>Python提供<code>re</code>模块，包含所有正则表达式的功能。由于Python的字符串本身也用<code>\</code>转义，所以要特别注意：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">s = &#x27;ABC\\-001&#x27; # Python的字符串</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对应的正则表达式字符串变成：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;ABC\-001&#x27;</span></span></span><br></pre></td></tr></table></figure>
 
-<p>创建<code>Socket</code>时，<code>AF_INET</code>指定使用<code>IPv4</code>协议，<code>SOCK_STREAM</code>指定使用面向流的TCP协议，这样，一个<code>Socket</code>对象就创建成功，但是还没有建立连接。</p>
-<p>客户端要主动发起TCP连接，必须知道服务器的IP地址和端口号。IP地址可以通过域名dns解析获取到，端口号一般是固定80和443。</p>
-<p>连接服务器的代码</p>
-<blockquote>
-<p>s.connect((‘<a href="http://www.baidu.com/">www.baidu.com</a>‘, 80))</p>
-</blockquote>
-<p>注意参数是一个<code>tuple</code>，包含地址和端口号。</p>
-<p>建立TCP连接后，我们就可以向服务器发送请求，要求返回首页的内容：</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。</p>
-<p>一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。</p>
-<p>是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。</p>
-<p>我们来编写一个简单的服务器程序，它接收客户端连接，把客户端发过来的字符串加上<code>Hello</code>再发回去。</p>
-<p>首先，创建一个基于IPv4和TCP协议的Socket：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br></pre></td></tr></table></figure>
+<p>所以强烈建议使用Python的<code>r</code>前缀，就不用考虑转义的问题了</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">s = r&#x27;ABC\-001&#x27; # Python的字符串</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对应的正则表达式字符串不变：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;ABC\-001&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><p>使用正则进行匹配</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;111&#x27;</span>)</span></span><br><span class="line">&lt;re.Match object; span=(0, 3), match=&#x27;111&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>然后，我们要绑定监听的地址和端口。服务器可能有多块网卡，可以绑定到某一块网卡的IP地址上，也可以用0.0.0.0绑定到所有的网络地址，还可以用127.0.0.1绑定到本机地址。127.0.0.1是一个特殊的IP地址，表示本机地址，如果绑定到这个地址，客户端必须同时在本机运行才能连接，也就是说，外部的计算机无法连接进来。</p>
-<p>端口号需要预先指定。因为我们写的这个服务不是标准服务，所以用<code>8888</code>这个端口号。请注意，小于<code>1024</code>的端口号必须要有管理员权限才能绑定：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 监听端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">8888</span>))</span><br></pre></td></tr></table></figure>
-<p>紧接着，调用listen()方法开始监听端口，传入的参数指定等待连接的最大数量：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s.listen(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Waiting for connection...&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>接下来，服务器程序通过一个永久循环来接受来自客户端的连接，<code>accept()</code>会等待并返回一个客户端的连接:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接受一个新连接:</span></span><br><span class="line">    sock, addr = s.accept()</span><br><span class="line">    <span class="comment"># 创建新线程来处理TCP连接:</span></span><br><span class="line">    t = threading.Thread(target=tcplink, args=(sock, addr))</span><br><span class="line">    t.start()</span><br></pre></td></tr></table></figure>
+<p><code>match()</code>方法判断是否匹配，如果匹配成功，返回一个<code>Match</code>对象，否则返回<code>None</code>。常见的判断方法就是：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = <span class="string">&#x27;字符串&#x27;</span></span><br><span class="line"><span class="keyword">if</span> re.<span class="keyword">match</span>(<span class="string">r&#x27;正则表达式&#x27;</span>, test):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;ok&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;failed&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">tcplink</span>(<span class="params">sock, addr</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Accept new connection from %s:%s...&#x27;</span> % addr)</span><br><span class="line">    sock.send(<span class="string">b&#x27;Welcome!&#x27;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(<span class="number">1024</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> data.decode(<span class="string">&#x27;utf-8&#x27;</span>) == <span class="string">&#x27;exit&#x27;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sock.send((<span class="string">&#x27;Hello, %s!&#x27;</span> % data.decode(<span class="string">&#x27;utf-8&#x27;</span>)).encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    sock.close()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Connection from %s:%s closed.&#x27;</span> % addr)</span><br></pre></td></tr></table></figure>
-<p>连接建立后，服务器首先发一条欢迎消息，然后等待客户端数据，并加上<code>Hello</code>再发送给客户端。如果客户端发送了<code>exit</code>字符串，就直接关闭连接。</p>
-<p>要测试这个服务器程序，我们还需要编写一个客户端程序：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 接收欢迎消息:</span></span><br><span class="line"><span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b&#x27;Michael&#x27;</span>, <span class="string">b&#x27;Tracy&#x27;</span>, <span class="string">b&#x27;Sarah&#x27;</span>]:</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.send(data)</span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.send(<span class="string">b&#x27;exit&#x27;</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<h2 id="切分字符串"><a href="#切分字符串" class="headerlink" title="切分字符串"></a>切分字符串</h2><p>用正则表达式切分字符串比用固定的字符更灵活</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;a b    c  d     e&#x27;</span>.<span class="built_in">split</span>(<span class="string">&#x27; &#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;c&#x27;, &#x27;&#x27;, &#x27;d&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;e&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.split(r<span class="string">&#x27;\s+&#x27;</span> , <span class="string">&#x27;a b    c  d     e&#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.split(r<span class="string">&#x27;[\s\,]+&#x27;</span> , <span class="string">&#x27;a b  , ,  c , d     e&#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br></pre></td></tr></table></figure>
 
-<p>我们需要打开两个命令行窗口，一个运行服务器程序，另一个运行客户端程序，就可以看到效果了</p>
-<h1 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h1><p>TCP是建立可靠连接，并且通信双方都可以以流的形式发送数据。相对TCP，UDP则是面向无连接的协议。</p>
-<p>使用UDP协议时，不需要建立连接，只需要知道对方的IP地址和端口号，就可以直接发数据包。但是，能不能到达就不知道了。</p>
-<p>虽然用UDP传输数据不可靠，但它的优点是和TCP比，速度快，对于不要求可靠到达的数据，就可以使用UDP协议。</p>
-<p>和TCP类似，使用UDP的通信双方也分为客户端和服务器。服务器首先需要绑定端口：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="comment"># 绑定端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br></pre></td></tr></table></figure>
+<p>可以看出来使用正则更加灵活和强大，便于把不规范的输入转换成正确的数组。</p>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>除了简单地判断是否匹配之外，正则表达式还有提取子串的强大功能。用<code>()</code>表示的就是要提取的分组（Group）。比如</p>
+<p><code>^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$</code>分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.match(r<span class="string">&#x27;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&#x27;</span>, <span class="string">&#x27;010-12345&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m</span></span><br><span class="line">&lt;re.Match object; span=(0, 9), match=&#x27;010-12345&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;010-12345&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(1)</span></span><br><span class="line">&#x27;010&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(2)</span></span><br><span class="line">&#x27;12345&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果正则表达式中定义了组，就可以在Match对象上用<code>group()</code>方法提取出子串来。</p>
+<p><code>group(0)</code>永远是与整个正则表达式相匹配的字符串，<code>group(1)</code>、<code>group(2)</code>……表示第1、2、……个子串。</p>
+<h2 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h2><p>正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的<code>0</code>， 加上 <code>?</code> 说明采用非贪婪模式。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;(\d+)(0*)$&#x27;</span>, <span class="string">&#x27;102010&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;102010&#x27;, &#x27;&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;(\d+?)(0*)$&#x27;</span>, <span class="string">&#x27;10201000&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;10201&#x27;, &#x27;000&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>\d+</code> 采用非贪婪模式，后面加上<code>?</code> ，改为 <code>(\d+?)</code></p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
+<ol>
+<li><p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
+</li>
+<li><p>用编译后的正则表达式去匹配字符串。</p>
+</li>
+</ol>
+<p>如果一个正则表达式要重复使用几千次，出于效率的考虑，我们可以预编译该正则表达式，接下来重复使用时就不需要编译这个步骤了，直接匹配(和java一样)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译:</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re_telephone = re.compile(r<span class="string">&#x27;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用：</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re_telephone.match(<span class="string">&#x27;010-12345&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;010&#x27;, &#x27;12345&#x27;)</span><br></pre></td></tr></table></figure>
 
-<p>创建Socket时，<code>SOCK_DGRAM</code>指定了这个Socket的类型是UDP。绑定端口和TCP一样，但是不需要调用<code>listen()</code>方法，而是直接接收来自任何客户端的数据：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Bind UDP on 9999...&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    data, addr = s.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Received from %s:%s.&#x27;</span> % addr)</span><br><span class="line">    s.sendto(<span class="string">b&#x27;Hello, %s!&#x27;</span> % data, addr)</span><br></pre></td></tr></table></figure>
-<p><code>recvfrom()</code>方法返回数据和客户端的地址与端口，这样，服务器收到数据后，直接调用<code>sendto()</code>就可以把数据用UDP发给客户端。</p>
-<p>客户端使用UDP时，首先仍然创建基于UDP的Socket，然后，不需要调用<code>connect()</code>，直接通过<code>sendto()</code>给服务器发数据：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>)):</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.sendto(<span class="built_in">str</span>(data).encode(<span class="string">&#x27;utf-8&#x27;</span>), (<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-<p>从服务器接收数据仍然调用<code>recv()</code>方法。</p>
+<p>编译后生成Regular Expression对象，由于该对象自己包含了正则表达式，所以调用对应的方法时不用给出正则字符串。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1546,6 +1560,303 @@ Start --> Stop</pre>
 <p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
 <p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
 <p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python常用内建模块1</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%971/</url>
+    <content><![CDATA[<p>Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
+<p>主要介绍了datetime和collections模块</p>
+<span id="more"></span>
+
+<h1 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h1><p>datetime是Python处理日期和时间的标准库。</p>
+<p><strong>获取当前日期和时间</strong></p>
+<p><code>datetime.now()</code>返回的是当前日期和时间。</p>
+<p><strong>获取指定日期和时间</strong></p>
+<p>要指定某个日期和时间，我们直接用参数构造一个<code>datetime</code></p>
+<p><strong>datetime转换为timestamp</strong></p>
+<p>timestamp时间戳，timestamp的值与时区毫无关系，因为timestamp一旦确定，其UTC时间就确定了，注意时区的问题</p>
+<p>把一个<code>datetime</code>类型转换为<code>timestamp</code>只需要简单调用<code>timestamp()</code>方法：</p>
+<p>Python的timestamp是一个浮点数，整数位表示秒。</p>
+<p><strong>timestamp转换为datetime</strong></p>
+<p>要把<code>timestamp</code>转换为<code>datetime</code>，使用<code>datetime</code>提供的<code>fromtimestamp()</code>方法：</p>
+<p><code>timestamp</code>是一个浮点数，它没有时区的概念，而<code>datetime</code>是有时区的。上述转换是在timestamp和本地时间做转换。本地时间是指当前操作系统设定的时区</p>
+<p>timestamp也可以直接被转换到UTC标准时区的时间，使用<code>utcfromtimestamp()</code>方法，后续该方法可能会被移除。</p>
+<p><strong>str转换为datetime</strong></p>
+<p>把日期和时间的字符串转换为<code>datetime</code>，通过<code>datetime.strptime()</code>实现，需要一个日期和时间的格式化字符串：</p>
+<p>格式化字符串参考文档 <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior">strftime-strptime-behavior</a></p>
+<p><strong>datetime转换为str</strong></p>
+<p>使用<code>strftime()</code>函数实现，参数需要一个格式化的字符串，和转datetime的一样。</p>
+<p><code>now.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;)</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取当前日期和时间</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from datetime import datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; now = datetime.now()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now)</span></span><br><span class="line">2023-12-26 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(now))</span></span><br><span class="line">&lt;class &#x27;datetime.datetime&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取指定日期和时间</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; dt = datetime(2023,12,26,11,22,44)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(dt)</span></span><br><span class="line">2023-12-26 11:22:44</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">timestamp</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(dt.timestamp())</span></span><br><span class="line">1703560964.0</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now.timestamp())</span></span><br><span class="line">1703561818.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">转datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; t = 1601234654.1243</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(datetime.fromtimestamp(t))</span></span><br><span class="line">2020-09-28 03:24:14.124300</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(datetime.utcfromtimestamp(t))</span></span><br><span class="line">2020-09-27 19:24:14.124300</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">字符串转datetime</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; day  = datetime.strptime(<span class="string">&#x27;2023-12-01 12:11:01&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(day)</span></span><br><span class="line">2023-12-01 12:11:01</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(day))</span></span><br><span class="line">&lt;class &#x27;datetime.datetime&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">datetime转字符串</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now.strftime( <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span></span><br><span class="line">2023-12-26 11:36:58</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">datetime 加减计算</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(now)</span></span><br><span class="line">2023-12-26 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; nd = now + timedelta(days = 2)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(nd)</span></span><br><span class="line">2023-12-28 11:36:58.026154</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>datetime加减</strong></p>
+<p>加减可以直接用<code>+</code>和<code>-</code>运算符，不过需要导入<code>timedelta</code>这个类</p>
+<p><strong>本地时间转换为UTC时间</strong></p>
+<p>一个<code>datetime</code>类型有一个时区属性<code>tzinfo</code>，但是默认为<code>None</code>，可以给<code>datetime</code>设置一个时区。</p>
+<blockquote>
+<p>tz_utc_8 &#x3D; timezone(timedelta(hours&#x3D;8)) # 创建时区UTC+8:00</p>
+</blockquote>
+<p><strong>时区转换</strong><br>可以先通过<code>utcnow()</code>拿到当前的UTC时间，再转换为任意时区的时间</p>
+<p>利用带时区的<code>datetime</code>，通过<code>astimezone()</code>方法，可以转换到任意时区</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from datetime import datetime, timedelta, timezone</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(utc_dt)</span></span><br><span class="line">2023-12-26 06:17:28.304592+00:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; bj_dt = utc_dt.astimezone(timezone(timedelta(hours=8)))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(bj_dt)</span></span><br><span class="line">2023-12-26 14:17:28.304592+08:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; tokyo_dt=bj_dt.astimezone(timezone(timedelta(hours=9)))</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(tokyo_dt)</span></span><br><span class="line">2023-12-26 15:17:28.304592+09:00</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="collections集合模块"><a href="#collections集合模块" class="headerlink" title="collections集合模块"></a>collections集合模块</h1><p><strong>namedtuple</strong></p>
+<p><code>tuple</code>可以表示不变集合，一个点的二维坐标就可以表示成 <code>p = (1, 2)</code>，但是看到 <code>(1, 2)</code> 很难看出是表示一个坐标的。定义一个calss又小题大做了，这时可以用<code>namedtuple</code></p>
+<p><code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tuple</code>元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
+<p>我们用<code>namedtuple</code>可以很方便地定义一种数据类型，它具备<code>tuple</code>的不变性，又可以根据属性来引用，使用十分方便。</p>
+<p>可以验证创建的<code>Point</code>对象是<code>tuple</code>的一种子类</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import namedtuple</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; p = Point(1,2)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; p.x</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(p)</span></span><br><span class="line">&lt;class &#x27;__main__.Point&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance(p, tuple)</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>deque</strong></p>
+<p>使用<code>list</code>存储数据时，按照索引访问快，但是插入和删除慢，数据量大的时候，效率很低。</p>
+<p><code>deque</code>是为了高效实现插入和删除操作的双向列表，适合用于队列和栈</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import deque</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q = deque([<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.append(<span class="string">&#x27;4&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.appendleft(<span class="string">&#x27;5&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q</span></span><br><span class="line">deque([&#x27;5&#x27;, &#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;])</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.pop()</span></span><br><span class="line">&#x27;4&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q.popleft()</span></span><br><span class="line">&#x27;5&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; q</span></span><br><span class="line">deque([&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;])</span><br></pre></td></tr></table></figure>
+<p><code>deque</code>除了实现<code>list</code>的<code>append()</code>和<code>pop()</code>外，还支持<code>appendleft()</code>和<code>popleft()</code>，这样就可以非常高效地往头部添加或删除元素。</p>
+<p><strong>defaultdict</strong></p>
+<p>使用<code>dict</code>时，如果引用的Key不存在，就会抛出<code>KeyError</code>。如果希望key不存在时，返回一个默认值，就可以用<code>defaultdict</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from collections import defaultdict</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d = defaultdict(lambda: <span class="string">&#x27;N/A&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key1&#x27;</span>] = <span class="string">&#x27;1&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key1&#x27;</span>]</span></span><br><span class="line">&#x27;1&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d[<span class="string">&#x27;key2&#x27;</span>]</span></span><br><span class="line">&#x27;N/A&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>意默认值是调用函数返回的，而函数在创建<code>defaultdict</code>对象时传入。</p>
+<p><strong>OrderedDict</strong></p>
+<p><code>dict</code>的key是无序的，如果需要保持key的顺序，使用<code>OrderedDict</code></p>
+<p><code>OrderedDict</code>是按照key插入的顺序排序，而不是key本身的顺序。</p>
+<p><code>OrderedDict</code>可以实现一个FIFO（先进先出）的<code>dict</code>，当容量超出限制时，先删除最早添加的Key</p>
+<p><code>OrderedDict</code>在Python 3.7及以后的版本中，已经不再是必要的，因为从Python 3.7开始，普通的<code>dict</code>对象也会保持元素的插入顺序。</p>
+<p>如果想要按照字母顺序排序，可以先对dict排序，然后存入<code>OrderedDict</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"><span class="comment"># 创建一个普通的字典</span></span><br><span class="line">unsorted_dict = &#123;<span class="string">&#x27;apple&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;orange&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;pear&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="comment"># 按照键的字母顺序对字典进行排序</span></span><br><span class="line">sorted_dict = OrderedDict(<span class="built_in">sorted</span>(unsorted_dict.items()))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>ChainMap</strong></p>
+<p><code>ChainMap</code>可以把一组<code>dict</code>串起来并组成一个逻辑上的<code>dict</code>。<code>ChainMap</code>本身也是一个<code>dict</code>，但是查找的时候，会按照顺序在内部的<code>dict</code>依次查找。</p>
+<p>什么时候使用ChainMap最合适？举个例子：应用程序往往都需要传入参数，参数可以通过命令行传入，可以通过环境变量传入，还可以有默认参数。我们可以用ChainMap实现参数的优先级查找，即先查命令行参数，如果没有传入，再查环境变量，如果没有，就使用默认参数。</p>
+<p><strong>Counter</strong></p>
+<p><code>Counter</code>是一个简单的计数器，<code>Counter</code>实际上也是<code>dict</code>的一个子类</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = Counter()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.update(<span class="string">&#x27;hahahshashsahashqh2qhewhfwh&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">&#x27;h&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;a&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;s&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;q&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;w&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;2&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;e&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;f&#x27;</span>: <span class="number">1</span>&#125;)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python的IO编程</title>
+    <url>/python/python%E7%9A%84IO%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>IO在计算机中指Input&#x2F;Output，也就是输入和输出。如磁盘IO，网络IO等。Stream（流）是一个很重要的概念，输入流和输出流。</p>
+<p>由于CPU和内存的速度远远高于外设的速度，所以，在IO编程中，就存在速度严重不匹配的问题。可以分为同步和异步处理。</p>
+<p>异步IO又包含了回调模模式和轮询模式等，在网络IO编程中比较常用。</p>
+<span id="more"></span>
+
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p>读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。</p>
+<p>操作系统不允许普通程序直接操作磁盘，读写文件就是请求操作系统打开一个文件对象(通常称为文件描述符)，然后通过操作系统的接口进行读写操作。</p>
+<h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><p>读文件，用Python内置的<code>open()</code>函数，传入文件名和标示符</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/imgUrl.txtaa&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: [Errno 2] No such file or directory: &#x27;D:/imgUrl.txtaa&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>标示符<code>&#39;r&#39;</code>表示读，如果文件不存在，<code>open()</code>函数就会抛出一个<code>IOError</code>的错误，并且给出错误码和详细的信息告诉你文件不存在</p>
+<p>调用<code>read()</code>方法可以一次把文件内容读取到内存中，用一个<code>str</code>对象表示。</p>
+<p>最后一定要调用<code>close()</code>关闭文件，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的。和java一样。</p>
+<p>文件读取出错后，后面的close就不会执行了。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">&#x27;/path/to/file&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> f:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
+
+<p>但是每次都这样写太麻烦， Python引入了<code>with</code>语句来自动帮我们调用<code>close()</code>方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/path/to/file&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>这和<code>try ... finally</code>是一样的，但是代码更简洁。</p>
+<p>调用<code>read()</code>会一次将文件内容读取到内存中，如果文件过大，内存就爆了，可以使用分治的方法，每次读取一部分内容。反复调用<code>read(size)</code>方法，每次最多读取<code>size</code>个字节的内容</p>
+<p>另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回<code>list</code>。因此，要根据需要决定怎么调用。</p>
+<p>如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
+<p>可以使用 <code>line.strip()</code> 把末尾的<code>\n</code> 换行符去掉</p>
+<p>例子</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 读文件遍历 </span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 直接迭代文件对象</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="comment">#print(len(line))</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一次全部读入内存</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    l = f.readlines()</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(l))</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        <span class="comment">#print(s.strip())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按行读取</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    line = f.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="comment">#print(line.strip())</span></span><br><span class="line">        line = f.readline()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按size读取</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    size = <span class="number">50</span></span><br><span class="line">    data = f.read(size)</span><br><span class="line">    <span class="keyword">while</span> data:</span><br><span class="line">        <span class="built_in">print</span>(data)</span><br><span class="line">        data = f.read(size)</span><br></pre></td></tr></table></figure>
+
+<h2 id="file-like-Object"><a href="#file-like-Object" class="headerlink" title="file-like Object"></a>file-like Object</h2><p>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为file-like Object。除了file外，还可以是内存的字节流，网络流，自定义流等等。file-like Object不要求从特定类继承，只要写个read()方法就行。</p>
+<p><code>StringIO</code> 就是在内存中创建的file-like Object，常用作临时缓冲。</p>
+<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>上面的默认都是读取的<code>utf-8</code>编码的文本文件，如果是二进制文件，比如图片等，需要用<code>&#39;rb&#39;</code> 模式打开文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = open(<span class="string">&#x27;D:/123.png&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.readline()</span></span><br><span class="line">b&#x27;\x89PNG\r\n&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><p>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/gb2312-test.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;gb2312&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.readline()</span></span><br><span class="line">&#x27;中文编码测试\n&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果有一些非法的编码，可能会报错<code>UnicodeDecodeError</code>，可以指定<code>errors</code>参数忽略错误</p>
+<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><p>写文件和读文件是一样的，唯一区别是调用<code>open()</code>函数时，传入标识符<code>&#39;w&#39;</code>或者<code>&#39;wb&#39;</code>表示写文本文件或写二进制文件：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/write-test.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f.write(<span class="string">&#x27;哈哈哈哈\n&#x27;</span>)</span><br><span class="line">f.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以反复调用<code>write()</code>来写文件，但是一定要调用<code>f.close()</code>方法来关闭文件，否则可能发会导致要写入的数据只写了一部分。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。</p>
+<p>所以还是使用<code>with</code>最保险</p>
+<p>要写入特定编码的文本文件，可以给<code>open()</code>函数传入<code>encoding</code>参数</p>
+<p>以 <code>&#39;w&#39;</code>模式写文件时，每次写入会覆盖，可以将<code>&#39;w&#39;</code> 改为 <code>&#39;a&#39;</code> 来使用追加模式写入。</p>
+<h1 id="StringIO和BytesIO"><a href="#StringIO和BytesIO" class="headerlink" title="StringIO和BytesIO"></a>StringIO和BytesIO</h1><h2 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h2><p>很多时候，数据读写不一定是文件，也可以在内存中读写。</p>
+<p>StringIO就是在内存中读写str。要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from io import StringIO</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = StringIO()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;大&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;\n&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;家好&#x27;</span>)</span></span><br><span class="line">2</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.getvalue()</span></span><br><span class="line">&#x27;大\n家好&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>getvalue()</code>方法用于获得写入后的str。</p>
+<p>要读取StringIO，可以用一个str初始化StringIO，然后，像读文件一样读取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = StringIO(<span class="string">&#x27;大\n家\n好&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    s = f.readline()</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(s.strip())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h2><p>StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。</p>
+<p>BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：</p>
+<p>写入的不是str，而是经过UTF-8编码的bytes</p>
+<p>和StringIO类似，可以用一个bytes初始化BytesIO，然后，像读文件一样读取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = BytesIO()</span><br><span class="line">f.write(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.getvalue())</span><br><span class="line"><span class="built_in">print</span>(f.getvalue().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用bytes初始化</span></span><br><span class="line">f = BytesIO(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.read())</span><br></pre></td></tr></table></figure>
+
+<h1 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h1><p>内置的<code>os</code>模块可以直接调用操作系统提供的接口操作文件和目录。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import os</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;posix&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.uname()</span></span><br><span class="line">(&#x27;Linux&#x27;, &#x27;dev&#x27;, &#x27;3.10.0-1160.90.1.el7.x86_64&#x27;, &#x27;#1 SMP Thu May 4 15:21:22 UTC 2023&#x27;, &#x27;x86_64&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;nt&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果是<code>posix</code>，说明系统是<code>Linux</code>、<code>Unix</code>或<code>Mac OS X</code>，如果是<code>nt</code>，就是<code>Windows</code>系统。</p>
+<p>要获取详细的系统信息，可以调用<code>uname()</code>函数, windows系统不支持该函数。<code>os</code>模块的某些函数是跟操作系统相关的</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>os.environ</code> 可以查看全部的环境变量。要获取某个环境变量的值，可以调用<code>os.environ.get(&#39;key&#39;)</code>：</p>
+<h2 id="操作文件和目录-1"><a href="#操作文件和目录-1" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>操作文件和目录的函数一部分放在os模块中，一部分放在os.path模块中。</p>
+<p>把两个路径合成一个时，不要直接拼字符串，而要通过<code>os.path.join()</code>函数，这样可以正确处理不同操作系统的路径分隔符。</p>
+<p>拆分路径的时候，要使用<code>os.path.split()</code>，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名。</p>
+<p><code>os.path.splitext()</code>可以直接得到文件的扩展名。</p>
+<p>这些合并、拆分路径的函数并不要求目录和文件要真实存在，它们只对字符串进行操作。</p>
+<p><code>os.rename()</code> 对文件重命名。<code>os.remove</code> 删除文件。</p>
+<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><p>程序运行的过程中，所有的变量都是在内存中。在程序运行结束后，变量就会被操作系统回收。</p>
+<p>把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思</p>
+<p>序列化之后，就可以把序列化的内容写入到磁盘，或者通过网络传输。</p>
+<p>把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。</p>
+<h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><p>Python提供了<code>pickle</code>模块来实现序列化。</p>
+<p><code>pickle.dumps()</code>方法把任意对象序列化成一个<code>bytes</code>，然后，就可以把这个<code>bytes</code>写入文件。</p>
+<p>或者用另一个方法<code>pickle.dump()</code>直接把对象序列化后写入一个file-like Object：</p>
+<p>当我们要把对象从磁盘读到内存时，可以先把内容读到一个<code>bytes</code>，然后用<code>pickle.loads()</code>方法反序列化出对象，也可以直接用<code>pickle.load()</code>方法从一个file-like Object中直接反序列化出对象。</p>
+<p>通过这种方式反序列化的变量内容相同，但是实际上不是同一个变量了。</p>
+<p>Pickle的序列化只能用于python，可能python的不同版本也不兼容，也不能跨语言。所以不能保存重要的数据。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(pickle.dumps(l))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列化到文件中</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">pickle.dump(l, f)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反序列化 先读取成bytes</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">b = f.read()</span><br><span class="line">data = pickle.loads(b)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#直接从文件反序列化</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">d = pickle.load(f)</span><br><span class="line"><span class="built_in">print</span>(d)</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">b&#x27;\x80\x04\x95\x17\x00\x00\x00\x00\......省略....&#x27;</span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON。</p>
+<p>JSON和Python内置的数据类型对应如下</p>
+<table>
+<thead>
+<tr>
+<th align="left">JSON类型</th>
+<th align="left">Python类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">{}</td>
+<td align="left">dict</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">list</td>
+</tr>
+<tr>
+<td align="left">“string”</td>
+<td align="left">str</td>
+</tr>
+<tr>
+<td align="left">12.3</td>
+<td align="left">int或float</td>
+</tr>
+<tr>
+<td align="left">true&#x2F;false</td>
+<td align="left">True&#x2F;False</td>
+</tr>
+<tr>
+<td align="left">null</td>
+<td align="left">None</td>
+</tr>
+</tbody></table>
+<p>Python内置的json模块提供了非常完善的Python对象到JSON格式的转换。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d = dict(name=<span class="string">&#x27;张三&#x27;</span>, age=20, height=130.5, interest=[<span class="string">&#x27;篮球&#x27;</span>, <span class="string">&#x27;唱歌&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;\\u5f20\\u4e09&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;\\u7bee\\u7403&quot;, &quot;\\u5531\\u6b4c&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d,ensure_ascii=False)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s=json.dumps(d)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.loads(s)</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>dumps()</code>方法返回一个<code>str</code>，内容是标准的json，类似的 <code>dump()</code>方法可以直接把json写入到<code>file-like Object</code></p>
+<p>使用<code>loads()</code>方法把json字符串反序列化，或者使用<code>load()</code>方法从<code>file-like Object</code>中读取字符串并反序列化。</p>
+<h2 id="JSON进阶"><a href="#JSON进阶" class="headerlink" title="JSON进阶"></a>JSON进阶</h2><p><code>dict</code>对象可以直接序列化为JSON的<code>&#123;&#125;</code>，不过，很多时候，我们更喜欢用class表示对象，比如定义Student类，然后序列化：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>, <span class="number">20</span>, <span class="number">88</span>)</span><br><span class="line"><span class="built_in">print</span>(json.dumps(s))</span><br></pre></td></tr></table></figure>
+
+<p>运行时，会报<code>TypeError</code>，是因为<code>Student</code>对象不是一个可序列化为JSON的对象。</p>
+<p><code>dumps()</code>函数有很多可选参数，可以用来定制json序列化。</p>
+<p>可选参数<code>default</code>就是把任意一个对象变成一个可序列为JSON的对象，我们只需要为<code>Student</code>专门写一个转换函数，再把函数传进去即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">student2dict</span>(<span class="params">std</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>: std.name,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span>: std.age,</span><br><span class="line">        <span class="string">&#x27;score&#x27;</span>: std.score</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(json.dumps(s, default=student2dict))</span><br></pre></td></tr></table></figure>
+
+<p>不过，如果遇到其他类的实例，依然无法序列化，可以默认把任意<code>class</code>的实例变为<code>dict</code></p>
+<blockquote>
+<p>print(json.dumps(s, default&#x3D;lambda obj: obj.<strong>dict</strong>))</p>
+</blockquote>
+<p>因为通常<code>class</code>的实例都有一个<code>__dict__</code>属性，它就是一个<code>dict</code>，用来存储实例变量。也有少数例外，比如定义了<code>__slots__</code>的class。</p>
+<p>如果我们要把JSON反序列化为一个<code>Student</code>对象实例，<code>loads()</code>方法首先转换出一个<code>dict</code>对象，然后，我们传入的<code>object_hook</code>函数负责把<code>dict</code>转换为<code>Student</code>实例</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; stu = json.loads(s, object_hook=dict2student)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(stu)</span></span><br><span class="line">&lt;__main__.Student object at 0x000002615C4962A0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(json.dumps(stu, default=lambda obj: obj.__dict__, ensure_ascii=False))</span></span><br><span class="line">&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;score&quot;: 130.5&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>ensure_ascii</code>用于指定在对JSON进行编码时是否对非ASCII字符进行转义，确保生成的JSON字符串中只包含ASCII字符。</p>
+<p><code>ensure_ascii</code>参数默认值为True，表示会对非ASCII字符进行转义，将其表示为<code>\uXXXX</code>的形式。 如果将<code>ensure_ascii</code>参数设置为<code>False</code>，则表示不对非ASCII字符进行转义。非ASCII字符将以原样包含在生成的JSON字符串中。</p>
+<p>通常情况下，需要保持默认值，这样可以确保生成的JSON字符串是有效的ASCII字符串，可以在不同的系统之间进行传输和解析。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python网络编程</title>
+    <url>/python/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>网络通信是两台计算机上的两个进程之间的通信。</p>
+<p>用Python进行网络编程，就是在Python程序本身这个进程内，连接别的服务器进程的通信端口进行通信。本章主要介绍TCP和UDP编程。</p>
+<span id="more"></span>
+
+<h1 id="TCP-IP简介"><a href="#TCP-IP简介" class="headerlink" title="TCP&#x2F;IP简介"></a>TCP&#x2F;IP简介</h1><p>互联网协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，大家把互联网的协议简称TCP&#x2F;IP协议。</p>
+<p>IP地址实际上是一个32位整数（称为IPv4），以字符串表示的IP地址如192.168.0.1实际上是把32位整数按8位分组后的数字表示，目的是便于阅读。</p>
+<p>一个TCP报文除了包含要传输的数据外，还包含源IP地址和目标IP地址，源端口和目标端口。</p>
+<h1 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h1><p>Socket是网络编程的一个抽象概念。通常我们用一个Socket表示“打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。</p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>大多数连接都是可靠的TCP连接。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。</p>
+<p>创建一个基于TCP连接的Socket，可以这样做</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入socket库:</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个socket:</span></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;www.baidu.com&#x27;</span>, <span class="number">80</span>))</span><br></pre></td></tr></table></figure>
+
+<p>创建<code>Socket</code>时，<code>AF_INET</code>指定使用<code>IPv4</code>协议，<code>SOCK_STREAM</code>指定使用面向流的TCP协议，这样，一个<code>Socket</code>对象就创建成功，但是还没有建立连接。</p>
+<p>客户端要主动发起TCP连接，必须知道服务器的IP地址和端口号。IP地址可以通过域名dns解析获取到，端口号一般是固定80和443。</p>
+<p>连接服务器的代码</p>
+<blockquote>
+<p>s.connect((‘<a href="http://www.baidu.com/">www.baidu.com</a>‘, 80))</p>
+</blockquote>
+<p>注意参数是一个<code>tuple</code>，包含地址和端口号。</p>
+<p>建立TCP连接后，我们就可以向服务器发送请求，要求返回首页的内容：</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。</p>
+<p>一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。</p>
+<p>是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。</p>
+<p>我们来编写一个简单的服务器程序，它接收客户端连接，把客户端发过来的字符串加上<code>Hello</code>再发回去。</p>
+<p>首先，创建一个基于IPv4和TCP协议的Socket：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们要绑定监听的地址和端口。服务器可能有多块网卡，可以绑定到某一块网卡的IP地址上，也可以用0.0.0.0绑定到所有的网络地址，还可以用127.0.0.1绑定到本机地址。127.0.0.1是一个特殊的IP地址，表示本机地址，如果绑定到这个地址，客户端必须同时在本机运行才能连接，也就是说，外部的计算机无法连接进来。</p>
+<p>端口号需要预先指定。因为我们写的这个服务不是标准服务，所以用<code>8888</code>这个端口号。请注意，小于<code>1024</code>的端口号必须要有管理员权限才能绑定：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 监听端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">8888</span>))</span><br></pre></td></tr></table></figure>
+<p>紧接着，调用listen()方法开始监听端口，传入的参数指定等待连接的最大数量：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s.listen(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Waiting for connection...&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>接下来，服务器程序通过一个永久循环来接受来自客户端的连接，<code>accept()</code>会等待并返回一个客户端的连接:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接受一个新连接:</span></span><br><span class="line">    sock, addr = s.accept()</span><br><span class="line">    <span class="comment"># 创建新线程来处理TCP连接:</span></span><br><span class="line">    t = threading.Thread(target=tcplink, args=(sock, addr))</span><br><span class="line">    t.start()</span><br></pre></td></tr></table></figure>
+
+<p>每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">tcplink</span>(<span class="params">sock, addr</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Accept new connection from %s:%s...&#x27;</span> % addr)</span><br><span class="line">    sock.send(<span class="string">b&#x27;Welcome!&#x27;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = sock.recv(<span class="number">1024</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> data.decode(<span class="string">&#x27;utf-8&#x27;</span>) == <span class="string">&#x27;exit&#x27;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        sock.send((<span class="string">&#x27;Hello, %s!&#x27;</span> % data.decode(<span class="string">&#x27;utf-8&#x27;</span>)).encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    sock.close()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Connection from %s:%s closed.&#x27;</span> % addr)</span><br></pre></td></tr></table></figure>
+<p>连接建立后，服务器首先发一条欢迎消息，然后等待客户端数据，并加上<code>Hello</code>再发送给客户端。如果客户端发送了<code>exit</code>字符串，就直接关闭连接。</p>
+<p>要测试这个服务器程序，我们还需要编写一个客户端程序：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># 建立连接:</span></span><br><span class="line">s.connect((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 接收欢迎消息:</span></span><br><span class="line"><span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b&#x27;Michael&#x27;</span>, <span class="string">b&#x27;Tracy&#x27;</span>, <span class="string">b&#x27;Sarah&#x27;</span>]:</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.send(data)</span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.send(<span class="string">b&#x27;exit&#x27;</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<p>我们需要打开两个命令行窗口，一个运行服务器程序，另一个运行客户端程序，就可以看到效果了</p>
+<h1 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h1><p>TCP是建立可靠连接，并且通信双方都可以以流的形式发送数据。相对TCP，UDP则是面向无连接的协议。</p>
+<p>使用UDP协议时，不需要建立连接，只需要知道对方的IP地址和端口号，就可以直接发数据包。但是，能不能到达就不知道了。</p>
+<p>虽然用UDP传输数据不可靠，但它的优点是和TCP比，速度快，对于不要求可靠到达的数据，就可以使用UDP协议。</p>
+<p>和TCP类似，使用UDP的通信双方也分为客户端和服务器。服务器首先需要绑定端口：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="comment"># 绑定端口:</span></span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br></pre></td></tr></table></figure>
+
+<p>创建Socket时，<code>SOCK_DGRAM</code>指定了这个Socket的类型是UDP。绑定端口和TCP一样，但是不需要调用<code>listen()</code>方法，而是直接接收来自任何客户端的数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Bind UDP on 9999...&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    data, addr = s.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Received from %s:%s.&#x27;</span> % addr)</span><br><span class="line">    s.sendto(<span class="string">b&#x27;Hello, %s!&#x27;</span> % data, addr)</span><br></pre></td></tr></table></figure>
+<p><code>recvfrom()</code>方法返回数据和客户端的地址与端口，这样，服务器收到数据后，直接调用<code>sendto()</code>就可以把数据用UDP发给客户端。</p>
+<p>客户端使用UDP时，首先仍然创建基于UDP的Socket，然后，不需要调用<code>connect()</code>，直接通过<code>sendto()</code>给服务器发数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>)):</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.sendto(<span class="built_in">str</span>(data).encode(<span class="string">&#x27;utf-8&#x27;</span>), (<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<p>从服务器接收数据仍然调用<code>recv()</code>方法。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2009,159 +2320,6 @@ Start --> Stop</pre>
 ]]></content>
   </entry>
   <entry>
-    <title>python的IO编程</title>
-    <url>/python/python%E7%9A%84IO%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>IO在计算机中指Input&#x2F;Output，也就是输入和输出。如磁盘IO，网络IO等。Stream（流）是一个很重要的概念，输入流和输出流。</p>
-<p>由于CPU和内存的速度远远高于外设的速度，所以，在IO编程中，就存在速度严重不匹配的问题。可以分为同步和异步处理。</p>
-<p>异步IO又包含了回调模模式和轮询模式等，在网络IO编程中比较常用。</p>
-<span id="more"></span>
-
-<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p>读写文件是最常见的IO操作。Python内置了读写文件的函数，用法和C是兼容的。</p>
-<p>操作系统不允许普通程序直接操作磁盘，读写文件就是请求操作系统打开一个文件对象(通常称为文件描述符)，然后通过操作系统的接口进行读写操作。</p>
-<h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><p>读文件，用Python内置的<code>open()</code>函数，传入文件名和标示符</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/imgUrl.txtaa&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: [Errno 2] No such file or directory: &#x27;D:/imgUrl.txtaa&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>标示符<code>&#39;r&#39;</code>表示读，如果文件不存在，<code>open()</code>函数就会抛出一个<code>IOError</code>的错误，并且给出错误码和详细的信息告诉你文件不存在</p>
-<p>调用<code>read()</code>方法可以一次把文件内容读取到内存中，用一个<code>str</code>对象表示。</p>
-<p>最后一定要调用<code>close()</code>关闭文件，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的。和java一样。</p>
-<p>文件读取出错后，后面的close就不会执行了。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">&#x27;/path/to/file&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> f:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
-
-<p>但是每次都这样写太麻烦， Python引入了<code>with</code>语句来自动帮我们调用<code>close()</code>方法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/path/to/file&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br></pre></td></tr></table></figure>
-
-<p>这和<code>try ... finally</code>是一样的，但是代码更简洁。</p>
-<p>调用<code>read()</code>会一次将文件内容读取到内存中，如果文件过大，内存就爆了，可以使用分治的方法，每次读取一部分内容。反复调用<code>read(size)</code>方法，每次最多读取<code>size</code>个字节的内容</p>
-<p>另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回<code>list</code>。因此，要根据需要决定怎么调用。</p>
-<p>如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
-<p>可以使用 <code>line.strip()</code> 把末尾的<code>\n</code> 换行符去掉</p>
-<p>例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 读文件遍历 </span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 直接迭代文件对象</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="comment">#print(len(line))</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一次全部读入内存</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    l = f.readlines()</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(l))</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        <span class="comment">#print(s.strip())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按行读取</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    line = f.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="comment">#print(line.strip())</span></span><br><span class="line">        line = f.readline()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按size读取</span></span><br><span class="line"><span class="keyword">with</span>(<span class="built_in">open</span>(<span class="string">&#x27;D:/imgUrl.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="keyword">as</span> f:</span><br><span class="line">    size = <span class="number">50</span></span><br><span class="line">    data = f.read(size)</span><br><span class="line">    <span class="keyword">while</span> data:</span><br><span class="line">        <span class="built_in">print</span>(data)</span><br><span class="line">        data = f.read(size)</span><br></pre></td></tr></table></figure>
-
-<h2 id="file-like-Object"><a href="#file-like-Object" class="headerlink" title="file-like Object"></a>file-like Object</h2><p>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为file-like Object。除了file外，还可以是内存的字节流，网络流，自定义流等等。file-like Object不要求从特定类继承，只要写个read()方法就行。</p>
-<p><code>StringIO</code> 就是在内存中创建的file-like Object，常用作临时缓冲。</p>
-<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>上面的默认都是读取的<code>utf-8</code>编码的文本文件，如果是二进制文件，比如图片等，需要用<code>&#39;rb&#39;</code> 模式打开文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = open(<span class="string">&#x27;D:/123.png&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.readline()</span></span><br><span class="line">b&#x27;\x89PNG\r\n&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><p>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f=open(<span class="string">&#x27;D:/gb2312-test.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;gb2312&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.readline()</span></span><br><span class="line">&#x27;中文编码测试\n&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>如果有一些非法的编码，可能会报错<code>UnicodeDecodeError</code>，可以指定<code>errors</code>参数忽略错误</p>
-<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><p>写文件和读文件是一样的，唯一区别是调用<code>open()</code>函数时，传入标识符<code>&#39;w&#39;</code>或者<code>&#39;wb&#39;</code>表示写文本文件或写二进制文件：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/write-test.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f.write(<span class="string">&#x27;哈哈哈哈\n&#x27;</span>)</span><br><span class="line">f.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>可以反复调用<code>write()</code>来写文件，但是一定要调用<code>f.close()</code>方法来关闭文件，否则可能发会导致要写入的数据只写了一部分。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。</p>
-<p>所以还是使用<code>with</code>最保险</p>
-<p>要写入特定编码的文本文件，可以给<code>open()</code>函数传入<code>encoding</code>参数</p>
-<p>以 <code>&#39;w&#39;</code>模式写文件时，每次写入会覆盖，可以将<code>&#39;w&#39;</code> 改为 <code>&#39;a&#39;</code> 来使用追加模式写入。</p>
-<h1 id="StringIO和BytesIO"><a href="#StringIO和BytesIO" class="headerlink" title="StringIO和BytesIO"></a>StringIO和BytesIO</h1><h2 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h2><p>很多时候，数据读写不一定是文件，也可以在内存中读写。</p>
-<p>StringIO就是在内存中读写str。要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; from io import StringIO</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f = StringIO()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;大&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;\n&#x27;</span>)</span></span><br><span class="line">1</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.write(<span class="string">&#x27;家好&#x27;</span>)</span></span><br><span class="line">2</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; f.getvalue()</span></span><br><span class="line">&#x27;大\n家好&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><code>getvalue()</code>方法用于获得写入后的str。</p>
-<p>要读取StringIO，可以用一个str初始化StringIO，然后，像读文件一样读取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = StringIO(<span class="string">&#x27;大\n家\n好&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    s = f.readline()</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(s.strip())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h2><p>StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。</p>
-<p>BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：</p>
-<p>写入的不是str，而是经过UTF-8编码的bytes</p>
-<p>和StringIO类似，可以用一个bytes初始化BytesIO，然后，像读文件一样读取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = BytesIO()</span><br><span class="line">f.write(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.getvalue())</span><br><span class="line"><span class="built_in">print</span>(f.getvalue().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用bytes初始化</span></span><br><span class="line">f = BytesIO(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(f.read())</span><br></pre></td></tr></table></figure>
-
-<h1 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h1><p>内置的<code>os</code>模块可以直接调用操作系统提供的接口操作文件和目录。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import os</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;posix&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.uname()</span></span><br><span class="line">(&#x27;Linux&#x27;, &#x27;dev&#x27;, &#x27;3.10.0-1160.90.1.el7.x86_64&#x27;, &#x27;#1 SMP Thu May 4 15:21:22 UTC 2023&#x27;, &#x27;x86_64&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; os.name</span></span><br><span class="line">&#x27;nt&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>如果是<code>posix</code>，说明系统是<code>Linux</code>、<code>Unix</code>或<code>Mac OS X</code>，如果是<code>nt</code>，就是<code>Windows</code>系统。</p>
-<p>要获取详细的系统信息，可以调用<code>uname()</code>函数, windows系统不支持该函数。<code>os</code>模块的某些函数是跟操作系统相关的</p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>os.environ</code> 可以查看全部的环境变量。要获取某个环境变量的值，可以调用<code>os.environ.get(&#39;key&#39;)</code>：</p>
-<h2 id="操作文件和目录-1"><a href="#操作文件和目录-1" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>操作文件和目录的函数一部分放在os模块中，一部分放在os.path模块中。</p>
-<p>把两个路径合成一个时，不要直接拼字符串，而要通过<code>os.path.join()</code>函数，这样可以正确处理不同操作系统的路径分隔符。</p>
-<p>拆分路径的时候，要使用<code>os.path.split()</code>，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名。</p>
-<p><code>os.path.splitext()</code>可以直接得到文件的扩展名。</p>
-<p>这些合并、拆分路径的函数并不要求目录和文件要真实存在，它们只对字符串进行操作。</p>
-<p><code>os.rename()</code> 对文件重命名。<code>os.remove</code> 删除文件。</p>
-<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><p>程序运行的过程中，所有的变量都是在内存中。在程序运行结束后，变量就会被操作系统回收。</p>
-<p>把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思</p>
-<p>序列化之后，就可以把序列化的内容写入到磁盘，或者通过网络传输。</p>
-<p>把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。</p>
-<h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><p>Python提供了<code>pickle</code>模块来实现序列化。</p>
-<p><code>pickle.dumps()</code>方法把任意对象序列化成一个<code>bytes</code>，然后，就可以把这个<code>bytes</code>写入文件。</p>
-<p>或者用另一个方法<code>pickle.dump()</code>直接把对象序列化后写入一个file-like Object：</p>
-<p>当我们要把对象从磁盘读到内存时，可以先把内容读到一个<code>bytes</code>，然后用<code>pickle.loads()</code>方法反序列化出对象，也可以直接用<code>pickle.load()</code>方法从一个file-like Object中直接反序列化出对象。</p>
-<p>通过这种方式反序列化的变量内容相同，但是实际上不是同一个变量了。</p>
-<p>Pickle的序列化只能用于python，可能python的不同版本也不兼容，也不能跨语言。所以不能保存重要的数据。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(pickle.dumps(l))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列化到文件中</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">pickle.dump(l, f)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反序列化 先读取成bytes</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">b = f.read()</span><br><span class="line">data = pickle.loads(b)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#直接从文件反序列化</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;D:/tmpdump.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">d = pickle.load(f)</span><br><span class="line"><span class="built_in">print</span>(d)</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">b&#x27;\x80\x04\x95\x17\x00\x00\x00\x00\......省略....&#x27;</span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON。</p>
-<p>JSON和Python内置的数据类型对应如下</p>
-<table>
-<thead>
-<tr>
-<th align="left">JSON类型</th>
-<th align="left">Python类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">{}</td>
-<td align="left">dict</td>
-</tr>
-<tr>
-<td align="left">[]</td>
-<td align="left">list</td>
-</tr>
-<tr>
-<td align="left">“string”</td>
-<td align="left">str</td>
-</tr>
-<tr>
-<td align="left">12.3</td>
-<td align="left">int或float</td>
-</tr>
-<tr>
-<td align="left">true&#x2F;false</td>
-<td align="left">True&#x2F;False</td>
-</tr>
-<tr>
-<td align="left">null</td>
-<td align="left">None</td>
-</tr>
-</tbody></table>
-<p>Python内置的json模块提供了非常完善的Python对象到JSON格式的转换。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d = dict(name=<span class="string">&#x27;张三&#x27;</span>, age=20, height=130.5, interest=[<span class="string">&#x27;篮球&#x27;</span>, <span class="string">&#x27;唱歌&#x27;</span>])</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; d</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;\\u5f20\\u4e09&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;\\u7bee\\u7403&quot;, &quot;\\u5531\\u6b4c&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.dumps(d,ensure_ascii=False)</span></span><br><span class="line">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s=json.dumps(d)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; json.loads(s)</span></span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;张三&#x27;, &#x27;age&#x27;: 20, &#x27;height&#x27;: 130.5, &#x27;interest&#x27;: [&#x27;篮球&#x27;, &#x27;唱歌&#x27;]&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>dumps()</code>方法返回一个<code>str</code>，内容是标准的json，类似的 <code>dump()</code>方法可以直接把json写入到<code>file-like Object</code></p>
-<p>使用<code>loads()</code>方法把json字符串反序列化，或者使用<code>load()</code>方法从<code>file-like Object</code>中读取字符串并反序列化。</p>
-<h2 id="JSON进阶"><a href="#JSON进阶" class="headerlink" title="JSON进阶"></a>JSON进阶</h2><p><code>dict</code>对象可以直接序列化为JSON的<code>&#123;&#125;</code>，不过，很多时候，我们更喜欢用class表示对象，比如定义Student类，然后序列化：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>, <span class="number">20</span>, <span class="number">88</span>)</span><br><span class="line"><span class="built_in">print</span>(json.dumps(s))</span><br></pre></td></tr></table></figure>
-
-<p>运行时，会报<code>TypeError</code>，是因为<code>Student</code>对象不是一个可序列化为JSON的对象。</p>
-<p><code>dumps()</code>函数有很多可选参数，可以用来定制json序列化。</p>
-<p>可选参数<code>default</code>就是把任意一个对象变成一个可序列为JSON的对象，我们只需要为<code>Student</code>专门写一个转换函数，再把函数传进去即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">student2dict</span>(<span class="params">std</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>: std.name,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span>: std.age,</span><br><span class="line">        <span class="string">&#x27;score&#x27;</span>: std.score</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(json.dumps(s, default=student2dict))</span><br></pre></td></tr></table></figure>
-
-<p>不过，如果遇到其他类的实例，依然无法序列化，可以默认把任意<code>class</code>的实例变为<code>dict</code></p>
-<blockquote>
-<p>print(json.dumps(s, default&#x3D;lambda obj: obj.<strong>dict</strong>))</p>
-</blockquote>
-<p>因为通常<code>class</code>的实例都有一个<code>__dict__</code>属性，它就是一个<code>dict</code>，用来存储实例变量。也有少数例外，比如定义了<code>__slots__</code>的class。</p>
-<p>如果我们要把JSON反序列化为一个<code>Student</code>对象实例，<code>loads()</code>方法首先转换出一个<code>dict</code>对象，然后，我们传入的<code>object_hook</code>函数负责把<code>dict</code>转换为<code>Student</code>实例</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;height&quot;: 130.5, &quot;interest&quot;: [&quot;篮球&quot;, &quot;唱歌&quot;]&#125;&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; stu = json.loads(s, object_hook=dict2student)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(stu)</span></span><br><span class="line">&lt;__main__.Student object at 0x000002615C4962A0&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">print</span>(json.dumps(stu, default=lambda obj: obj.__dict__, ensure_ascii=False))</span></span><br><span class="line">&#123;&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20, &quot;score&quot;: 130.5&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>ensure_ascii</code>用于指定在对JSON进行编码时是否对非ASCII字符进行转义，确保生成的JSON字符串中只包含ASCII字符。</p>
-<p><code>ensure_ascii</code>参数默认值为True，表示会对非ASCII字符进行转义，将其表示为<code>\uXXXX</code>的形式。 如果将<code>ensure_ascii</code>参数设置为<code>False</code>，则表示不对非ASCII字符进行转义。非ASCII字符将以原样包含在生成的JSON字符串中。</p>
-<p>通常情况下，需要保持默认值，这样可以确保生成的JSON字符串是有效的ASCII字符串，可以在不同的系统之间进行传输和解析。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python高级特性</title>
     <url>/python/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[<p>主要介绍切片，迭代，列表生成式，生成器，迭代器等高级特性。</p>
@@ -2241,58 +2399,6 @@ Start --> Stop</pre>
 <p>把<code>list</code> <code>dict</code>  <code>str</code> 等 <code>Iterable</code>变成 <code>Iterator</code> 可以使用 <code>iter()</code> 函数。 和java 的<code>iterator()</code>方法类似。</p>
 <p><code>Iterator</code>对象表示的是一个数据流， Iterator对象可以不断被<code>next()</code>函数调用并返回下一个数据，计算是惰性的，只有在需要返回下一个对象时才进行计算。</p>
 <p><code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python正则表达式</title>
-    <url>/python/python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p>字符串是编程时涉及到的最多的一种数据结构，对字符串进行操作的需求几乎无处不在。</p>
-<p>正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。</p>
-<span id="more"></span>
-
-<p>正则表达式基础的表示方式，如数字，开头，结尾等，可以参考相关文档。</p>
-<p><a href="https://www.runoob.com/regexp/regexp-syntax.html">菜鸟教程-正则表达式</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions">Regular_expressions</a></p>
-<h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><p>Python提供<code>re</code>模块，包含所有正则表达式的功能。由于Python的字符串本身也用<code>\</code>转义，所以要特别注意：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">s = &#x27;ABC\\-001&#x27; # Python的字符串</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对应的正则表达式字符串变成：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;ABC\-001&#x27;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>所以强烈建议使用Python的<code>r</code>前缀，就不用考虑转义的问题了</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">s = r&#x27;ABC\-001&#x27; # Python的字符串</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对应的正则表达式字符串不变：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;ABC\-001&#x27;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><p>使用正则进行匹配</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;111&#x27;</span>)</span></span><br><span class="line">&lt;re.Match object; span=(0, 3), match=&#x27;111&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;\d+&#x27;</span>, <span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>match()</code>方法判断是否匹配，如果匹配成功，返回一个<code>Match</code>对象，否则返回<code>None</code>。常见的判断方法就是：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test = <span class="string">&#x27;字符串&#x27;</span></span><br><span class="line"><span class="keyword">if</span> re.<span class="keyword">match</span>(<span class="string">r&#x27;正则表达式&#x27;</span>, test):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;ok&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;failed&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="切分字符串"><a href="#切分字符串" class="headerlink" title="切分字符串"></a>切分字符串</h2><p>用正则表达式切分字符串比用固定的字符更灵活</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="string">&#x27;a b    c  d     e&#x27;</span>.<span class="built_in">split</span>(<span class="string">&#x27; &#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;c&#x27;, &#x27;&#x27;, &#x27;d&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;e&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.split(r<span class="string">&#x27;\s+&#x27;</span> , <span class="string">&#x27;a b    c  d     e&#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.split(r<span class="string">&#x27;[\s\,]+&#x27;</span> , <span class="string">&#x27;a b  , ,  c , d     e&#x27;</span>)</span></span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>可以看出来使用正则更加灵活和强大，便于把不规范的输入转换成正确的数组。</p>
-<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>除了简单地判断是否匹配之外，正则表达式还有提取子串的强大功能。用<code>()</code>表示的就是要提取的分组（Group）。比如</p>
-<p><code>^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$</code>分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.match(r<span class="string">&#x27;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&#x27;</span>, <span class="string">&#x27;010-12345&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m</span></span><br><span class="line">&lt;re.Match object; span=(0, 9), match=&#x27;010-12345&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;010-12345&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(1)</span></span><br><span class="line">&#x27;010&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(2)</span></span><br><span class="line">&#x27;12345&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果正则表达式中定义了组，就可以在Match对象上用<code>group()</code>方法提取出子串来。</p>
-<p><code>group(0)</code>永远是与整个正则表达式相匹配的字符串，<code>group(1)</code>、<code>group(2)</code>……表示第1、2、……个子串。</p>
-<h2 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h2><p>正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的<code>0</code>， 加上 <code>?</code> 说明采用非贪婪模式。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;(\d+)(0*)$&#x27;</span>, <span class="string">&#x27;102010&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;102010&#x27;, &#x27;&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re.match(r<span class="string">&#x27;(\d+?)(0*)$&#x27;</span>, <span class="string">&#x27;10201000&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;10201&#x27;, &#x27;000&#x27;)</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>\d+</code> 采用非贪婪模式，后面加上<code>?</code> ，改为 <code>(\d+?)</code></p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
-<ol>
-<li><p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
-</li>
-<li><p>用编译后的正则表达式去匹配字符串。</p>
-</li>
-</ol>
-<p>如果一个正则表达式要重复使用几千次，出于效率的考虑，我们可以预编译该正则表达式，接下来重复使用时就不需要编译这个步骤了，直接匹配(和java一样)</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译:</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re_telephone = re.compile(r<span class="string">&#x27;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用：</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; re_telephone.match(<span class="string">&#x27;010-12345&#x27;</span>).<span class="built_in">groups</span>()</span></span><br><span class="line">(&#x27;010&#x27;, &#x27;12345&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>编译后生成Regular Expression对象，由于该对象自己包含了正则表达式，所以调用对应的方法时不用给出正则字符串。</p>
 ]]></content>
       <categories>
         <category>技术</category>
