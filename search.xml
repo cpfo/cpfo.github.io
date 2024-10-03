@@ -1172,52 +1172,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python模块</title>
-    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
-<span id="more"></span>
-
-<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
-<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
-<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
-<p>也可以有多级目录，组成多级层次的包结构。</p>
-<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
-<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
-<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
-<p>第6行使用<code>__author__</code>变量把作者写进去</p>
-<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
-<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
-<p>最后的两行特殊的代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
-<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
-<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
-<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
-<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
-<blockquote>
-<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-</blockquote>
-<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
-<blockquote>
-<p>pip install xxx</p>
-</blockquote>
-<p><strong>模块搜索路径</strong></p>
-<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python异步IO</title>
     <url>/python/python%E5%BC%82%E6%AD%A5IO/</url>
     <content><![CDATA[<p>CPU的处理速度和IO的读写速度远远不匹配，会出现阻塞等待的情况，所以引入了多线程或者多进程来提升并行效率，但是线程数量也不能无限增加，否则将会耗费大量的时间在线程切换上。</p>
@@ -1278,6 +1232,52 @@
 
 <h1 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a>aiohttp</h1><p><code>asyncio</code>可以实现单线程并发IO操作。如果仅用在客户端，发挥的威力不大。如果把<code>asyncio</code>用在服务器端，例如Web服务器，由于HTTP连接就是IO操作，因此可以用单线程+协程实现多用户的高并发支持。</p>
 <p><code>asyncio</code>实现了TCP、UDP、SSL等协议，<code>aiohttp</code>则是基于<code>asyncio</code>实现的HTTP框架。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python模块</title>
+    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
+<span id="more"></span>
+
+<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
+<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
+<p>也可以有多级目录，组成多级层次的包结构。</p>
+<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
+<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
+<p>第6行使用<code>__author__</code>变量把作者写进去</p>
+<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p>最后的两行特殊的代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
+<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
+<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<blockquote>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+</blockquote>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
+<blockquote>
+<p>pip install xxx</p>
+</blockquote>
+<p><strong>模块搜索路径</strong></p>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2408,12 +2408,56 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>使用jsdelivr加速hexo github pages博客的静态资源</title>
+    <url>/tools/use-jsdelivr-cdn-hexo-blog/</url>
+    <content><![CDATA[<p>使用hexo将博客部署在github pages上面，有时候访问速度会比较慢，可以将图片等静态资源，使用jsdelivr进行cdn加速。</p>
+<p>目前由于一些非法的滥用，jsdelivr在国内被墙，无法访问了。</p>
+<span id="more"></span>
+
+<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><p><a href="https://github.com/jsdelivr/jsdelivr?tab=readme-ov-file#github">jsdelivr加速github介绍</a></p>
+<p>根路径是 :  <a href="https://cdn.jsdelivr.net/">https://cdn.jsdelivr.net</a></p>
+<h4 id="Load-any-GitHub-release-commit-or-branch"><a href="#Load-any-GitHub-release-commit-or-branch" class="headerlink" title="Load any GitHub release, commit, or branch:"></a>Load any GitHub release, commit, or branch:</h4><blockquote>
+<p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
+</blockquote>
+<h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#x71;&#x75;&#101;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;">&#x6a;&#x71;&#x75;&#101;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#117;&#101;&#x72;&#x79;&#x40;&#x33;&#x2e;&#x31;">&#x6a;&#113;&#117;&#101;&#x72;&#x79;&#x40;&#x33;&#x2e;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<ul>
+<li>访问方式</li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Github%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/Github用户名/仓库名/资源路径</a></p>
+<p>默认访问 <code>master</code>分支下面的文件。</p>
+<p>比如: </p>
+<ul>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js</a> 访问的是master下的</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js</a> 访问的是精确的版本</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js</a>  访问的是范围版本</li>
+</ul>
+<p>加速静态资源的方式， 可以在github上创建一个仓库，比如叫cdn，然后将静态资源放到方库中。</p>
+<blockquote>
+<p><a href="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg">https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg</a></p>
+</blockquote>
+<p>使用加速后的图片</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>jsdelivr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo使用</title>
     <url>/tools/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/文章名1</span><br><span class="line"> </span><br><span class="line"> // 就是在posts 下的 folder目录中创建了文章名1对应的文章。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/fileanme <span class="string">&quot;titlename&quot;</span></span><br><span class="line"> </span><br><span class="line"> 比如 &gt;hexo new post -p tools/testfile <span class="string">&quot;测试文章&quot;</span></span><br><span class="line">  // 就是在posts 下的 tools目录中创建了文件 testfile.md，文件中对应的title是 测试文章</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
