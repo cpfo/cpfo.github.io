@@ -724,6 +724,49 @@
       </tags>
   </entry>
   <entry>
+    <title>python图形界面</title>
+    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
+<span id="more"></span>
+
+<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
+<ul>
+<li>Tk</li>
+<li>wxWidgets</li>
+<li>Qt</li>
+<li>GTK</li>
+</ul>
+<p>等等。</p>
+<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
+<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
+<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
+<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
+<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
+<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
+<blockquote>
+<p>from tkinter import *</p>
+</blockquote>
+<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
+
+<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
+<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
+<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
+<p>第三步，实例化Application，并启动消息循环：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
+
+<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
+<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
+<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python基础</title>
     <url>/python/python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>python输入输出，基础数据类型和变量。</p>
@@ -876,49 +919,6 @@
 </ol>
 <p>list, tuple, dict, set 的区别</p>
 <p>list [] , tuple (), dict {k:v} , set {k1,k2}</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python图形界面</title>
-    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
-    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
-<span id="more"></span>
-
-<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
-<ul>
-<li>Tk</li>
-<li>wxWidgets</li>
-<li>Qt</li>
-<li>GTK</li>
-</ul>
-<p>等等。</p>
-<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
-<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
-<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
-<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
-<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
-<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
-<blockquote>
-<p>from tkinter import *</p>
-</blockquote>
-<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
-
-<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
-<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
-<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
-<p>第三步，实例化Application，并启动消息循环：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
-
-<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
-<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
-<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1172,6 +1172,52 @@
       </tags>
   </entry>
   <entry>
+    <title>python模块</title>
+    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
+<span id="more"></span>
+
+<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
+<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
+<p>也可以有多级目录，组成多级层次的包结构。</p>
+<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
+<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
+<p>第6行使用<code>__author__</code>变量把作者写进去</p>
+<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p>最后的两行特殊的代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
+<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
+<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<blockquote>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+</blockquote>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
+<blockquote>
+<p>pip install xxx</p>
+</blockquote>
+<p><strong>模块搜索路径</strong></p>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python异步IO</title>
     <url>/python/python%E5%BC%82%E6%AD%A5IO/</url>
     <content><![CDATA[<p>CPU的处理速度和IO的读写速度远远不匹配，会出现阻塞等待的情况，所以引入了多线程或者多进程来提升并行效率，但是线程数量也不能无限增加，否则将会耗费大量的时间在线程切换上。</p>
@@ -1232,52 +1278,6 @@
 
 <h1 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a>aiohttp</h1><p><code>asyncio</code>可以实现单线程并发IO操作。如果仅用在客户端，发挥的威力不大。如果把<code>asyncio</code>用在服务器端，例如Web服务器，由于HTTP连接就是IO操作，因此可以用单线程+协程实现多用户的高并发支持。</p>
 <p><code>asyncio</code>实现了TCP、UDP、SSL等协议，<code>aiohttp</code>则是基于<code>asyncio</code>实现的HTTP框架。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python模块</title>
-    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
-<span id="more"></span>
-
-<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
-<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
-<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
-<p>也可以有多级目录，组成多级层次的包结构。</p>
-<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
-<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
-<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
-<p>第6行使用<code>__author__</code>变量把作者写进去</p>
-<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
-<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
-<p>最后的两行特殊的代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
-<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
-<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
-<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
-<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
-<blockquote>
-<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-</blockquote>
-<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
-<blockquote>
-<p>pip install xxx</p>
-</blockquote>
-<p><strong>模块搜索路径</strong></p>
-<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2426,6 +2426,12 @@ Start --> Stop</pre>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h3 id="使用图片"><a href="#使用图片" class="headerlink" title="使用图片"></a>使用图片</h3><p>可以将图片放到 source&#x2F;images 目录下面即可，然后在文章中使用markdown语法访问他们, 参考 <a href="https://fuhailin.github.io/Hexo-images/">资源文件夹</a></p>
+<blockquote>
+<p> <code>![](/images/image.jpg)</code></p>
+</blockquote>
+<p>效果如下:</p>
+<p><img data-src="/images/assets/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
 ]]></content>
       <categories>
         <category>工具</category>
