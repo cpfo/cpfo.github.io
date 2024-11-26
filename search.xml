@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>go环境安装</title>
-    <url>/go/go%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>go语言环境的安装</p>
-<span id="more"></span>
-
-<p>安装就按照官网的步骤，直接安装即可，下面主要是列举下安装后的一些问题</p>
-<ul>
-<li>VsCode 插件安装失败的问题</li>
-</ul>
-<p>proxy.golang.org 访问失败，需要设置代理</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.io,direct</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>verifying module: invalid GOSUMDB: malformed verifier id</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GOSUMDB=&quot;sum.golang.org&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或者关闭包验证</span></span><br><span class="line">go env -w GOSUMDB=off</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>VsCode中红线提示</li>
-</ul>
-<p><code>gopls was not able to find modules in your workspace.</code></p>
-<p>在 *.go文件同级目录下初始化一个新的Go模块，会自动创建一个go.mod文件<br><code>main</code> 和go文件中的package一致。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go mod init main</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>VsCode代码自动提示</li>
-</ul>
-<p>在VsCode的Command Palette中输入 <code>go:install/Update Tools</code>，在弹窗中把列出来的几项都选中，然后安装</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>go语言变量和运算符</title>
     <url>/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<p>主要介绍go语言变量，运算符等</p>
@@ -115,6 +78,138 @@
       </categories>
       <tags>
         <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go环境安装</title>
+    <url>/go/go%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>go语言环境的安装</p>
+<span id="more"></span>
+
+<p>安装就按照官网的步骤，直接安装即可，下面主要是列举下安装后的一些问题</p>
+<ul>
+<li>VsCode 插件安装失败的问题</li>
+</ul>
+<p>proxy.golang.org 访问失败，需要设置代理</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.io,direct</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>verifying module: invalid GOSUMDB: malformed verifier id</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GOSUMDB=&quot;sum.golang.org&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或者关闭包验证</span></span><br><span class="line">go env -w GOSUMDB=off</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>VsCode中红线提示</li>
+</ul>
+<p><code>gopls was not able to find modules in your workspace.</code></p>
+<p>在 *.go文件同级目录下初始化一个新的Go模块，会自动创建一个go.mod文件<br><code>main</code> 和go文件中的package一致。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go mod init main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>VsCode代码自动提示</li>
+</ul>
+<p>在VsCode的Command Palette中输入 <code>go:install/Update Tools</code>，在弹窗中把列出来的几项都选中，然后安装</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shardingsphere分库分表</title>
+    <url>/java/shardingsphere%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</url>
+    <content><![CDATA[<p>主要记录使用shardingsphere-jdbc 5.2.0进行分库，分表，分库加分表，读写分离，自定义复合分片算法等的操作步骤。</p>
+<span id="more"></span>
+
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="基因法"><a href="#基因法" class="headerlink" title="基因法"></a>基因法</h2><blockquote>
+<p>基因法原理 : 对一个数取余2的n次方，那么余数就是这个数的二进制的最后n位数。</p>
+</blockquote>
+<ul>
+<li>举例</li>
+</ul>
+<p>十进制数对10的n次幂取余，余数是10进制数的最后n位， 比如</p>
+<p>11 % 10，余数 1</p>
+<p>122 % 10，余数 2</p>
+<p>122 % 100 , 余数 22</p>
+<p>同理，对一个数取余2的n次方，余数就是这个数的二进制的最后n位数，然后可以再转为10进制。</p>
+<h2 id="为什么分片数要是2的n次幂"><a href="#为什么分片数要是2的n次幂" class="headerlink" title="为什么分片数要是2的n次幂"></a>为什么分片数要是2的n次幂</h2><ul>
+<li>可以将取模算法优化成性能更高的位运算算法。</li>
+</ul>
+<p>如： 11 % 4 等于 11 &amp; (4-1) </p>
+<ul>
+<li>可以将表在多个库中均匀分布。</li>
+</ul>
+<p>通常分表会和分库一起进行，比如需要分成2个库8个表，分表和分库的数量都是2的n次幂，可以实现均匀分布，8个表均分到2个库中，每个库4个表。</p>
+<ul>
+<li>第三个也是最重要的原因，可以减少扩容时迁移的数据量，只需要迁移一半。</li>
+</ul>
+<p>比如 原来分2个表，order_0,order_1</p>
+<ol>
+<li>userId % 2 &#x3D; 0 ，对应 order_0</li>
+<li>userId % 2 &#x3D; 1 , 对应 order_1</li>
+</ol>
+<p>此时扩容到4个表</p>
+<ol>
+<li>userId % 4 &#x3D; 0 ，对应 order_0</li>
+<li>userId % 4 &#x3D; 1 , 对应 order_1</li>
+<li>userId % 4 &#x3D; 2 ，对应 order_2</li>
+<li>userId % 4 &#x3D; 3 , 对应 order_3</li>
+</ol>
+<p>只需要迁移原来在 order_0, order_1 中，且 userId % 4 &gt;&#x3D;2 数据就行。</p>
+<ol>
+<li>userId % 4 &#x3D; 2的数据， 从 order_0 迁移到 order_2 </li>
+<li>userId % 4 &#x3D; 3的数据， 从order_1  迁移到 order_3</li>
+</ol>
+<h1 id="具体配置和操作"><a href="#具体配置和操作" class="headerlink" title="具体配置和操作"></a>具体配置和操作</h1><p>以电商系统中用户的订单表为例。</p>
+<p>电商系统中，常见的业务场景是通过userId查询用户的订单列表，因此使用userId作为分片键，查询时可以快速定位到数据库和表。</p>
+<p>但是也会有通过订单号进行查询的情况，默认情况下，非分片键的查询，需要在所有分片上进行查询，然后对结果进行聚合，这样效率非常低，日志中sql如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Actual SQL: ds0 ::: SELECT  user_id,order_id,address_id,status  FROM t_order_0 </span><br><span class="line"> WHERE order_id = ? UNION ALL SELECT  user_id,order_id,address_id,status  FROM t_order_1 </span><br><span class="line"> WHERE order_id = ? ::: </span><br></pre></td></tr></table></figure>
+<p>此时可以考虑新增一个订单号和userId的映射关系表即索引表。</p>
+<h2 id="索引表法"><a href="#索引表法" class="headerlink" title="索引表法"></a>索引表法</h2><p>将订单号和userId的映射关系，单独保存到一个表中，通过订单号进行查询时，先从索引表中查询到对应的userId，然后在查询条件中加上userId，这样只需要2步就可以查询出结果。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id <span class="keyword">from</span> order_user_relation <span class="keyword">where</span> order_id <span class="operator">=</span> xxx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_order <span class="keyword">where</span> order_id <span class="operator">=</span> xxx <span class="keyword">and</span> user_id <span class="operator">=</span> xxx;</span><br></pre></td></tr></table></figure>
+
+<p>为了提升查询效率，可以在加上一层分布式缓存，将映射关系保存到redis中。但是这样会带来一定的问题，比如数据库和缓存的存储量增大。</p>
+<h2 id="基因法自定义复合分片算法"><a href="#基因法自定义复合分片算法" class="headerlink" title="基因法自定义复合分片算法"></a>基因法自定义复合分片算法</h2><p>为了解决聚合查询或者索引表的问题，业界一般采用基因法来将分片键的信息，保存到非分片键中，比如取userId的后4位，拼接到order_id后面。</p>
+<p>假设订单号的规则为 :  时间戳 + 随机数 + 用户id后四位。这样可以从订单号的后四位中截取到用户id的基因，可以定位到具体的分片位置，一次查询就可以查到对应的数据。</p>
+<p>比如淘宝的订单号，后6位都是一样的，大概率也是用户id的后6位。</p>
+<ul>
+<li>算法实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Collection&lt;String&gt; <span class="title function_">doSharding</span><span class="params">(Collection availableTargetNames, ComplexKeysShardingValue complexKeysShardingValue)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> availableTargetNames.size();</span><br><span class="line">        <span class="comment">// 判断分片数必须是2的整数次幂</span></span><br><span class="line">        <span class="keyword">if</span> ((count &amp; (count - <span class="number">1</span>)) != <span class="number">0</span>) &#123;</span><br><span class="line">            log.warn(<span class="string">&quot;分片数不是2的整数次幂，当前分片数 &#123;&#125;&quot;</span>, count);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;分片数量不是2的整数次幂，当前数量:&quot;</span> + count);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>(availableTargetNames);</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="comment">//        String logicName = complexKeysShardingValue.getLogicTableName();</span></span><br><span class="line"></span><br><span class="line">        log.debug(<span class="string">&quot;availableTargetNames的值 &#123;&#125;&quot;</span>, JSON.toJSONString(availableTargetNames));</span><br><span class="line">        log.debug(<span class="string">&quot;complexKeysShardingValue &#123;&#125;&quot;</span>, JSON.toJSONString(complexKeysShardingValue));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 先判断userId， 如果有userId， 则直接计算</span></span><br><span class="line">        Map&lt;String, Collection&lt;Comparable&lt;?&gt;&gt;&gt; nameAndValueMap = complexKeysShardingValue.getColumnNameAndShardingValuesMap();</span><br><span class="line">        Collection&lt;Comparable&lt;?&gt;&gt; userIdValueCollection = nameAndValueMap.get(userIdKey);</span><br><span class="line">        <span class="keyword">if</span> (!CollectionUtils.isEmpty(userIdValueCollection)) &#123;</span><br><span class="line">            userIdValueCollection.stream().findFirst().ifPresent(o -&gt; &#123;</span><br><span class="line">                <span class="type">Long</span> <span class="variable">index</span> <span class="operator">=</span> (Long) o % count;</span><br><span class="line">                log.debug(<span class="string">&quot;以userid &#123;&#125; 对 分片数&#123;&#125; 取余的结果为 &#123;&#125;&quot;</span>, o, count, index);</span><br><span class="line"><span class="comment">//                result.add(logicName + &quot;_&quot; + index);</span></span><br><span class="line">                result.add(String.valueOf(list.get(index.intValue())));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 从订单号中截取用户id基因</span></span><br><span class="line">            Collection&lt;Comparable&lt;?&gt;&gt; orderIdCollection = nameAndValueMap.get(orderIdKey);</span><br><span class="line">            orderIdCollection.stream().findFirst().ifPresent(comparable -&gt; &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">orderId</span> <span class="operator">=</span> String.valueOf(comparable);</span><br><span class="line">                <span class="type">String</span> <span class="variable">subString</span> <span class="operator">=</span> orderId.substring(orderId.length() - userIdSuffixLength);</span><br><span class="line">                <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> Integer.parseInt(subString) % count;</span><br><span class="line">                log.debug(<span class="string">&quot;orderId中基因 &#123;&#125; 对 分片数&#123;&#125; 取余的结果为 &#123;&#125;&quot;</span>, subString, count, index);</span><br><span class="line"><span class="comment">//                result.add(logicName + &quot;_&quot; + index);</span></span><br><span class="line">                result.add(String.valueOf(list.get(index)));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置信息</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 模式配置</span></span><br><span class="line"><span class="attr">spring.shardingsphere.mode.type</span>=<span class="string">Standalone</span></span><br><span class="line"><span class="attr">spring.shardingsphere.mode.repository.type</span>=<span class="string">JDBC</span></span><br><span class="line"><span class="comment"># 数据源配置 配置真实数据源</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.names</span>=<span class="string">ds0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.jdbc-url</span>=<span class="string">jdbc:mysql://localhost:3306/shop_ds_0?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.type</span>=<span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.password</span>=<span class="string">root</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 广播表规则列表</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.broadcast-tables</span>=<span class="string">t_address</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 标准分片表配置</span></span><br><span class="line"><span class="comment"># 由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。</span></span><br><span class="line"><span class="comment"># 缺省表示使用已知数据源与逻辑表名称生成数据节点，用于广播表（即每个库中都需要一个同样的表用于关联查询，多为字典表）或只分库不分表且所有库的表结构完全一致的情况</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes</span>=<span class="string">ds0.t_order_$-&gt;&#123;0..1&#125;</span></span><br><span class="line"><span class="comment"># 复合分片，自定义策略</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.complex.sharding-columns</span>=<span class="string">user_id,order_id</span></span><br><span class="line"><span class="comment"># 分片算法名称</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.complex.sharding-algorithm-name</span>=<span class="string">t_order_complex_custom_algorithm</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 自定义复合分片算法</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.type</span>=<span class="string">CLASS_BASED</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.props.strategy</span>=<span class="string">complex</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.props.algorithmClassName</span>=<span class="string">com.bsd.xxyp.sharding.config.GeneComplexKeysShardingAlgorithm</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
+<li><a href="https://tech.meituan.com/2016/11/18/dianping-order-db-sharding.html">大众点评订单系统分库分表实践</a></li>
+<li><a href="https://community.sphere-ex.com/t/topic/674">基于Apache ShardingSphere的核心业务分库分表实践</a></li>
+<li><a href="https://www.cnblogs.com/chengxy-nds/p/18108596">DIY 3 种分库分表分片算法</a></li>
+<li><a href="https://mp.weixin.qq.com/s/PqXJKXCzQlMVwR4EjPpXew">实战：Springboot3+ShardingSphere5.2.1生产级分库分表实现</a></li>
+<li><a href="https://mp.weixin.qq.com/s/TdCqxsBeSnugWXP_MuosdQ">聊聊分库分表后非Sharding Key查询的三种方案</a></li>
+<li><a href="https://mp.weixin.qq.com/s/6sI92hEH6Sxt7nzXWDW-kA">一些补充的知识点-MySQL大表分库分表基因法</a></li>
+<li><a href="https://mp.weixin.qq.com/s/3cP_emfG15qJapeQwV5gtQ">看完这一篇，ShardingSphere-jdbc 实战再也不怕了</a></li>
+<li><a href="https://www.cnblogs.com/chengxy-nds/p/17513945.html">SpringBoot 2 种方式快速实现分库分表，轻松拿捏</a></li>
+<li><a href="https://mp.weixin.qq.com/s/1syeeqzusxt4Z-yJff0mng">分布式数据库：如何正确选择分片键？</a></li>
+</ol>
+<h1 id="FAQ整理"><a href="#FAQ整理" class="headerlink" title="FAQ整理"></a>FAQ整理</h1><ol>
+<li>点评的文章中，userid后4位，为什么说最大是8192个表</li>
+</ol>
+<p>按照上面的规范，分片数必须是2的n次幂，4位数的最大值是9999，假设分片数是 2的14次幂 16384，4位数字对16384取余的结果范围是[0, 9999], 实际计算出来需要的分片数是10000个，不是2的n次幂，不满足分片数规则。<br>所以最大只能取 8192 个</p>
+<ol start="2">
+<li>点评的方式和基因法的区别。</li>
+</ol>
+<p>点评文章中userid和orderid的取模都是用的userid的后四位，所以最大是8192个。基因法里面，通过userid计算分片是按照userid % 2^n，按照订单id计算分片 &#x3D; orderId.substring(length-4) % 2^n，<br>是使用订单号的后四位进行计算，所以userid后四位的最大分片数是16个。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>shardingsphere</tag>
       </tags>
   </entry>
   <entry>
@@ -306,98 +401,29 @@
       </tags>
   </entry>
   <entry>
-    <title>shardingsphere分库分表</title>
-    <url>/java/shardingsphere%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</url>
-    <content><![CDATA[<p>主要记录使用shardingsphere-jdbc 5.2.0进行分库，分表，分库加分表，读写分离，自定义复合分片算法等的操作步骤。</p>
+    <title>使用RateLimiter进行限流</title>
+    <url>/java/%E4%BD%BF%E7%94%A8RateLimiter%E8%BF%9B%E8%A1%8C%E9%99%90%E6%B5%81/</url>
+    <content><![CDATA[<p>主要介绍使用RateLimiter进行请求的限流。</p>
 <span id="more"></span>
 
-<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="基因法"><a href="#基因法" class="headerlink" title="基因法"></a>基因法</h2><blockquote>
-<p>基因法原理 : 对一个数取余2的n次方，那么余数就是这个数的二进制的最后n位数。</p>
-</blockquote>
-<ul>
-<li>举例</li>
-</ul>
-<p>十进制数对10的n次幂取余，余数是10进制数的最后n位， 比如</p>
-<p>11 % 10，余数 1</p>
-<p>122 % 10，余数 2</p>
-<p>122 % 100 , 余数 22</p>
-<p>同理，对一个数取余2的n次方，余数就是这个数的二进制的最后n位数，然后可以再转为10进制。</p>
-<h2 id="为什么分片数要是2的n次幂"><a href="#为什么分片数要是2的n次幂" class="headerlink" title="为什么分片数要是2的n次幂"></a>为什么分片数要是2的n次幂</h2><ul>
-<li>可以将取模算法优化成性能更高的位运算算法。</li>
-</ul>
-<p>如： 11 % 4 等于 11 &amp; (4-1) </p>
-<ul>
-<li>可以将表在多个库中均匀分布。</li>
-</ul>
-<p>通常分表会和分库一起进行，比如需要分成2个库8个表，分表和分库的数量都是2的n次幂，可以实现均匀分布，8个表均分到2个库中，每个库4个表。</p>
-<ul>
-<li>第三个也是最重要的原因，可以减少扩容时迁移的数据量，只需要迁移一半。</li>
-</ul>
-<p>比如 原来分2个表，order_0,order_1</p>
-<ol>
-<li>userId % 2 &#x3D; 0 ，对应 order_0</li>
-<li>userId % 2 &#x3D; 1 , 对应 order_1</li>
-</ol>
-<p>此时扩容到4个表</p>
-<ol>
-<li>userId % 4 &#x3D; 0 ，对应 order_0</li>
-<li>userId % 4 &#x3D; 1 , 对应 order_1</li>
-<li>userId % 4 &#x3D; 2 ，对应 order_2</li>
-<li>userId % 4 &#x3D; 3 , 对应 order_3</li>
-</ol>
-<p>只需要迁移原来在 order_0, order_1 中，且 userId % 4 &gt;&#x3D;2 数据就行。</p>
-<ol>
-<li>userId % 4 &#x3D; 2的数据， 从 order_0 迁移到 order_2 </li>
-<li>userId % 4 &#x3D; 3的数据， 从order_1  迁移到 order_3</li>
-</ol>
-<h1 id="具体配置和操作"><a href="#具体配置和操作" class="headerlink" title="具体配置和操作"></a>具体配置和操作</h1><p>以电商系统中用户的订单表为例。</p>
-<p>电商系统中，常见的业务场景是通过userId查询用户的订单列表，因此使用userId作为分片键，查询时可以快速定位到数据库和表。</p>
-<p>但是也会有通过订单号进行查询的情况，默认情况下，非分片键的查询，需要在所有分片上进行查询，然后对结果进行聚合，这样效率非常低，日志中sql如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Actual SQL: ds0 ::: SELECT  user_id,order_id,address_id,status  FROM t_order_0 </span><br><span class="line"> WHERE order_id = ? UNION ALL SELECT  user_id,order_id,address_id,status  FROM t_order_1 </span><br><span class="line"> WHERE order_id = ? ::: </span><br></pre></td></tr></table></figure>
-<p>此时可以考虑新增一个订单号和userId的映射关系表即索引表。</p>
-<h2 id="索引表法"><a href="#索引表法" class="headerlink" title="索引表法"></a>索引表法</h2><p>将订单号和userId的映射关系，单独保存到一个表中，通过订单号进行查询时，先从索引表中查询到对应的userId，然后在查询条件中加上userId，这样只需要2步就可以查询出结果。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id <span class="keyword">from</span> order_user_relation <span class="keyword">where</span> order_id <span class="operator">=</span> xxx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_order <span class="keyword">where</span> order_id <span class="operator">=</span> xxx <span class="keyword">and</span> user_id <span class="operator">=</span> xxx;</span><br></pre></td></tr></table></figure>
 
-<p>为了提升查询效率，可以在加上一层分布式缓存，将映射关系保存到redis中。但是这样会带来一定的问题，比如数据库和缓存的存储量增大。</p>
-<h2 id="基因法自定义复合分片算法"><a href="#基因法自定义复合分片算法" class="headerlink" title="基因法自定义复合分片算法"></a>基因法自定义复合分片算法</h2><p>为了解决聚合查询或者索引表的问题，业界一般采用基因法来将分片键的信息，保存到非分片键中，比如取userId的后4位，拼接到order_id后面。</p>
-<p>假设订单号的规则为 :  时间戳 + 随机数 + 用户id后四位。这样可以从订单号的后四位中截取到用户id的基因，可以定位到具体的分片位置，一次查询就可以查到对应的数据。</p>
-<p>比如淘宝的订单号，后6位都是一样的，大概率也是用户id的后6位。</p>
-<ul>
-<li>算法实现</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Collection&lt;String&gt; <span class="title function_">doSharding</span><span class="params">(Collection availableTargetNames, ComplexKeysShardingValue complexKeysShardingValue)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> availableTargetNames.size();</span><br><span class="line">        <span class="comment">// 判断分片数必须是2的整数次幂</span></span><br><span class="line">        <span class="keyword">if</span> ((count &amp; (count - <span class="number">1</span>)) != <span class="number">0</span>) &#123;</span><br><span class="line">            log.warn(<span class="string">&quot;分片数不是2的整数次幂，当前分片数 &#123;&#125;&quot;</span>, count);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;分片数量不是2的整数次幂，当前数量:&quot;</span> + count);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">ArrayList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>(availableTargetNames);</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="comment">//        String logicName = complexKeysShardingValue.getLogicTableName();</span></span><br><span class="line"></span><br><span class="line">        log.debug(<span class="string">&quot;availableTargetNames的值 &#123;&#125;&quot;</span>, JSON.toJSONString(availableTargetNames));</span><br><span class="line">        log.debug(<span class="string">&quot;complexKeysShardingValue &#123;&#125;&quot;</span>, JSON.toJSONString(complexKeysShardingValue));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 先判断userId， 如果有userId， 则直接计算</span></span><br><span class="line">        Map&lt;String, Collection&lt;Comparable&lt;?&gt;&gt;&gt; nameAndValueMap = complexKeysShardingValue.getColumnNameAndShardingValuesMap();</span><br><span class="line">        Collection&lt;Comparable&lt;?&gt;&gt; userIdValueCollection = nameAndValueMap.get(userIdKey);</span><br><span class="line">        <span class="keyword">if</span> (!CollectionUtils.isEmpty(userIdValueCollection)) &#123;</span><br><span class="line">            userIdValueCollection.stream().findFirst().ifPresent(o -&gt; &#123;</span><br><span class="line">                <span class="type">Long</span> <span class="variable">index</span> <span class="operator">=</span> (Long) o % count;</span><br><span class="line">                log.debug(<span class="string">&quot;以userid &#123;&#125; 对 分片数&#123;&#125; 取余的结果为 &#123;&#125;&quot;</span>, o, count, index);</span><br><span class="line"><span class="comment">//                result.add(logicName + &quot;_&quot; + index);</span></span><br><span class="line">                result.add(String.valueOf(list.get(index.intValue())));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 从订单号中截取用户id基因</span></span><br><span class="line">            Collection&lt;Comparable&lt;?&gt;&gt; orderIdCollection = nameAndValueMap.get(orderIdKey);</span><br><span class="line">            orderIdCollection.stream().findFirst().ifPresent(comparable -&gt; &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">orderId</span> <span class="operator">=</span> String.valueOf(comparable);</span><br><span class="line">                <span class="type">String</span> <span class="variable">subString</span> <span class="operator">=</span> orderId.substring(orderId.length() - userIdSuffixLength);</span><br><span class="line">                <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> Integer.parseInt(subString) % count;</span><br><span class="line">                log.debug(<span class="string">&quot;orderId中基因 &#123;&#125; 对 分片数&#123;&#125; 取余的结果为 &#123;&#125;&quot;</span>, subString, count, index);</span><br><span class="line"><span class="comment">//                result.add(logicName + &quot;_&quot; + index);</span></span><br><span class="line">                result.add(String.valueOf(list.get(index)));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>场景: 和第三方对接的项目中，为对接的第三方分配一个appid，需要针对appid进行限流，限制每个appid的请求不能超过指定的qps。</p>
+<h1 id="Guava-RateLimiter"><a href="#Guava-RateLimiter" class="headerlink" title="Guava RateLimiter"></a>Guava RateLimiter</h1><p><code>RateLimiter</code> 是针对单机进行限流的，但是在实际的生产环境中，服务一般是通过集群的方式进行部署。假设限制的QPS是300，集群一共5台机器，如果流量分布均衡的话，每台机器的QPS是 <code>300/5 = 60</code> 。</p>
+<p>但实际上，通过轮询的方式，流量不可能做到绝对的均匀，所以可以预留一定的空间，比如每台机器的qps限制在80，这样即使某台机器的流量稍微偏高，也不太可能超过限制被拦截掉。</p>
+<p>此种方式适合对限流不是很严格的情况，即使部分请求被拦截，也不影响业务。</p>
+<p><code>RateLimiter.create(rate)</code> 创建指定QPS的RateLimiter。</p>
+<p><code>tryAcquire()</code>  以非阻塞的方式获取令牌。</p>
+<h1 id="RedissonRateLimiter"><a href="#RedissonRateLimiter" class="headerlink" title="RedissonRateLimiter"></a>RedissonRateLimiter</h1><p><code>RedissonRateLimiter</code> 是redisson中提供的分布式限流器。</p>
+<p><code>getRateLimiter(String name)</code> 获取对应name的 rate limiter。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestRateController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedissonClient redissonClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, RateLimiter&gt; rateLimiterMap = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 针对appid配置请求频率</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApolloJsonValue(&quot;$&#123;qps.rate:&#123;&#125;&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Integer&gt; appIdRateMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/rate/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> tryAcquire(appId);</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/redisson/rate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">redissonRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">RRateLimiter</span> <span class="variable">clientRateLimiter</span> <span class="operator">=</span> redissonClient.getRateLimiter(<span class="string">&quot;limiter:&quot;</span>.concat(appId));</span><br><span class="line">        <span class="keyword">if</span> (!clientRateLimiter.isExists()) &#123;</span><br><span class="line">            clientRateLimiter.setRate(RateType.OVERALL, <span class="number">1</span>, <span class="number">1</span>, RateIntervalUnit.SECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> clientRateLimiter.tryAcquire();</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(String appId)</span> &#123;</span><br><span class="line">        Assert.notNull(appId, <span class="string">&quot;appId不能为空&quot;</span>);</span><br><span class="line">        <span class="type">RateLimiter</span> <span class="variable">rateLimiter</span> <span class="operator">=</span> rateLimiterMap.computeIfAbsent(appId, s -&gt; &#123;</span><br><span class="line">            log.info(<span class="string">&quot;初始化appid &#123;&#125; 的限流器&quot;</span>, appId);</span><br><span class="line">            <span class="type">int</span> <span class="variable">rate</span> <span class="operator">=</span> appIdRateMap.getOrDefault(appId, <span class="number">70</span>);</span><br><span class="line">            <span class="keyword">return</span> RateLimiter.create(rate);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> rateLimiter.tryAcquire();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>配置信息</li>
-</ul>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 模式配置</span></span><br><span class="line"><span class="attr">spring.shardingsphere.mode.type</span>=<span class="string">Standalone</span></span><br><span class="line"><span class="attr">spring.shardingsphere.mode.repository.type</span>=<span class="string">JDBC</span></span><br><span class="line"><span class="comment"># 数据源配置 配置真实数据源</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.names</span>=<span class="string">ds0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.jdbc-url</span>=<span class="string">jdbc:mysql://localhost:3306/shop_ds_0?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.type</span>=<span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.shardingsphere.datasource.ds0.password</span>=<span class="string">root</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 广播表规则列表</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.broadcast-tables</span>=<span class="string">t_address</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 标准分片表配置</span></span><br><span class="line"><span class="comment"># 由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持 inline 表达式。</span></span><br><span class="line"><span class="comment"># 缺省表示使用已知数据源与逻辑表名称生成数据节点，用于广播表（即每个库中都需要一个同样的表用于关联查询，多为字典表）或只分库不分表且所有库的表结构完全一致的情况</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.actual-data-nodes</span>=<span class="string">ds0.t_order_$-&gt;&#123;0..1&#125;</span></span><br><span class="line"><span class="comment"># 复合分片，自定义策略</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.complex.sharding-columns</span>=<span class="string">user_id,order_id</span></span><br><span class="line"><span class="comment"># 分片算法名称</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.tables.t_order.table-strategy.complex.sharding-algorithm-name</span>=<span class="string">t_order_complex_custom_algorithm</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 自定义复合分片算法</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.type</span>=<span class="string">CLASS_BASED</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.props.strategy</span>=<span class="string">complex</span></span><br><span class="line"><span class="attr">spring.shardingsphere.rules.sharding.sharding-algorithms.t_order_complex_custom_algorithm.props.algorithmClassName</span>=<span class="string">com.bsd.xxyp.sharding.config.GeneComplexKeysShardingAlgorithm</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
-<li><a href="https://tech.meituan.com/2016/11/18/dianping-order-db-sharding.html">大众点评订单系统分库分表实践</a></li>
-<li><a href="https://community.sphere-ex.com/t/topic/674">基于Apache ShardingSphere的核心业务分库分表实践</a></li>
-<li><a href="https://www.cnblogs.com/chengxy-nds/p/18108596">DIY 3 种分库分表分片算法</a></li>
-<li><a href="https://mp.weixin.qq.com/s/PqXJKXCzQlMVwR4EjPpXew">实战：Springboot3+ShardingSphere5.2.1生产级分库分表实现</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TdCqxsBeSnugWXP_MuosdQ">聊聊分库分表后非Sharding Key查询的三种方案</a></li>
-<li><a href="https://mp.weixin.qq.com/s/6sI92hEH6Sxt7nzXWDW-kA">一些补充的知识点-MySQL大表分库分表基因法</a></li>
-<li><a href="https://mp.weixin.qq.com/s/3cP_emfG15qJapeQwV5gtQ">看完这一篇，ShardingSphere-jdbc 实战再也不怕了</a></li>
-<li><a href="https://www.cnblogs.com/chengxy-nds/p/17513945.html">SpringBoot 2 种方式快速实现分库分表，轻松拿捏</a></li>
-<li><a href="https://mp.weixin.qq.com/s/1syeeqzusxt4Z-yJff0mng">分布式数据库：如何正确选择分片键？</a></li>
-</ol>
-<h1 id="FAQ整理"><a href="#FAQ整理" class="headerlink" title="FAQ整理"></a>FAQ整理</h1><ol>
-<li>点评的文章中，userid后4位，为什么说最大是8192个表</li>
-</ol>
-<p>按照上面的规范，分片数必须是2的n次幂，4位数的最大值是9999，假设分片数是 2的14次幂 16384，4位数字对16384取余的结果范围是[0, 9999], 实际计算出来需要的分片数是10000个，不是2的n次幂，不满足分片数规则。<br>所以最大只能取 8192 个</p>
-<ol start="2">
-<li>点评的方式和基因法的区别。</li>
-</ol>
-<p>点评文章中userid和orderid的取模都是用的userid的后四位，所以最大是8192个。基因法里面，通过userid计算分片是按照userid % 2^n，按照订单id计算分片 &#x3D; orderId.substring(length-4) % 2^n，<br>是使用订单号的后四位进行计算，所以userid后四位的最大分片数是16个。</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>shardingsphere</tag>
+        <tag>RateLimiter</tag>
       </tags>
   </entry>
   <entry>
@@ -468,38 +494,99 @@
       </tags>
   </entry>
   <entry>
-    <title>使用RateLimiter进行限流</title>
-    <url>/java/%E4%BD%BF%E7%94%A8RateLimiter%E8%BF%9B%E8%A1%8C%E9%99%90%E6%B5%81/</url>
-    <content><![CDATA[<p>主要介绍使用RateLimiter进行请求的限流。</p>
-<span id="more"></span>
-
-
-<p>场景: 和第三方对接的项目中，为对接的第三方分配一个appid，需要针对appid进行限流，限制每个appid的请求不能超过指定的qps。</p>
-<h1 id="Guava-RateLimiter"><a href="#Guava-RateLimiter" class="headerlink" title="Guava RateLimiter"></a>Guava RateLimiter</h1><p><code>RateLimiter</code> 是针对单机进行限流的，但是在实际的生产环境中，服务一般是通过集群的方式进行部署。假设限制的QPS是300，集群一共5台机器，如果流量分布均衡的话，每台机器的QPS是 <code>300/5 = 60</code> 。</p>
-<p>但实际上，通过轮询的方式，流量不可能做到绝对的均匀，所以可以预留一定的空间，比如每台机器的qps限制在80，这样即使某台机器的流量稍微偏高，也不太可能超过限制被拦截掉。</p>
-<p>此种方式适合对限流不是很严格的情况，即使部分请求被拦截，也不影响业务。</p>
-<p><code>RateLimiter.create(rate)</code> 创建指定QPS的RateLimiter。</p>
-<p><code>tryAcquire()</code>  以非阻塞的方式获取令牌。</p>
-<h1 id="RedissonRateLimiter"><a href="#RedissonRateLimiter" class="headerlink" title="RedissonRateLimiter"></a>RedissonRateLimiter</h1><p><code>RedissonRateLimiter</code> 是redisson中提供的分布式限流器。</p>
-<p><code>getRateLimiter(String name)</code> 获取对应name的 rate limiter。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestRateController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedissonClient redissonClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, RateLimiter&gt; rateLimiterMap = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 针对appid配置请求频率</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApolloJsonValue(&quot;$&#123;qps.rate:&#123;&#125;&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Integer&gt; appIdRateMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/rate/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> tryAcquire(appId);</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/redisson/rate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">redissonRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">RRateLimiter</span> <span class="variable">clientRateLimiter</span> <span class="operator">=</span> redissonClient.getRateLimiter(<span class="string">&quot;limiter:&quot;</span>.concat(appId));</span><br><span class="line">        <span class="keyword">if</span> (!clientRateLimiter.isExists()) &#123;</span><br><span class="line">            clientRateLimiter.setRate(RateType.OVERALL, <span class="number">1</span>, <span class="number">1</span>, RateIntervalUnit.SECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> clientRateLimiter.tryAcquire();</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(String appId)</span> &#123;</span><br><span class="line">        Assert.notNull(appId, <span class="string">&quot;appId不能为空&quot;</span>);</span><br><span class="line">        <span class="type">RateLimiter</span> <span class="variable">rateLimiter</span> <span class="operator">=</span> rateLimiterMap.computeIfAbsent(appId, s -&gt; &#123;</span><br><span class="line">            log.info(<span class="string">&quot;初始化appid &#123;&#125; 的限流器&quot;</span>, appId);</span><br><span class="line">            <span class="type">int</span> <span class="variable">rate</span> <span class="operator">=</span> appIdRateMap.getOrDefault(appId, <span class="number">70</span>);</span><br><span class="line">            <span class="keyword">return</span> RateLimiter.create(rate);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> rateLimiter.tryAcquire();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>RateLimiter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python-venv虚拟环境</title>
     <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
 <p>有时候，不同的应用需要不同的版本。venv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
 <span id="more"></span>
 
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python函数</title>
+    <url>/python/python%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>主要介绍python中函数的定义，调用， python的内置函数等。</p>
+<span id="more"></span>
+
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>python中有许多内置函数 <a href="https://docs.python.org/3/library/functions.html">Built-in Functions</a></p>
+<p>调用函数时，传入的参数数量不对 或者 参数数据类型不对， 都会报错。</p>
+<p>内置函数还包含数据类型转换的函数</p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>定义函数需要使用<code>def</code> 语句，后面依次写出函数名，括号，括号中的参数和冒号: ， 在缩进块中写函数体，返回值使用 <code>return</code> 返回</p>
+<p>在Python交互环境中定义函数时，注意Python会出现…的提示。函数定义结束后需要按两次回车重新回到&gt;&gt;&gt;提示符下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func1(x):</span></span><br><span class="line">...   print(x)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>空函数</strong></p>
+<p>函数体使用 <code>pass</code> 语句，说明什么也不做。</p>
+<p>可以用来做占位符，方便后续再补充函数体的内容。</p>
+<p><strong>参数检查</strong></p>
+<p>函数中可以使用参数检查函数 <code>isinstance</code> 来确保参数类型的准确性。</p>
+<p><strong>返回多个值</strong></p>
+<p>返回多个值，实际上返回的是一个tuple， 多个变量可以同时接收一个tuple，按位置赋给对应的值。</p>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p><strong>位置参数</strong></p>
+<p>比如函数 <code>fun(x,y)</code>, 这两个参数都是位置参数，调用函数时，传入的两个值按照位置顺序依次赋值给 <code>x</code> 和 <code>y</code></p>
+<p><strong>默认参数</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def power(x, n=2):</span><br><span class="line">    s = 1</span><br><span class="line">    while n &gt; 0:</span><br><span class="line">        n = n - 1</span><br><span class="line">        s = s * x</span><br><span class="line">    return s</span><br></pre></td></tr></table></figure>
+
+<p>默认参数注意事项：</p>
+<ol>
+<li>必选参数在前，默认参数在后</li>
+<li>变化大的参数在前，变化小的参数在后，变化小的可以作为默认参数。</li>
+<li>默认参数可以用来兼容旧的函数，避免修改后其他调用的地方报错。</li>
+<li>默认参数可以降低调用函数的难度。</li>
+<li>默认参数的坑 <strong>默认参数必须指向不变的对象</strong></li>
+</ol>
+<p><strong>可变参数</strong></p>
+<p>在参数前面加一个 <code>*</code> 号， 在函数内部，参数接收到的是一个tuple</p>
+<p>Python允许你在list或tuple前面加一个<code>*</code>号，把list或tuple的元素变成可变参数传进去。</p>
+<p><strong>关键字参数</strong></p>
+<p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。</p>
+<p>关键字参数， 可以扩展函数的功能，比如注册功能，将一些可选项，通过关键字参数传入进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, **kw):</span><br><span class="line">    print(&#x27;name:&#x27;, name, &#x27;age:&#x27;, age, &#x27;other:&#x27;, kw)</span><br></pre></td></tr></table></figure>
+<p>函数除了接受必选参数外，还可以接受关键字参数 <code>kw</code>, 调用函数时， 可以传入任意个数的关键字参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Michael&#x27;</span>, 30)</span></span><br><span class="line">name: Michael age: 30 other: &#123;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Bob&#x27;</span>, 35, city=<span class="string">&#x27;Beijing&#x27;</span>)</span></span><br><span class="line">name: Bob age: 35 other: &#123;&#x27;city&#x27;: &#x27;Beijing&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Adam&#x27;</span>, 45, gender=<span class="string">&#x27;M&#x27;</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">name: Adam age: 45 other: &#123;&#x27;gender&#x27;: &#x27;M&#x27;, &#x27;job&#x27;: &#x27;Engineer&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以先组装一个dict， 把dict作为关键字参数传递进去。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; extra = &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;job&#x27;</span>: <span class="string">&#x27;Engineer&#x27;</span>&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, **extra)</span></span><br><span class="line">name: Jack age: 24 other: &#123;&#x27;city&#x27;: &#x27;Beijing&#x27;, &#x27;job&#x27;: &#x27;Engineer&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>**extra</code> 表示将<code>extra</code>这个dict的所有key-value用关键字参数传入到函数的<code>**kw</code>, <code>kw</code>将获得一个dict，是<code>extra</code>的一份拷贝，对<code>kw</code>的改动将不影响<code>extra</code>里面的数据。</p>
+<p><strong>命名关键字参数</strong></p>
+<p>对于关键字参数，函数调用者可以传入任意不受限制的关键字参数，如果要检查传入了哪些，就需要在函数内部通过 <code>kw</code> 进行检查，但是调用者依然可以传入任意参数。</p>
+<p>如果要限制关键字参数的参数名，可以使用命名关键字参数。比如只接收<code>city</code>和<code>job</code>作为关键字参数，方式如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *, city, job):</span><br><span class="line">    print(name, age, city, job)</span><br></pre></td></tr></table></figure>
+<p>命名关键字参数需要一个特殊的分隔符 <code>*</code>, <code>*</code> 后面的参数被视为命名关键字参数。</p>
+<p>调用方式</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, city=<span class="string">&#x27;Beijing&#x27;</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Jack 24 Beijing Engineer</span><br></pre></td></tr></table></figure>
+<p>两个参数必须都要传入， 否则就会报错</p>
+<blockquote>
+<p>TypeError: person1() missing 1 required keyword-only argument: ‘job’</p>
+</blockquote>
+<p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符<code>*</code>了</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *args, city, job):</span><br><span class="line">    print(name, age, args, city, job)</span><br></pre></td></tr></table></figure>
+<p>命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: person() missing 2 required keyword-only arguments: &#x27;city&#x27; and &#x27;job&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>由于调用时缺少参数名<code>city</code>和<code>job</code>，Python解释器把前两个参数视为位置参数，后两个参数传给<code>*args</code>，但缺少命名关键字参数导致报错。</p>
+<p>命名关键字参数也可以有缺省值，从而简化调用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *, city=&#x27;Beijing&#x27;, job):</span><br><span class="line">    print(name, age, city, job)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Jack 24 Beijing Engineer</span><br></pre></td></tr></table></figure>
+
+<p>使用命名关键字参数时，如果没有可变参数，就必须加上分隔符<code>*</code> ， 如果缺少<code>*</code>，会被当做位置参数处理。</p>
+<p><strong>参数组合</strong></p>
+<p>可以使用上面几种参数类型进行组合，但是顺序要保证是： 必选参数，默认参数，可变参数，关键字参数和命名关键字参数。</p>
+<p>通过一个<code>tuple</code> 和 <code>dict</code> 可以调用任意函数。<code>func(*args, **kw)</code></p>
+<p><strong>总结</strong></p>
+<ol>
+<li>默认参数一定要用不可变参数， 否则会有逻辑错误</li>
+<li><code>*args</code> 是可变参数， 接收的是一个tuple</li>
+<li><code>**kw</code> 是关键字参数， 接收的是一个dict</li>
+<li><code>*args</code> 和 <code>**kw</code> 是python的习惯写法， 最好使用习惯写法</li>
+<li>注意调用可变参数和关键字参数时候的传值方式。</li>
+</ol>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
+<p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -592,93 +679,6 @@
 <p>使用模板的另一大好处是，模板改起来很方便，而且，改完保存后，刷新浏览器就能看到最新的效果。</p>
 <p>在Jinja2模板中，我们用<code>&#123;&#123; name &#125;&#125;</code>表示一个需要替换的变量。很多时候，还需要循环、条件判断等指令语句，在Jinja2中，用<code>&#123;% ... %&#125;</code>表示指令</p>
 <p>有了MVC，我们就分离了Python代码和HTML代码。HTML代码全部放到模板里，写起来更有效率。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python函数</title>
-    <url>/python/python%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>主要介绍python中函数的定义，调用， python的内置函数等。</p>
-<span id="more"></span>
-
-<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>python中有许多内置函数 <a href="https://docs.python.org/3/library/functions.html">Built-in Functions</a></p>
-<p>调用函数时，传入的参数数量不对 或者 参数数据类型不对， 都会报错。</p>
-<p>内置函数还包含数据类型转换的函数</p>
-<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>定义函数需要使用<code>def</code> 语句，后面依次写出函数名，括号，括号中的参数和冒号: ， 在缩进块中写函数体，返回值使用 <code>return</code> 返回</p>
-<p>在Python交互环境中定义函数时，注意Python会出现…的提示。函数定义结束后需要按两次回车重新回到&gt;&gt;&gt;提示符下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func1(x):</span></span><br><span class="line">...   print(x)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>空函数</strong></p>
-<p>函数体使用 <code>pass</code> 语句，说明什么也不做。</p>
-<p>可以用来做占位符，方便后续再补充函数体的内容。</p>
-<p><strong>参数检查</strong></p>
-<p>函数中可以使用参数检查函数 <code>isinstance</code> 来确保参数类型的准确性。</p>
-<p><strong>返回多个值</strong></p>
-<p>返回多个值，实际上返回的是一个tuple， 多个变量可以同时接收一个tuple，按位置赋给对应的值。</p>
-<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p><strong>位置参数</strong></p>
-<p>比如函数 <code>fun(x,y)</code>, 这两个参数都是位置参数，调用函数时，传入的两个值按照位置顺序依次赋值给 <code>x</code> 和 <code>y</code></p>
-<p><strong>默认参数</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def power(x, n=2):</span><br><span class="line">    s = 1</span><br><span class="line">    while n &gt; 0:</span><br><span class="line">        n = n - 1</span><br><span class="line">        s = s * x</span><br><span class="line">    return s</span><br></pre></td></tr></table></figure>
-
-<p>默认参数注意事项：</p>
-<ol>
-<li>必选参数在前，默认参数在后</li>
-<li>变化大的参数在前，变化小的参数在后，变化小的可以作为默认参数。</li>
-<li>默认参数可以用来兼容旧的函数，避免修改后其他调用的地方报错。</li>
-<li>默认参数可以降低调用函数的难度。</li>
-<li>默认参数的坑 <strong>默认参数必须指向不变的对象</strong></li>
-</ol>
-<p><strong>可变参数</strong></p>
-<p>在参数前面加一个 <code>*</code> 号， 在函数内部，参数接收到的是一个tuple</p>
-<p>Python允许你在list或tuple前面加一个<code>*</code>号，把list或tuple的元素变成可变参数传进去。</p>
-<p><strong>关键字参数</strong></p>
-<p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。</p>
-<p>关键字参数， 可以扩展函数的功能，比如注册功能，将一些可选项，通过关键字参数传入进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, **kw):</span><br><span class="line">    print(&#x27;name:&#x27;, name, &#x27;age:&#x27;, age, &#x27;other:&#x27;, kw)</span><br></pre></td></tr></table></figure>
-<p>函数除了接受必选参数外，还可以接受关键字参数 <code>kw</code>, 调用函数时， 可以传入任意个数的关键字参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Michael&#x27;</span>, 30)</span></span><br><span class="line">name: Michael age: 30 other: &#123;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Bob&#x27;</span>, 35, city=<span class="string">&#x27;Beijing&#x27;</span>)</span></span><br><span class="line">name: Bob age: 35 other: &#123;&#x27;city&#x27;: &#x27;Beijing&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Adam&#x27;</span>, 45, gender=<span class="string">&#x27;M&#x27;</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">name: Adam age: 45 other: &#123;&#x27;gender&#x27;: &#x27;M&#x27;, &#x27;job&#x27;: &#x27;Engineer&#x27;&#125;</span><br></pre></td></tr></table></figure>
-<p>也可以先组装一个dict， 把dict作为关键字参数传递进去。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; extra = &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;job&#x27;</span>: <span class="string">&#x27;Engineer&#x27;</span>&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, **extra)</span></span><br><span class="line">name: Jack age: 24 other: &#123;&#x27;city&#x27;: &#x27;Beijing&#x27;, &#x27;job&#x27;: &#x27;Engineer&#x27;&#125;</span><br></pre></td></tr></table></figure>
-<p><code>**extra</code> 表示将<code>extra</code>这个dict的所有key-value用关键字参数传入到函数的<code>**kw</code>, <code>kw</code>将获得一个dict，是<code>extra</code>的一份拷贝，对<code>kw</code>的改动将不影响<code>extra</code>里面的数据。</p>
-<p><strong>命名关键字参数</strong></p>
-<p>对于关键字参数，函数调用者可以传入任意不受限制的关键字参数，如果要检查传入了哪些，就需要在函数内部通过 <code>kw</code> 进行检查，但是调用者依然可以传入任意参数。</p>
-<p>如果要限制关键字参数的参数名，可以使用命名关键字参数。比如只接收<code>city</code>和<code>job</code>作为关键字参数，方式如下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *, city, job):</span><br><span class="line">    print(name, age, city, job)</span><br></pre></td></tr></table></figure>
-<p>命名关键字参数需要一个特殊的分隔符 <code>*</code>, <code>*</code> 后面的参数被视为命名关键字参数。</p>
-<p>调用方式</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, city=<span class="string">&#x27;Beijing&#x27;</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Jack 24 Beijing Engineer</span><br></pre></td></tr></table></figure>
-<p>两个参数必须都要传入， 否则就会报错</p>
-<blockquote>
-<p>TypeError: person1() missing 1 required keyword-only argument: ‘job’</p>
-</blockquote>
-<p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符<code>*</code>了</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *args, city, job):</span><br><span class="line">    print(name, age, args, city, job)</span><br></pre></td></tr></table></figure>
-<p>命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: person() missing 2 required keyword-only arguments: &#x27;city&#x27; and &#x27;job&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>由于调用时缺少参数名<code>city</code>和<code>job</code>，Python解释器把前两个参数视为位置参数，后两个参数传给<code>*args</code>，但缺少命名关键字参数导致报错。</p>
-<p>命名关键字参数也可以有缺省值，从而简化调用</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def person(name, age, *, city=&#x27;Beijing&#x27;, job):</span><br><span class="line">    print(name, age, city, job)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; person(<span class="string">&#x27;Jack&#x27;</span>, 24, job=<span class="string">&#x27;Engineer&#x27;</span>)</span></span><br><span class="line">Jack 24 Beijing Engineer</span><br></pre></td></tr></table></figure>
-
-<p>使用命名关键字参数时，如果没有可变参数，就必须加上分隔符<code>*</code> ， 如果缺少<code>*</code>，会被当做位置参数处理。</p>
-<p><strong>参数组合</strong></p>
-<p>可以使用上面几种参数类型进行组合，但是顺序要保证是： 必选参数，默认参数，可变参数，关键字参数和命名关键字参数。</p>
-<p>通过一个<code>tuple</code> 和 <code>dict</code> 可以调用任意函数。<code>func(*args, **kw)</code></p>
-<p><strong>总结</strong></p>
-<ol>
-<li>默认参数一定要用不可变参数， 否则会有逻辑错误</li>
-<li><code>*args</code> 是可变参数， 接收的是一个tuple</li>
-<li><code>**kw</code> 是关键字参数， 接收的是一个dict</li>
-<li><code>*args</code> 和 <code>**kw</code> 是python的习惯写法， 最好使用习惯写法</li>
-<li>注意调用可变参数和关键字参数时候的传值方式。</li>
-</ol>
-<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>使用递归函数要防止栈溢出。 函数调用是通过栈<code>stack</code> 这种数据结构实现的。</p>
-<p>解决递归调用栈溢出的方式是使用<code>尾递归</code> 优化，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -782,49 +782,6 @@
 <p>实际上会把<code>10</code>作为<code>*args</code>的一部分自动加到左边</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">max2(5, 6, 7)</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于:</span></span><br><span class="line">args = (10, 5, 6, 7)</span><br><span class="line">max(*args)</span><br></pre></td></tr></table></figure>
 <p>实际的结果是 <code>10</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python图形界面</title>
-    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
-    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
-<span id="more"></span>
-
-<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
-<ul>
-<li>Tk</li>
-<li>wxWidgets</li>
-<li>Qt</li>
-<li>GTK</li>
-</ul>
-<p>等等。</p>
-<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
-<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
-<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
-<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
-<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
-<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
-<blockquote>
-<p>from tkinter import *</p>
-</blockquote>
-<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
-
-<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
-<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
-<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
-<p>第三步，实例化Application，并启动消息循环：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
-
-<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
-<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
-<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -995,6 +952,49 @@
       </tags>
   </entry>
   <entry>
+    <title>python图形界面</title>
+    <url>/python/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>主要介绍图形界面的操作。包括Tkinter和海龟绘图。</p>
+<span id="more"></span>
+
+<h1 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h1><p>Python支持多种图形界面的第三方库，包括</p>
+<ul>
+<li>Tk</li>
+<li>wxWidgets</li>
+<li>Qt</li>
+<li>GTK</li>
+</ul>
+<p>等等。</p>
+<p>Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。</p>
+<p>我们编写的Python代码会调用内置的Tkinter，Tkinter封装了访问Tk的接口；</p>
+<p>Tk是一个图形库，支持多个操作系统，使用Tcl语言开发；</p>
+<p>Tk会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
+<p>所以，我们的代码只需要调用Tkinter提供的接口就可以了。</p>
+<p>使用Tkinter，第一步是导入Tkinter包的所有内容</p>
+<blockquote>
+<p>from tkinter import *</p>
+</blockquote>
+<p>第二步是从<code>Frame</code>派生一个<code>Application</code>类，这是所有Widget的父容器：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master=<span class="literal">None</span></span>):</span><br><span class="line">        Frame.__init__(self, master)</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidgets()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createWidgets</span>(<span class="params">self</span>):</span><br><span class="line">        self.helloLabel = Label(self, text=<span class="string">&#x27;这是gui界面的内容&#x27;</span>)</span><br><span class="line">        self.helloLabel.pack()</span><br><span class="line">        self.inputText = Entry(self)</span><br><span class="line">        self.inputText.pack()</span><br><span class="line">        self.submitBtn = Button(self, text=<span class="string">&#x27;提交&#x27;</span>, command=self.hello)</span><br><span class="line">        self.submitBtn.pack()</span><br><span class="line">        self.quitButton = Button(self, text=<span class="string">&#x27;退出&#x27;</span>, command=self.quit)</span><br><span class="line">        self.quitButton.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">self</span>):</span><br><span class="line">        info = self.inputText.get() <span class="keyword">or</span> <span class="string">&#x27;你好&#x27;</span></span><br><span class="line">        messagebox.showinfo(<span class="string">&#x27;弹窗&#x27;</span>, <span class="string">&#x27;Hello, %s&#x27;</span> % info)</span><br></pre></td></tr></table></figure>
+
+<p>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</p>
+<p>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</p>
+<p>在<code>createWidgets()</code>方法中，我们创建一个Label和一个Button，当Button被点击时，触发<code>self.quit()</code>使程序退出。</p>
+<p>第三步，实例化Application，并启动消息循环：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = Application()</span><br><span class="line"><span class="comment"># 设置窗口标题:</span></span><br><span class="line">app.master.title(<span class="string">&#x27;gui界面&#x27;</span>)</span><br><span class="line"><span class="comment"># 主消息循环:</span></span><br><span class="line">app.mainloop()</span><br></pre></td></tr></table></figure>
+
+<p>GUI程序的主线程负责监听来自操作系统的消息，并依次处理每一条消息。因此，如果消息处理非常耗时，就需要在新线程中处理。</p>
+<h1 id="海龟绘图"><a href="#海龟绘图" class="headerlink" title="海龟绘图"></a>海龟绘图</h1><p>在1966年，Seymour Papert和Wally Feurzig发明了一种专门给儿童学习编程的语言——LOGO语言，它的特色就是通过编程指挥一个小海龟（turtle）在屏幕上绘图。</p>
+<p>海龟绘图（Turtle Graphics）后来被移植到各种高级语言中，Python内置了turtle库，基本上100%复制了原始的Turtle Graphics的所有功能。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python常用内建模块1</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%971/</url>
     <content><![CDATA[<p>Python之所以自称“batteries included”，就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
@@ -1074,60 +1074,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python常用内建模块3</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%973/</url>
-    <content><![CDATA[<p>本章主要介绍itertools， contextlib， urllib，XML，HTMLParser的使用。</p>
-<span id="more"></span>
-
-<h1 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h1><p><code>itertools</code>提供了非常有用的用于操作迭代对象的函数</p>
-<p><code>itertools.count()</code> 自然数无限迭代。</p>
-<p><code>itertools.cycle(&#39;abc&#39;)</code>， 将传入的序列无限重复下去</p>
-<p><code>repeat()</code> 把一个元素重复下去，可以指定次数。<code>itertools.repeat(&#39;a&#39;, 5)</code></p>
-<p>无限序列虽然可以无限迭代下去，但是通常我们会通过<code>takewhile()</code>等函数根据条件判断来截取出一个有限的序列</p>
-<p><code>chain()</code>， 可以把一组迭代对象串联起来，组成一个更大的迭代器。<code>itertools.chain(&#39;ABC&#39;, &#39;XYZ&#39;)</code></p>
-<p><code>groupby()</code> 把迭代器中相邻的重复元素挑出来放在一起</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import itertools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> key, group <span class="keyword">in</span> itertools.groupby(<span class="string">&#x27;aabbccaaeeabc&#x27;</span>):</span></span><br><span class="line">...    print(key, list(group))</span><br><span class="line">...</span><br><span class="line">a [&#x27;a&#x27;, &#x27;a&#x27;]</span><br><span class="line">b [&#x27;b&#x27;, &#x27;b&#x27;]</span><br><span class="line">c [&#x27;c&#x27;, &#x27;c&#x27;]</span><br><span class="line">a [&#x27;a&#x27;, &#x27;a&#x27;]</span><br><span class="line">e [&#x27;e&#x27;, &#x27;e&#x27;]</span><br><span class="line">a [&#x27;a&#x27;]</span><br><span class="line">b [&#x27;b&#x27;]</span><br><span class="line">c [&#x27;c&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h1 id="contextlib"><a href="#contextlib" class="headerlink" title="contextlib"></a>contextlib</h1><p>在Python中，读写文件这样的资源要特别注意，必须在使用完毕后正确关闭它们。正确关闭文件资源的一个方法是使用<code>try...finally</code>，也可以使用<code>with</code>语句进行简化。</p>
-<p>并不是只有<code>open()</code>函数返回的fp对象才能使用<code>with</code>语句。实际上，任何对象，只要正确实现了上下文管理，就可以用于<code>with</code>语句。</p>
-<p>实现上下文管理是通过<code>__enter__</code>和<code>__exit__</code>这两个方法实现的。</p>
-<p>编写<code>__enter__</code>和<code>__exit__</code>仍然很繁琐，因此Python的标准库<code>contextlib</code>提供了更简单的写法。<code>@contextmanager</code>这个decorator接受一个generator，用<code>yield</code>语句把<code>with ... as var</code>把变量输出出去，然后，<code>with</code>语句就可以正常地工作了</p>
-<p>很多时候，我们希望在某段代码执行前后自动执行特定代码，也可以用<code>@contextmanager</code>实现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tag</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&lt;%s&gt;&quot;</span> % name)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&lt;/%s&gt;&quot;</span> % name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tag(<span class="string">&quot;h1&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;world&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>执行结果</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;h1&gt;</span><br><span class="line">hello</span><br><span class="line">world</span><br><span class="line">&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-
-<p>执行顺序</p>
-<ol>
-<li>with语句首先执行yield之前的语句，</li>
-<li>yield调用会执行with语句内部的所有语句，因此打印出hello和world；</li>
-<li>最后执行yield之后的语句。</li>
-</ol>
-<p><strong>@closing</strong></p>
-<p>如果一个对象没有实现上下文，我们就不能把它用于<code>with</code>语句。这个时候，可以用<code>closing()</code>来把该对象变为上下文对象。例如，用<code>with</code>语句使用<code>urlopen()</code></p>
-<p><code>closing</code>也是一个经过<code>@contextmanager</code>装饰的generator，这个generator编写起来其实非常简单</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">closing</span>(<span class="params">thing</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">yield</span> thing</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        thing.close()</span><br></pre></td></tr></table></figure>
-
-<h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><p>urllib提供了一系列用于操作URL的功能。</p>
-<h2 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h2><p>urllib的<code>request</code>模块可以非常方便地抓取URL内容，也就是发送一个GET请求到指定的页面，然后返回HTTP的响应：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> request.urlopen(<span class="string">&#x27;https://api.map.baidu.com/location/ip&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">    <span class="built_in">print</span>(f.status)</span><br><span class="line">    <span class="built_in">print</span>(f.reason)</span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> f.getheaders():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (k, v))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Data:&#x27;</span>, data.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-<h2 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h2><p>如果要以POST发送一个请求，只需要把参数<code>data</code>以bytes形式传入。 例如</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reqData = login_data = parse.urlencode([</span><br><span class="line">    (<span class="string">&#x27;ak&#x27;</span>, <span class="string">&#x27;xxxxx&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;ip&#x27;</span>, <span class="string">&#x27;117.131.61.81&#x27;</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">req = request.Request(<span class="string">&#x27;https://api.map.baidu.com/location/ip&#x27;</span>)</span><br><span class="line">req.add_header(<span class="string">&#x27;user-agent&#x27;</span>, <span class="string">&#x27;chrome&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> request.urlopen(req, data=reqData.encode(<span class="string">&#x27;utf-8&#x27;</span>)) <span class="keyword">as</span> f :</span><br><span class="line">    data = f.read()</span><br><span class="line">    <span class="built_in">print</span>(f.status, f.reason)</span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> f.getheaders():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (k, v))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Data:&#x27;</span>, data.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p>如果还需要更复杂的控制，比如通过一个Proxy去访问网站，我们需要利用<code>ProxyHandler</code>来处理，示例代码如下：</p>
-<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
-<p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
-<h1 id="HTMLParser"><a href="#HTMLParser" class="headerlink" title="HTMLParser"></a>HTMLParser</h1><p>Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python常用内建模块2</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%972/</url>
     <content><![CDATA[<p>本章主要介绍 argparse， bass64， struct，hashlib， hmac的使用。</p>
@@ -1194,6 +1140,60 @@
       </tags>
   </entry>
   <entry>
+    <title>python常用内建模块3</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%973/</url>
+    <content><![CDATA[<p>本章主要介绍itertools， contextlib， urllib，XML，HTMLParser的使用。</p>
+<span id="more"></span>
+
+<h1 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h1><p><code>itertools</code>提供了非常有用的用于操作迭代对象的函数</p>
+<p><code>itertools.count()</code> 自然数无限迭代。</p>
+<p><code>itertools.cycle(&#39;abc&#39;)</code>， 将传入的序列无限重复下去</p>
+<p><code>repeat()</code> 把一个元素重复下去，可以指定次数。<code>itertools.repeat(&#39;a&#39;, 5)</code></p>
+<p>无限序列虽然可以无限迭代下去，但是通常我们会通过<code>takewhile()</code>等函数根据条件判断来截取出一个有限的序列</p>
+<p><code>chain()</code>， 可以把一组迭代对象串联起来，组成一个更大的迭代器。<code>itertools.chain(&#39;ABC&#39;, &#39;XYZ&#39;)</code></p>
+<p><code>groupby()</code> 把迭代器中相邻的重复元素挑出来放在一起</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import itertools</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="keyword">for</span> key, group <span class="keyword">in</span> itertools.groupby(<span class="string">&#x27;aabbccaaeeabc&#x27;</span>):</span></span><br><span class="line">...    print(key, list(group))</span><br><span class="line">...</span><br><span class="line">a [&#x27;a&#x27;, &#x27;a&#x27;]</span><br><span class="line">b [&#x27;b&#x27;, &#x27;b&#x27;]</span><br><span class="line">c [&#x27;c&#x27;, &#x27;c&#x27;]</span><br><span class="line">a [&#x27;a&#x27;, &#x27;a&#x27;]</span><br><span class="line">e [&#x27;e&#x27;, &#x27;e&#x27;]</span><br><span class="line">a [&#x27;a&#x27;]</span><br><span class="line">b [&#x27;b&#x27;]</span><br><span class="line">c [&#x27;c&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="contextlib"><a href="#contextlib" class="headerlink" title="contextlib"></a>contextlib</h1><p>在Python中，读写文件这样的资源要特别注意，必须在使用完毕后正确关闭它们。正确关闭文件资源的一个方法是使用<code>try...finally</code>，也可以使用<code>with</code>语句进行简化。</p>
+<p>并不是只有<code>open()</code>函数返回的fp对象才能使用<code>with</code>语句。实际上，任何对象，只要正确实现了上下文管理，就可以用于<code>with</code>语句。</p>
+<p>实现上下文管理是通过<code>__enter__</code>和<code>__exit__</code>这两个方法实现的。</p>
+<p>编写<code>__enter__</code>和<code>__exit__</code>仍然很繁琐，因此Python的标准库<code>contextlib</code>提供了更简单的写法。<code>@contextmanager</code>这个decorator接受一个generator，用<code>yield</code>语句把<code>with ... as var</code>把变量输出出去，然后，<code>with</code>语句就可以正常地工作了</p>
+<p>很多时候，我们希望在某段代码执行前后自动执行特定代码，也可以用<code>@contextmanager</code>实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tag</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&lt;%s&gt;&quot;</span> % name)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&lt;/%s&gt;&quot;</span> % name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tag(<span class="string">&quot;h1&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;world&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行结果</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;h1&gt;</span><br><span class="line">hello</span><br><span class="line">world</span><br><span class="line">&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p>执行顺序</p>
+<ol>
+<li>with语句首先执行yield之前的语句，</li>
+<li>yield调用会执行with语句内部的所有语句，因此打印出hello和world；</li>
+<li>最后执行yield之后的语句。</li>
+</ol>
+<p><strong>@closing</strong></p>
+<p>如果一个对象没有实现上下文，我们就不能把它用于<code>with</code>语句。这个时候，可以用<code>closing()</code>来把该对象变为上下文对象。例如，用<code>with</code>语句使用<code>urlopen()</code></p>
+<p><code>closing</code>也是一个经过<code>@contextmanager</code>装饰的generator，这个generator编写起来其实非常简单</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">closing</span>(<span class="params">thing</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">yield</span> thing</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        thing.close()</span><br></pre></td></tr></table></figure>
+
+<h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><p>urllib提供了一系列用于操作URL的功能。</p>
+<h2 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h2><p>urllib的<code>request</code>模块可以非常方便地抓取URL内容，也就是发送一个GET请求到指定的页面，然后返回HTTP的响应：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> request.urlopen(<span class="string">&#x27;https://api.map.baidu.com/location/ip&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">    <span class="built_in">print</span>(f.status)</span><br><span class="line">    <span class="built_in">print</span>(f.reason)</span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> f.getheaders():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (k, v))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Data:&#x27;</span>, data.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h2><p>如果要以POST发送一个请求，只需要把参数<code>data</code>以bytes形式传入。 例如</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reqData = login_data = parse.urlencode([</span><br><span class="line">    (<span class="string">&#x27;ak&#x27;</span>, <span class="string">&#x27;xxxxx&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;ip&#x27;</span>, <span class="string">&#x27;117.131.61.81&#x27;</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">req = request.Request(<span class="string">&#x27;https://api.map.baidu.com/location/ip&#x27;</span>)</span><br><span class="line">req.add_header(<span class="string">&#x27;user-agent&#x27;</span>, <span class="string">&#x27;chrome&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> request.urlopen(req, data=reqData.encode(<span class="string">&#x27;utf-8&#x27;</span>)) <span class="keyword">as</span> f :</span><br><span class="line">    data = f.read()</span><br><span class="line">    <span class="built_in">print</span>(f.status, f.reason)</span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> f.getheaders():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (k, v))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Data:&#x27;</span>, data.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p>如果还需要更复杂的控制，比如通过一个Proxy去访问网站，我们需要利用<code>ProxyHandler</code>来处理，示例代码如下：</p>
+<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
+<p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
+<h1 id="HTMLParser"><a href="#HTMLParser" class="headerlink" title="HTMLParser"></a>HTMLParser</h1><p>Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python常用第三方模块</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
     <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
@@ -1230,6 +1230,52 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
 
 <p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python模块</title>
+    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
+<span id="more"></span>
+
+<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
+<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
+<p>也可以有多级目录，组成多级层次的包结构。</p>
+<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
+<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
+<p>第6行使用<code>__author__</code>变量把作者写进去</p>
+<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p>最后的两行特殊的代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
+<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
+<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<blockquote>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+</blockquote>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
+<blockquote>
+<p>pip install xxx</p>
+</blockquote>
+<p><strong>模块搜索路径</strong></p>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1299,52 +1345,6 @@
 
 <h1 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a>aiohttp</h1><p><code>asyncio</code>可以实现单线程并发IO操作。如果仅用在客户端，发挥的威力不大。如果把<code>asyncio</code>用在服务器端，例如Web服务器，由于HTTP连接就是IO操作，因此可以用单线程+协程实现多用户的高并发支持。</p>
 <p><code>asyncio</code>实现了TCP、UDP、SSL等协议，<code>aiohttp</code>则是基于<code>asyncio</code>实现的HTTP框架。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python模块</title>
-    <url>/python/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>为了编写可维护的代码，我们把很多函数分组，放到不同的文件中，这样每个文件包含的代码就相对较少，在python中，一个.py文件就称为一个模块(module)。</p>
-<span id="more"></span>
-
-<h1 id="模块的概念"><a href="#模块的概念" class="headerlink" title="模块的概念"></a>模块的概念</h1><p>模块可以提升代码的可维护性，可以复用代码，避免函数名和变量名冲突等。</p>
-<p>为了避免模块名冲突，又引入了包（Package），按照目录来组织模块。比如将模块放到同一个包<code>mycompany</code> 下面，这样 <code>abc.py</code> 的模块名就变成了 <code>mycompany.abc</code>。</p>
-<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包，<code>__init__.py</code>可以是空文件，也可以有Python代码。</p>
-<p>也可以有多级目录，组成多级层次的包结构。</p>
-<p><strong>模块名不要和系统模块名冲突，否则会导致系统模块引入失败。</strong></p>
-<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>如示例： <code>hello.py</code> 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;hello %s&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;参数过多&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第1行和第2行是标准注释，第一行可以让该文件在linux下直接运行，第二行注释说明了使用的编码。</p>
-<p>第4行是一个字符串，是模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</p>
-<p>第6行使用<code>__author__</code>变量把作者写进去</p>
-<p>上面就是python模块的标准文件模板。后面开始就是真正的代码部分。</p>
-<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
-<p>最后的两行特殊的代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-<p>在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一个模块中，可能有很多的变量和函数，有些函数和变量希望给别人使用，有的函数和变量希望仅仅在模块内部使用，在python中，是通过前缀<code>_</code> 实现的。</p>
-<p>正常的函数和变量名是公开的(public)， 可以被直接引用，如<code>abc</code>，<code>hello</code>等。</p>
-<p>类似<code>__xx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊的用途。模块的文档注释也可以用<code>__doc__</code>变量来访问。我们自己的变量一般不要用这样的变量名。</p>
-<p>类似<code>_xxx</code>和<code>__xxx</code> 这样的变量或者函数就是非公开的(private)，不应该被直接引用。</p>
-<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
-<blockquote>
-<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
-</blockquote>
-<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p>可以通过命令来安装第三方模块。</p>
-<blockquote>
-<p>pip install xxx</p>
-</blockquote>
-<p><strong>模块搜索路径</strong></p>
-<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import sys</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; sys.path</span></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python312\\python312.zip&#x27;, &#x27;C:\\Python312\\DLLs&#x27;, &#x27;C:\\Python312\\Lib&#x27;, &#x27;C:\\Python312&#x27;, &#x27;C:\\Python312\\Lib\\site-packages&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要添加自己的搜索路径，可以设置环境变量 <code>PYTHONPATH</code>， 该环境变量的内容会被自动添加到模块搜索路径中。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1928,6 +1928,106 @@
       </tags>
   </entry>
   <entry>
+    <title>python面向对象编程</title>
+    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
+<span id="more"></span>
+
+<h1 id="OOP概念"><a href="#OOP概念" class="headerlink" title="OOP概念"></a>OOP概念</h1><p>OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
+<p>面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。</p>
+<p>OOP设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。</p>
+<p>下面举例说明面向过程和面向对象的在程序流程上的不同。</p>
+<p>假设我们要处理学生的成绩表，为了表示一个学生的成绩，面向过程的程序可以用一个dict表示：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">std1 = &#123; &#x27;name&#x27;: &#x27;Michael&#x27;, &#x27;score&#x27;: 98 &#125;</span><br><span class="line">std2 = &#123; &#x27;name&#x27;: &#x27;Bob&#x27;, &#x27;score&#x27;: 81 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而处理学生成绩可以通过函数实现，比如打印学生的成绩：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def print_score(std):</span><br><span class="line">    print(&#x27;%s: %s&#x27; % (std[&#x27;name&#x27;], std[&#x27;score&#x27;]))</span><br></pre></td></tr></table></figure>
+<p>如果采用OOP的设计思想，首先思考的不是程序的执行流程，而是 <code>Student</code> 这种数据类型应该被视为一个对象。这个对象拥有<code>name</code>和<code>score</code>这两个属性（Property）。如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个<code>print_score</code>消息，让对象自己把自己的数据打印出来。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_score</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (self.name, self.score))</span><br></pre></td></tr></table></figure>
+<p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。面向对象的程序写出来就像这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bart = Student(<span class="string">&#x27;Bart Simpson&#x27;</span>, <span class="number">59</span>)</span><br><span class="line">lisa = Student(<span class="string">&#x27;Lisa Simpson&#x27;</span>, <span class="number">87</span>)</span><br><span class="line">bart.print_score()</span><br><span class="line">lisa.print_score()</span><br></pre></td></tr></table></figure>
+
+<p>类（Class）和实例（Instance）, Class是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念，而实例（Instance）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。</p>
+<p>所以，面向对象的设计思想是抽象出Class，根据Class创建Instance。</p>
+<p>面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。</p>
+<p>封装，继承，多态，三大特点，和java一样。</p>
+<h1 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h1><p>面向对象最重要的概念就是类（Class）和实例（Instance），类是抽象的模板。</p>
+<p>在Python中，定义类是通过<code>class</code>关键字</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p><code>class</code>后面紧接着是类名，即<code>Student</code>，类名通常是大写开头的单词，紧接着是<code>(object)</code>，表示该类是从哪个类继承下来的，通常，如果没有合适的继承类，就使用<code>object</code>类，这是所有类最终都会继承的类。</p>
+<p>定义好了类，就可以通过类创建出实例。创建实例是通过类名+()实现的。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student</span></span><br><span class="line">&lt;class &#x27;__main__.Student&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s</span></span><br><span class="line">&lt;__main__.Student object at 0x000001A965ADA690&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实例创建后可以自由地给实例变量绑定属性。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name</span></span><br><span class="line">&#x27;张三&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<code>__init__</code>方法，在创建实例的时候，就把<code>name</code>，<code>score</code>等属性绑上去：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>特殊方法“__init__”前后分别有两个下划线！！！</p>
+</blockquote>
+<p><code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
+<p>有了<code>__init__</code>方法，在创建实例的时候，必须传入与<code>__init__</code>方法匹配的参数，但<code>self</code>不需要传，Python解释器自己会把实例变量传进去：</p>
+<p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量<code>self</code>，并且，调用时，不用传递该参数。</p>
+<p><strong>数据封装</strong></p>
+<p>封装通过将数据和对数据的操作（方法）捆绑在一起，形成一个独立的、可复用的单位，对外部隐藏内部实现细节，只暴露出简单的接口供其他代码使用。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; class Student(object):</span></span><br><span class="line">...   def hello(self):</span><br><span class="line">...     print(&#x27;hello&#x27;)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1 = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello</span></span><br><span class="line">&lt;bound method Student.hello of &lt;__main__.Student object at 0x0000015DEB716B10&gt;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello()</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<p>通过实例变量访问方法时，如果不加括号，输出的是方法的信息，要调用方法必须要加上<code>()</code></p>
+<h1 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h1><p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。</p>
+<p>这样就确保外部无法随意修改对象内部的状态。</p>
+<p>如果想要访问或者修改对象内部的数据，可以给类增加 get 和 set 方法， 和java类似。可以在方法中对参数做校验。</p>
+<p>变量名类似<code>__xxx__</code>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<code>__name__</code>、<code>__score__</code>这样的变量名。</p>
+<p>以一个下划线开头的实例变量名，比如<code>_name</code>，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，这样的变量不能随意访问。</p>
+<p>Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量，但是强烈不建议这么做。</p>
+<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p><strong>继承</strong></p>
+<p>当我们定义一个class时，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）</p>
+<p>继承有什么好处？最大的好处是子类获得了父类的全部功能。继承可以实现代码的重用和扩展。</p>
+<p><strong>多态</strong></p>
+<p>子类重写父类方法。</p>
+<p>子类的实例的数据类型也可以看做是父类的数据类型，反过来不行。</p>
+<p>多态的好处，当函数需要接收子类时，只需要定义时接收父类就行。调用函数时，可以传入不同的子类的实例。</p>
+<blockquote>
+<p>java中叫 父类引用指向子类对象？</p>
+</blockquote>
+<p><strong>静态语言 vs 动态语言</strong></p>
+<p>对于静态语言（例如Java）来说，如果需要传入<code>Animal</code>类型，则传入的对象必须是<code>Animal</code>类型或者它的子类，否则，将无法调用<code>run()</code>方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：</p>
+<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<p>Python的“file-like object“就是一种鸭子类型。</p>
+<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1><p><strong>type()</strong></p>
+<p>使用 <code>type()</code> 方法， 可以判断某个对象是什么类型。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(11)</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(L)</span></span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(<span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line">&lt;class &#x27;str&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func():</span></span><br><span class="line">...   pass</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func())</span></span><br><span class="line">&lt;class &#x27;NoneType&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func)</span></span><br><span class="line">&lt;class &#x27;function&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(abs)</span></span><br><span class="line">&lt;class &#x27;builtin_function_or_method&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>type()</code> 返回的是对象的Class类型。可以进行 <code>==</code> 比较，判断是否是相同的类。</p>
+<p><strong>使用isinstance()</strong></p>
+<p>如果有继承关系，使用<code>type()</code> 就不方便判断了， 可以使用 <code>isinstance()</code></p>
+<p><code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</p>
+<p>能用<code>type()</code>判断的基本类型也可以用<code>isinstance()</code>判断。并且还可以判断一个变量是否是某些类型中的一种。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (list, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (dict, tuple))</span></span><br><span class="line">False</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (set, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>所以可以优先使用 <code>isinstance()</code>来判断类型。</p>
+<p><strong>使用dir()</strong></p>
+<p>使用<code>dir()</code> 方法可以获取一个对象的所有属性和方法，返回的是一个包含字符串的list。</p>
+<p>仅仅把属性和方法列出来是不够的，配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态</p>
+<p>如果试图获取不存在的属性，会抛出AttributeError的错误， 可以在方法中加上默认值。 例如：<code>getattr(obj, &#39;z&#39;, 404)</code></p>
+<p>也可以使用 <code>hasattr()</code>，<code>getattr()</code> 判断和获取对象的方法。</p>
+<h1 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h1><p>给实例绑定属性的方法是通过实例变量，或者通过self变量。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，如果<code>Student</code>类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归<code>Student</code>类所有</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    name = <span class="string">&#x27;Student&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>类属性，类的所有实例都可以访问到。和java中继承很相似。</p>
+<p>在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，避免出现错误。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python面向对象高级编程</title>
     <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>封装、继承和多态只是面向对象程序设计中最基础的3个概念。在Python中，面向对象还有很多高级特性，下面会讨论多重继承、定制类、元类等概念。</p>
@@ -2033,106 +2133,6 @@
 <p><strong>metaclass</strong></p>
 <p>除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>python面向对象编程</title>
-    <url>/python/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。</p>
-<span id="more"></span>
-
-<h1 id="OOP概念"><a href="#OOP概念" class="headerlink" title="OOP概念"></a>OOP概念</h1><p>OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
-<p>面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。</p>
-<p>OOP设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。</p>
-<p>下面举例说明面向过程和面向对象的在程序流程上的不同。</p>
-<p>假设我们要处理学生的成绩表，为了表示一个学生的成绩，面向过程的程序可以用一个dict表示：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">std1 = &#123; &#x27;name&#x27;: &#x27;Michael&#x27;, &#x27;score&#x27;: 98 &#125;</span><br><span class="line">std2 = &#123; &#x27;name&#x27;: &#x27;Bob&#x27;, &#x27;score&#x27;: 81 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>而处理学生成绩可以通过函数实现，比如打印学生的成绩：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def print_score(std):</span><br><span class="line">    print(&#x27;%s: %s&#x27; % (std[&#x27;name&#x27;], std[&#x27;score&#x27;]))</span><br></pre></td></tr></table></figure>
-<p>如果采用OOP的设计思想，首先思考的不是程序的执行流程，而是 <code>Student</code> 这种数据类型应该被视为一个对象。这个对象拥有<code>name</code>和<code>score</code>这两个属性（Property）。如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个<code>print_score</code>消息，让对象自己把自己的数据打印出来。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_score</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s: %s&#x27;</span> % (self.name, self.score))</span><br></pre></td></tr></table></figure>
-<p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。面向对象的程序写出来就像这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bart = Student(<span class="string">&#x27;Bart Simpson&#x27;</span>, <span class="number">59</span>)</span><br><span class="line">lisa = Student(<span class="string">&#x27;Lisa Simpson&#x27;</span>, <span class="number">87</span>)</span><br><span class="line">bart.print_score()</span><br><span class="line">lisa.print_score()</span><br></pre></td></tr></table></figure>
-
-<p>类（Class）和实例（Instance）, Class是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念，而实例（Instance）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。</p>
-<p>所以，面向对象的设计思想是抽象出Class，根据Class创建Instance。</p>
-<p>面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。</p>
-<p>封装，继承，多态，三大特点，和java一样。</p>
-<h1 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h1><p>面向对象最重要的概念就是类（Class）和实例（Instance），类是抽象的模板。</p>
-<p>在Python中，定义类是通过<code>class</code>关键字</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p><code>class</code>后面紧接着是类名，即<code>Student</code>，类名通常是大写开头的单词，紧接着是<code>(object)</code>，表示该类是从哪个类继承下来的，通常，如果没有合适的继承类，就使用<code>object</code>类，这是所有类最终都会继承的类。</p>
-<p>定义好了类，就可以通过类创建出实例。创建实例是通过类名+()实现的。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; Student</span></span><br><span class="line">&lt;class &#x27;__main__.Student&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s</span></span><br><span class="line">&lt;__main__.Student object at 0x000001A965ADA690&gt;</span><br></pre></td></tr></table></figure>
-
-<p>实例创建后可以自由地给实例变量绑定属性。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name = <span class="string">&#x27;张三&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s.name</span></span><br><span class="line">&#x27;张三&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<code>__init__</code>方法，在创建实例的时候，就把<code>name</code>，<code>score</code>等属性绑上去：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.score = score</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>特殊方法“__init__”前后分别有两个下划线！！！</p>
-</blockquote>
-<p><code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
-<p>有了<code>__init__</code>方法，在创建实例的时候，必须传入与<code>__init__</code>方法匹配的参数，但<code>self</code>不需要传，Python解释器自己会把实例变量传进去：</p>
-<p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量<code>self</code>，并且，调用时，不用传递该参数。</p>
-<p><strong>数据封装</strong></p>
-<p>封装通过将数据和对数据的操作（方法）捆绑在一起，形成一个独立的、可复用的单位，对外部隐藏内部实现细节，只暴露出简单的接口供其他代码使用。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; class Student(object):</span></span><br><span class="line">...   def hello(self):</span><br><span class="line">...     print(&#x27;hello&#x27;)</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1 = Student()</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello</span></span><br><span class="line">&lt;bound method Student.hello of &lt;__main__.Student object at 0x0000015DEB716B10&gt;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; s1.hello()</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-<p>通过实例变量访问方法时，如果不加括号，输出的是方法的信息，要调用方法必须要加上<code>()</code></p>
-<h1 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h1><p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。</p>
-<p>这样就确保外部无法随意修改对象内部的状态。</p>
-<p>如果想要访问或者修改对象内部的数据，可以给类增加 get 和 set 方法， 和java类似。可以在方法中对参数做校验。</p>
-<p>变量名类似<code>__xxx__</code>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<code>__name__</code>、<code>__score__</code>这样的变量名。</p>
-<p>以一个下划线开头的实例变量名，比如<code>_name</code>，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，这样的变量不能随意访问。</p>
-<p>Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量，但是强烈不建议这么做。</p>
-<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p><strong>继承</strong></p>
-<p>当我们定义一个class时，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）</p>
-<p>继承有什么好处？最大的好处是子类获得了父类的全部功能。继承可以实现代码的重用和扩展。</p>
-<p><strong>多态</strong></p>
-<p>子类重写父类方法。</p>
-<p>子类的实例的数据类型也可以看做是父类的数据类型，反过来不行。</p>
-<p>多态的好处，当函数需要接收子类时，只需要定义时接收父类就行。调用函数时，可以传入不同的子类的实例。</p>
-<blockquote>
-<p>java中叫 父类引用指向子类对象？</p>
-</blockquote>
-<p><strong>静态语言 vs 动态语言</strong></p>
-<p>对于静态语言（例如Java）来说，如果需要传入<code>Animal</code>类型，则传入的对象必须是<code>Animal</code>类型或者它的子类，否则，将无法调用<code>run()</code>方法。</p>
-<p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：</p>
-<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
-<p>Python的“file-like object“就是一种鸭子类型。</p>
-<h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1><p><strong>type()</strong></p>
-<p>使用 <code>type()</code> 方法， 可以判断某个对象是什么类型。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(11)</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; L=[1,2,3,4]</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(L)</span></span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(<span class="string">&#x27;aa&#x27;</span>)</span></span><br><span class="line">&lt;class &#x27;str&#x27;&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; def func():</span></span><br><span class="line">...   pass</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func())</span></span><br><span class="line">&lt;class &#x27;NoneType&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(func)</span></span><br><span class="line">&lt;class &#x27;function&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; <span class="built_in">type</span>(abs)</span></span><br><span class="line">&lt;class &#x27;builtin_function_or_method&#x27;&gt;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>type()</code> 返回的是对象的Class类型。可以进行 <code>==</code> 比较，判断是否是相同的类。</p>
-<p><strong>使用isinstance()</strong></p>
-<p>如果有继承关系，使用<code>type()</code> 就不方便判断了， 可以使用 <code>isinstance()</code></p>
-<p><code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</p>
-<p>能用<code>type()</code>判断的基本类型也可以用<code>isinstance()</code>判断。并且还可以判断一个变量是否是某些类型中的一种。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (list, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance([1,2,3], (dict, tuple))</span></span><br><span class="line">False</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; isinstance((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (set, tuple))</span></span><br><span class="line">True</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>所以可以优先使用 <code>isinstance()</code>来判断类型。</p>
-<p><strong>使用dir()</strong></p>
-<p>使用<code>dir()</code> 方法可以获取一个对象的所有属性和方法，返回的是一个包含字符串的list。</p>
-<p>仅仅把属性和方法列出来是不够的，配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态</p>
-<p>如果试图获取不存在的属性，会抛出AttributeError的错误， 可以在方法中加上默认值。 例如：<code>getattr(obj, &#39;z&#39;, 404)</code></p>
-<p>也可以使用 <code>hasattr()</code>，<code>getattr()</code> 判断和获取对象的方法。</p>
-<h1 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h1><p>给实例绑定属性的方法是通过实例变量，或者通过self变量。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">&#x27;Bob&#x27;</span>)</span><br><span class="line">s.score = <span class="number">90</span></span><br></pre></td></tr></table></figure>
-
-<p>但是，如果<code>Student</code>类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归<code>Student</code>类所有</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    name = <span class="string">&#x27;Student&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>类属性，类的所有实例都可以访问到。和java中继承很相似。</p>
-<p>在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，避免出现错误。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
   </entry>
   <entry>
     <title>python高级特性</title>
@@ -2520,10 +2520,10 @@ Start --> Stop</pre>
 <p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
 </blockquote>
 <h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#x75;&#x65;&#114;&#x79;&#x40;&#51;&#46;&#x31;&#x2e;&#x30;">&#x6a;&#113;&#x75;&#x65;&#114;&#x79;&#x40;&#51;&#46;&#x31;&#x2e;&#x30;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
+<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#x71;&#117;&#101;&#x72;&#121;&#64;&#51;&#x2e;&#x31;&#x2e;&#48;">&#106;&#x71;&#117;&#101;&#x72;&#121;&#64;&#51;&#x2e;&#x31;&#x2e;&#48;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
 </blockquote>
 <h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#x71;&#x75;&#x65;&#114;&#121;&#64;&#51;&#46;&#x31;">&#106;&#x71;&#x75;&#x65;&#114;&#121;&#64;&#51;&#46;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
+<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#x71;&#x75;&#x65;&#x72;&#x79;&#64;&#51;&#x2e;&#x31;">&#x6a;&#x71;&#x75;&#x65;&#x72;&#x79;&#64;&#51;&#x2e;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
 </blockquote>
 <ul>
 <li>访问方式</li>
