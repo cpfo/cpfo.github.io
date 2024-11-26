@@ -21,28 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要介绍go语言变量，运算符等">
+    <meta name="description" content="项目使用了百度的uid-generator来生成唯一ID，在2024-11-21时候，观察到部分项目生成的id变成了负数，下面分析了具体的原因以及给出了解决思路。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go语言变量和运算符">
-<meta property="og:url" content="http://example.com/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:title" content="雪花算法 百度uid-generator生成的id变成负数">
+<meta property="og:url" content="http://example.com/java/snowflake-baidu-uid-generator/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="主要介绍go语言变量，运算符等">
+<meta property="og:description" content="项目使用了百度的uid-generator来生成唯一ID，在2024-11-21时候，观察到部分项目生成的id变成了负数，下面分析了具体的原因以及给出了解决思路。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-01T06:00:40.000Z">
-<meta property="article:modified_time" content="2024-02-01T07:42:56.386Z">
+<meta property="article:published_time" content="2024-11-26T07:14:13.000Z">
+<meta property="article:modified_time" content="2024-11-26T08:39:55.436Z">
 <meta property="article:author" content="chenpf">
-<meta property="article:tag" content="go">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="snowflake">
+<meta property="article:tag" content="唯一ID">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/">
+<link rel="canonical" href="http://example.com/java/snowflake-baidu-uid-generator/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/","path":"go/go语言变量和运算符/","title":"go语言变量和运算符"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/java/snowflake-baidu-uid-generator/","path":"java/snowflake-baidu-uid-generator/","title":"雪花算法 百度uid-generator生成的id变成负数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>go语言变量和运算符 | 笔记</title>
+<title>雪花算法 百度uid-generator生成的id变成负数 | 笔记</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -143,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">变量声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">值类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.3.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">常量</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">解决思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E6%97%B6%E9%97%B4%E5%9F%BA%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">调整时间基点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E4%BD%8D%E6%95%B0%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-number">2.2.</span> <span class="nav-text">调整位数的划分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +196,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/java/snowflake-baidu-uid-generator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +209,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="go语言变量和运算符 | 笔记">
+      <meta itemprop="name" content="雪花算法 百度uid-generator生成的id变成负数 | 笔记">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          go语言变量和运算符
+          雪花算法 百度uid-generator生成的id变成负数
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +226,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-02-01 14:00:40 / 修改时间：15:42:56" itemprop="dateCreated datePublished" datetime="2024-02-01T14:00:40+08:00">2024-02-01</time>
+      <time title="创建时间：2024-11-26 15:14:13 / 修改时间：16:39:55" itemprop="dateCreated datePublished" datetime="2024-11-26T15:14:13+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,8 +254,8 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/" itemprop="commentCount"></span>
+    <a title="waline" href="/java/snowflake-baidu-uid-generator/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/java/snowflake-baidu-uid-generator/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -264,7 +266,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -281,76 +283,61 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>主要介绍go语言变量，运算符等</p>
+    <div class="post-body" itemprop="articleBody"><p>项目使用了百度的uid-generator来生成唯一ID，在2024-11-21时候，观察到部分项目生成的id变成了负数，下面分析了具体的原因以及给出了解决思路。</p>
 <span id="more"></span>
 
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量被定义为程序运行时储存和操纵数据的实体。变量可以通过变量名访问。 变量名格式：字母数字下划线，不能以数字开头。</p>
-<p>变量声明:</p>
-<blockquote>
-<p>var variable_name variable_type</p>
-</blockquote>
-<p>也可以一次声明多个变量</p>
-<blockquote>
-<p>var variable_name, variable_name1 variable_type</p>
-</blockquote>
-<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><ul>
-<li><strong>指定变量类型，如果没有初始化，则变量默认为零值。</strong></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println()</span><br><span class="line"><span class="comment">// 默认false</span></span><br><span class="line"><span class="keyword">var</span> b <span class="type">bool</span></span><br><span class="line">fmt.Println(b)</span><br><span class="line"><span class="comment">// 默认 &quot;&quot; 空字符串</span></span><br><span class="line"><span class="keyword">var</span> s <span class="type">string</span></span><br><span class="line">fmt.Println(s)</span><br><span class="line"><span class="comment">// 默认0</span></span><br><span class="line"><span class="keyword">var</span> i <span class="type">int</span></span><br><span class="line">fmt.Println(i)</span><br></pre></td></tr></table></figure>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>在 <code>2024-11-21</code> 当天，开发环境发现了部分项目生成的id变成了负数，产生了业务异常，无法入库，经过排查，发现是由于使用了百度的uid-generator进行id生成，配置不当导致的。</p>
+<p>项目中同时使用了 <code>DefaultUidGenerator</code> 和 <code>CachedUidGenerator</code> 两种生成策略。但是，在初始化配置时，只针对 <code>DefaultUidGenerator</code> 进行了调整，<code>CachedUidGenerator</code> 使用的默认值。</p>
+<p>查看代码，发现 CachedUidGenerator 继承自 DefaultUidGenerator，在sequence上做了调整，但是前面依然是雪花算法的策略。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* +------+----------------------+----------------+-----------+</span><br><span class="line">* | sign |     delta seconds    | worker node id | sequence  |</span><br><span class="line">* +------+----------------------+----------------+-----------+</span><br><span class="line">*   1bit          28bits              22bits         13bits</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>Snowflake算法描述：指定机器 &amp; 同一时刻 &amp; 某一并发序列，是唯一的。据此可生成一个64 bits的唯一ID（long）。默认采用上图字节分配方式：</p>
 <ul>
-<li><strong>第二种， 根据值自行判定变量类型</strong></li>
+<li><p>sign(1bit)<br>固定1bit符号标识，即生成的UID为正数。</p>
+</li>
+<li><p>delta seconds (28 bits)<br>当前时间，相对于时间基点”2016-05-20”的增量值，单位：秒，最多可支持约8.7年</p>
+</li>
+<li><p>worker id (22 bits)<br>机器id，最多可支持约420w次机器启动。内置实现为在启动时由数据库分配，默认分配策略为用后即弃，后续可提供复用策略。</p>
+</li>
+<li><p>sequence (13 bits)<br>每秒下的并发序列，13 bits可支持每秒8192个并发。</p>
+</li>
 </ul>
-<p>不需要显示声明变量类型，自动推断</p>
+<p>在 <code>DefaultUidGenerator</code> 中有说明，默认配置是从<code>2016-05-20</code>开始，大概支持8.7年，到<code>2024-11-20 21:24:16</code></p>
 <blockquote>
-<p>var v_name &#x3D; value</p>
+<p>delta seconds: The next 28 bits, represents delta seconds since a customer epoch(2016-05-20 00:00:00.000).</p>
+<p>Supports about 8.7 years until to 2024-11-20 21:24:16</p>
 </blockquote>
-<p>比如:  <code>var num = 1</code></p>
-<ul>
-<li><strong>变量的简短声明</strong></li>
-</ul>
-<p><code>x := 1</code>  这个代码中， <code>x</code> 自动被声明为 int 类型，并存储了值 1 。 这种方式只能被用在函数体内。</p>
-<p>如果变量已经使用 <code>var</code> 声明过了，再使用 <code>:=</code> 声明变量，就产生编译错误</p>
-<ul>
-<li><strong>多变量声明</strong></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vname1, vname2, vname3 <span class="type">int</span></span><br><span class="line">vname1, vname2, vname3 = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">fmt.Println(vname1, vname2, vname3)</span><br><span class="line"></span><br><span class="line">vname4, vname5 := <span class="number">4</span>, <span class="number">5</span></span><br><span class="line">a, b, c := <span class="number">5</span>, <span class="number">7</span>, <span class="string">&quot;abc&quot;</span></span><br><span class="line">fmt.Println(vname4, vname5)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种因式分解关键字的写法一般用于声明全局变量</span></span><br><span class="line">   <span class="keyword">var</span> (</span><br><span class="line">       vname1 v_type1</span><br><span class="line">       vname2 v_type2</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
-<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><p>所有像 int、float、bool 和 string 这些基本类型都属于值类型，使用这些类型的变量直接指向存在内存中的值：</p>
-<p>当使用等号 <code>=</code> 将一个变量的值赋值给另一个变量时，如：<code>j = i</code>，实际上是在内存中将 <code>i</code> 的值进行了拷贝</p>
-<p>可以通过 <code>&amp;i</code> 来获取变量 <code>i</code> 的内存地址</p>
-<p>如下， 可以看到， <code>i</code> 和 <code>j</code> 实际上对应的内存地址是不同的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var i = 1</span><br><span class="line">var j = i</span><br><span class="line">fmt.Println(&amp;i, &amp;j)</span><br><span class="line"># 结果</span><br><span class="line">0xc00000a0e8 0xc00000a0f0</span><br></pre></td></tr></table></figure>
-<p>堆内存和栈内存：栈内存用于存储局部变量以及函数调用的信息。堆内存用于存储程序中创建的对象和实例。</p>
-<p>变量的值存储在堆内。</p>
-<p>更复杂的数据通常会需要使用多个字，这些数据一般使用引用类型保存。</p>
-<blockquote>
-<p>位(Bit)是数据存储的最小单位，字节(Byte)常用于处理字符级数据，而字(Word)则是计算机硬件设计的基本单位，与特定计算机体系结构有关。</p>
-</blockquote>
-<p>一个引用类型的变量 <code>r1</code> 存储的是 <code>r1</code> 的值所在的内存地址（数字），或内存地址中第一个字所在的位置。</p>
-<p>这个内存地址称之为指针，这个指针实际上也被存在另外的某一个值中。</p>
-<p>引用类型的变量存储的是一个指向实际数据的引用。</p>
-<p>当将一个引用类型的变量赋值给另一个变量时，两个变量将引用同一个数据，修改一个变量会影响到另一个变量。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>同一个变量不能被重复初始化声明 ，会提示 <code>no new variables on left side of :=</code></li>
-<li>声明了局部变量没有使用，会编译报错 <code>xxx declared but not used</code></li>
-<li>如果你想要交换两个变量的值，则可以简单地使用 <code>a, b = b, a</code>，两个变量的类型必须是相同</li>
-<li>空白标识符 _ 也被用于抛弃值，如值 5 在：<code>_, b = 5, 7</code> 中被抛弃。</li>
-<li>_ 实际上是一个只写变量，你不能得到它的值。这样做是因为 Go 语言中你必须使用所有被声明的变量，但有时你并不需要使用从一个函数得到的所有返回值。</li>
-<li>并行赋值也被用于当一个函数返回多个返回值时，比如这里的 <code>val</code> 和错误 <code>err</code> 是通过调用 <code>Func1</code> 函数同时得到：<code>val, err = Func1(var1)</code>。</li>
-</ul>
-<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>常量是一个简单值的标识符，在程序运行时，不会被修改的量。</p>
-<p>常量中的数据类型只可以是布尔型、数字型和字符串型。</p>
-<p>定义格式如下</p>
-<blockquote>
-<p>const identifier [type] &#x3D; value</p>
-</blockquote>
-<p>可以省略类型说明符 <code>[type]</code>，因为编译器可以根据变量的值来推断其类型。</p>
-<p>常量也可以用作枚举</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Unknown = <span class="number">0</span></span><br><span class="line">	Female  = <span class="number">1</span></span><br><span class="line">	Male    = <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>CachedUidGenerator不是每次获取当前时间戳作为时间位上的数字，而是在系统启动时获取系统时间作为基础，后续在该时间上进行递增。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启动时获取当前时间</span></span><br><span class="line"><span class="built_in">this</span>.lastSecond = <span class="keyword">new</span> <span class="title class_">PaddedAtomicLong</span>(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));</span><br><span class="line"></span><br><span class="line"><span class="comment">// fill the rest slots until to catch the cursor</span></span><br><span class="line">List&lt;Long&gt; uidList = uidProvider.provide(lastSecond.incrementAndGet());</span><br></pre></td></tr></table></figure>
 
-<p>数字 0、1 和 2 分别代表未知性别、女性和男性。</p>
-<p>常量可以用<code>len()</code>, <code>cap()</code>, <code>unsafe.Sizeof()</code>函数计算表达式的值。常量表达式中，函数必须是内置函数，否则编译不过：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    a = <span class="string">&quot;abc&quot;</span></span><br><span class="line">    b = <span class="built_in">len</span>(a)</span><br><span class="line">    c = unsafe.Sizeof(a)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><h2 id="调整时间基点"><a href="#调整时间基点" class="headerlink" title="调整时间基点"></a>调整时间基点</h2><p>既然是由于初始时间 epochStr 导致的，可以考虑调整 epochStr 到接近当前时间的某个日期。</p>
+<p>此时需要注意，如果想要保证生成的id长度固定为19位的话，新的日期不能距离当前时间太近，否则生成的id长度会发生变化。比如可以调整到1年前的日期，如 <code>2023-11-26</code> 。</p>
+<p>生成id又会从 1 开头的数字开始，如 <code>1088488405369774084</code></p>
+<p>这种方案会有一个风险，生成的id可能会和调整前生成的id一样，导致id重复。原因如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allocate bits for UID</span></span><br><span class="line"><span class="keyword">return</span> bitsAllocator.allocate(currentSecond - epochSeconds, workerId, sequence);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">allocate</span><span class="params">(<span class="type">long</span> deltaSeconds, <span class="type">long</span> workerId, <span class="type">long</span> sequence)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (deltaSeconds &lt;&lt; timestampShift) | (workerId &lt;&lt; workerIdShift) | sequence;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>理论上，获取id时的时间戳和基准时间的差值(currentSecond - epochSeconds)如果一致，生成的id就会相同。</p>
+<p>所以此方案可以用于临时紧急修复问题，不能长期使用。</p>
+<h2 id="调整位数的划分"><a href="#调整位数的划分" class="headerlink" title="调整位数的划分"></a>调整位数的划分</h2><p>可以调整 <code>timeBits</code> 到30位，增大2位，<code>seqBits</code> 调整到11位，减少2位。 此时可以支持的时间为2^30 -1 , 大概是34年，而每秒可以生成的序列为 2^11-1&#x3D;2047个。理论上也能满足大部分系统的并发场景需要。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Bits allocate */</span></span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">timeBits</span> <span class="operator">=</span> <span class="number">30</span>;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">workerBits</span> <span class="operator">=</span> <span class="number">22</span>;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">seqBits</span> <span class="operator">=</span> <span class="number">11</span>;</span><br></pre></td></tr></table></figure>
+<p>调整之后，生成的id又会从一个较小的数字开始，理论上到达某个条件之后，生成的id还是有可能和历史已生成的id重复的可能，需要注意。</p>
+<p>或者还可以调整 <code>workerBits</code> 的位数，默认是22位，接近420w次重启， 实际上可以按需进行取舍，考虑重复使用workId或者循环利用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在系统初始阶段，最好就要先确定好位数的划分，比如增大 timeBits ，保证系统可以支持到更长的时间。减少workerBits，调整 seqBits 等。</p>
+<ul>
+<li><p>为什么线上系统在11-21号的时候没有报错</p>
+<p>  由于线上大部分使用的是 <code>CachedUidGenerator</code>，所以是从系统启动时刻的时间戳开始计算的，如果系统近期没有重启，<code>lastSecond</code>会小于当前时间戳，并不会溢出。</p>
+</li>
+<li><p>为什么使用 CachedUidGenerator 生成的id顺序不是严格一致的。</p>
+<ol>
+<li>由于使用了 RingBuffer，如果流量不均衡的话，不同机器上消耗的速度是不同的，可能导致某些机器上消费的速度快，lastSecond 增长的快。</li>
+<li>如果服务使用了动态的扩容缩容方案，不同节点的启动时间相差也会很大，后启动的机器，lastSecond会大点，生成的id 也会偏大。</li>
+</ol>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md">uid-generator readme</a></li>
+</ul>
+
     </div>
 
     
@@ -359,21 +346,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/go/" rel="tag"># go</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/snowflake/" rel="tag"># snowflake</a>
+              <a href="/tags/%E5%94%AF%E4%B8%80ID/" rel="tag"># 唯一ID</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/go/go%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="prev" title="go语言结构和基础语法">
-                  <i class="fa fa-angle-left"></i> go语言结构和基础语法
+                <a href="/tools/use-jsdelivr-cdn-hexo-blog/" rel="prev" title="使用jsdelivr加速hexo github pages博客的静态资源">
+                  <i class="fa fa-angle-left"></i> 使用jsdelivr加速hexo github pages博客的静态资源
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/java/shardingsphere%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" rel="next" title="shardingsphere分库分表">
-                  shardingsphere分库分表 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -471,7 +457,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"pinglun-iota.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"pinglun-iota.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"请文明评论呀","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/java/snowflake-baidu-uid-generator/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {

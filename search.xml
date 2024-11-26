@@ -427,6 +427,335 @@
       </tags>
   </entry>
   <entry>
+    <title>Sublime使用</title>
+    <url>/tools/SublimeText%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
+<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
+</ol>
+<span id="more"></span>
+
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>可以直接打开图片</li>
+<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
+</ol>
+<ul>
+<li>输入@+函数名可以快速找到函数。</li>
+<li>输入#+文本可以快速进行文件内文本匹配</li>
+<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
+<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
+<ol>
+<li>快速复制当前行 CTRL + SHIFT + D</li>
+<li>删除当前行 CTRL + SHIFT + K</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编辑器</category>
+      </categories>
+      <tags>
+        <tag>Sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/tools/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>docsify</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git的使用</title>
+    <url>/tools/git-command/</url>
+    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>配置可以通过gui工具进行。</li>
+<li>git config –list 查看所有配置</li>
+<li>git config user.name 查看用户名。</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
+<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
+<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
+</blockquote>
+</li>
+<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
+<li>文件跟踪和更新到仓库</li>
+</ul>
+<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
+<p>git文件状态变化周期.</p>
+<ul>
+<li><p><strong>git status</strong> 查看文件状态</p>
+</li>
+<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
+</li>
+<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
+</li>
+<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
+</li>
+<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
+</li>
+<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
+</li>
+</ul>
+<blockquote>
+<p>git log –pretty&#x3D;oneline</p>
+</blockquote>
+<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
+<ol>
+<li>修改上次的提交的内容</li>
+</ol>
+<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
+<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
+<ol start="2">
+<li>还原某次提交</li>
+</ol>
+<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
+<ol start="3">
+<li>撤销工作区中未提交的内容</li>
+</ol>
+<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
+<ol start="4">
+<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
+</ol>
+<ul>
+<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
+</ul>
+<ol start="5">
+<li>Redo after undo “local”</li>
+</ol>
+<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
+<p>reflog 记录有时限，且只在本地才有。</p>
+<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
+<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
+<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
+<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
+会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
+<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-next主题配置方式</title>
+    <url>/tools/hexo-next-theme/</url>
+    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
+<span id="more"></span>
+
+
+<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
+<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
+<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
+<li>使用npm-upgrade，升级依赖的插件。</li>
+<li>npm update -g，更新全局插件。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
+<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
+<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
+<li>npm安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-symbols-count-time -g</p>
+</blockquote>
+<ol start="2">
+<li>修改hexo的主配置，添加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看next的配置文件中的内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
+<li>安装插件</li>
+</ol>
+<blockquote>
+<p>npm install hexo-generator-searchdb</p>
+</blockquote>
+<ol start="2">
+<li>开启next的搜索配置</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
+<ol>
+<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
+</li>
+<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
+</li>
+</ol>
+<blockquote>
+<p>npm install @waline&#x2F;hexo-next</p>
+</blockquote>
+<ol start="3">
+<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重新生成</li>
+</ol>
+<blockquote>
+<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
+<p>注册登录之后， 就可以对评论进行管理了。</p>
+<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
+<p>首先需要在项目目录下面安装依赖</p>
+<blockquote>
+<p> npm i hexo-filter-mermaid-diagrams</p>
+</blockquote>
+<p>然后在配置中开启</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
+<p><strong>流程图</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
+
+
+<pre class="mermaid">graph TD
+Start --> Stop</pre>
+
+<p><strong>时间轴</strong></p>
+<pre class="mermaid">timeline
+      title History of Social Media Platform
+      2002 : LinkedIn
+      2004 : Facebook
+           : Google
+      2005 : Youtube
+      2006 : Twitter</pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo使用</title>
+    <url>/tools/hexo%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/fileanme <span class="string">&quot;titlename&quot;</span></span><br><span class="line"> </span><br><span class="line"> 比如 &gt;hexo new post -p tools/testfile <span class="string">&quot;测试文章&quot;</span></span><br><span class="line">  // 就是在posts 下的 tools目录中创建了文件 testfile.md，文件中对应的title是 测试文章</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h3 id="使用图片"><a href="#使用图片" class="headerlink" title="使用图片"></a>使用图片</h3><p>可以将图片放到 source&#x2F;images 目录下面即可，然后在文章中使用markdown语法访问他们, 参考 <a href="https://fuhailin.github.io/Hexo-images/">资源文件夹</a></p>
+<blockquote>
+<p> <code>![](/images/image.jpg)</code></p>
+</blockquote>
+<p>效果如下:</p>
+<p><img data-src="/images/assets/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用jsdelivr加速hexo github pages博客的静态资源</title>
+    <url>/tools/use-jsdelivr-cdn-hexo-blog/</url>
+    <content><![CDATA[<p>使用hexo将博客部署在github pages上面，有时候访问速度会比较慢，可以将图片等静态资源，使用jsdelivr进行cdn加速。</p>
+<p>目前由于一些非法的滥用，jsdelivr在国内被墙，无法访问了。</p>
+<span id="more"></span>
+
+<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><p><a href="https://github.com/jsdelivr/jsdelivr?tab=readme-ov-file#github">jsdelivr加速github介绍</a></p>
+<p>根路径是 :  <a href="https://cdn.jsdelivr.net/">https://cdn.jsdelivr.net</a></p>
+<h4 id="Load-any-GitHub-release-commit-or-branch"><a href="#Load-any-GitHub-release-commit-or-branch" class="headerlink" title="Load any GitHub release, commit, or branch:"></a>Load any GitHub release, commit, or branch:</h4><blockquote>
+<p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
+</blockquote>
+<h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#113;&#x75;&#x65;&#114;&#121;&#x40;&#x33;&#x2e;&#x31;&#x2e;&#48;">&#106;&#113;&#x75;&#x65;&#114;&#121;&#x40;&#x33;&#x2e;&#x31;&#x2e;&#48;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#x75;&#x65;&#x72;&#121;&#x40;&#51;&#x2e;&#x31;">&#x6a;&#113;&#x75;&#x65;&#x72;&#121;&#x40;&#51;&#x2e;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<ul>
+<li>访问方式</li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Github%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/Github用户名/仓库名/资源路径</a></p>
+<p>默认访问 <code>master</code>分支下面的文件。</p>
+<p>比如: </p>
+<ul>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js</a> 访问的是master下的</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js</a> 访问的是精确的版本</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js</a>  访问的是范围版本</li>
+</ul>
+<p>加速静态资源的方式， 可以在github上创建一个仓库，比如叫cdn，然后将静态资源放到方库中。</p>
+<blockquote>
+<p><a href="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg">https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg</a></p>
+</blockquote>
+<p>使用加速后的图片</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>jsdelivr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python-venv虚拟环境</title>
     <url>/python/python-venv%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<p>在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.12。所有第三方的包都会被pip安装到Python3的site-packages目录下。</p>
@@ -1073,6 +1402,51 @@
       </tags>
   </entry>
   <entry>
+    <title>python常用第三方模块</title>
+    <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
+<span id="more"></span>
+
+<h1 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h1><p>PIL：Python Imaging Library，是图像处理库，但是仅支持到2.7，兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性。</p>
+<p>比如图片压缩和模糊</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>)</span><br><span class="line">w = img.width</span><br><span class="line">h = img.height</span><br><span class="line"><span class="built_in">print</span>(w, h)</span><br><span class="line">img.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 模糊滤镜</span></span><br><span class="line">img.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">img.save(<span class="string">&#x27;D:/newimg.jpg&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><p>requests 是一个第三方库，处理资源特别方便。</p>
+<p><strong>使用requests</strong></p>
+<p>requests自动检测编码，可以使用<code>encoding</code>属性查看</p>
+<p>无论响应是文本还是二进制内容，我们都可以用<code>content</code>属性获得<code>bytes</code>对象</p>
+<p>对于特定类型的响应，例如JSON，可以直接获取 ‘r.json()’</p>
+<p>需要传入HTTP Header时，我们传入一个dict作为<code>headers</code>参数</p>
+<p>requests默认使用<code>application/x-www-form-urlencoded</code>对POST数据编码。如果要传递JSON数据，可以直接传入json参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=params) <span class="comment"># 内部自动序列化为JSON</span></span><br></pre></td></tr></table></figure>
+<p>上传文件需要更复杂的编码格式，但是<code>requests</code>把它简化成<code>files</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; upload_files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = requests.post(url, files=upload_files)</span></span><br></pre></td></tr></table></figure>
+<p>在读取文件时，注意务必使用<code>&#39;rb&#39;</code>即二进制模式读取，这样获取的<code>bytes</code>长度才是文件的长度。</p>
+<p>requests对Cookie做了特殊处理，使得我们不必解析Cookie就可以轻松获取指定的Cookie：</p>
+<p>要指定超时，传入以秒为单位的<code>timeout</code>参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">r = requests.get(url, timeout=2.5) # 2.5秒后超时</span><br></pre></td></tr></table></figure>
+<p>示例代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">reqHeader = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;chrome&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br><span class="line">headers = r.headers</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> headers.items():</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;=&#x27;</span>, v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.headers[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"><span class="comment"># cookie</span></span><br><span class="line"><span class="comment"># 打印所有的Cookie值</span></span><br><span class="line">cookies = r.cookies</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;输出cookie信息&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="built_in">print</span>(cookie.name, <span class="string">&#x27;:&#x27;</span>, cookie.value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.encoding)</span><br><span class="line"><span class="comment"># print(r.json())</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="chardet"><a href="#chardet" class="headerlink" title="chardet"></a>chardet</h1><p>虽然Python提供了Unicode表示的<code>str</code>和<code>bytes</code>两种数据类型，并且可以通过<code>encode()</code>和<code>decode()</code>方法转换，但是，在不知道编码的情况下，对<code>bytes</code>做<code>decode()</code>不好做。</p>
+<p>对于未知编码的<code>bytes</code>，要把它转换成<code>str</code>，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”。</p>
+<p>chardet 用来检测编码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import chardet</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(b<span class="string">&#x27;12ass&#x27;</span>)</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;ascii&#x27;, &#x27;confidence&#x27;: 1.0, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode())</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GB2312&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GBK&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;EUC-JP&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;EUC-JP&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;Japanese&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>confidence</code> 字段， 表示检测的概率， 最高是1.0</p>
+<h1 id="psutil"><a href="#psutil" class="headerlink" title="psutil"></a>psutil</h1><p>用Python来编写脚本简化日常的运维工作是Python的一个重要用途。psutil &#x3D; process and system utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用。</p>
+<p>获取cpu信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
+
+<p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python常用内建模块3</title>
     <url>/python/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%973/</url>
     <content><![CDATA[<p>本章主要介绍itertools， contextlib， urllib，XML，HTMLParser的使用。</p>
@@ -1118,51 +1492,6 @@
 <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
 <p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
 <h1 id="HTMLParser"><a href="#HTMLParser" class="headerlink" title="HTMLParser"></a>HTMLParser</h1><p>Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python常用第三方模块</title>
-    <url>/python/python%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<p>可以在<a href="https://pypi.org/">PyPI - the Python Package Index</a> 上查找第三方模块，使用pip安装。主要介绍Pillow，requests，chardet，psutil等</p>
-<span id="more"></span>
-
-<h1 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h1><p>PIL：Python Imaging Library，是图像处理库，但是仅支持到2.7，兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性。</p>
-<p>比如图片压缩和模糊</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>)</span><br><span class="line">w = img.width</span><br><span class="line">h = img.height</span><br><span class="line"><span class="built_in">print</span>(w, h)</span><br><span class="line">img.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 模糊滤镜</span></span><br><span class="line">img.<span class="built_in">filter</span>(ImageFilter.BLUR)</span><br><span class="line">img.save(<span class="string">&#x27;D:/newimg.jpg&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><p>requests 是一个第三方库，处理资源特别方便。</p>
-<p><strong>使用requests</strong></p>
-<p>requests自动检测编码，可以使用<code>encoding</code>属性查看</p>
-<p>无论响应是文本还是二进制内容，我们都可以用<code>content</code>属性获得<code>bytes</code>对象</p>
-<p>对于特定类型的响应，例如JSON，可以直接获取 ‘r.json()’</p>
-<p>需要传入HTTP Header时，我们传入一个dict作为<code>headers</code>参数</p>
-<p>requests默认使用<code>application/x-www-form-urlencoded</code>对POST数据编码。如果要传递JSON数据，可以直接传入json参数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=params) <span class="comment"># 内部自动序列化为JSON</span></span><br></pre></td></tr></table></figure>
-<p>上传文件需要更复杂的编码格式，但是<code>requests</code>把它简化成<code>files</code>参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; upload_files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; r = requests.post(url, files=upload_files)</span></span><br></pre></td></tr></table></figure>
-<p>在读取文件时，注意务必使用<code>&#39;rb&#39;</code>即二进制模式读取，这样获取的<code>bytes</code>长度才是文件的长度。</p>
-<p>requests对Cookie做了特殊处理，使得我们不必解析Cookie就可以轻松获取指定的Cookie：</p>
-<p>要指定超时，传入以秒为单位的<code>timeout</code>参数</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">r = requests.get(url, timeout=2.5) # 2.5秒后超时</span><br></pre></td></tr></table></figure>
-<p>示例代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">reqHeader = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;chrome&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br><span class="line">headers = r.headers</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> headers.items():</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;=&#x27;</span>, v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.headers[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"><span class="comment"># cookie</span></span><br><span class="line"><span class="comment"># 打印所有的Cookie值</span></span><br><span class="line">cookies = r.cookies</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;输出cookie信息&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">    <span class="built_in">print</span>(cookie.name, <span class="string">&#x27;:&#x27;</span>, cookie.value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.encoding)</span><br><span class="line"><span class="comment"># print(r.json())</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="chardet"><a href="#chardet" class="headerlink" title="chardet"></a>chardet</h1><p>虽然Python提供了Unicode表示的<code>str</code>和<code>bytes</code>两种数据类型，并且可以通过<code>encode()</code>和<code>decode()</code>方法转换，但是，在不知道编码的情况下，对<code>bytes</code>做<code>decode()</code>不好做。</p>
-<p>对于未知编码的<code>bytes</code>，要把它转换成<code>str</code>，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”。</p>
-<p>chardet 用来检测编码。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import chardet</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(b<span class="string">&#x27;12ass&#x27;</span>)</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;ascii&#x27;, &#x27;confidence&#x27;: 1.0, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode())</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GB2312&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;GBK&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;IBM855&#x27;, &#x27;confidence&#x27;: 0.7679697235616183, &#x27;language&#x27;: &#x27;Russian&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;中国&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.7525, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;utf-8&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; chardet.detect(<span class="string">&#x27;こんにちは&#x27;</span>.encode(<span class="string">&#x27;EUC-JP&#x27;</span>))</span></span><br><span class="line">&#123;&#x27;encoding&#x27;: &#x27;EUC-JP&#x27;, &#x27;confidence&#x27;: 0.99, &#x27;language&#x27;: &#x27;Japanese&#x27;&#125;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>confidence</code> 字段， 表示检测的概率， 最高是1.0</p>
-<h1 id="psutil"><a href="#psutil" class="headerlink" title="psutil"></a>psutil</h1><p>用Python来编写脚本简化日常的运维工作是Python的一个重要用途。psutil &#x3D; process and system utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用。</p>
-<p>获取cpu信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import psutil</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count() <span class="comment"># CPU逻辑数量</span></span></span><br><span class="line">8</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; psutil.cpu_count(logical=False) <span class="comment"># CPU物理核心</span></span></span><br><span class="line">4</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&quot;4核8线程&quot;</span>是指一个处理器（CPU）具有4个物理核心和8个线程。</span></span><br></pre></td></tr></table></figure>
-
-<p>其他的方法可以查看文档。 <a href="https://pypi.org/project/psutil/">psutil</a>  </p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2156,335 +2485,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Sublime使用</title>
-    <url>/tools/SublimeText%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
-<li>常用的package，以及配置，参考<a href="https://github.com/cpf929/Users.git">Users目录的配置文件</a></li>
-</ol>
-<span id="more"></span>
-
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li>可以直接打开图片</li>
-<li>Goto Anything功能 — 快速查找（ctrl + P）</li>
-</ol>
-<ul>
-<li>输入@+函数名可以快速找到函数。</li>
-<li>输入#+文本可以快速进行文件内文本匹配</li>
-<li>在打开文件夹的情况下，输入文件名，可以模糊匹配包含对应字符的文件。</li>
-<li>在打开文件夹的情况下，文件名 + ：+ 行号，跳转到对应的行， 文件名 + @ 可以跳转到对应的代码段</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>快捷键一般都可以在ST的菜单中找到。</p>
-<ol>
-<li>快速复制当前行 CTRL + SHIFT + D</li>
-<li>删除当前行 CTRL + SHIFT + K</li>
-</ol>
-]]></content>
-      <categories>
-        <category>编辑器</category>
-      </categories>
-      <tags>
-        <tag>Sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/tools/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git的使用</title>
-    <url>/tools/git-command/</url>
-    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>配置可以通过gui工具进行。</li>
-<li>git config –list 查看所有配置</li>
-<li>git config user.name 查看用户名。</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
-<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
-<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
-</blockquote>
-</li>
-<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
-<li>文件跟踪和更新到仓库</li>
-</ul>
-<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
-<p>git文件状态变化周期.</p>
-<ul>
-<li><p><strong>git status</strong> 查看文件状态</p>
-</li>
-<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
-</li>
-<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
-</li>
-<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
-</li>
-<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
-</li>
-<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
-</li>
-</ul>
-<blockquote>
-<p>git log –pretty&#x3D;oneline</p>
-</blockquote>
-<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
-<ol>
-<li>修改上次的提交的内容</li>
-</ol>
-<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
-<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
-<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
-<ol start="2">
-<li>还原某次提交</li>
-</ol>
-<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
-<ol start="3">
-<li>撤销工作区中未提交的内容</li>
-</ol>
-<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
-<ol start="4">
-<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
-</ol>
-<ul>
-<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
-</ul>
-<ol start="5">
-<li>Redo after undo “local”</li>
-</ol>
-<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
-<p>reflog 记录有时限，且只在本地才有。</p>
-<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
-<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
-<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
-<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
-<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
-<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
-会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
-<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
-克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo-next主题配置方式</title>
-    <url>/tools/hexo-next-theme/</url>
-    <content><![CDATA[<p>主要介绍hexo的配置，和使用next主题时的一些自定义配置，需要先确认版本是否一致。<br>本文主要基于 hexo 7.0.0 和 next 8.18.2，如果版本不一致，可能会有报错。</p>
-<span id="more"></span>
-
-
-<h2 id="hexo安装配置"><a href="#hexo安装配置" class="headerlink" title="hexo安装配置"></a>hexo安装配置</h2><p>操作比较简单，可以直接参考官方文档  <a href="https://hexo.io/zh-cn/docs/configuration">hexo配置</a></p>
-<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>版本依赖</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">$</span> <span class="string">npm list</span></span><br><span class="line"><span class="attr">hexo-site@0.0.0</span> <span class="string">D:\Documents\GitHub\hexo</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">@waline/hexo-next@3.0.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-cli@4.3.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-deployer-git@4.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-archive@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-category@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-index@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-searchdb@1.4.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-generator-tag@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-ejs@2.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-marked@6.1.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-renderer-stylus@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-server@3.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-symbols-count-time@0.7.1</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-landscape@1.0.0</span></span><br><span class="line"><span class="attr">├──</span> <span class="string">hexo-theme-next@8.18.2</span></span><br><span class="line"><span class="attr">└──</span> <span class="string">hexo@7.0.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><ol>
-<li>先检查hexo版本， hexo version ，如果不对，可以 <code>npm install -g hexo-cli</code> 全局升级。然后再次查看版本是否升级成功</li>
-<li>使用npm-check，检查项目依赖的插件是否需要升级。</li>
-<li>使用npm-upgrade，升级依赖的插件。</li>
-<li>npm update -g，更新全局插件。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line">npm install -g npm-check</span><br><span class="line">npm-check</span><br><span class="line"></span><br><span class="line">npm install -g npm-upgrade</span><br><span class="line">npm-upgrade</span><br><span class="line"></span><br><span class="line">npm update -g</span><br><span class="line"></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h2><p>主要是修改themes&#x2F;next 文件夹内的<code>_config.yml</code> 文件里面的配置</p>
-<p><a href="https://theme-next.iissnan.com/getting-started.html">参考官方文档</a></p>
-<h3 id="开启阅读时长"><a href="#开启阅读时长" class="headerlink" title="开启阅读时长"></a>开启阅读时长</h3><ol>
-<li>npm安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-symbols-count-time -g</p>
-</blockquote>
-<ol start="2">
-<li>修改hexo的主配置，添加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  awl: 3</span><br><span class="line">  wpm: 200</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>查看next的配置文件中的内容</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>配置完成后，需要执行 hexo clean，否则阅读时长可能会显示 NaN</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><ol>
-<li>安装插件</li>
-</ol>
-<blockquote>
-<p>npm install hexo-generator-searchdb</p>
-</blockquote>
-<ol start="2">
-<li>开启next的搜索配置</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">enable</span>: <span class="string">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="开启访问数统计"><a href="#开启访问数统计" class="headerlink" title="开启访问数统计"></a>开启访问数统计</h3><p>开启配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h3><p>经过网上的查询和综合评估，选择了<a href="https://waline.js.org/guide/get-started/">waline</a> 作为评论系统。</p>
-<ol>
-<li><p>首先需要注册和部署相关应用， 可以直接参考官方文档 <a href="https://waline.js.org/guide/get-started/">waline get-started</a></p>
-</li>
-<li><p>由于 Next 主题中没有 Waline 的评论配置，需要安装官方的插件，在目录下执行</p>
-</li>
-</ol>
-<blockquote>
-<p>npm install @waline&#x2F;hexo-next</p>
-</blockquote>
-<ol start="3">
-<li>在next主题的配置下面添加, 一定要修改 serverURL 为自己的</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline</span></span><br><span class="line"><span class="comment"># For more information: https://waline.js.org, https://github.com/walinejs/waline</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">填写第一步部署后获取到的地址</span> <span class="comment"># Waline #服务端地址，我们这里就是上面部署的 Vercel 地址</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请文明评论呀</span> <span class="comment"># #评论框的默认文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 头像风格</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># 自定义评论框上面的三个输入框的内容</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># 评论数量多少时显示分页</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># 语言, 可选值: en, zh-cn</span></span><br><span class="line">  <span class="comment"># Warning: 不要同时启用 `waline.visitor` 以及 `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment"># 文章阅读统计</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># 如果为 false , 评论数量只会在当前评论页面显示, 主页则不显示</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [] <span class="comment"># 设置用户评论时必填的信息，[nick,mail]: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">libUrl:</span> <span class="comment"># Set custom library cdn url</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>重新生成</li>
-</ol>
-<blockquote>
-<p> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
-<h3 id="登录注册评论后台"><a href="#登录注册评论后台" class="headerlink" title="登录注册评论后台"></a>登录注册评论后台</h3><p>Waline 有服务端，支持评论管理。找到评论框，点击 登录 按钮，会弹出一个窗口，找到用户注册，默认第一个注册的用户为管理员，所以部署好一定要记得及时注册。</p>
-<p>注册登录之后， 就可以对评论进行管理了。</p>
-<h3 id="hexo开启-mermaid"><a href="#hexo开启-mermaid" class="headerlink" title="hexo开启 mermaid"></a>hexo开启 mermaid</h3><p><code>mermaid</code> 可以帮助在markdown中画流程图，时序图等</p>
-<p>首先需要在项目目录下面安装依赖</p>
-<blockquote>
-<p> npm i hexo-filter-mermaid-diagrams</p>
-</blockquote>
-<p>然后在配置中开启</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>下面就可以在markdown文件中添加对应的内容，页面就会自动渲染了， 如下面的例子</p>
-<p><strong>流程图</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">mermaid</span></span><br><span class="line"><span class="string">graph</span> <span class="string">TD</span></span><br><span class="line"><span class="string">Start</span> <span class="string">--&gt;</span> <span class="string">Stop</span></span><br></pre></td></tr></table></figure>
-
-
-<pre class="mermaid">graph TD
-Start --> Stop</pre>
-
-<p><strong>时间轴</strong></p>
-<pre class="mermaid">timeline
-      title History of Social Media Platform
-      2002 : LinkedIn
-      2004 : Facebook
-           : Google
-      2005 : Youtube
-      2006 : Twitter</pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用jsdelivr加速hexo github pages博客的静态资源</title>
-    <url>/tools/use-jsdelivr-cdn-hexo-blog/</url>
-    <content><![CDATA[<p>使用hexo将博客部署在github pages上面，有时候访问速度会比较慢，可以将图片等静态资源，使用jsdelivr进行cdn加速。</p>
-<p>目前由于一些非法的滥用，jsdelivr在国内被墙，无法访问了。</p>
-<span id="more"></span>
-
-<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><p><a href="https://github.com/jsdelivr/jsdelivr?tab=readme-ov-file#github">jsdelivr加速github介绍</a></p>
-<p>根路径是 :  <a href="https://cdn.jsdelivr.net/">https://cdn.jsdelivr.net</a></p>
-<h4 id="Load-any-GitHub-release-commit-or-branch"><a href="#Load-any-GitHub-release-commit-or-branch" class="headerlink" title="Load any GitHub release, commit, or branch:"></a>Load any GitHub release, commit, or branch:</h4><blockquote>
-<p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
-</blockquote>
-<h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#x71;&#x75;&#101;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;">&#x6a;&#x71;&#x75;&#101;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
-</blockquote>
-<h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#117;&#101;&#x72;&#x79;&#x40;&#x33;&#x2e;&#x31;">&#x6a;&#113;&#117;&#101;&#x72;&#x79;&#x40;&#x33;&#x2e;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
-</blockquote>
-<ul>
-<li>访问方式</li>
-</ul>
-<p><a href="https://cdn.jsdelivr.net/gh/Github%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/Github用户名/仓库名/资源路径</a></p>
-<p>默认访问 <code>master</code>分支下面的文件。</p>
-<p>比如: </p>
-<ul>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js</a> 访问的是master下的</li>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js</a> 访问的是精确的版本</li>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js</a>  访问的是范围版本</li>
-</ul>
-<p>加速静态资源的方式， 可以在github上创建一个仓库，比如叫cdn，然后将静态资源放到方库中。</p>
-<blockquote>
-<p><a href="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg">https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg</a></p>
-</blockquote>
-<p>使用加速后的图片</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>jsdelivr</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo使用</title>
-    <url>/tools/hexo%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line"></span><br><span class="line"> hexo new post -p folder/fileanme <span class="string">&quot;titlename&quot;</span></span><br><span class="line"> </span><br><span class="line"> 比如 &gt;hexo new post -p tools/testfile <span class="string">&quot;测试文章&quot;</span></span><br><span class="line">  // 就是在posts 下的 tools目录中创建了文件 testfile.md，文件中对应的title是 测试文章</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-<h3 id="使用图片"><a href="#使用图片" class="headerlink" title="使用图片"></a>使用图片</h3><p>可以将图片放到 source&#x2F;images 目录下面即可，然后在文章中使用markdown语法访问他们, 参考 <a href="https://fuhailin.github.io/Hexo-images/">资源文件夹</a></p>
-<blockquote>
-<p> <code>![](/images/image.jpg)</code></p>
-</blockquote>
-<p>效果如下:</p>
-<p><img data-src="/images/assets/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux常用操作</title>
     <url>/yunwei/linux%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>主要记录一些日常用到的shell命令操作。</p>
@@ -2619,6 +2619,73 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雪花算法 百度uid-generator生成的id变成负数</title>
+    <url>/java/snowflake-baidu-uid-generator/</url>
+    <content><![CDATA[<p>项目使用了百度的uid-generator来生成唯一ID，在2024-11-21时候，观察到部分项目生成的id变成了负数，下面分析了具体的原因以及给出了解决思路。</p>
+<span id="more"></span>
+
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>在 <code>2024-11-21</code> 当天，开发环境发现了部分项目生成的id变成了负数，产生了业务异常，无法入库，经过排查，发现是由于使用了百度的uid-generator进行id生成，配置不当导致的。</p>
+<p>项目中同时使用了 <code>DefaultUidGenerator</code> 和 <code>CachedUidGenerator</code> 两种生成策略。但是，在初始化配置时，只针对 <code>DefaultUidGenerator</code> 进行了调整，<code>CachedUidGenerator</code> 使用的默认值。</p>
+<p>查看代码，发现 CachedUidGenerator 继承自 DefaultUidGenerator，在sequence上做了调整，但是前面依然是雪花算法的策略。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">* +------+----------------------+----------------+-----------+</span><br><span class="line">* | sign |     delta seconds    | worker node id | sequence  |</span><br><span class="line">* +------+----------------------+----------------+-----------+</span><br><span class="line">*   1bit          28bits              22bits         13bits</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Snowflake算法描述：指定机器 &amp; 同一时刻 &amp; 某一并发序列，是唯一的。据此可生成一个64 bits的唯一ID（long）。默认采用上图字节分配方式：</p>
+<ul>
+<li><p>sign(1bit)<br>固定1bit符号标识，即生成的UID为正数。</p>
+</li>
+<li><p>delta seconds (28 bits)<br>当前时间，相对于时间基点”2016-05-20”的增量值，单位：秒，最多可支持约8.7年</p>
+</li>
+<li><p>worker id (22 bits)<br>机器id，最多可支持约420w次机器启动。内置实现为在启动时由数据库分配，默认分配策略为用后即弃，后续可提供复用策略。</p>
+</li>
+<li><p>sequence (13 bits)<br>每秒下的并发序列，13 bits可支持每秒8192个并发。</p>
+</li>
+</ul>
+<p>在 <code>DefaultUidGenerator</code> 中有说明，默认配置是从<code>2016-05-20</code>开始，大概支持8.7年，到<code>2024-11-20 21:24:16</code></p>
+<blockquote>
+<p>delta seconds: The next 28 bits, represents delta seconds since a customer epoch(2016-05-20 00:00:00.000).</p>
+<p>Supports about 8.7 years until to 2024-11-20 21:24:16</p>
+</blockquote>
+<p>CachedUidGenerator不是每次获取当前时间戳作为时间位上的数字，而是在系统启动时获取系统时间作为基础，后续在该时间上进行递增。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动时获取当前时间</span></span><br><span class="line"><span class="built_in">this</span>.lastSecond = <span class="keyword">new</span> <span class="title class_">PaddedAtomicLong</span>(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));</span><br><span class="line"></span><br><span class="line"><span class="comment">// fill the rest slots until to catch the cursor</span></span><br><span class="line">List&lt;Long&gt; uidList = uidProvider.provide(lastSecond.incrementAndGet());</span><br></pre></td></tr></table></figure>
+
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><h2 id="调整时间基点"><a href="#调整时间基点" class="headerlink" title="调整时间基点"></a>调整时间基点</h2><p>既然是由于初始时间 epochStr 导致的，可以考虑调整 epochStr 到接近当前时间的某个日期。</p>
+<p>此时需要注意，如果想要保证生成的id长度固定为19位的话，新的日期不能距离当前时间太近，否则生成的id长度会发生变化。比如可以调整到1年前的日期，如 <code>2023-11-26</code> 。</p>
+<p>生成id又会从 1 开头的数字开始，如 <code>1088488405369774084</code></p>
+<p>这种方案会有一个风险，生成的id可能会和调整前生成的id一样，导致id重复。原因如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Allocate bits for UID</span></span><br><span class="line"><span class="keyword">return</span> bitsAllocator.allocate(currentSecond - epochSeconds, workerId, sequence);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">allocate</span><span class="params">(<span class="type">long</span> deltaSeconds, <span class="type">long</span> workerId, <span class="type">long</span> sequence)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (deltaSeconds &lt;&lt; timestampShift) | (workerId &lt;&lt; workerIdShift) | sequence;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>理论上，获取id时的时间戳和基准时间的差值(currentSecond - epochSeconds)如果一致，生成的id就会相同。</p>
+<p>所以此方案可以用于临时紧急修复问题，不能长期使用。</p>
+<h2 id="调整位数的划分"><a href="#调整位数的划分" class="headerlink" title="调整位数的划分"></a>调整位数的划分</h2><p>可以调整 <code>timeBits</code> 到30位，增大2位，<code>seqBits</code> 调整到11位，减少2位。 此时可以支持的时间为2^30 -1 , 大概是34年，而每秒可以生成的序列为 2^11-1&#x3D;2047个。理论上也能满足大部分系统的并发场景需要。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** Bits allocate */</span></span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">timeBits</span> <span class="operator">=</span> <span class="number">30</span>;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">workerBits</span> <span class="operator">=</span> <span class="number">22</span>;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">int</span> <span class="variable">seqBits</span> <span class="operator">=</span> <span class="number">11</span>;</span><br></pre></td></tr></table></figure>
+<p>调整之后，生成的id又会从一个较小的数字开始，理论上到达某个条件之后，生成的id还是有可能和历史已生成的id重复的可能，需要注意。</p>
+<p>或者还可以调整 <code>workerBits</code> 的位数，默认是22位，接近420w次重启， 实际上可以按需进行取舍，考虑重复使用workId或者循环利用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在系统初始阶段，最好就要先确定好位数的划分，比如增大 timeBits ，保证系统可以支持到更长的时间。减少workerBits，调整 seqBits 等。</p>
+<ul>
+<li><p>为什么线上系统在11-21号的时候没有报错</p>
+<p>  由于线上大部分使用的是 <code>CachedUidGenerator</code>，所以是从系统启动时刻的时间戳开始计算的，如果系统近期没有重启，<code>lastSecond</code>会小于当前时间戳，并不会溢出。</p>
+</li>
+<li><p>为什么使用 CachedUidGenerator 生成的id顺序不是严格一致的。</p>
+<ol>
+<li>由于使用了 RingBuffer，如果流量不均衡的话，不同机器上消耗的速度是不同的，可能导致某些机器上消费的速度快，lastSecond 增长的快。</li>
+<li>如果服务使用了动态的扩容缩容方案，不同节点的启动时间相差也会很大，后启动的机器，lastSecond会大点，生成的id 也会偏大。</li>
+</ol>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md">uid-generator readme</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>snowflake</tag>
+        <tag>唯一ID</tag>
       </tags>
   </entry>
 </search>
