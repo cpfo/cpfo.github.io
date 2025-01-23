@@ -401,6 +401,32 @@
       </tags>
   </entry>
   <entry>
+    <title>使用RateLimiter进行限流</title>
+    <url>/java/%E4%BD%BF%E7%94%A8RateLimiter%E8%BF%9B%E8%A1%8C%E9%99%90%E6%B5%81/</url>
+    <content><![CDATA[<p>主要介绍使用RateLimiter进行请求的限流。</p>
+<span id="more"></span>
+
+
+<p>场景: 和第三方对接的项目中，为对接的第三方分配一个appid，需要针对appid进行限流，限制每个appid的请求不能超过指定的qps。</p>
+<h1 id="Guava-RateLimiter"><a href="#Guava-RateLimiter" class="headerlink" title="Guava RateLimiter"></a>Guava RateLimiter</h1><p><code>RateLimiter</code> 是针对单机进行限流的，但是在实际的生产环境中，服务一般是通过集群的方式进行部署。假设限制的QPS是300，集群一共5台机器，如果流量分布均衡的话，每台机器的QPS是 <code>300/5 = 60</code> 。</p>
+<p>但实际上，通过轮询的方式，流量不可能做到绝对的均匀，所以可以预留一定的空间，比如每台机器的qps限制在80，这样即使某台机器的流量稍微偏高，也不太可能超过限制被拦截掉。</p>
+<p>此种方式适合对限流不是很严格的情况，即使部分请求被拦截，也不影响业务。</p>
+<p><code>RateLimiter.create(rate)</code> 创建指定QPS的RateLimiter。</p>
+<p><code>tryAcquire()</code>  以非阻塞的方式获取令牌。</p>
+<h1 id="RedissonRateLimiter"><a href="#RedissonRateLimiter" class="headerlink" title="RedissonRateLimiter"></a>RedissonRateLimiter</h1><p><code>RedissonRateLimiter</code> 是redisson中提供的分布式限流器。</p>
+<p><code>getRateLimiter(String name)</code> 获取对应name的 rate limiter。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestRateController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedissonClient redissonClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, RateLimiter&gt; rateLimiterMap = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 针对appid配置请求频率</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApolloJsonValue(&quot;$&#123;qps.rate:&#123;&#125;&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Integer&gt; appIdRateMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/rate/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> tryAcquire(appId);</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/redisson/rate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">redissonRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">RRateLimiter</span> <span class="variable">clientRateLimiter</span> <span class="operator">=</span> redissonClient.getRateLimiter(<span class="string">&quot;limiter:&quot;</span>.concat(appId));</span><br><span class="line">        <span class="keyword">if</span> (!clientRateLimiter.isExists()) &#123;</span><br><span class="line">            clientRateLimiter.setRate(RateType.OVERALL, <span class="number">1</span>, <span class="number">1</span>, RateIntervalUnit.SECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> clientRateLimiter.tryAcquire();</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(String appId)</span> &#123;</span><br><span class="line">        Assert.notNull(appId, <span class="string">&quot;appId不能为空&quot;</span>);</span><br><span class="line">        <span class="type">RateLimiter</span> <span class="variable">rateLimiter</span> <span class="operator">=</span> rateLimiterMap.computeIfAbsent(appId, s -&gt; &#123;</span><br><span class="line">            log.info(<span class="string">&quot;初始化appid &#123;&#125; 的限流器&quot;</span>, appId);</span><br><span class="line">            <span class="type">int</span> <span class="variable">rate</span> <span class="operator">=</span> appIdRateMap.getOrDefault(appId, <span class="number">70</span>);</span><br><span class="line">            <span class="keyword">return</span> RateLimiter.create(rate);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> rateLimiter.tryAcquire();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>RateLimiter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>雪花算法 百度uid-generator生成的id变成负数</title>
     <url>/java/snowflake-baidu-uid-generator/</url>
     <content><![CDATA[<p>项目使用了百度的uid-generator来生成唯一ID，在2024-11-21时候，观察到部分项目生成的id变成了负数，下面分析了具体的原因以及给出了解决思路。</p>
@@ -465,32 +491,6 @@
         <tag>java</tag>
         <tag>snowflake</tag>
         <tag>唯一ID</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用RateLimiter进行限流</title>
-    <url>/java/%E4%BD%BF%E7%94%A8RateLimiter%E8%BF%9B%E8%A1%8C%E9%99%90%E6%B5%81/</url>
-    <content><![CDATA[<p>主要介绍使用RateLimiter进行请求的限流。</p>
-<span id="more"></span>
-
-
-<p>场景: 和第三方对接的项目中，为对接的第三方分配一个appid，需要针对appid进行限流，限制每个appid的请求不能超过指定的qps。</p>
-<h1 id="Guava-RateLimiter"><a href="#Guava-RateLimiter" class="headerlink" title="Guava RateLimiter"></a>Guava RateLimiter</h1><p><code>RateLimiter</code> 是针对单机进行限流的，但是在实际的生产环境中，服务一般是通过集群的方式进行部署。假设限制的QPS是300，集群一共5台机器，如果流量分布均衡的话，每台机器的QPS是 <code>300/5 = 60</code> 。</p>
-<p>但实际上，通过轮询的方式，流量不可能做到绝对的均匀，所以可以预留一定的空间，比如每台机器的qps限制在80，这样即使某台机器的流量稍微偏高，也不太可能超过限制被拦截掉。</p>
-<p>此种方式适合对限流不是很严格的情况，即使部分请求被拦截，也不影响业务。</p>
-<p><code>RateLimiter.create(rate)</code> 创建指定QPS的RateLimiter。</p>
-<p><code>tryAcquire()</code>  以非阻塞的方式获取令牌。</p>
-<h1 id="RedissonRateLimiter"><a href="#RedissonRateLimiter" class="headerlink" title="RedissonRateLimiter"></a>RedissonRateLimiter</h1><p><code>RedissonRateLimiter</code> 是redisson中提供的分布式限流器。</p>
-<p><code>getRateLimiter(String name)</code> 获取对应name的 rate limiter。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestRateController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedissonClient redissonClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, RateLimiter&gt; rateLimiterMap = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 针对appid配置请求频率</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApolloJsonValue(&quot;$&#123;qps.rate:&#123;&#125;&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Integer&gt; appIdRateMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/rate/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> tryAcquire(appId);</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/redisson/rate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">redissonRateLimiter</span><span class="params">(<span class="meta">@RequestParam</span> String appId)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">RRateLimiter</span> <span class="variable">clientRateLimiter</span> <span class="operator">=</span> redissonClient.getRateLimiter(<span class="string">&quot;limiter:&quot;</span>.concat(appId));</span><br><span class="line">        <span class="keyword">if</span> (!clientRateLimiter.isExists()) &#123;</span><br><span class="line">            clientRateLimiter.setRate(RateType.OVERALL, <span class="number">1</span>, <span class="number">1</span>, RateIntervalUnit.SECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> clientRateLimiter.tryAcquire();</span><br><span class="line">        log.info(<span class="string">&quot;获取限流的结果为 &#123;&#125;&quot;</span>, result);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;rate limiter&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(String appId)</span> &#123;</span><br><span class="line">        Assert.notNull(appId, <span class="string">&quot;appId不能为空&quot;</span>);</span><br><span class="line">        <span class="type">RateLimiter</span> <span class="variable">rateLimiter</span> <span class="operator">=</span> rateLimiterMap.computeIfAbsent(appId, s -&gt; &#123;</span><br><span class="line">            log.info(<span class="string">&quot;初始化appid &#123;&#125; 的限流器&quot;</span>, appId);</span><br><span class="line">            <span class="type">int</span> <span class="variable">rate</span> <span class="operator">=</span> appIdRateMap.getOrDefault(appId, <span class="number">70</span>);</span><br><span class="line">            <span class="keyword">return</span> RateLimiter.create(rate);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> rateLimiter.tryAcquire();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>RateLimiter</tag>
       </tags>
   </entry>
   <entry>
@@ -1153,63 +1153,6 @@
       </tags>
   </entry>
   <entry>
-    <title>16.python电子邮件</title>
-    <url>/python/16.python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
-    <content><![CDATA[<p>使用SMTP发送邮件，使用POP3接收邮件。</p>
-<span id="more"></span>
-
-<h1 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h1><p>SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。</p>
-<p>Python对SMTP支持有<code>smtplib</code>和<code>email</code>两个模块，<code>email</code>负责构造邮件，<code>smtplib</code>负责发送邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line">msg = MIMEText(<span class="string">&#x27;测试下邮件发送&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>注意到构造<code>MIMEText</code>对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入<code>&#39;plain&#39;</code>表示纯文本，最终的MIME就是<code>&#39;text/plain&#39;</code>，最后一定要用<code>utf-8</code>编码保证多语言兼容性。</p>
-<p>然后，通过SMTP发出去：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr, parseaddr</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_format_addr</span>(<span class="params">s</span>):</span><br><span class="line">    name, addr = parseaddr(s)</span><br><span class="line">    <span class="keyword">return</span> formataddr((Header(name, <span class="string">&#x27;utf-8&#x27;</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入Email地址和口令:</span></span><br><span class="line">from_addr = <span class="string">&#x27;xxxxxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="comment"># 输入收件人地址:</span></span><br><span class="line">to_addr = <span class="string">&#x27;xxx@qq.com&#x27;</span></span><br><span class="line"><span class="comment"># 输入SMTP服务器地址:</span></span><br><span class="line">smtp_server = <span class="string">&#x27;xxx.xxx.com&#x27;</span></span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&#x27;哈哈哈哈哈&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;测试下邮件发送 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">25</span>) <span class="comment"># SMTP协议默认端口是25</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.login(from_addr, password)</span><br><span class="line">server.sendmail(from_addr, [to_addr], msg.as_string())</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
-<p>我们用<code>set_debuglevel(1)</code>就可以打印出和SMTP服务器交互的所有信息。SMTP协议就是简单的文本命令和响应。<code>login()</code>方法用来登录SMTP服务器，<code>sendmail()</code>方法就是发邮件，由于可以一次发给多个人，所以传入一个<code>list</code>，邮件正文是一个<code>str</code>，<code>as_string()</code>把<code>MIMEText</code>对象变成<code>str</code>。</p>
-<p>必须把<code>From</code>、<code>To</code>和<code>Subject</code>添加到<code>MIMEText</code>中，才是一封完整的邮件， 否则无法显示主题，收件人等信息。</p>
-<h2 id="发送HTML邮件"><a href="#发送HTML邮件" class="headerlink" title="发送HTML邮件"></a>发送HTML邮件</h2><p>如果我们要发送HTML邮件，方法很简单，在构造<code>MIMEText</code>对象时，把<code>HTML</code>字符串传进去，再把第二个参数由<code>plain</code>变为<code>html</code>就可以了</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEText(<span class="string">&#x27;&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送附件"><a href="#发送附件" class="headerlink" title="发送附件"></a>发送附件</h2><p>可以构造一个<code>MIMEMultipart</code>对象代表邮件本身，然后往里面加上一个<code>MIMEText</code>作为邮件正文，再继续往里面加上表示附件的<code>MIMEBase</code>对象即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart()</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;Python爱好者 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件正文是MIMEText:</span></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;send with file...&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加附件就是加上一个MIMEBase，从本地读取一个图片:</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 设置附件的MIME和文件名，这里是png类型:</span></span><br><span class="line">    mime = MIMEBase(<span class="string">&#x27;image&#x27;</span>, <span class="string">&#x27;jpg&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">    mime.set_payload(f.read())</span><br><span class="line">    <span class="comment"># 用Base64编码:</span></span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    <span class="comment"># 添加到MIMEMultipart:</span></span><br><span class="line">    msg.attach(mime)</span><br></pre></td></tr></table></figure>
-<p>然后，按正常发送流程把msg（注意类型已变为<code>MIMEMultipart</code>）发送出去，就可以收到如下带附件的邮件</p>
-<h2 id="发送图片"><a href="#发送图片" class="headerlink" title="发送图片"></a>发送图片</h2><p>如果要把一个图片嵌入到邮件正文中怎么做？直接在HTML邮件中链接图片地址行不行？答案是，大部分邮件服务商都会自动屏蔽带有外链的图片，因为不知道这些链接是否指向恶意网站。</p>
-<p>要把图片嵌入到邮件正文中，我们只需按照发送附件的方式，先把邮件作为附件添加进去，然后，在HTML中通过引用<code>src=&quot;cid:0&quot;</code>就可以把附件作为图片嵌入了。如果有多个图片，给它们依次编号，然后引用不同的<code>cid:x</code>即可。</p>
-<p>把上面代码加入<code>MIMEMultipart</code>的<code>MIMEText</code>从<code>plain</code>改为<code>html</code>，然后在适当的位置引用图片</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;下面是一个图片&lt;/h1&gt;&lt;br/&gt;&lt;img src=&quot;cid:0&quot;&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="同时支持HTML和Plain格式"><a href="#同时支持HTML和Plain格式" class="headerlink" title="同时支持HTML和Plain格式"></a>同时支持HTML和Plain格式</h2><p>为了兼容旧设备，在发送HTML的同时再附加一个纯文本，如果收件人无法查看HTML格式的邮件，就可以自动降级查看纯文本邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart(<span class="string">&#x27;alternative&#x27;</span>)</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = ...</span><br><span class="line"></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 正常发送msg对象...</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="加密SMTP"><a href="#加密SMTP" class="headerlink" title="加密SMTP"></a>加密SMTP</h2><p>使用标准的25端口连接SMTP服务器时，使用的是明文传输，发送邮件的整个过程可能会被窃听。要更安全地发送邮件，可以加密SMTP会话，实际上就是先创建SSL安全连接，然后再使用SMTP协议发送邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">465</span>) </span><br><span class="line">server.starttls()</span><br></pre></td></tr></table></figure>
-<p>只需要在创建SMTP对象后，立刻调用starttls()方法，就创建了安全连接。后面的代码和前面的发送邮件代码完全一样。</p>
-<p>构造一个邮件对象就是一个<code>Messag</code>对象，如果构造一个<code>MIMEText</code>对象，就表示一个文本邮件对象，如果构造一个<code>MIMEImage</code>对象，就表示一个作为附件的图片，要把多个对象组合起来，就用<code>MIMEMultipart</code>对象，而<code>MIMEBase</code>可以表示任何对象。它们的继承关系如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Message</span><br><span class="line">+- MIMEBase</span><br><span class="line">   +- MIMEMultipart</span><br><span class="line">   +- MIMENonMultipart</span><br><span class="line">      +- MIMEMessage</span><br><span class="line">      +- MIMEText</span><br><span class="line">      +- MIMEImage</span><br></pre></td></tr></table></figure>
-<p>这种嵌套关系就可以构造出任意复杂的邮件。</p>
-<h1 id="POP3收取邮件"><a href="#POP3收取邮件" class="headerlink" title="POP3收取邮件"></a>POP3收取邮件</h1><p>Python内置一个<code>poplib</code>模块，实现了POP3协议，可以直接用来收邮件。</p>
-<p>注意到POP3协议收取的不是一个已经可以阅读的邮件本身，而是邮件的原始文本，这和SMTP协议很像，SMTP发送的也是经过编码后的一大段文本。</p>
-<p>要把POP3收取的文本变成可以阅读的邮件，还需要用email模块提供的各种类来解析原始文本，变成可阅读的邮件对象。</p>
-<p>所以，收取邮件分两步：</p>
-<p>第一步：用<code>poplib</code>把邮件的原始文本下载到本地；</p>
-<p>第二步：用<code>email</code>解析原始文本，还原为邮件对象。</p>
-<h2 id="通过POP3下载邮件"><a href="#通过POP3下载邮件" class="headerlink" title="通过POP3下载邮件"></a>通过POP3下载邮件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> poplib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入邮件地址, 口令和POP3服务器地址:</span></span><br><span class="line">email = <span class="built_in">input</span>(<span class="string">&#x27;Email: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">pop3_server = <span class="built_in">input</span>(<span class="string">&#x27;POP3 server: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到POP3服务器:</span></span><br><span class="line">server = poplib.POP3(pop3_server)</span><br><span class="line"><span class="comment"># 可以打开或关闭调试信息:</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 可选:打印POP3服务器的欢迎文字:</span></span><br><span class="line"><span class="built_in">print</span>(server.getwelcome().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份认证:</span></span><br><span class="line">server.user(email)</span><br><span class="line">server.pass_(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># stat()返回邮件数量和占用空间:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Messages: %s. Size: %s&#x27;</span> % server.stat())</span><br><span class="line"><span class="comment"># list()返回所有邮件的编号:</span></span><br><span class="line">resp, mails, octets = server.<span class="built_in">list</span>()</span><br><span class="line"><span class="comment"># 可以查看返回的列表类似[b&#x27;1 82923&#x27;, b&#x27;2 2184&#x27;, ...]</span></span><br><span class="line"><span class="built_in">print</span>(mails)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最新一封邮件, 注意索引号从1开始:</span></span><br><span class="line">index = <span class="built_in">len</span>(mails)</span><br><span class="line">resp, lines, octets = server.retr(index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lines存储了邮件的原始文本的每一行,</span></span><br><span class="line"><span class="comment"># 可以获得整个邮件的原始文本:</span></span><br><span class="line">msg_content = <span class="string">b&#x27;\r\n&#x27;</span>.join(lines).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 稍后解析出邮件:</span></span><br><span class="line">msg = Parser().parsestr(msg_content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以根据邮件索引号直接从服务器删除邮件:</span></span><br><span class="line"><span class="comment"># server.dele(index)</span></span><br><span class="line"><span class="comment"># 关闭连接:</span></span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
-
-<p>用POP3获取邮件其实很简单，要获取所有邮件，只需要循环使用<code>retr()</code>把每一封邮件内容拿到即可。真正麻烦的是把邮件的原始内容解析为可以阅读的邮件对象。</p>
-<h2 id="解析邮件"><a href="#解析邮件" class="headerlink" title="解析邮件"></a>解析邮件</h2><p>解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">from email.parser import Parser</span><br><span class="line">from email.header import decode_header</span><br><span class="line">from email.utils import parseaddr</span><br><span class="line"></span><br><span class="line">import poplib</span><br></pre></td></tr></table></figure>
-<p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
-<p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
-<p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>17.python访问数据库</title>
     <url>/python/17.python%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<p>主要介绍数据库的相关操作和SQLAlchemy框架</p>
@@ -1358,6 +1301,63 @@
 <p>使用模板的另一大好处是，模板改起来很方便，而且，改完保存后，刷新浏览器就能看到最新的效果。</p>
 <p>在Jinja2模板中，我们用<code>&#123;&#123; name &#125;&#125;</code>表示一个需要替换的变量。很多时候，还需要循环、条件判断等指令语句，在Jinja2中，用<code>&#123;% ... %&#125;</code>表示指令</p>
 <p>有了MVC，我们就分离了Python代码和HTML代码。HTML代码全部放到模板里，写起来更有效率。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>16.python电子邮件</title>
+    <url>/python/16.python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>使用SMTP发送邮件，使用POP3接收邮件。</p>
+<span id="more"></span>
+
+<h1 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h1><p>SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。</p>
+<p>Python对SMTP支持有<code>smtplib</code>和<code>email</code>两个模块，<code>email</code>负责构造邮件，<code>smtplib</code>负责发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line">msg = MIMEText(<span class="string">&#x27;测试下邮件发送&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>注意到构造<code>MIMEText</code>对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入<code>&#39;plain&#39;</code>表示纯文本，最终的MIME就是<code>&#39;text/plain&#39;</code>，最后一定要用<code>utf-8</code>编码保证多语言兼容性。</p>
+<p>然后，通过SMTP发出去：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr, parseaddr</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_format_addr</span>(<span class="params">s</span>):</span><br><span class="line">    name, addr = parseaddr(s)</span><br><span class="line">    <span class="keyword">return</span> formataddr((Header(name, <span class="string">&#x27;utf-8&#x27;</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入Email地址和口令:</span></span><br><span class="line">from_addr = <span class="string">&#x27;xxxxxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="comment"># 输入收件人地址:</span></span><br><span class="line">to_addr = <span class="string">&#x27;xxx@qq.com&#x27;</span></span><br><span class="line"><span class="comment"># 输入SMTP服务器地址:</span></span><br><span class="line">smtp_server = <span class="string">&#x27;xxx.xxx.com&#x27;</span></span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&#x27;哈哈哈哈哈&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;测试下邮件发送 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">25</span>) <span class="comment"># SMTP协议默认端口是25</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.login(from_addr, password)</span><br><span class="line">server.sendmail(from_addr, [to_addr], msg.as_string())</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+<p>我们用<code>set_debuglevel(1)</code>就可以打印出和SMTP服务器交互的所有信息。SMTP协议就是简单的文本命令和响应。<code>login()</code>方法用来登录SMTP服务器，<code>sendmail()</code>方法就是发邮件，由于可以一次发给多个人，所以传入一个<code>list</code>，邮件正文是一个<code>str</code>，<code>as_string()</code>把<code>MIMEText</code>对象变成<code>str</code>。</p>
+<p>必须把<code>From</code>、<code>To</code>和<code>Subject</code>添加到<code>MIMEText</code>中，才是一封完整的邮件， 否则无法显示主题，收件人等信息。</p>
+<h2 id="发送HTML邮件"><a href="#发送HTML邮件" class="headerlink" title="发送HTML邮件"></a>发送HTML邮件</h2><p>如果我们要发送HTML邮件，方法很简单，在构造<code>MIMEText</code>对象时，把<code>HTML</code>字符串传进去，再把第二个参数由<code>plain</code>变为<code>html</code>就可以了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEText(<span class="string">&#x27;&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送附件"><a href="#发送附件" class="headerlink" title="发送附件"></a>发送附件</h2><p>可以构造一个<code>MIMEMultipart</code>对象代表邮件本身，然后往里面加上一个<code>MIMEText</code>作为邮件正文，再继续往里面加上表示附件的<code>MIMEBase</code>对象即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart()</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;Python爱好者 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件正文是MIMEText:</span></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;send with file...&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加附件就是加上一个MIMEBase，从本地读取一个图片:</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 设置附件的MIME和文件名，这里是png类型:</span></span><br><span class="line">    mime = MIMEBase(<span class="string">&#x27;image&#x27;</span>, <span class="string">&#x27;jpg&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">    mime.set_payload(f.read())</span><br><span class="line">    <span class="comment"># 用Base64编码:</span></span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    <span class="comment"># 添加到MIMEMultipart:</span></span><br><span class="line">    msg.attach(mime)</span><br></pre></td></tr></table></figure>
+<p>然后，按正常发送流程把msg（注意类型已变为<code>MIMEMultipart</code>）发送出去，就可以收到如下带附件的邮件</p>
+<h2 id="发送图片"><a href="#发送图片" class="headerlink" title="发送图片"></a>发送图片</h2><p>如果要把一个图片嵌入到邮件正文中怎么做？直接在HTML邮件中链接图片地址行不行？答案是，大部分邮件服务商都会自动屏蔽带有外链的图片，因为不知道这些链接是否指向恶意网站。</p>
+<p>要把图片嵌入到邮件正文中，我们只需按照发送附件的方式，先把邮件作为附件添加进去，然后，在HTML中通过引用<code>src=&quot;cid:0&quot;</code>就可以把附件作为图片嵌入了。如果有多个图片，给它们依次编号，然后引用不同的<code>cid:x</code>即可。</p>
+<p>把上面代码加入<code>MIMEMultipart</code>的<code>MIMEText</code>从<code>plain</code>改为<code>html</code>，然后在适当的位置引用图片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;下面是一个图片&lt;/h1&gt;&lt;br/&gt;&lt;img src=&quot;cid:0&quot;&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="同时支持HTML和Plain格式"><a href="#同时支持HTML和Plain格式" class="headerlink" title="同时支持HTML和Plain格式"></a>同时支持HTML和Plain格式</h2><p>为了兼容旧设备，在发送HTML的同时再附加一个纯文本，如果收件人无法查看HTML格式的邮件，就可以自动降级查看纯文本邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart(<span class="string">&#x27;alternative&#x27;</span>)</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = ...</span><br><span class="line"></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 正常发送msg对象...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加密SMTP"><a href="#加密SMTP" class="headerlink" title="加密SMTP"></a>加密SMTP</h2><p>使用标准的25端口连接SMTP服务器时，使用的是明文传输，发送邮件的整个过程可能会被窃听。要更安全地发送邮件，可以加密SMTP会话，实际上就是先创建SSL安全连接，然后再使用SMTP协议发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">465</span>) </span><br><span class="line">server.starttls()</span><br></pre></td></tr></table></figure>
+<p>只需要在创建SMTP对象后，立刻调用starttls()方法，就创建了安全连接。后面的代码和前面的发送邮件代码完全一样。</p>
+<p>构造一个邮件对象就是一个<code>Messag</code>对象，如果构造一个<code>MIMEText</code>对象，就表示一个文本邮件对象，如果构造一个<code>MIMEImage</code>对象，就表示一个作为附件的图片，要把多个对象组合起来，就用<code>MIMEMultipart</code>对象，而<code>MIMEBase</code>可以表示任何对象。它们的继承关系如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Message</span><br><span class="line">+- MIMEBase</span><br><span class="line">   +- MIMEMultipart</span><br><span class="line">   +- MIMENonMultipart</span><br><span class="line">      +- MIMEMessage</span><br><span class="line">      +- MIMEText</span><br><span class="line">      +- MIMEImage</span><br></pre></td></tr></table></figure>
+<p>这种嵌套关系就可以构造出任意复杂的邮件。</p>
+<h1 id="POP3收取邮件"><a href="#POP3收取邮件" class="headerlink" title="POP3收取邮件"></a>POP3收取邮件</h1><p>Python内置一个<code>poplib</code>模块，实现了POP3协议，可以直接用来收邮件。</p>
+<p>注意到POP3协议收取的不是一个已经可以阅读的邮件本身，而是邮件的原始文本，这和SMTP协议很像，SMTP发送的也是经过编码后的一大段文本。</p>
+<p>要把POP3收取的文本变成可以阅读的邮件，还需要用email模块提供的各种类来解析原始文本，变成可阅读的邮件对象。</p>
+<p>所以，收取邮件分两步：</p>
+<p>第一步：用<code>poplib</code>把邮件的原始文本下载到本地；</p>
+<p>第二步：用<code>email</code>解析原始文本，还原为邮件对象。</p>
+<h2 id="通过POP3下载邮件"><a href="#通过POP3下载邮件" class="headerlink" title="通过POP3下载邮件"></a>通过POP3下载邮件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> poplib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入邮件地址, 口令和POP3服务器地址:</span></span><br><span class="line">email = <span class="built_in">input</span>(<span class="string">&#x27;Email: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">pop3_server = <span class="built_in">input</span>(<span class="string">&#x27;POP3 server: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到POP3服务器:</span></span><br><span class="line">server = poplib.POP3(pop3_server)</span><br><span class="line"><span class="comment"># 可以打开或关闭调试信息:</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 可选:打印POP3服务器的欢迎文字:</span></span><br><span class="line"><span class="built_in">print</span>(server.getwelcome().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份认证:</span></span><br><span class="line">server.user(email)</span><br><span class="line">server.pass_(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># stat()返回邮件数量和占用空间:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Messages: %s. Size: %s&#x27;</span> % server.stat())</span><br><span class="line"><span class="comment"># list()返回所有邮件的编号:</span></span><br><span class="line">resp, mails, octets = server.<span class="built_in">list</span>()</span><br><span class="line"><span class="comment"># 可以查看返回的列表类似[b&#x27;1 82923&#x27;, b&#x27;2 2184&#x27;, ...]</span></span><br><span class="line"><span class="built_in">print</span>(mails)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最新一封邮件, 注意索引号从1开始:</span></span><br><span class="line">index = <span class="built_in">len</span>(mails)</span><br><span class="line">resp, lines, octets = server.retr(index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lines存储了邮件的原始文本的每一行,</span></span><br><span class="line"><span class="comment"># 可以获得整个邮件的原始文本:</span></span><br><span class="line">msg_content = <span class="string">b&#x27;\r\n&#x27;</span>.join(lines).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 稍后解析出邮件:</span></span><br><span class="line">msg = Parser().parsestr(msg_content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以根据邮件索引号直接从服务器删除邮件:</span></span><br><span class="line"><span class="comment"># server.dele(index)</span></span><br><span class="line"><span class="comment"># 关闭连接:</span></span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+
+<p>用POP3获取邮件其实很简单，要获取所有邮件，只需要循环使用<code>retr()</code>把每一封邮件内容拿到即可。真正麻烦的是把邮件的原始内容解析为可以阅读的邮件对象。</p>
+<h2 id="解析邮件"><a href="#解析邮件" class="headerlink" title="解析邮件"></a>解析邮件</h2><p>解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">from email.parser import Parser</span><br><span class="line">from email.header import decode_header</span><br><span class="line">from email.utils import parseaddr</span><br><span class="line"></span><br><span class="line">import poplib</span><br></pre></td></tr></table></figure>
+<p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
+<p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
+<p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1969,102 +1969,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>8.python错误和调试</title>
-    <url>/python/8.python%E9%94%99%E8%AF%AF%E5%92%8C%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<p>在程序运行过程中，总会遇到各种各样的错误。有代码逻辑错误，有运行时错误，有用户输入错误等。</p>
-<p>此外，还可以通过使用<code>pdb</code>进行调试。</p>
-<span id="more"></span>
-
-
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="try"><a href="#try" class="headerlink" title="try"></a>try</h2><p>python提供了 <code>try...except...finally...</code> 来处理异常。</p>
-<p>不同的错误类型，可以由不同的<code>except</code>来处理。 <code>finally</code> 可以没有。</p>
-<p>如果没有错误发生，可以在except语句块后面加一个<code>else</code>，当没有错误发生时，会自动执行<code>else</code>语句</p>
-<p>错误其实也是class，所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，捕获父类之后，下面捕获子类的代码就不会执行到了。 和java类似。</p>
-<p>python常见的错误类型和继承关系 <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception-hierarchy</a></p>
-<p>示例如下</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">error_test</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;try...&#x27;</span>)</span><br><span class="line">        result = <span class="number">10</span> / <span class="built_in">int</span>(num)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结果是 %s&#x27;</span> % result)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> ve:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError: &#x27;</span>, ve )</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> zde:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ZeroDivisionError: &#x27;</span>, zde)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;无异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;finally...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">error_test(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">error_test(<span class="number">2</span>)</span><br><span class="line">error_test(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">error_test(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>如下面错误的堆栈信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;err.py&quot;, line 11, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File &quot;err.py&quot;, line 9, in main</span><br><span class="line">    bar(&#x27;0&#x27;)</span><br><span class="line">  File &quot;err.py&quot;, line 6, in bar</span><br><span class="line">    return foo(s) * 2</span><br><span class="line">  File &quot;err.py&quot;, line 3, in foo</span><br><span class="line">    return 10 / int(s)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Traceback (most recent call last):</p>
-</blockquote>
-<p>第一行，告诉我们这是错误的跟踪信息。 后面可以逐行分析， 最终找到错误的根源。</p>
-<blockquote>
-<p>出错的时候，一定要分析错误的调用栈信息，才能定位错误的位置。</p>
-</blockquote>
-<h2 id="记录错误"><a href="#记录错误" class="headerlink" title="记录错误"></a>记录错误</h2><p><code>logging</code> 模块可以记录错误信息。</p>
-<p>捕获错误，然后记录错误堆栈信息，让程序继续往下运行。</p>
-<h2 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h2><p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
-<p>只有在必要的时候才定义我们自己的错误类型。如果可以选择Python已有的内置的错误类型（比如<code>ValueError</code>，<code>TypeError</code>），尽量使用Python内置的错误类型。</p>
-<p>我们还可以捕获异常，记录之后将异常重新抛出，也可以转换为其他异常(要符合逻辑，不能随意转换)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError!&#x27;</span>)</span><br><span class="line">        <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">10</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    <span class="keyword">raise</span> ValueError(<span class="string">&#x27;input error!&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-<p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
-<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
-<blockquote>
-<p>assert n !&#x3D; 0, ‘n is zero!’</p>
-</blockquote>
-<p><code>assert</code>的意思是，表达式<code>n != 0</code>应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
-<p>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code></p>
-<p>启动Python解释器时可以用<code>-O</code>(大写的英文O)参数来关闭<code>assert</code>， 关闭后 <code>assert</code> 可以当做 <code>pass</code></p>
-<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br></pre></td></tr></table></figure>
-
-<p><code>logging</code> 可以控制日志的级别， 有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>, 也可以通过配置，将日志输出到不同的地方。</p>
-<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
-<p>以参数<code>-m pdb</code> 启动后，pdb定位到下一步要执行的代码，可以输入命令 <code>l</code>(小写的L) 来查看代码。输入命令<code>n</code>可以单步的执行代码。</p>
-<p>可以输入<code>p 变量名</code>来查看变量。输入命令<code>q</code> 来结束调试。</p>
-<h2 id="pdb-set-trace"><a href="#pdb-set-trace" class="headerlink" title="pdb.set_trace()"></a>pdb.set_trace()</h2><p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># err.py</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">n = <span class="built_in">int</span>(s)</span><br><span class="line">pdb.set_trace() <span class="comment"># 运行到这里会自动暂停</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> / n)</span><br></pre></td></tr></table></figure>
-<p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入<code>pdb</code>调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行</p>
-<h2 id="IDE调试"><a href="#IDE调试" class="headerlink" title="IDE调试"></a>IDE调试</h2><p>VS Code 插件。</p>
-<p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
-<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
-<p>单元测试通过后，如果对代码做了修改，可以重新跑一遍单元测试，看是否通过，来判断修改是否对原来的逻辑造成了影响。</p>
-<p>编写单元测试时，我们需要编写一个测试类，从<code>unittest.TestCase</code>继承</p>
-<p>以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
-<p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，最常用的断言就是<code>assertEqual()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.assertEqual(<span class="built_in">abs</span>(-<span class="number">1</span>), <span class="number">1</span>) <span class="comment"># 断言函数返回的结果与1相等</span></span><br></pre></td></tr></table></figure>
-
-<p>另一种重要的断言就是期待抛出指定类型的Error</p>
-<p><strong>运行单元测试</strong></p>
-<p>最简单的运行方式是在<code>mydict_test.py</code>的最后加上两行代码，这样就可以把文件当做正常脚本运行。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
-
-<p>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。</p>
-<p>这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试</p>
-<p><strong>setUp与tearDown</strong></p>
-<p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
-<p><code>setUp()</code>和<code>tearDown()</code>方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在<code>setUp()</code>方法中连接数据库，在<code>tearDown()</code>方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码</p>
-<p>类似 java单元测试中的 <code>@Before</code> 和 <code>@After</code></p>
-<h1 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h1><p>Python官方文档中的示例代码，比如 <a href="https://docs.python.org/3/library/re.html">re模块</a> 就带了很多示例代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.search(<span class="string">&#x27;(?&lt;=abc)def&#x27;</span>, <span class="string">&#x27;abcdef&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;def&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可以把这些示例代码在Python的交互式环境下输入并执行，结果与文档中的示例代码显示的一致。</p>
-<p>这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。</p>
-<p>既然这些代码本身就可以粘贴出来直接运行，也可以自动执行写在注释中的这些代码。</p>
-<p>当我们编写注释时，如果写上这样的注释</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">abs</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Function to get absolute value of number.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(-1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(0)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">else</span> (-n)</span><br></pre></td></tr></table></figure>
-
-<p>可以明确地告诉函数的调用者该函数的期望输入和输出</p>
-<p>并且，Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</p>
-<p>doctest严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用…表示中间一大段烦人的输出。</p>
-<p>示例</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculate 1*2*...*n</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(10)</span></span><br><span class="line"><span class="string">    3628800</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(-1)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">numList = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> numList:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%s的阶乘结果是%s&#x27;</span> % (i  ,fact(i) ))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> doctest</span><br><span class="line">    doctest.testmod()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>doctest不仅可以用来测试，还可以直接作为示例代码，通过某些文档生成工具，可以自动把包含doctest的注释提取出来。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>9.python的IO编程</title>
     <url>/python/9.python%E7%9A%84IO%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>IO在计算机中指Input&#x2F;Output，也就是输入和输出。如磁盘IO，网络IO等。Stream（流）是一个很重要的概念，输入流和输出流。</p>
@@ -2249,6 +2153,102 @@
       </tags>
   </entry>
   <entry>
+    <title>8.python错误和调试</title>
+    <url>/python/8.python%E9%94%99%E8%AF%AF%E5%92%8C%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<p>在程序运行过程中，总会遇到各种各样的错误。有代码逻辑错误，有运行时错误，有用户输入错误等。</p>
+<p>此外，还可以通过使用<code>pdb</code>进行调试。</p>
+<span id="more"></span>
+
+
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="try"><a href="#try" class="headerlink" title="try"></a>try</h2><p>python提供了 <code>try...except...finally...</code> 来处理异常。</p>
+<p>不同的错误类型，可以由不同的<code>except</code>来处理。 <code>finally</code> 可以没有。</p>
+<p>如果没有错误发生，可以在except语句块后面加一个<code>else</code>，当没有错误发生时，会自动执行<code>else</code>语句</p>
+<p>错误其实也是class，所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，捕获父类之后，下面捕获子类的代码就不会执行到了。 和java类似。</p>
+<p>python常见的错误类型和继承关系 <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception-hierarchy</a></p>
+<p>示例如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">error_test</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;try...&#x27;</span>)</span><br><span class="line">        result = <span class="number">10</span> / <span class="built_in">int</span>(num)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;结果是 %s&#x27;</span> % result)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> ve:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError: &#x27;</span>, ve )</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> zde:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ZeroDivisionError: &#x27;</span>, zde)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;无异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;finally...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">error_test(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">error_test(<span class="number">2</span>)</span><br><span class="line">error_test(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">error_test(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>如下面错误的堆栈信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;err.py&quot;, line 11, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File &quot;err.py&quot;, line 9, in main</span><br><span class="line">    bar(&#x27;0&#x27;)</span><br><span class="line">  File &quot;err.py&quot;, line 6, in bar</span><br><span class="line">    return foo(s) * 2</span><br><span class="line">  File &quot;err.py&quot;, line 3, in foo</span><br><span class="line">    return 10 / int(s)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Traceback (most recent call last):</p>
+</blockquote>
+<p>第一行，告诉我们这是错误的跟踪信息。 后面可以逐行分析， 最终找到错误的根源。</p>
+<blockquote>
+<p>出错的时候，一定要分析错误的调用栈信息，才能定位错误的位置。</p>
+</blockquote>
+<h2 id="记录错误"><a href="#记录错误" class="headerlink" title="记录错误"></a>记录错误</h2><p><code>logging</code> 模块可以记录错误信息。</p>
+<p>捕获错误，然后记录错误堆栈信息，让程序继续往下运行。</p>
+<h2 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h2><p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
+<p>只有在必要的时候才定义我们自己的错误类型。如果可以选择Python已有的内置的错误类型（比如<code>ValueError</code>，<code>TypeError</code>），尽量使用Python内置的错误类型。</p>
+<p>我们还可以捕获异常，记录之后将异常重新抛出，也可以转换为其他异常(要符合逻辑，不能随意转换)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ValueError!&#x27;</span>)</span><br><span class="line">        <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">10</span> / <span class="number">0</span></span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    <span class="keyword">raise</span> ValueError(<span class="string">&#x27;input error!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>使用<code>print()</code>将相关变量的值打印出来，但是将来还需要删除它。</p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>凡是用<code>print()</code>来辅助查看的地方，都可以用断言<code>（assert）</code>来替代：</p>
+<blockquote>
+<p>assert n !&#x3D; 0, ‘n is zero!’</p>
+</blockquote>
+<p><code>assert</code>的意思是，表达式<code>n != 0</code>应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</p>
+<p>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code></p>
+<p>启动Python解释器时可以用<code>-O</code>(大写的英文O)参数来关闭<code>assert</code>， 关闭后 <code>assert</code> 可以当做 <code>pass</code></p>
+<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p>把<code>print()</code>替换为<code>logging</code>是第3种方式，和<code>assert</code>比，<code>logging</code>不会抛出错误，而且可以输出到文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br></pre></td></tr></table></figure>
+
+<p><code>logging</code> 可以控制日志的级别， 有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>, 也可以通过配置，将日志输出到不同的地方。</p>
+<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><p>第4种方式是启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。</p>
+<p>以参数<code>-m pdb</code> 启动后，pdb定位到下一步要执行的代码，可以输入命令 <code>l</code>(小写的L) 来查看代码。输入命令<code>n</code>可以单步的执行代码。</p>
+<p>可以输入<code>p 变量名</code>来查看变量。输入命令<code>q</code> 来结束调试。</p>
+<h2 id="pdb-set-trace"><a href="#pdb-set-trace" class="headerlink" title="pdb.set_trace()"></a>pdb.set_trace()</h2><p><code>pdb</code> 单步执行太麻烦，我们只需要import pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># err.py</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">n = <span class="built_in">int</span>(s)</span><br><span class="line">pdb.set_trace() <span class="comment"># 运行到这里会自动暂停</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> / n)</span><br></pre></td></tr></table></figure>
+<p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入<code>pdb</code>调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行</p>
+<h2 id="IDE调试"><a href="#IDE调试" class="headerlink" title="IDE调试"></a>IDE调试</h2><p>VS Code 插件。</p>
+<p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
+<p>单元测试通过后，如果对代码做了修改，可以重新跑一遍单元测试，看是否通过，来判断修改是否对原来的逻辑造成了影响。</p>
+<p>编写单元测试时，我们需要编写一个测试类，从<code>unittest.TestCase</code>继承</p>
+<p>以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
+<p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，最常用的断言就是<code>assertEqual()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.assertEqual(<span class="built_in">abs</span>(-<span class="number">1</span>), <span class="number">1</span>) <span class="comment"># 断言函数返回的结果与1相等</span></span><br></pre></td></tr></table></figure>
+
+<p>另一种重要的断言就是期待抛出指定类型的Error</p>
+<p><strong>运行单元测试</strong></p>
+<p>最简单的运行方式是在<code>mydict_test.py</code>的最后加上两行代码，这样就可以把文件当做正常脚本运行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+<p>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。</p>
+<p>这是推荐的做法，因为这样可以一次批量运行很多单元测试，并且，有很多工具可以自动来运行这些单元测试</p>
+<p><strong>setUp与tearDown</strong></p>
+<p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
+<p><code>setUp()</code>和<code>tearDown()</code>方法有什么用呢？设想你的测试需要启动一个数据库，这时，就可以在<code>setUp()</code>方法中连接数据库，在<code>tearDown()</code>方法中关闭数据库，这样，不必在每个测试方法中重复相同的代码</p>
+<p>类似 java单元测试中的 <code>@Before</code> 和 <code>@After</code></p>
+<h1 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h1><p>Python官方文档中的示例代码，比如 <a href="https://docs.python.org/3/library/re.html">re模块</a> 就带了很多示例代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; import re</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m = re.search(<span class="string">&#x27;(?&lt;=abc)def&#x27;</span>, <span class="string">&#x27;abcdef&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; m.group(0)</span></span><br><span class="line">&#x27;def&#x27;</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以把这些示例代码在Python的交互式环境下输入并执行，结果与文档中的示例代码显示的一致。</p>
+<p>这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。</p>
+<p>既然这些代码本身就可以粘贴出来直接运行，也可以自动执行写在注释中的这些代码。</p>
+<p>当我们编写注释时，如果写上这样的注释</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">abs</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Function to get absolute value of number.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(-1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; abs(0)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> n <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">else</span> (-n)</span><br></pre></td></tr></table></figure>
+
+<p>可以明确地告诉函数的调用者该函数的期望输入和输出</p>
+<p>并且，Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</p>
+<p>doctest严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用…表示中间一大段烦人的输出。</p>
+<p>示例</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    Calculate 1*2*...*n</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(10)</span></span><br><span class="line"><span class="string">    3628800</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(-1)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">numList = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> numList:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%s的阶乘结果是%s&#x27;</span> % (i  ,fact(i) ))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> doctest</span><br><span class="line">    doctest.testmod()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>doctest不仅可以用来测试，还可以直接作为示例代码，通过某些文档生成工具，可以自动把包含doctest的注释提取出来。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用docsify搭建github pages页面</title>
     <url>/tools/docsify-config/</url>
     <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
@@ -2268,6 +2268,95 @@
       </categories>
       <tags>
         <tag>docsify</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git的使用</title>
+    <url>/tools/git-command/</url>
+    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>配置可以通过gui工具进行。</li>
+<li>git config –list 查看所有配置</li>
+<li>git config user.name 查看用户名。</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
+<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
+<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
+</blockquote>
+</li>
+<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
+<li>文件跟踪和更新到仓库</li>
+</ul>
+<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
+<p>git文件状态变化周期.</p>
+<ul>
+<li><p><strong>git status</strong> 查看文件状态</p>
+</li>
+<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
+</li>
+<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
+</li>
+<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
+</li>
+<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
+</li>
+<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
+</li>
+</ul>
+<blockquote>
+<p>git log –pretty&#x3D;oneline</p>
+</blockquote>
+<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
+<ol>
+<li>修改上次的提交的内容</li>
+</ol>
+<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
+<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
+<ol start="2">
+<li>还原某次提交</li>
+</ol>
+<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
+<ol start="3">
+<li>撤销工作区中未提交的内容</li>
+</ol>
+<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
+<ol start="4">
+<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
+</ol>
+<ul>
+<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
+</ul>
+<ol start="5">
+<li>Redo after undo “local”</li>
+</ol>
+<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
+<p>reflog 记录有时限，且只在本地才有。</p>
+<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
+<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
+<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
+<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
+会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
+<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -2381,95 +2470,6 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
-    <title>git的使用</title>
-    <url>/tools/git-command/</url>
-    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>配置可以通过gui工具进行。</li>
-<li>git config –list 查看所有配置</li>
-<li>git config user.name 查看用户名。</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
-<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
-<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
-</blockquote>
-</li>
-<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
-<li>文件跟踪和更新到仓库</li>
-</ul>
-<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
-<p>git文件状态变化周期.</p>
-<ul>
-<li><p><strong>git status</strong> 查看文件状态</p>
-</li>
-<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
-</li>
-<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
-</li>
-<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
-</li>
-<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
-</li>
-<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
-</li>
-</ul>
-<blockquote>
-<p>git log –pretty&#x3D;oneline</p>
-</blockquote>
-<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
-<ol>
-<li>修改上次的提交的内容</li>
-</ol>
-<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
-<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
-<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
-<ol start="2">
-<li>还原某次提交</li>
-</ol>
-<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
-<ol start="3">
-<li>撤销工作区中未提交的内容</li>
-</ol>
-<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
-<ol start="4">
-<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
-</ol>
-<ul>
-<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
-</ul>
-<ol start="5">
-<li>Redo after undo “local”</li>
-</ol>
-<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
-<p>reflog 记录有时限，且只在本地才有。</p>
-<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
-<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
-<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
-<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
-<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
-<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
-会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
-<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
-克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo使用</title>
     <url>/tools/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -2500,50 +2500,6 @@ Start --> Stop</pre>
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用jsdelivr加速hexo github pages博客的静态资源</title>
-    <url>/tools/use-jsdelivr-cdn-hexo-blog/</url>
-    <content><![CDATA[<p>使用hexo将博客部署在github pages上面，有时候访问速度会比较慢，可以将图片等静态资源，使用jsdelivr进行cdn加速。</p>
-<p>目前由于一些非法的滥用，jsdelivr在国内被墙，无法访问了。</p>
-<span id="more"></span>
-
-<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><p><a href="https://github.com/jsdelivr/jsdelivr?tab=readme-ov-file#github">jsdelivr加速github介绍</a></p>
-<p>根路径是 :  <a href="https://cdn.jsdelivr.net/">https://cdn.jsdelivr.net</a></p>
-<h4 id="Load-any-GitHub-release-commit-or-branch"><a href="#Load-any-GitHub-release-commit-or-branch" class="headerlink" title="Load any GitHub release, commit, or branch:"></a>Load any GitHub release, commit, or branch:</h4><blockquote>
-<p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
-</blockquote>
-<h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#x75;&#x65;&#x72;&#121;&#64;&#51;&#46;&#x31;&#46;&#48;">&#x6a;&#113;&#x75;&#x65;&#x72;&#121;&#64;&#51;&#46;&#x31;&#46;&#48;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
-</blockquote>
-<h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#x71;&#117;&#101;&#x72;&#121;&#x40;&#x33;&#x2e;&#49;">&#x6a;&#x71;&#117;&#101;&#x72;&#121;&#x40;&#x33;&#x2e;&#49;</a>&#x2F;dist&#x2F;jquery.min.js</p>
-</blockquote>
-<ul>
-<li>访问方式</li>
-</ul>
-<p><a href="https://cdn.jsdelivr.net/gh/Github%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/Github用户名/仓库名/资源路径</a></p>
-<p>默认访问 <code>master</code>分支下面的文件。</p>
-<p>比如: </p>
-<ul>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js</a> 访问的是master下的</li>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js</a> 访问的是精确的版本</li>
-<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js</a>  访问的是范围版本</li>
-</ul>
-<p>加速静态资源的方式， 可以在github上创建一个仓库，比如叫cdn，然后将静态资源放到方库中。</p>
-<blockquote>
-<p><a href="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg">https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg</a></p>
-</blockquote>
-<p>使用加速后的图片</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>jsdelivr</tag>
       </tags>
   </entry>
   <entry>
@@ -2659,6 +2615,50 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>使用jsdelivr加速hexo github pages博客的静态资源</title>
+    <url>/tools/use-jsdelivr-cdn-hexo-blog/</url>
+    <content><![CDATA[<p>使用hexo将博客部署在github pages上面，有时候访问速度会比较慢，可以将图片等静态资源，使用jsdelivr进行cdn加速。</p>
+<p>目前由于一些非法的滥用，jsdelivr在国内被墙，无法访问了。</p>
+<span id="more"></span>
+
+<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><p><a href="https://github.com/jsdelivr/jsdelivr?tab=readme-ov-file#github">jsdelivr加速github介绍</a></p>
+<p>根路径是 :  <a href="https://cdn.jsdelivr.net/">https://cdn.jsdelivr.net</a></p>
+<h4 id="Load-any-GitHub-release-commit-or-branch"><a href="#Load-any-GitHub-release-commit-or-branch" class="headerlink" title="Load any GitHub release, commit, or branch:"></a>Load any GitHub release, commit, or branch:</h4><blockquote>
+<p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
+</blockquote>
+<h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#113;&#117;&#101;&#x72;&#121;&#x40;&#x33;&#x2e;&#49;&#x2e;&#48;">&#106;&#113;&#117;&#101;&#x72;&#121;&#x40;&#x33;&#x2e;&#49;&#x2e;&#48;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
+<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#117;&#x65;&#x72;&#121;&#x40;&#51;&#x2e;&#x31;">&#x6a;&#113;&#117;&#x65;&#x72;&#121;&#x40;&#51;&#x2e;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
+</blockquote>
+<ul>
+<li>访问方式</li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Github%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/Github用户名/仓库名/资源路径</a></p>
+<p>默认访问 <code>master</code>分支下面的文件。</p>
+<p>比如: </p>
+<ul>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js</a> 访问的是master下的</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1.0/dist/jquery.min.js</a> 访问的是精确的版本</li>
+<li><a href="https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js">https://cdn.jsdelivr.net/gh/jquery/jquery@3.1/dist/jquery.min.js</a>  访问的是范围版本</li>
+</ul>
+<p>加速静态资源的方式， 可以在github上创建一个仓库，比如叫cdn，然后将静态资源放到方库中。</p>
+<blockquote>
+<p><a href="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg">https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg</a></p>
+</blockquote>
+<p>使用加速后的图片</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/cpfo/cdn/images/2024/40703300-d32f-11ea-938e-f5ee97dc461f.jpg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>jsdelivr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx拦截非法host的请求</title>
     <url>/yunwei/nginx-deny-host/</url>
     <content><![CDATA[<p>在nginx的访问日志中发现了一些奇怪的host域名，并非是实际用到的，经过排查发现，可以在本地的hosts文件中指定ip和域名的映射关系， 这样就可以通过访问一个任意的域名，来请求到对应的ip地址上面，因为nginx会使用默认server来处理未匹配到server_name的请求，可以通过这种方式来绕过waf等，或者访问到nginx中其他的servername下， 会有一定的风险，需要将这种方式拦截掉</p>
@@ -2689,7 +2689,7 @@ Start --> Stop</pre>
     <content><![CDATA[<p>主要记录下ES的概念，安装和使用。</p>
 <span id="more"></span>
 
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="倒排序索引"><a href="#倒排序索引" class="headerlink" title="倒排序索引"></a>倒排序索引</h2><p>倒排索引的概念是基于MySQL这样的正向索引而言的。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h2><p>倒排索引的概念是基于MySQL这样的正向索引而言的。</p>
 <h3 id="正向索引"><a href="#正向索引" class="headerlink" title="正向索引"></a>正向索引</h3><blockquote>
 <p>设置了索引的话挺快的，但要是模糊查询则就很慢！</p>
 </blockquote>
@@ -2702,7 +2702,7 @@ Start --> Stop</pre>
 <p>3）判断数据中的title是否符合用户搜索条件</p>
 <p>4）如果符合则放入结果集，不符合则丢弃。回到步骤1</p>
 <p>逐行扫描，也就是全表扫描，随着数据量增加，其查询效率也会越来越低。当数据量达到数百万时，就是一场灾难。</p>
-<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>倒排索引中有两个非常重要的概念：</p>
+<h3 id="倒排索引-1"><a href="#倒排索引-1" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>倒排索引中有两个非常重要的概念：</p>
 <ul>
 <li>文档（Document）：用来搜索的数据，其中的每一条数据就是一个文档。例如一个网页、一个商品信息</li>
 <li>词条（Term）：对文档数据或用户搜索数据，利用某种算法分词，得到的具备含义的词语就是词条。例如：我是中国人，就可以分为：我、是、中国人、中国、国人这样的几个词条</li>
@@ -3114,6 +3114,428 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>ES搜索查询</title>
+    <url>/java/es/es-03-dsl-search/</url>
+    <content><![CDATA[<p>主要介绍ES DSL的查询</p>
+<span id="more"></span>
+
+
+<p>elasticsearch的查询依然是基于JSON风格的DSL来实现的。</p>
+<h1 id="DSL设置查询条件"><a href="#DSL设置查询条件" class="headerlink" title="DSL设置查询条件"></a>DSL设置查询条件</h1><h2 id="DSL查询分类"><a href="#DSL查询分类" class="headerlink" title="DSL查询分类"></a>DSL查询分类</h2><p>Elasticsearch提供了基于JSON的DSL ( <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Domain Specific Language</a> ) 来定义查询。常见的查询类型包括：</p>
+<ul>
+<li><p><strong>查询所有</strong>：查询出所有数据，<em>一般测试用</em>。例如：match_all</p>
+</li>
+<li><p><strong>全文检索（full text）查询</strong>：利用分词器对用户输入内容分词，然后去倒排索引库中匹配。例如：</p>
+<ul>
+<li>match_query</li>
+<li>multi_match_query</li>
+</ul>
+</li>
+<li><p><strong>精确查询</strong>：根据精确词条值查找数据，一般是查找keyword、数值、日期、boolean等类型字段。例如：</p>
+<ul>
+<li>ids</li>
+<li>range</li>
+<li>term</li>
+</ul>
+</li>
+<li><p><strong>地理（geo）查询</strong>：根据经纬度查询。例如：</p>
+<ul>
+<li>geo_distance</li>
+<li>geo_bounding_box</li>
+</ul>
+</li>
+<li><p><strong>复合（compound）查询</strong>：复合查询可以将上述各种查询条件组合起来，合并查询条件。例如：</p>
+<ul>
+<li>bool</li>
+<li>function_score</li>
+</ul>
+</li>
+</ul>
+<p>查询的语法基本一致：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;查询类型&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;查询条件&quot;</span><span class="punctuation">:</span> <span class="string">&quot;条件值&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>我们以查询所有为例，其中：</p>
+<ul>
+<li>查询类型为match_all</li>
+<li>没有查询条件</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 查询所有</span></span><br><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match_all&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>其它查询无非就是<strong>查询类型</strong>、<strong>查询条件</strong>的变化。</p>
+<h2 id="全文检索查询"><a href="#全文检索查询" class="headerlink" title="全文检索查询"></a>全文检索查询</h2><blockquote>
+<p>match和multi_match的区别是什么？</p>
+<ul>
+<li>match：根据一个字段查询【推荐：使用copy_to构造all字段】</li>
+<li>multi_match：根据多个字段查询，参与查询字段越多，查询性能越差</li>
+</ul>
+<p><strong>注：搜索字段越多，对查询性能影响越大，因此建议采用copy_to，然后单字段查询的方式。</strong></p>
+</blockquote>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>全文检索查询的<strong>基本流程</strong>如下：</p>
+<ul>
+<li>对用户搜索的内容做分词，得到词条</li>
+<li>根据词条去倒排索引库中匹配，得到文档id</li>
+<li>根据文档id找到文档，返回给用户</li>
+</ul>
+<p>比较常用的<strong>场景</strong>包括：</p>
+<ul>
+<li>商城的输入框搜索</li>
+<li>百度输入框搜索</li>
+</ul>
+<p>例如京东：</p>
+<p>因为是拿着词条去匹配，因此参与搜索的字段也必须是可分词的text类型的字段。</p>
+<p>常见的全文检索查询包括：</p>
+<ul>
+<li>match查询：单字段查询</li>
+<li>multi_match查询：多字段查询，任意一个字段符合条件就算符合查询条件</li>
+</ul>
+<h3 id="match查询"><a href="#match查询" class="headerlink" title="match查询"></a>match查询</h3><p>match查询语法如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>match查询示例：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /testcrud/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;info&quot; : &quot;测试&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mulit-match查询"><a href="#mulit-match查询" class="headerlink" title="mulit_match查询"></a>mulit_match查询</h3><p>mulit_match语法如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;multi_match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;FIELD1&quot;</span><span class="punctuation">,</span> <span class="string">&quot; FIELD12&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="精准查询"><a href="#精准查询" class="headerlink" title="精准查询"></a>精准查询</h2><blockquote>
+<p>精准查询类型：</p>
+<ul>
+<li>term查询：根据词条精确匹配，一般搜索keyword类型、数值类型、布尔类型、日期类型字段</li>
+<li>range查询：根据数值范围查询，可以是数值、日期的范围</li>
+</ul>
+</blockquote>
+<p>精确查询一般是查找keyword、数值、日期、boolean等类型字段。所以<strong>不会</strong>对搜索条件分词。常见的有：</p>
+<ul>
+<li><strong>term：根据词条精确值查询</strong></li>
+<li><strong>range：根据值的范围查询</strong></li>
+</ul>
+<h3 id="term查询"><a href="#term查询" class="headerlink" title="term查询"></a>term查询</h3><p>因为精确查询的字段是不分词的字段，因此查询的条件也必须是<strong>不分词</strong>的词条。查询时，用户输入的内容跟字段值完全匹配时才认为符合条件。如果用户输入的内容过多，反而搜索不到数据。</p>
+<p>语法说明：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// term查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;term&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;value&quot;: &quot;VALUE&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="range查询"><a href="#range查询" class="headerlink" title="range查询"></a>range查询</h3><blockquote>
+<p>范围查询，一般应用在对数值类型做范围过滤的时候。比如做价格范围过滤。</p>
+</blockquote>
+<p>基本语法：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// range查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;range&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;gte&quot;: 10, // 这里的gte代表大于等于，gt则代表大于</span><br><span class="line">        &quot;lte&quot;: 20 // lte代表小于等于，lt则代表小于</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /testcrud/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;range&quot;: &#123;</span><br><span class="line">      &quot;age&quot; : &#123;</span><br><span class="line">        &quot;gte&quot; : 10,</span><br><span class="line">        &quot;lte&quot; : 12</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="地理坐标查询"><a href="#地理坐标查询" class="headerlink" title="地理坐标查询"></a>地理坐标查询</h3><p>所谓的地理坐标查询，其实就是根据经纬度查询，官方文档：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html">geo-queries.html</a></p>
+<p>常见的使用场景包括：</p>
+<ul>
+<li>携程：搜索我附近的酒店</li>
+<li>滴滴：搜索我附近的出租车</li>
+<li>微信：搜索我附近的人</li>
+</ul>
+<h4 id="矩形范围查询"><a href="#矩形范围查询" class="headerlink" title="矩形范围查询"></a>矩形范围查询</h4><blockquote>
+<p>很少有业务有这种需求</p>
+</blockquote>
+<p>矩形范围查询，也就是geo_bounding_box查询，查询坐标落在某个矩形范围的所有文档：<br><img data-src="/images/java/es/2729274-20230205172556695-448469947.gif" alt="image"></p>
+<p>查询时，需要指定矩形的<strong>左上</strong>、<strong>右下</strong>两个点的坐标，然后画出一个矩形，落在该矩形内的都是符合条件的点。</p>
+<p>语法如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// geo_bounding_box查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;geo_bounding_box&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;top_left&quot;: &#123; // 左上点</span><br><span class="line">          &quot;lat&quot;: 31.1,</span><br><span class="line">          &quot;lon&quot;: 121.5</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;bottom_right&quot;: &#123; // 右下点</span><br><span class="line">          &quot;lat&quot;: 30.9,</span><br><span class="line">          &quot;lon&quot;: 121.7</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="附近-圆形-查询"><a href="#附近-圆形-查询" class="headerlink" title="附近(圆形)查询"></a>附近(圆形)查询</h4><p>附近查询，也叫做距离查询（geo_distance）：查询到指定中心点小于某个距离值的所有文档。</p>
+<p>换句话来说，在地图上找一个点作为圆心，以指定距离为半径，画一个圆，落在圆内的坐标都算符合条件：</p>
+<p><img data-src="/images/java/es/2729274-20230205172657385-1268854128.gif" alt="image"></p>
+<p>语法说明：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// geo_distance 查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;geo_distance&quot;: &#123;</span><br><span class="line">      &quot;distance&quot;: &quot;15km&quot;, // 半径</span><br><span class="line">      &quot;FIELD&quot;: &quot;31.21,121.5&quot; // 圆心</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<p>我们先搜索陆家嘴附近15km的酒店：</p>
+<p><img data-src="/images/java/es/2729274-20230205172724869-1773754207.png" alt="image"></p>
+<p>发现共有47家酒店。</p>
+<h2 id="复合查询"><a href="#复合查询" class="headerlink" title="复合查询"></a>复合查询</h2><p>复合（compound）查询：复合查询可以将其它简单查询组合起来，实现更复杂的搜索逻辑。常见的有两种：</p>
+<ul>
+<li>fuction score：算分函数查询，可以控制文档相关性算分，控制文档排名</li>
+<li>bool query：布尔查询，利用逻辑关系组合多个其它的查询，实现复杂搜索</li>
+</ul>
+<h3 id="复合查询归纳"><a href="#复合查询归纳" class="headerlink" title="复合查询归纳"></a>复合查询归纳</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;function_score&quot;: &#123;           </span><br><span class="line">      &quot;query&quot;: &#123; // 原始查询，可以是任意条件</span><br><span class="line">          &quot;bool&quot;: &#123;</span><br><span class="line">              &quot;must&quot;: [</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;city&quot;: &quot;上海&quot; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;should&quot;: [</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;皇冠假日&quot; &#125;&#125;,</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;华美达&quot; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;must_not&quot;: [</span><br><span class="line">                  &#123; &quot;range&quot;: &#123; &quot;price&quot;: &#123; &quot;lte&quot;: 500 &#125; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;filter&quot;: [</span><br><span class="line">                  &#123; &quot;range&quot;: &#123;&quot;score&quot;: &#123; &quot;gte&quot;: 45 &#125; &#125;&#125;</span><br><span class="line">              ]</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;functions&quot;: [ // 算分函数</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;filter&quot;: &#123; // 满足的条件，品牌必须是如家【品牌是如家的才加分，这里是加分条件】</span><br><span class="line">            &quot;term&quot;: &#123;</span><br><span class="line">              &quot;brand&quot;: &quot;如家&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;weight&quot;: 2 // 算分权重为2</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;boost_mode&quot;: &quot;sum&quot; // 加权模式，求和</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关性算分"><a href="#相关性算分" class="headerlink" title="相关性算分"></a>相关性算分</h3><blockquote>
+<p>elasticsearch会根据词条和文档的相关度做打分，算法由两种：</p>
+<ul>
+<li>TF-IDF算法</li>
+<li>BM25算法，elasticsearch5.1版本后采用的算法</li>
+</ul>
+</blockquote>
+<p>当我们利用match查询时，文档结果会根据与搜索词条的关联度打分（_score），返回结果时按照分值降序排列。</p>
+<p>例如，我们搜索 “虹桥如家”，结果如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">17.850193</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;虹桥如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">12.259849</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;外滩如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">11.91091</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;迪士尼如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在elasticsearch中，早期使用的打分算法是TF-IDF算法，公式如下：</p>
+<p><img data-src="/images/java/es/2729274-20230205173433826-368331600.png" alt="image"></p>
+<p>在后来的5.1版本升级中，elasticsearch将算法改进为BM25算法，公式如下：</p>
+<p><img data-src="/images/java/es/2729274-20230205173438720-1124832591.png" alt="image"></p>
+<p>TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越高，单个词条对文档影响较大。而BM25则会让单个词条的算分有一个上限，曲线更加平滑：</p>
+<p><img data-src="/images/java/es/2729274-20230205173443307-150506578.png" alt="image"></p>
+<h3 id="算分函数查询"><a href="#算分函数查询" class="headerlink" title="算分函数查询"></a>算分函数查询</h3><blockquote>
+<p>在搜索出来的结果的分数基础上，再手动与指定的数字进行一定运算来改变算分，从而改变结果的排序。</p>
+</blockquote>
+<blockquote>
+<p>function score query定义的三要素是什么？</p>
+<ul>
+<li>过滤条件：哪些文档要加分</li>
+<li>算分函数：如何计算function score</li>
+<li>加权方式：function score 与 query score如何运算</li>
+</ul>
+</blockquote>
+<p>根据相关度打分是比较合理的需求，但<strong>合理的不一定是产品经理需要</strong>的。</p>
+<p>以百度为例，你搜索的结果中，并不是相关度越高排名越靠前，而是谁掏的钱多排名就越靠前。如图：</p>
+<p>要想人为控制相关性算分，就需要利用elasticsearch中的function score 查询了。</p>
+<h4 id="function-score-查询"><a href="#function-score-查询" class="headerlink" title="function score 查询"></a>function score 查询</h4><p><strong>1）语法说明</strong></p>
+<p><img data-src="/images/java/es/2729274-20230205173456315-243388005.png" alt="image"></p>
+<p>function score 查询中包含四部分内容：</p>
+<ul>
+<li><strong>原始查询</strong>条件：query部分，基于这个条件搜索文档，并且基于BM25算法给文档打分，<strong>原始算分</strong>（query score)</li>
+<li><strong>过滤条件</strong>：filter部分，符合该条件的文档才会重新算分</li>
+<li><strong>算分函数</strong>：符合filter条件的文档要根据这个函数做运算，得到的<strong>函数算分</strong>（function score），有四种函数<ul>
+<li>weight：函数结果是常量</li>
+<li>field_value_factor：以文档中的某个字段值作为函数结果</li>
+<li>random_score：以随机数作为函数结果</li>
+<li>script_score：自定义算分函数算法</li>
+</ul>
+</li>
+<li><strong>运算模式</strong>：算分函数的结果、原始查询的相关性算分，两者之间的运算方式，包括：<ul>
+<li>multiply：相乘</li>
+<li>replace：用function score替换query score</li>
+<li>其它，例如：sum、avg、max、min</li>
+</ul>
+</li>
+</ul>
+<p>function score的运行流程如下：</p>
+<ul>
+<li>1）根据<strong>原始条件</strong>查询搜索文档，并且计算相关性算分，称为<strong>原始算分</strong>（query score）</li>
+<li>2）根据<strong>过滤条件</strong>，过滤文档</li>
+<li>3）符合<strong>过滤条件</strong>的文档，基于<strong>算分函数</strong>运算，得到<strong>函数算分</strong>（function score）</li>
+<li>4）将<strong>原始算分</strong>（query score）和<strong>函数算分</strong>（function score）基于<strong>运算模式</strong>做运算，得到最终结果，作为相关性算分。</li>
+</ul>
+<p><strong>2）举例</strong></p>
+<p>需求：给“如家”这个品牌的酒店排名靠前一些</p>
+<p>翻译一下这个需求，转换为之前说的四个要点：</p>
+<ul>
+<li>原始条件：不确定，可以任意变化</li>
+<li>过滤条件：brand &#x3D; “如家”</li>
+<li>算分函数：可以简单粗暴，直接给固定的算分结果，weight</li>
+<li>运算模式：比如求和</li>
+</ul>
+<p>因此最终的DSL语句如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;function_score&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &#123;  .... &#125;, // 原始查询，可以是任意条件</span><br><span class="line">      &quot;functions&quot;: [ // 算分函数</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;filter&quot;: &#123; // 满足的条件，品牌必须是如家【品牌是如家的才加分，这里是加分条件】</span><br><span class="line">            &quot;term&quot;: &#123;</span><br><span class="line">              &quot;brand&quot;: &quot;如家&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;weight&quot;: 2 // 算分权重为2</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;boost_mode&quot;: &quot;sum&quot; // 加权模式，求和</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试，在未添加算分函数时，如家得分如下：</p>
+<p><img data-src="/images/java/es/2729274-20230205173504670-1488473639.png" alt="image"></p>
+<p>添加了算分函数后，如家得分就提升了：</p>
+<p><img data-src="/images/java/es/2729274-20230205173509427-1841421871.png" alt="image"></p>
+<h3 id="布尔查询"><a href="#布尔查询" class="headerlink" title="布尔查询"></a>布尔查询</h3><p>布尔查询把多个子查询组合（combine）成一个布尔表达式，所有子查询之间的逻辑关系是与（and）；只有当一个文档满足布尔查询中的所有子查询条件时，ElasticSearch引擎才认为该文档满足查询条件。</p>
+<blockquote>
+<p>布尔查询是一个或多个查询子句的组合，每一个子句就是一个<strong>子查询</strong>。子查询的组合方式有：</p>
+<ul>
+<li>must：文档必须匹配must查询条件, 类似sql中的and</li>
+<li>should：文档应该匹配should子句查询的一个或多个, 如果满足这些语句中的任意语句，将增加 _score ，否则，无任何影响。它们主要用于修正每个文档的相关性得分。类似 or</li>
+<li>must_not：必须不匹配，<strong>不参与算分</strong>，类似“非”</li>
+<li>filter：必须匹配，<strong>不参与算分</strong>。 这些语句对评分没有贡献，只是根据过滤标准来排除或包含文档。</li>
+</ul>
+<p>注意：尽量在筛选的时候多使用不参与算分的must_not和filter，以保证性能良好</p>
+</blockquote>
+<p>比如在搜索酒店时，除了关键字搜索外，我们还可能根据品牌、价格、城市等字段做过滤：</p>
+<p><img data-src="/images/java/es/2729274-20230205173518420-1928367735.png" alt="image"></p>
+<p>每一个不同的字段，其查询的条件、方式都不一样，必须是多个不同的查询，而要组合这些查询，就必须用bool查询了。</p>
+<p>需要注意的是，搜索时，参与<strong>打分的字段越多，查询的性能也越差</strong>。因此这种多条件查询时，建议这样做：</p>
+<ul>
+<li>搜索框的关键字搜索，是全文检索查询，使用must查询，参与算分</li>
+<li>其它过滤条件，采用filter查询。不参与算分</li>
+</ul>
+<h4 id="bool查询"><a href="#bool查询" class="headerlink" title="bool查询"></a>bool查询</h4><p>1）语法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;must&quot;: [</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;city&quot;: &quot;上海&quot; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;皇冠假日&quot; &#125;&#125;,</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;华美达&quot; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;must_not&quot;: [</span><br><span class="line">        &#123; &quot;range&quot;: &#123; &quot;price&quot;: &#123; &quot;lte&quot;: 500 &#125; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;filter&quot;: [</span><br><span class="line">        &#123; &quot;range&quot;: &#123;&quot;score&quot;: &#123; &quot;gte&quot;: 45 &#125; &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）示例</p>
+<p>需求：搜索名字包含“如家”，价格不高于400，在坐标31.21,121.5周围10km范围内的酒店。</p>
+<p>分析：</p>
+<ul>
+<li>名称搜索，属于全文检索查询，应该参与算分。放到must中</li>
+<li>价格不高于400，用range查询，属于过滤条件，不参与算分。放到must_not中</li>
+<li>周围10km范围内，用geo_distance查询，属于过滤条件，不参与算分。放到filter中</li>
+</ul>
+<p><img data-src="/images/java/es/2729274-20230205173526171-218786081.png" alt="image"></p>
+<h1 id="设置搜索结果"><a href="#设置搜索结果" class="headerlink" title="设置搜索结果"></a>设置搜索结果</h1><p>搜索的结果可以按照用户指定的方式去处理或展示。</p>
+<h2 id="搜索结果种类"><a href="#搜索结果种类" class="headerlink" title="搜索结果种类"></a>搜索结果种类</h2><p>查询的DSL是一个大的JSON对象，包含下列属性：</p>
+<ul>
+<li>query：查询条件</li>
+<li>from和size：分页条件</li>
+<li>sort：排序条件</li>
+<li>highlight：高亮条件</li>
+<li>aggs：定义聚合</li>
+</ul>
+<p>示例：</p>
+<p><img data-src="/images/java/es/2729274-20230205173604304-279114726.png" alt="image"></p>
+<p><img data-src="/images/java/es/2729274-20230205173609914-830516280.png" alt="image"></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><blockquote>
+<p>在使用排序后就不会进行算分了，根据排序设置的规则排列</p>
+</blockquote>
+<blockquote>
+<p>普通字段是根据字典序排序</p>
+<p>地理坐标是根据举例远近排序</p>
+</blockquote>
+<h3 id="普通字段排序"><a href="#普通字段排序" class="headerlink" title="普通字段排序"></a>普通字段排序</h3><p>keyword、数值、日期类型排序的排序语法基本一致。</p>
+<p><strong>语法</strong>：</p>
+<p><strong>排序条件是一个数组，也就是可以写多个排序条件。按照声明的顺序，当第一个条件相等时，再按照第二个条件排序，以此类推</strong><br><strong>（可以参考下面的图片案例）</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;FIELD&quot;: &quot;desc&quot;  // 排序字段、排序方式ASC、DESC</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>示例</strong>：</p>
+<p>需求描述：酒店数据按照用户评价（score)降序排序，评价相同的按照价格(price)升序排序</p>
+<p><img data-src="/images/java/es/2729274-20230205173616661-1802336128.png" alt="image"></p>
+<h3 id="地理坐标排序"><a href="#地理坐标排序" class="headerlink" title="地理坐标排序"></a>地理坐标排序</h3><p>地理坐标排序略有不同。</p>
+<p><strong>语法说明</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;_geo_distance&quot; : &#123;</span><br><span class="line">          &quot;FIELD&quot; : &quot;纬度，经度&quot;, // 文档中geo_point类型的字段名、目标坐标点</span><br><span class="line">          &quot;order&quot; : &quot;asc&quot;, // 排序方式</span><br><span class="line">          &quot;unit&quot; : &quot;km&quot; // 排序的距离单位</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>这个查询的含义是：</p>
+<ul>
+<li>指定一个坐标，作为目标点</li>
+<li>计算每一个文档中，指定字段（必须是geo_point类型）的坐标 到目标点的距离是多少</li>
+<li>根据距离排序</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p>需求描述：实现对酒店数据按照到你的位置坐标的距离升序排序</p>
+<p>提示：获取你的位置的经纬度的方式：<a href="https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat/">click-to-get-lnglat</a></p>
+<p>假设我的位置是：31.034661，121.612282，寻找我周围距离最近的酒店。</p>
+<p><img data-src="/images/java/es/2729274-20230205173623518-625657913.png" alt="image"></p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><blockquote>
+<p><strong>elasticsearch会禁止from+ size 超过10000的请求</strong></p>
+</blockquote>
+<p>elasticsearch 默认情况下只返回top10的数据。而如果要查询更多数据就需要修改分页参数了。elasticsearch中通过修改from、size参数来控制要返回的分页结果：</p>
+<ul>
+<li>from：从第几个文档开始</li>
+<li>size：总共查询几个文档</li>
+</ul>
+<p>类似于mysql中的 <code>limit ?, ?</code></p>
+<h3 id="基本分页"><a href="#基本分页" class="headerlink" title="基本分页"></a>基本分页</h3><p>分页的基本语法如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;from&quot;: 0, // 分页开始的位置，默认为0</span><br><span class="line">  &quot;size&quot;: 10, // 期望获取的文档总数</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;&quot;price&quot;: &quot;asc&quot;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="深度分页"><a href="#深度分页" class="headerlink" title="深度分页"></a>深度分页</h3><blockquote>
+<p>原理：elasticsearch内部分页时，必须先查询 0~1000条，然后截取其中的990 ~ 1000的这10条</p>
+</blockquote>
+<p>现在，我要查询990~1000的数据，查询逻辑要这么写：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;from&quot;: 990, // 分页开始的位置，默认为0</span><br><span class="line">  &quot;size&quot;: 10, // 期望获取的文档总数</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;&quot;price&quot;: &quot;asc&quot;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里是查询990开始的数据，也就是 第990~第1000条 数据。</p>
+<p><strong>集群情况的深度分页</strong></p>
+<blockquote>
+<p>针对深度分页，ES提供了两种解决方案， <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html">官方文档</a> </p>
+<ul>
+<li>search after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。【官方推荐】</li>
+<li>scroll：原理将排序后的文档id形成快照，保存在内存。</li>
+</ul>
+</blockquote>
+<p>不过，elasticsearch内部分页时，必须先查询 0~1000条，然后截取其中的990 ~ 1000的这10条：</p>
+<p><img data-src="/images/java/es/2729274-20230205173634279-892410813.png" alt="image"></p>
+<p>查询TOP1000，如果es是单点模式，这并无太大影响。</p>
+<p>但是elasticsearch将来一定是集群，例如我集群有5个节点，我要查询TOP1000的数据，并不是每个节点查询200条就可以了。</p>
+<p>因为节点A的TOP200，在另一个节点可能排到10000名以外了。</p>
+<p>因此要想获取整个集群的TOP1000，必须先查询出每个节点的TOP1000，汇总结果后，重新排名，重新截取TOP1000。</p>
+<p><img data-src="/images/java/es/2729274-20230205173640103-2006900274.png" alt="image"></p>
+<p>那如果我要查询9900~10000的数据呢？是不是要先查询TOP10000呢？那每个节点都要查询10000条？汇总到内存中？</p>
+<p>当查询分页深度较大时，汇总数据过多，对内存和CPU会产生非常大的压力，因此<strong>elasticsearch会禁止from+ size 超过10000的请求</strong>。</p>
+<h2 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h2><blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>高亮是对关键字高亮，因此<strong>搜索条件必须带有关键字</strong>，而不能是范围这样的查询。</li>
+<li>默认情况下，<strong>高亮的字段，必须与搜索指定的字段一致</strong>，否则无法高亮</li>
+<li>如果要对非搜索字段高亮，则需要添加一个属性：required_field_match&#x3D;false</li>
+</ul>
+</blockquote>
+<p>使用场景：在百度等搜索后，会对结果中出现搜索字段的部分进行高亮处理。</p>
+<h3 id="高亮原理"><a href="#高亮原理" class="headerlink" title="高亮原理"></a>高亮原理</h3><p>高亮显示的实现分为两步：</p>
+<ul>
+<li>1）给文档中的所有关键字都添加一个标签，例如<code>&lt;em&gt;</code>标签</li>
+<li>2）页面给<code>&lt;em&gt;</code>标签编写CSS样式</li>
+</ul>
+<h3 id="实现高亮"><a href="#实现高亮" class="headerlink" title="实现高亮"></a>实现高亮</h3><p>1）语法</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span> <span class="comment">// 查询条件，高亮一定要使用全文检索查询</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;highlight&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 指定要高亮的字段</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//【要和上面的查询字段FIELD一致】</span></span><br><span class="line">        <span class="attr">&quot;pre_tags&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;em&gt;&quot;</span><span class="punctuation">,</span>  <span class="comment">// 用来标记高亮字段的前置标签</span></span><br><span class="line">        <span class="attr">&quot;post_tags&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;/em&gt;&quot;</span> <span class="comment">// 用来标记高亮字段的后置标签</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>2）示例：组合字段all的案例</p>
+<p><img data-src="/images/java/es/2729274-20230205173651044-506239214.png" alt="image"></p>
+<h2 id="数据聚合"><a href="#数据聚合" class="headerlink" title="数据聚合"></a>数据聚合</h2><blockquote>
+<p>类似于mysql中的【 <strong>度量（Metric）</strong> 聚合】聚合语句实现AVG，MAX，MIN；以及【 <strong>桶（Bucket）</strong> 聚合】GroupBy实现分组</p>
+</blockquote>
+<p><strong><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">聚合 aggregations</a></strong> 可以让我们极其方便的实现对数据的统计、分析、运算。例如：</p>
+<ul>
+<li>什么品牌的手机最受欢迎？</li>
+<li>这些手机的平均价格、最高价格、最低价格？</li>
+<li>这些手机每月的销售情况如何？</li>
+</ul>
+<p>实现这些统计功能的比数据库的sql要方便的多，而且查询速度非常快，可以实现近实时搜索效果。</p>
+<p>aggs代表聚合，与query同级，此时query的作用是？</p>
+<ul>
+<li>限定聚合的的文档范围</li>
+</ul>
+<p>聚合必须的三要素：</p>
+<ul>
+<li>聚合名称</li>
+<li>聚合类型</li>
+<li>聚合字段</li>
+</ul>
+<p>聚合可配置属性有：</p>
+<ul>
+<li>size：指定聚合结果数量</li>
+<li>order：指定聚合结果排序方式</li>
+<li>field：指定聚合字段</li>
+</ul>
+<h3 id="聚合种类"><a href="#聚合种类" class="headerlink" title="聚合种类"></a>聚合种类</h3><blockquote>
+<p><strong>注意：</strong>参加聚合的字段必须是keyword、日期、数值、布尔类型</p>
+</blockquote>
+<p>聚合常见的有三类：</p>
+<ul>
+<li><p><strong>桶（Bucket）</strong> 聚合：用来对文档做分组</p>
+<ul>
+<li>TermAggregation：按照文档字段值分组，例如按照品牌值分组、按照国家分组</li>
+<li>Date Histogram：按照日期阶梯分组，例如一周为一组，或者一月为一组</li>
+</ul>
+</li>
+<li><p><strong>度量（Metric）</strong> 聚合：用以计算一些值，比如：最大值、最小值、平均值等</p>
+<ul>
+<li>Avg：求平均值</li>
+<li>Max：求最大值</li>
+<li>Min：求最小值</li>
+<li>Stats：同时求max、min、avg、sum等</li>
+</ul>
+</li>
+<li><p><strong>管道（pipeline）</strong> 聚合：其它聚合的结果为基础做聚合</p>
+<blockquote>
+<p>如：用桶聚合实现种类排序，然后使用度量聚合实现各个桶的最大值、最小值、平均值等</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="桶-Bucket-聚合"><a href="#桶-Bucket-聚合" class="headerlink" title="桶(Bucket)聚合"></a>桶(Bucket)聚合</h4><p>以统计酒店品牌种类，并对其进行数据分组</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//限定要聚合的文档范围，只要添加query条件【一般在没搜索关键字时不写query】</span></span><br><span class="line">    <span class="attr">&quot;range&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;lte&quot;</span><span class="punctuation">:</span> <span class="number">200</span> <span class="comment">// 只对200元以下的文档聚合</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span>  <span class="comment">// 设置size为0，结果中不包含查询结果文档，只包含聚合结果</span></span><br><span class="line">  <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 定义聚合</span></span><br><span class="line">    <span class="attr">&quot;brandAgg&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//给聚合起个名字</span></span><br><span class="line">      <span class="attr">&quot;terms&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合的类型，按照品牌值聚合，所以选择term</span></span><br><span class="line">        <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brand&quot;</span><span class="punctuation">,</span> <span class="comment">// 参与聚合的字段</span></span><br><span class="line">        <span class="attr">&quot;order&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;doc_count&quot;</span><span class="punctuation">:</span> <span class="string">&quot;asc&quot;</span> <span class="comment">// 对聚合结果按照doc_count升序排列</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">20</span> <span class="comment">// 希望获取的聚合结果数量【设置多少就最多只显示多少】</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/java/es/2729274-20230205173742270-1590923564.png" alt="image"></p>
+<h4 id="度量-Metric-and-管道-pipeline-聚合"><a href="#度量-Metric-and-管道-pipeline-聚合" class="headerlink" title="度量(Metric) and 管道(pipeline)聚合"></a>度量(Metric) and 管道(pipeline)聚合</h4><blockquote>
+<p>度量聚合很少单独使用，一般是和桶聚合一并结合使用</p>
+</blockquote>
+<p>我们对酒店按照品牌分组，形成了一个个桶。现在我们需要对桶内的酒店做运算，获取每个品牌的用户评分的min、max、avg等值。</p>
+<p>这就要用到Metric聚合了，例如stat聚合：就可以获取min、max、avg等结果。</p>
+<p>语法如下：</p>
+<p>这次的score_stats聚合是在brandAgg的聚合内部嵌套的子聚合。因为我们需要在每个桶分别计算。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;brandAgg&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">      <span class="attr">&quot;terms&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">        <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brand&quot;</span><span class="punctuation">,</span> </span><br><span class="line">        <span class="attr">&quot;order&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;scoreAgg.avg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;desc&quot;</span> <span class="comment">// 对聚合结果按照指定字段降序排列</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 是brands聚合的子聚合，也就是分组后对每组分别计算</span></span><br><span class="line">        <span class="attr">&quot;score_stats&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合名称</span></span><br><span class="line">          <span class="attr">&quot;stats&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合类型，这里stats可以计算min、max、avg等</span></span><br><span class="line">            <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;score&quot;</span> <span class="comment">// 聚合字段，这里是score</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，我们还可以给聚合结果做个排序，例如按照每个桶的酒店平均分做排序：</p>
+<p><img data-src="/images/java/es/2729274-20230205173748393-1737546340.png" alt="image"></p>
+<p><strong>参考文章</strong></p>
+<ol>
+<li><a href="https://www.cnblogs.com/buchizicai/p/17093719.html">ElasticSearch (ES从入门到精通一篇就够了)</a></li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>elascitsearch</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES-RestAPI的使用</title>
     <url>/java/es/es-02-rest-api/</url>
     <content><![CDATA[<p>RestAPI的使用 <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.12/java-rest-high.html">Java High Level REST Client 7.12</a></p>
@@ -3351,428 +3773,6 @@ Start --> Stop</pre>
 
 
 
-<p><strong>参考文章</strong></p>
-<ol>
-<li><a href="https://www.cnblogs.com/buchizicai/p/17093719.html">ElasticSearch (ES从入门到精通一篇就够了)</a></li>
-<li></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>elascitsearch</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES搜索查询</title>
-    <url>/java/es/es-03-dsl-search/</url>
-    <content><![CDATA[<p>主要介绍ES DSL的查询</p>
-<span id="more"></span>
-
-
-<p>elasticsearch的查询依然是基于JSON风格的DSL来实现的。</p>
-<h1 id="DSL设置查询条件"><a href="#DSL设置查询条件" class="headerlink" title="DSL设置查询条件"></a>DSL设置查询条件</h1><h2 id="DSL查询分类"><a href="#DSL查询分类" class="headerlink" title="DSL查询分类"></a>DSL查询分类</h2><p>Elasticsearch提供了基于JSON的DSL ( <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Domain Specific Language</a> ) 来定义查询。常见的查询类型包括：</p>
-<ul>
-<li><p><strong>查询所有</strong>：查询出所有数据，<em>一般测试用</em>。例如：match_all</p>
-</li>
-<li><p><strong>全文检索（full text）查询</strong>：利用分词器对用户输入内容分词，然后去倒排索引库中匹配。例如：</p>
-<ul>
-<li>match_query</li>
-<li>multi_match_query</li>
-</ul>
-</li>
-<li><p><strong>精确查询</strong>：根据精确词条值查找数据，一般是查找keyword、数值、日期、boolean等类型字段。例如：</p>
-<ul>
-<li>ids</li>
-<li>range</li>
-<li>term</li>
-</ul>
-</li>
-<li><p><strong>地理（geo）查询</strong>：根据经纬度查询。例如：</p>
-<ul>
-<li>geo_distance</li>
-<li>geo_bounding_box</li>
-</ul>
-</li>
-<li><p><strong>复合（compound）查询</strong>：复合查询可以将上述各种查询条件组合起来，合并查询条件。例如：</p>
-<ul>
-<li>bool</li>
-<li>function_score</li>
-</ul>
-</li>
-</ul>
-<p>查询的语法基本一致：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;查询类型&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;查询条件&quot;</span><span class="punctuation">:</span> <span class="string">&quot;条件值&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>我们以查询所有为例，其中：</p>
-<ul>
-<li>查询类型为match_all</li>
-<li>没有查询条件</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 查询所有</span></span><br><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match_all&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>其它查询无非就是<strong>查询类型</strong>、<strong>查询条件</strong>的变化。</p>
-<h2 id="全文检索查询"><a href="#全文检索查询" class="headerlink" title="全文检索查询"></a>全文检索查询</h2><blockquote>
-<p>match和multi_match的区别是什么？</p>
-<ul>
-<li>match：根据一个字段查询【推荐：使用copy_to构造all字段】</li>
-<li>multi_match：根据多个字段查询，参与查询字段越多，查询性能越差</li>
-</ul>
-<p><strong>注：搜索字段越多，对查询性能影响越大，因此建议采用copy_to，然后单字段查询的方式。</strong></p>
-</blockquote>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>全文检索查询的<strong>基本流程</strong>如下：</p>
-<ul>
-<li>对用户搜索的内容做分词，得到词条</li>
-<li>根据词条去倒排索引库中匹配，得到文档id</li>
-<li>根据文档id找到文档，返回给用户</li>
-</ul>
-<p>比较常用的<strong>场景</strong>包括：</p>
-<ul>
-<li>商城的输入框搜索</li>
-<li>百度输入框搜索</li>
-</ul>
-<p>例如京东：</p>
-<p>因为是拿着词条去匹配，因此参与搜索的字段也必须是可分词的text类型的字段。</p>
-<p>常见的全文检索查询包括：</p>
-<ul>
-<li>match查询：单字段查询</li>
-<li>multi_match查询：多字段查询，任意一个字段符合条件就算符合查询条件</li>
-</ul>
-<h3 id="match查询"><a href="#match查询" class="headerlink" title="match查询"></a>match查询</h3><p>match查询语法如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>match查询示例：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /testcrud/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;info&quot; : &quot;测试&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="mulit-match查询"><a href="#mulit-match查询" class="headerlink" title="mulit_match查询"></a>mulit_match查询</h3><p>mulit_match语法如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;multi_match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;FIELD1&quot;</span><span class="punctuation">,</span> <span class="string">&quot; FIELD12&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="精准查询"><a href="#精准查询" class="headerlink" title="精准查询"></a>精准查询</h2><blockquote>
-<p>精准查询类型：</p>
-<ul>
-<li>term查询：根据词条精确匹配，一般搜索keyword类型、数值类型、布尔类型、日期类型字段</li>
-<li>range查询：根据数值范围查询，可以是数值、日期的范围</li>
-</ul>
-</blockquote>
-<p>精确查询一般是查找keyword、数值、日期、boolean等类型字段。所以<strong>不会</strong>对搜索条件分词。常见的有：</p>
-<ul>
-<li><strong>term：根据词条精确值查询</strong></li>
-<li><strong>range：根据值的范围查询</strong></li>
-</ul>
-<h3 id="term查询"><a href="#term查询" class="headerlink" title="term查询"></a>term查询</h3><p>因为精确查询的字段是不分词的字段，因此查询的条件也必须是<strong>不分词</strong>的词条。查询时，用户输入的内容跟字段值完全匹配时才认为符合条件。如果用户输入的内容过多，反而搜索不到数据。</p>
-<p>语法说明：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// term查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;term&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;value&quot;: &quot;VALUE&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="range查询"><a href="#range查询" class="headerlink" title="range查询"></a>range查询</h3><blockquote>
-<p>范围查询，一般应用在对数值类型做范围过滤的时候。比如做价格范围过滤。</p>
-</blockquote>
-<p>基本语法：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// range查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;range&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;gte&quot;: 10, // 这里的gte代表大于等于，gt则代表大于</span><br><span class="line">        &quot;lte&quot;: 20 // lte代表小于等于，lt则代表小于</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /testcrud/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;range&quot;: &#123;</span><br><span class="line">      &quot;age&quot; : &#123;</span><br><span class="line">        &quot;gte&quot; : 10,</span><br><span class="line">        &quot;lte&quot; : 12</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="地理坐标查询"><a href="#地理坐标查询" class="headerlink" title="地理坐标查询"></a>地理坐标查询</h3><p>所谓的地理坐标查询，其实就是根据经纬度查询，官方文档：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html">geo-queries.html</a></p>
-<p>常见的使用场景包括：</p>
-<ul>
-<li>携程：搜索我附近的酒店</li>
-<li>滴滴：搜索我附近的出租车</li>
-<li>微信：搜索我附近的人</li>
-</ul>
-<h4 id="矩形范围查询"><a href="#矩形范围查询" class="headerlink" title="矩形范围查询"></a>矩形范围查询</h4><blockquote>
-<p>很少有业务有这种需求</p>
-</blockquote>
-<p>矩形范围查询，也就是geo_bounding_box查询，查询坐标落在某个矩形范围的所有文档：<br><img data-src="/images/java/es/2729274-20230205172556695-448469947.gif" alt="image"></p>
-<p>查询时，需要指定矩形的<strong>左上</strong>、<strong>右下</strong>两个点的坐标，然后画出一个矩形，落在该矩形内的都是符合条件的点。</p>
-<p>语法如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// geo_bounding_box查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;geo_bounding_box&quot;: &#123;</span><br><span class="line">      &quot;FIELD&quot;: &#123;</span><br><span class="line">        &quot;top_left&quot;: &#123; // 左上点</span><br><span class="line">          &quot;lat&quot;: 31.1,</span><br><span class="line">          &quot;lon&quot;: 121.5</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;bottom_right&quot;: &#123; // 右下点</span><br><span class="line">          &quot;lat&quot;: 30.9,</span><br><span class="line">          &quot;lon&quot;: 121.7</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>附近(圆形)查询</p>
-<p>附近查询，也叫做距离查询（geo_distance）：查询到指定中心点小于某个距离值的所有文档。</p>
-<p>换句话来说，在地图上找一个点作为圆心，以指定距离为半径，画一个圆，落在圆内的坐标都算符合条件：</p>
-<p><img data-src="/images/java/es/2729274-20230205172657385-1268854128.gif" alt="image"></p>
-<p>语法说明：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// geo_distance 查询</span><br><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;geo_distance&quot;: &#123;</span><br><span class="line">      &quot;distance&quot;: &quot;15km&quot;, // 半径</span><br><span class="line">      &quot;FIELD&quot;: &quot;31.21,121.5&quot; // 圆心</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<p>我们先搜索陆家嘴附近15km的酒店：</p>
-<p><img data-src="/images/java/es/2729274-20230205172724869-1773754207.png" alt="image"></p>
-<p>发现共有47家酒店。</p>
-<h2 id="复合查询"><a href="#复合查询" class="headerlink" title="复合查询"></a>复合查询</h2><p>复合（compound）查询：复合查询可以将其它简单查询组合起来，实现更复杂的搜索逻辑。常见的有两种：</p>
-<ul>
-<li>fuction score：算分函数查询，可以控制文档相关性算分，控制文档排名</li>
-<li>bool query：布尔查询，利用逻辑关系组合多个其它的查询，实现复杂搜索</li>
-</ul>
-<h3 id="复合查询归纳"><a href="#复合查询归纳" class="headerlink" title="复合查询归纳"></a>复合查询归纳</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;function_score&quot;: &#123;           </span><br><span class="line">      &quot;query&quot;: &#123; // 原始查询，可以是任意条件</span><br><span class="line">          &quot;bool&quot;: &#123;</span><br><span class="line">              &quot;must&quot;: [</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;city&quot;: &quot;上海&quot; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;should&quot;: [</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;皇冠假日&quot; &#125;&#125;,</span><br><span class="line">                  &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;华美达&quot; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;must_not&quot;: [</span><br><span class="line">                  &#123; &quot;range&quot;: &#123; &quot;price&quot;: &#123; &quot;lte&quot;: 500 &#125; &#125;&#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;filter&quot;: [</span><br><span class="line">                  &#123; &quot;range&quot;: &#123;&quot;score&quot;: &#123; &quot;gte&quot;: 45 &#125; &#125;&#125;</span><br><span class="line">              ]</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;functions&quot;: [ // 算分函数</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;filter&quot;: &#123; // 满足的条件，品牌必须是如家【品牌是如家的才加分，这里是加分条件】</span><br><span class="line">            &quot;term&quot;: &#123;</span><br><span class="line">              &quot;brand&quot;: &quot;如家&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;weight&quot;: 2 // 算分权重为2</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;boost_mode&quot;: &quot;sum&quot; // 加权模式，求和</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="相关性算分"><a href="#相关性算分" class="headerlink" title="相关性算分"></a>相关性算分</h3><blockquote>
-<p>elasticsearch会根据词条和文档的相关度做打分，算法由两种：</p>
-<ul>
-<li>TF-IDF算法</li>
-<li>BM25算法，elasticsearch5.1版本后采用的算法</li>
-</ul>
-</blockquote>
-<p>当我们利用match查询时，文档结果会根据与搜索词条的关联度打分（_score），返回结果时按照分值降序排列。</p>
-<p>例如，我们搜索 “虹桥如家”，结果如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">17.850193</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;虹桥如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">12.259849</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;外滩如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">11.91091</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;迪士尼如家酒店真不错&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在elasticsearch中，早期使用的打分算法是TF-IDF算法，公式如下：</p>
-<p><img data-src="/images/java/es/2729274-20230205173433826-368331600.png" alt="image"></p>
-<p>在后来的5.1版本升级中，elasticsearch将算法改进为BM25算法，公式如下：</p>
-<p><img data-src="/images/java/es/2729274-20230205173438720-1124832591.png" alt="image"></p>
-<p>TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越高，单个词条对文档影响较大。而BM25则会让单个词条的算分有一个上限，曲线更加平滑：</p>
-<p><img data-src="/images/java/es/2729274-20230205173443307-150506578.png" alt="image"></p>
-<h3 id="算分函数查询"><a href="#算分函数查询" class="headerlink" title="算分函数查询"></a>算分函数查询</h3><blockquote>
-<p>在搜索出来的结果的分数基础上，再手动与指定的数字进行一定运算来改变算分，从而改变结果的排序。</p>
-</blockquote>
-<blockquote>
-<p>function score query定义的三要素是什么？</p>
-<ul>
-<li>过滤条件：哪些文档要加分</li>
-<li>算分函数：如何计算function score</li>
-<li>加权方式：function score 与 query score如何运算</li>
-</ul>
-</blockquote>
-<p>根据相关度打分是比较合理的需求，但<strong>合理的不一定是产品经理需要</strong>的。</p>
-<p>以百度为例，你搜索的结果中，并不是相关度越高排名越靠前，而是谁掏的钱多排名就越靠前。如图：</p>
-<p>要想人为控制相关性算分，就需要利用elasticsearch中的function score 查询了。</p>
-<h4 id="function-score-查询"><a href="#function-score-查询" class="headerlink" title="function score 查询"></a>function score 查询</h4><p><strong>1）语法说明</strong></p>
-<p><img data-src="/images/java/es/2729274-20230205173456315-243388005.png" alt="image"></p>
-<p>function score 查询中包含四部分内容：</p>
-<ul>
-<li><strong>原始查询</strong>条件：query部分，基于这个条件搜索文档，并且基于BM25算法给文档打分，<strong>原始算分</strong>（query score)</li>
-<li><strong>过滤条件</strong>：filter部分，符合该条件的文档才会重新算分</li>
-<li><strong>算分函数</strong>：符合filter条件的文档要根据这个函数做运算，得到的<strong>函数算分</strong>（function score），有四种函数<ul>
-<li>weight：函数结果是常量</li>
-<li>field_value_factor：以文档中的某个字段值作为函数结果</li>
-<li>random_score：以随机数作为函数结果</li>
-<li>script_score：自定义算分函数算法</li>
-</ul>
-</li>
-<li><strong>运算模式</strong>：算分函数的结果、原始查询的相关性算分，两者之间的运算方式，包括：<ul>
-<li>multiply：相乘</li>
-<li>replace：用function score替换query score</li>
-<li>其它，例如：sum、avg、max、min</li>
-</ul>
-</li>
-</ul>
-<p>function score的运行流程如下：</p>
-<ul>
-<li>1）根据<strong>原始条件</strong>查询搜索文档，并且计算相关性算分，称为<strong>原始算分</strong>（query score）</li>
-<li>2）根据<strong>过滤条件</strong>，过滤文档</li>
-<li>3）符合<strong>过滤条件</strong>的文档，基于<strong>算分函数</strong>运算，得到<strong>函数算分</strong>（function score）</li>
-<li>4）将<strong>原始算分</strong>（query score）和<strong>函数算分</strong>（function score）基于<strong>运算模式</strong>做运算，得到最终结果，作为相关性算分。</li>
-</ul>
-<p><strong>2）举例</strong></p>
-<p>需求：给“如家”这个品牌的酒店排名靠前一些</p>
-<p>翻译一下这个需求，转换为之前说的四个要点：</p>
-<ul>
-<li>原始条件：不确定，可以任意变化</li>
-<li>过滤条件：brand &#x3D; “如家”</li>
-<li>算分函数：可以简单粗暴，直接给固定的算分结果，weight</li>
-<li>运算模式：比如求和</li>
-</ul>
-<p>因此最终的DSL语句如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;function_score&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &#123;  .... &#125;, // 原始查询，可以是任意条件</span><br><span class="line">      &quot;functions&quot;: [ // 算分函数</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;filter&quot;: &#123; // 满足的条件，品牌必须是如家【品牌是如家的才加分，这里是加分条件】</span><br><span class="line">            &quot;term&quot;: &#123;</span><br><span class="line">              &quot;brand&quot;: &quot;如家&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;weight&quot;: 2 // 算分权重为2</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;boost_mode&quot;: &quot;sum&quot; // 加权模式，求和</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试，在未添加算分函数时，如家得分如下：</p>
-<p><img data-src="/images/java/es/2729274-20230205173504670-1488473639.png" alt="image"></p>
-<p>添加了算分函数后，如家得分就提升了：</p>
-<p><img data-src="/images/java/es/2729274-20230205173509427-1841421871.png" alt="image"></p>
-<h3 id="布尔查询"><a href="#布尔查询" class="headerlink" title="布尔查询"></a>布尔查询</h3><blockquote>
-<p>布尔查询是一个或多个查询子句的组合，每一个子句就是一个<strong>子查询</strong>。子查询的组合方式有：</p>
-<ul>
-<li>must：必须匹配每个子查询，类似“与”</li>
-<li>should：选择性匹配子查询，类似“或”</li>
-<li>must_not：必须不匹配，<strong>不参与算分</strong>，类似“非”</li>
-<li>filter：必须匹配，<strong>不参与算分</strong></li>
-</ul>
-<p>注意：尽量在筛选的时候多使用不参与算分的must_not和filter，以保证性能良好</p>
-</blockquote>
-<p>比如在搜索酒店时，除了关键字搜索外，我们还可能根据品牌、价格、城市等字段做过滤：</p>
-<p><img data-src="/images/java/es/2729274-20230205173518420-1928367735.png" alt="image"></p>
-<p>每一个不同的字段，其查询的条件、方式都不一样，必须是多个不同的查询，而要组合这些查询，就必须用bool查询了。</p>
-<p>需要注意的是，搜索时，参与<strong>打分的字段越多，查询的性能也越差</strong>。因此这种多条件查询时，建议这样做：</p>
-<ul>
-<li>搜索框的关键字搜索，是全文检索查询，使用must查询，参与算分</li>
-<li>其它过滤条件，采用filter查询。不参与算分</li>
-</ul>
-<h4 id="bool查询"><a href="#bool查询" class="headerlink" title="bool查询"></a>bool查询</h4><p>1）语法</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;must&quot;: [</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;city&quot;: &quot;上海&quot; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;皇冠假日&quot; &#125;&#125;,</span><br><span class="line">        &#123;&quot;term&quot;: &#123;&quot;brand&quot;: &quot;华美达&quot; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;must_not&quot;: [</span><br><span class="line">        &#123; &quot;range&quot;: &#123; &quot;price&quot;: &#123; &quot;lte&quot;: 500 &#125; &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;filter&quot;: [</span><br><span class="line">        &#123; &quot;range&quot;: &#123;&quot;score&quot;: &#123; &quot;gte&quot;: 45 &#125; &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2）示例</p>
-<p>需求：搜索名字包含“如家”，价格不高于400，在坐标31.21,121.5周围10km范围内的酒店。</p>
-<p>分析：</p>
-<ul>
-<li>名称搜索，属于全文检索查询，应该参与算分。放到must中</li>
-<li>价格不高于400，用range查询，属于过滤条件，不参与算分。放到must_not中</li>
-<li>周围10km范围内，用geo_distance查询，属于过滤条件，不参与算分。放到filter中</li>
-</ul>
-<p><img data-src="/images/java/es/2729274-20230205173526171-218786081.png" alt="image"></p>
-<h1 id="设置搜索结果"><a href="#设置搜索结果" class="headerlink" title="设置搜索结果"></a>设置搜索结果</h1><p>搜索的结果可以按照用户指定的方式去处理或展示。</p>
-<h2 id="搜索结果种类"><a href="#搜索结果种类" class="headerlink" title="搜索结果种类"></a>搜索结果种类</h2><p>查询的DSL是一个大的JSON对象，包含下列属性：</p>
-<ul>
-<li>query：查询条件</li>
-<li>from和size：分页条件</li>
-<li>sort：排序条件</li>
-<li>highlight：高亮条件</li>
-<li>aggs：定义聚合</li>
-</ul>
-<p>示例：</p>
-<p><img data-src="/images/java/es/2729274-20230205173604304-279114726.png" alt="image"></p>
-<p><img data-src="/images/java/es/2729274-20230205173609914-830516280.png" alt="image"></p>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><blockquote>
-<p>在使用排序后就不会进行算分了，根据排序设置的规则排列</p>
-</blockquote>
-<blockquote>
-<p>普通字段是根据字典序排序</p>
-<p>地理坐标是根据举例远近排序</p>
-</blockquote>
-<h3 id="普通字段排序"><a href="#普通字段排序" class="headerlink" title="普通字段排序"></a>普通字段排序</h3><p>keyword、数值、日期类型排序的排序语法基本一致。</p>
-<p><strong>语法</strong>：</p>
-<p><strong>排序条件是一个数组，也就是可以写多个排序条件。按照声明的顺序，当第一个条件相等时，再按照第二个条件排序，以此类推</strong><br><strong>（可以参考下面的图片案例）</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;FIELD&quot;: &quot;desc&quot;  // 排序字段、排序方式ASC、DESC</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong>：</p>
-<p>需求描述：酒店数据按照用户评价（score)降序排序，评价相同的按照价格(price)升序排序</p>
-<p><img data-src="/images/java/es/2729274-20230205173616661-1802336128.png" alt="image"></p>
-<h3 id="地理坐标排序"><a href="#地理坐标排序" class="headerlink" title="地理坐标排序"></a>地理坐标排序</h3><p>地理坐标排序略有不同。</p>
-<p><strong>语法说明</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /indexName/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;_geo_distance&quot; : &#123;</span><br><span class="line">          &quot;FIELD&quot; : &quot;纬度，经度&quot;, // 文档中geo_point类型的字段名、目标坐标点</span><br><span class="line">          &quot;order&quot; : &quot;asc&quot;, // 排序方式</span><br><span class="line">          &quot;unit&quot; : &quot;km&quot; // 排序的距离单位</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>这个查询的含义是：</p>
-<ul>
-<li>指定一个坐标，作为目标点</li>
-<li>计算每一个文档中，指定字段（必须是geo_point类型）的坐标 到目标点的距离是多少</li>
-<li>根据距离排序</li>
-</ul>
-<p><strong>示例：</strong></p>
-<p>需求描述：实现对酒店数据按照到你的位置坐标的距离升序排序</p>
-<p>提示：获取你的位置的经纬度的方式：<a href="https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat/">click-to-get-lnglat</a></p>
-<p>假设我的位置是：31.034661，121.612282，寻找我周围距离最近的酒店。</p>
-<p><img data-src="/images/java/es/2729274-20230205173623518-625657913.png" alt="image"></p>
-<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><blockquote>
-<p><strong>elasticsearch会禁止from+ size 超过10000的请求</strong></p>
-</blockquote>
-<p>elasticsearch 默认情况下只返回top10的数据。而如果要查询更多数据就需要修改分页参数了。elasticsearch中通过修改from、size参数来控制要返回的分页结果：</p>
-<ul>
-<li>from：从第几个文档开始</li>
-<li>size：总共查询几个文档</li>
-</ul>
-<p>类似于mysql中的 <code>limit ?, ?</code></p>
-<h3 id="基本分页"><a href="#基本分页" class="headerlink" title="基本分页"></a>基本分页</h3><p>分页的基本语法如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;from&quot;: 0, // 分页开始的位置，默认为0</span><br><span class="line">  &quot;size&quot;: 10, // 期望获取的文档总数</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;&quot;price&quot;: &quot;asc&quot;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="深度分页"><a href="#深度分页" class="headerlink" title="深度分页"></a>深度分页</h3><blockquote>
-<p>原理：elasticsearch内部分页时，必须先查询 0~1000条，然后截取其中的990 ~ 1000的这10条</p>
-</blockquote>
-<p>现在，我要查询990~1000的数据，查询逻辑要这么写：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;from&quot;: 990, // 分页开始的位置，默认为0</span><br><span class="line">  &quot;size&quot;: 10, // 期望获取的文档总数</span><br><span class="line">  &quot;sort&quot;: [</span><br><span class="line">    &#123;&quot;price&quot;: &quot;asc&quot;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里是查询990开始的数据，也就是 第990~第1000条 数据。</p>
-<p><strong>集群情况的深度分页</strong></p>
-<blockquote>
-<p>针对深度分页，ES提供了两种解决方案， <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html">官方文档</a> </p>
-<ul>
-<li>search after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。【官方推荐】</li>
-<li>scroll：原理将排序后的文档id形成快照，保存在内存。</li>
-</ul>
-</blockquote>
-<p>不过，elasticsearch内部分页时，必须先查询 0~1000条，然后截取其中的990 ~ 1000的这10条：</p>
-<p><img data-src="/images/java/es/2729274-20230205173634279-892410813.png" alt="image"></p>
-<p>查询TOP1000，如果es是单点模式，这并无太大影响。</p>
-<p>但是elasticsearch将来一定是集群，例如我集群有5个节点，我要查询TOP1000的数据，并不是每个节点查询200条就可以了。</p>
-<p>因为节点A的TOP200，在另一个节点可能排到10000名以外了。</p>
-<p>因此要想获取整个集群的TOP1000，必须先查询出每个节点的TOP1000，汇总结果后，重新排名，重新截取TOP1000。</p>
-<p><img data-src="/images/java/es/2729274-20230205173640103-2006900274.png" alt="image"></p>
-<p>那如果我要查询9900~10000的数据呢？是不是要先查询TOP10000呢？那每个节点都要查询10000条？汇总到内存中？</p>
-<p>当查询分页深度较大时，汇总数据过多，对内存和CPU会产生非常大的压力，因此<strong>elasticsearch会禁止from+ size 超过10000的请求</strong>。</p>
-<h2 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h2><blockquote>
-<p><strong>注意：</strong></p>
-<ul>
-<li>高亮是对关键字高亮，因此<strong>搜索条件必须带有关键字</strong>，而不能是范围这样的查询。</li>
-<li>默认情况下，<strong>高亮的字段，必须与搜索指定的字段一致</strong>，否则无法高亮</li>
-<li>如果要对非搜索字段高亮，则需要添加一个属性：required_field_match&#x3D;false</li>
-</ul>
-</blockquote>
-<p>使用场景：在百度等搜索后，会对结果中出现搜索字段的部分进行高亮处理。</p>
-<h3 id="高亮原理"><a href="#高亮原理" class="headerlink" title="高亮原理"></a>高亮原理</h3><p>高亮显示的实现分为两步：</p>
-<ul>
-<li>1）给文档中的所有关键字都添加一个标签，例如<code>&lt;em&gt;</code>标签</li>
-<li>2）页面给<code>&lt;em&gt;</code>标签编写CSS样式</li>
-</ul>
-<h3 id="实现高亮"><a href="#实现高亮" class="headerlink" title="实现高亮"></a>实现高亮</h3><p>1）语法</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;match&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="string">&quot;TEXT&quot;</span> <span class="comment">// 查询条件，高亮一定要使用全文检索查询</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;highlight&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 指定要高亮的字段</span></span><br><span class="line">      <span class="attr">&quot;FIELD&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//【要和上面的查询字段FIELD一致】</span></span><br><span class="line">        <span class="attr">&quot;pre_tags&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;em&gt;&quot;</span><span class="punctuation">,</span>  <span class="comment">// 用来标记高亮字段的前置标签</span></span><br><span class="line">        <span class="attr">&quot;post_tags&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;/em&gt;&quot;</span> <span class="comment">// 用来标记高亮字段的后置标签</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>2）示例：组合字段all的案例</p>
-<p><img data-src="/images/java/es/2729274-20230205173651044-506239214.png" alt="image"></p>
-<h2 id="数据聚合"><a href="#数据聚合" class="headerlink" title="数据聚合"></a>数据聚合</h2><blockquote>
-<p>类似于mysql中的【 <strong>度量（Metric）</strong> 聚合】聚合语句实现AVG，MAX，MIN；以及【 <strong>桶（Bucket）</strong> 聚合】GroupBy实现分组</p>
-</blockquote>
-<p><strong><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html">聚合 aggregations</a></strong> 可以让我们极其方便的实现对数据的统计、分析、运算。例如：</p>
-<ul>
-<li>什么品牌的手机最受欢迎？</li>
-<li>这些手机的平均价格、最高价格、最低价格？</li>
-<li>这些手机每月的销售情况如何？</li>
-</ul>
-<p>实现这些统计功能的比数据库的sql要方便的多，而且查询速度非常快，可以实现近实时搜索效果。</p>
-<p>aggs代表聚合，与query同级，此时query的作用是？</p>
-<ul>
-<li>限定聚合的的文档范围</li>
-</ul>
-<p>聚合必须的三要素：</p>
-<ul>
-<li>聚合名称</li>
-<li>聚合类型</li>
-<li>聚合字段</li>
-</ul>
-<p>聚合可配置属性有：</p>
-<ul>
-<li>size：指定聚合结果数量</li>
-<li>order：指定聚合结果排序方式</li>
-<li>field：指定聚合字段</li>
-</ul>
-<h3 id="聚合种类"><a href="#聚合种类" class="headerlink" title="聚合种类"></a>聚合种类</h3><blockquote>
-<p><strong>注意：</strong>参加聚合的字段必须是keyword、日期、数值、布尔类型</p>
-</blockquote>
-<p>聚合常见的有三类：</p>
-<ul>
-<li><p><strong>桶（Bucket）</strong> 聚合：用来对文档做分组</p>
-<ul>
-<li>TermAggregation：按照文档字段值分组，例如按照品牌值分组、按照国家分组</li>
-<li>Date Histogram：按照日期阶梯分组，例如一周为一组，或者一月为一组</li>
-</ul>
-</li>
-<li><p><strong>度量（Metric）</strong> 聚合：用以计算一些值，比如：最大值、最小值、平均值等</p>
-<ul>
-<li>Avg：求平均值</li>
-<li>Max：求最大值</li>
-<li>Min：求最小值</li>
-<li>Stats：同时求max、min、avg、sum等</li>
-</ul>
-</li>
-<li><p><strong>管道（pipeline）</strong> 聚合：其它聚合的结果为基础做聚合</p>
-<blockquote>
-<p>如：用桶聚合实现种类排序，然后使用度量聚合实现各个桶的最大值、最小值、平均值等</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="桶-Bucket-聚合"><a href="#桶-Bucket-聚合" class="headerlink" title="桶(Bucket)聚合"></a>桶(Bucket)聚合</h4><p>以统计酒店品牌种类，并对其进行数据分组</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//限定要聚合的文档范围，只要添加query条件【一般在没搜索关键字时不写query】</span></span><br><span class="line">    <span class="attr">&quot;range&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;lte&quot;</span><span class="punctuation">:</span> <span class="number">200</span> <span class="comment">// 只对200元以下的文档聚合</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span>  <span class="comment">// 设置size为0，结果中不包含查询结果文档，只包含聚合结果</span></span><br><span class="line">  <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 定义聚合</span></span><br><span class="line">    <span class="attr">&quot;brandAgg&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">//给聚合起个名字</span></span><br><span class="line">      <span class="attr">&quot;terms&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合的类型，按照品牌值聚合，所以选择term</span></span><br><span class="line">        <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brand&quot;</span><span class="punctuation">,</span> <span class="comment">// 参与聚合的字段</span></span><br><span class="line">        <span class="attr">&quot;order&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;doc_count&quot;</span><span class="punctuation">:</span> <span class="string">&quot;asc&quot;</span> <span class="comment">// 对聚合结果按照doc_count升序排列</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">20</span> <span class="comment">// 希望获取的聚合结果数量【设置多少就最多只显示多少】</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/java/es/2729274-20230205173742270-1590923564.png" alt="image"></p>
-<h4 id="度量-Metric-and-管道-pipeline-聚合"><a href="#度量-Metric-and-管道-pipeline-聚合" class="headerlink" title="度量(Metric) and 管道(pipeline)聚合"></a>度量(Metric) and 管道(pipeline)聚合</h4><blockquote>
-<p>度量聚合很少单独使用，一般是和桶聚合一并结合使用</p>
-</blockquote>
-<p>我们对酒店按照品牌分组，形成了一个个桶。现在我们需要对桶内的酒店做运算，获取每个品牌的用户评分的min、max、avg等值。</p>
-<p>这就要用到Metric聚合了，例如stat聚合：就可以获取min、max、avg等结果。</p>
-<p>语法如下：</p>
-<p>这次的score_stats聚合是在brandAgg的聚合内部嵌套的子聚合。因为我们需要在每个桶分别计算。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET /hotel/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;brandAgg&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">      <span class="attr">&quot;terms&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">        <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;brand&quot;</span><span class="punctuation">,</span> </span><br><span class="line">        <span class="attr">&quot;order&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;scoreAgg.avg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;desc&quot;</span> <span class="comment">// 对聚合结果按照指定字段降序排列</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;aggs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 是brands聚合的子聚合，也就是分组后对每组分别计算</span></span><br><span class="line">        <span class="attr">&quot;score_stats&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合名称</span></span><br><span class="line">          <span class="attr">&quot;stats&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 聚合类型，这里stats可以计算min、max、avg等</span></span><br><span class="line">            <span class="attr">&quot;field&quot;</span><span class="punctuation">:</span> <span class="string">&quot;score&quot;</span> <span class="comment">// 聚合字段，这里是score</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>另外，我们还可以给聚合结果做个排序，例如按照每个桶的酒店平均分做排序：</p>
-<p><img data-src="/images/java/es/2729274-20230205173748393-1737546340.png" alt="image"></p>
 <p><strong>参考文章</strong></p>
 <ol>
 <li><a href="https://www.cnblogs.com/buchizicai/p/17093719.html">ElasticSearch (ES从入门到精通一篇就够了)</a></li>
