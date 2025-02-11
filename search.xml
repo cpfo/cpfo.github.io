@@ -38,86 +38,6 @@
       </tags>
   </entry>
   <entry>
-    <title>go语言变量和运算符</title>
-    <url>/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-    <content><![CDATA[<p>主要介绍go语言变量，运算符等</p>
-<span id="more"></span>
-
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量被定义为程序运行时储存和操纵数据的实体。变量可以通过变量名访问。 变量名格式：字母数字下划线，不能以数字开头。</p>
-<p>变量声明:</p>
-<blockquote>
-<p>var variable_name variable_type</p>
-</blockquote>
-<p>也可以一次声明多个变量</p>
-<blockquote>
-<p>var variable_name, variable_name1 variable_type</p>
-</blockquote>
-<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><ul>
-<li><strong>指定变量类型，如果没有初始化，则变量默认为零值。</strong></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">fmt.Println()</span><br><span class="line"><span class="comment">// 默认false</span></span><br><span class="line"><span class="keyword">var</span> b <span class="type">bool</span></span><br><span class="line">fmt.Println(b)</span><br><span class="line"><span class="comment">// 默认 &quot;&quot; 空字符串</span></span><br><span class="line"><span class="keyword">var</span> s <span class="type">string</span></span><br><span class="line">fmt.Println(s)</span><br><span class="line"><span class="comment">// 默认0</span></span><br><span class="line"><span class="keyword">var</span> i <span class="type">int</span></span><br><span class="line">fmt.Println(i)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>第二种， 根据值自行判定变量类型</strong></li>
-</ul>
-<p>不需要显示声明变量类型，自动推断</p>
-<blockquote>
-<p>var v_name &#x3D; value</p>
-</blockquote>
-<p>比如:  <code>var num = 1</code></p>
-<ul>
-<li><strong>变量的简短声明</strong></li>
-</ul>
-<p><code>x := 1</code>  这个代码中， <code>x</code> 自动被声明为 int 类型，并存储了值 1 。 这种方式只能被用在函数体内。</p>
-<p>如果变量已经使用 <code>var</code> 声明过了，再使用 <code>:=</code> 声明变量，就产生编译错误</p>
-<ul>
-<li><strong>多变量声明</strong></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vname1, vname2, vname3 <span class="type">int</span></span><br><span class="line">vname1, vname2, vname3 = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">fmt.Println(vname1, vname2, vname3)</span><br><span class="line"></span><br><span class="line">vname4, vname5 := <span class="number">4</span>, <span class="number">5</span></span><br><span class="line">a, b, c := <span class="number">5</span>, <span class="number">7</span>, <span class="string">&quot;abc&quot;</span></span><br><span class="line">fmt.Println(vname4, vname5)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种因式分解关键字的写法一般用于声明全局变量</span></span><br><span class="line">   <span class="keyword">var</span> (</span><br><span class="line">       vname1 v_type1</span><br><span class="line">       vname2 v_type2</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
-<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><p>所有像 int、float、bool 和 string 这些基本类型都属于值类型，使用这些类型的变量直接指向存在内存中的值：</p>
-<p>当使用等号 <code>=</code> 将一个变量的值赋值给另一个变量时，如：<code>j = i</code>，实际上是在内存中将 <code>i</code> 的值进行了拷贝</p>
-<p>可以通过 <code>&amp;i</code> 来获取变量 <code>i</code> 的内存地址</p>
-<p>如下， 可以看到， <code>i</code> 和 <code>j</code> 实际上对应的内存地址是不同的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var i = 1</span><br><span class="line">var j = i</span><br><span class="line">fmt.Println(&amp;i, &amp;j)</span><br><span class="line"># 结果</span><br><span class="line">0xc00000a0e8 0xc00000a0f0</span><br></pre></td></tr></table></figure>
-<p>堆内存和栈内存：栈内存用于存储局部变量以及函数调用的信息。堆内存用于存储程序中创建的对象和实例。</p>
-<p>变量的值存储在堆内。</p>
-<p>更复杂的数据通常会需要使用多个字，这些数据一般使用引用类型保存。</p>
-<blockquote>
-<p>位(Bit)是数据存储的最小单位，字节(Byte)常用于处理字符级数据，而字(Word)则是计算机硬件设计的基本单位，与特定计算机体系结构有关。</p>
-</blockquote>
-<p>一个引用类型的变量 <code>r1</code> 存储的是 <code>r1</code> 的值所在的内存地址（数字），或内存地址中第一个字所在的位置。</p>
-<p>这个内存地址称之为指针，这个指针实际上也被存在另外的某一个值中。</p>
-<p>引用类型的变量存储的是一个指向实际数据的引用。</p>
-<p>当将一个引用类型的变量赋值给另一个变量时，两个变量将引用同一个数据，修改一个变量会影响到另一个变量。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>同一个变量不能被重复初始化声明 ，会提示 <code>no new variables on left side of :=</code></li>
-<li>声明了局部变量没有使用，会编译报错 <code>xxx declared but not used</code></li>
-<li>如果你想要交换两个变量的值，则可以简单地使用 <code>a, b = b, a</code>，两个变量的类型必须是相同</li>
-<li>空白标识符 _ 也被用于抛弃值，如值 5 在：<code>_, b = 5, 7</code> 中被抛弃。</li>
-<li>_ 实际上是一个只写变量，你不能得到它的值。这样做是因为 Go 语言中你必须使用所有被声明的变量，但有时你并不需要使用从一个函数得到的所有返回值。</li>
-<li>并行赋值也被用于当一个函数返回多个返回值时，比如这里的 <code>val</code> 和错误 <code>err</code> 是通过调用 <code>Func1</code> 函数同时得到：<code>val, err = Func1(var1)</code>。</li>
-</ul>
-<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>常量是一个简单值的标识符，在程序运行时，不会被修改的量。</p>
-<p>常量中的数据类型只可以是布尔型、数字型和字符串型。</p>
-<p>定义格式如下</p>
-<blockquote>
-<p>const identifier [type] &#x3D; value</p>
-</blockquote>
-<p>可以省略类型说明符 <code>[type]</code>，因为编译器可以根据变量的值来推断其类型。</p>
-<p>常量也可以用作枚举</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Unknown = <span class="number">0</span></span><br><span class="line">	Female  = <span class="number">1</span></span><br><span class="line">	Male    = <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>数字 0、1 和 2 分别代表未知性别、女性和男性。</p>
-<p>常量可以用<code>len()</code>, <code>cap()</code>, <code>unsafe.Sizeof()</code>函数计算表达式的值。常量表达式中，函数必须是内置函数，否则编译不过：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    a = <span class="string">&quot;abc&quot;</span></span><br><span class="line">    b = <span class="built_in">len</span>(a)</span><br><span class="line">    c = unsafe.Sizeof(a)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>go语言结构和基础语法</title>
     <url>/go/go%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>简单介绍下go语言的程序结构，基础语法和数据类型。</p>
@@ -298,6 +218,86 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go语言变量和运算符</title>
+    <url>/go/go%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<p>主要介绍go语言变量，运算符等</p>
+<span id="more"></span>
+
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量被定义为程序运行时储存和操纵数据的实体。变量可以通过变量名访问。 变量名格式：字母数字下划线，不能以数字开头。</p>
+<p>变量声明:</p>
+<blockquote>
+<p>var variable_name variable_type</p>
+</blockquote>
+<p>也可以一次声明多个变量</p>
+<blockquote>
+<p>var variable_name, variable_name1 variable_type</p>
+</blockquote>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><ul>
+<li><strong>指定变量类型，如果没有初始化，则变量默认为零值。</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">fmt.Println()</span><br><span class="line"><span class="comment">// 默认false</span></span><br><span class="line"><span class="keyword">var</span> b <span class="type">bool</span></span><br><span class="line">fmt.Println(b)</span><br><span class="line"><span class="comment">// 默认 &quot;&quot; 空字符串</span></span><br><span class="line"><span class="keyword">var</span> s <span class="type">string</span></span><br><span class="line">fmt.Println(s)</span><br><span class="line"><span class="comment">// 默认0</span></span><br><span class="line"><span class="keyword">var</span> i <span class="type">int</span></span><br><span class="line">fmt.Println(i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>第二种， 根据值自行判定变量类型</strong></li>
+</ul>
+<p>不需要显示声明变量类型，自动推断</p>
+<blockquote>
+<p>var v_name &#x3D; value</p>
+</blockquote>
+<p>比如:  <code>var num = 1</code></p>
+<ul>
+<li><strong>变量的简短声明</strong></li>
+</ul>
+<p><code>x := 1</code>  这个代码中， <code>x</code> 自动被声明为 int 类型，并存储了值 1 。 这种方式只能被用在函数体内。</p>
+<p>如果变量已经使用 <code>var</code> 声明过了，再使用 <code>:=</code> 声明变量，就产生编译错误</p>
+<ul>
+<li><strong>多变量声明</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vname1, vname2, vname3 <span class="type">int</span></span><br><span class="line">vname1, vname2, vname3 = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">fmt.Println(vname1, vname2, vname3)</span><br><span class="line"></span><br><span class="line">vname4, vname5 := <span class="number">4</span>, <span class="number">5</span></span><br><span class="line">a, b, c := <span class="number">5</span>, <span class="number">7</span>, <span class="string">&quot;abc&quot;</span></span><br><span class="line">fmt.Println(vname4, vname5)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种因式分解关键字的写法一般用于声明全局变量</span></span><br><span class="line">   <span class="keyword">var</span> (</span><br><span class="line">       vname1 v_type1</span><br><span class="line">       vname2 v_type2</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
+<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><p>所有像 int、float、bool 和 string 这些基本类型都属于值类型，使用这些类型的变量直接指向存在内存中的值：</p>
+<p>当使用等号 <code>=</code> 将一个变量的值赋值给另一个变量时，如：<code>j = i</code>，实际上是在内存中将 <code>i</code> 的值进行了拷贝</p>
+<p>可以通过 <code>&amp;i</code> 来获取变量 <code>i</code> 的内存地址</p>
+<p>如下， 可以看到， <code>i</code> 和 <code>j</code> 实际上对应的内存地址是不同的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var i = 1</span><br><span class="line">var j = i</span><br><span class="line">fmt.Println(&amp;i, &amp;j)</span><br><span class="line"># 结果</span><br><span class="line">0xc00000a0e8 0xc00000a0f0</span><br></pre></td></tr></table></figure>
+<p>堆内存和栈内存：栈内存用于存储局部变量以及函数调用的信息。堆内存用于存储程序中创建的对象和实例。</p>
+<p>变量的值存储在堆内。</p>
+<p>更复杂的数据通常会需要使用多个字，这些数据一般使用引用类型保存。</p>
+<blockquote>
+<p>位(Bit)是数据存储的最小单位，字节(Byte)常用于处理字符级数据，而字(Word)则是计算机硬件设计的基本单位，与特定计算机体系结构有关。</p>
+</blockquote>
+<p>一个引用类型的变量 <code>r1</code> 存储的是 <code>r1</code> 的值所在的内存地址（数字），或内存地址中第一个字所在的位置。</p>
+<p>这个内存地址称之为指针，这个指针实际上也被存在另外的某一个值中。</p>
+<p>引用类型的变量存储的是一个指向实际数据的引用。</p>
+<p>当将一个引用类型的变量赋值给另一个变量时，两个变量将引用同一个数据，修改一个变量会影响到另一个变量。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>同一个变量不能被重复初始化声明 ，会提示 <code>no new variables on left side of :=</code></li>
+<li>声明了局部变量没有使用，会编译报错 <code>xxx declared but not used</code></li>
+<li>如果你想要交换两个变量的值，则可以简单地使用 <code>a, b = b, a</code>，两个变量的类型必须是相同</li>
+<li>空白标识符 _ 也被用于抛弃值，如值 5 在：<code>_, b = 5, 7</code> 中被抛弃。</li>
+<li>_ 实际上是一个只写变量，你不能得到它的值。这样做是因为 Go 语言中你必须使用所有被声明的变量，但有时你并不需要使用从一个函数得到的所有返回值。</li>
+<li>并行赋值也被用于当一个函数返回多个返回值时，比如这里的 <code>val</code> 和错误 <code>err</code> 是通过调用 <code>Func1</code> 函数同时得到：<code>val, err = Func1(var1)</code>。</li>
+</ul>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>常量是一个简单值的标识符，在程序运行时，不会被修改的量。</p>
+<p>常量中的数据类型只可以是布尔型、数字型和字符串型。</p>
+<p>定义格式如下</p>
+<blockquote>
+<p>const identifier [type] &#x3D; value</p>
+</blockquote>
+<p>可以省略类型说明符 <code>[type]</code>，因为编译器可以根据变量的值来推断其类型。</p>
+<p>常量也可以用作枚举</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Unknown = <span class="number">0</span></span><br><span class="line">	Female  = <span class="number">1</span></span><br><span class="line">	Male    = <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>数字 0、1 和 2 分别代表未知性别、女性和男性。</p>
+<p>常量可以用<code>len()</code>, <code>cap()</code>, <code>unsafe.Sizeof()</code>函数计算表达式的值。常量表达式中，函数必须是内置函数，否则编译不过：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    a = <span class="string">&quot;abc&quot;</span></span><br><span class="line">    b = <span class="built_in">len</span>(a)</span><br><span class="line">    c = unsafe.Sizeof(a)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1088,6 +1088,63 @@
       </tags>
   </entry>
   <entry>
+    <title>16.python电子邮件</title>
+    <url>/python/16.python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>使用SMTP发送邮件，使用POP3接收邮件。</p>
+<span id="more"></span>
+
+<h1 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h1><p>SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。</p>
+<p>Python对SMTP支持有<code>smtplib</code>和<code>email</code>两个模块，<code>email</code>负责构造邮件，<code>smtplib</code>负责发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line">msg = MIMEText(<span class="string">&#x27;测试下邮件发送&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>注意到构造<code>MIMEText</code>对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入<code>&#39;plain&#39;</code>表示纯文本，最终的MIME就是<code>&#39;text/plain&#39;</code>，最后一定要用<code>utf-8</code>编码保证多语言兼容性。</p>
+<p>然后，通过SMTP发出去：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr, parseaddr</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_format_addr</span>(<span class="params">s</span>):</span><br><span class="line">    name, addr = parseaddr(s)</span><br><span class="line">    <span class="keyword">return</span> formataddr((Header(name, <span class="string">&#x27;utf-8&#x27;</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入Email地址和口令:</span></span><br><span class="line">from_addr = <span class="string">&#x27;xxxxxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="comment"># 输入收件人地址:</span></span><br><span class="line">to_addr = <span class="string">&#x27;xxx@qq.com&#x27;</span></span><br><span class="line"><span class="comment"># 输入SMTP服务器地址:</span></span><br><span class="line">smtp_server = <span class="string">&#x27;xxx.xxx.com&#x27;</span></span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&#x27;哈哈哈哈哈&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;测试下邮件发送 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">25</span>) <span class="comment"># SMTP协议默认端口是25</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.login(from_addr, password)</span><br><span class="line">server.sendmail(from_addr, [to_addr], msg.as_string())</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+<p>我们用<code>set_debuglevel(1)</code>就可以打印出和SMTP服务器交互的所有信息。SMTP协议就是简单的文本命令和响应。<code>login()</code>方法用来登录SMTP服务器，<code>sendmail()</code>方法就是发邮件，由于可以一次发给多个人，所以传入一个<code>list</code>，邮件正文是一个<code>str</code>，<code>as_string()</code>把<code>MIMEText</code>对象变成<code>str</code>。</p>
+<p>必须把<code>From</code>、<code>To</code>和<code>Subject</code>添加到<code>MIMEText</code>中，才是一封完整的邮件， 否则无法显示主题，收件人等信息。</p>
+<h2 id="发送HTML邮件"><a href="#发送HTML邮件" class="headerlink" title="发送HTML邮件"></a>发送HTML邮件</h2><p>如果我们要发送HTML邮件，方法很简单，在构造<code>MIMEText</code>对象时，把<code>HTML</code>字符串传进去，再把第二个参数由<code>plain</code>变为<code>html</code>就可以了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEText(<span class="string">&#x27;&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送附件"><a href="#发送附件" class="headerlink" title="发送附件"></a>发送附件</h2><p>可以构造一个<code>MIMEMultipart</code>对象代表邮件本身，然后往里面加上一个<code>MIMEText</code>作为邮件正文，再继续往里面加上表示附件的<code>MIMEBase</code>对象即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart()</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;Python爱好者 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件正文是MIMEText:</span></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;send with file...&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加附件就是加上一个MIMEBase，从本地读取一个图片:</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 设置附件的MIME和文件名，这里是png类型:</span></span><br><span class="line">    mime = MIMEBase(<span class="string">&#x27;image&#x27;</span>, <span class="string">&#x27;jpg&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">    mime.set_payload(f.read())</span><br><span class="line">    <span class="comment"># 用Base64编码:</span></span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    <span class="comment"># 添加到MIMEMultipart:</span></span><br><span class="line">    msg.attach(mime)</span><br></pre></td></tr></table></figure>
+<p>然后，按正常发送流程把msg（注意类型已变为<code>MIMEMultipart</code>）发送出去，就可以收到如下带附件的邮件</p>
+<h2 id="发送图片"><a href="#发送图片" class="headerlink" title="发送图片"></a>发送图片</h2><p>如果要把一个图片嵌入到邮件正文中怎么做？直接在HTML邮件中链接图片地址行不行？答案是，大部分邮件服务商都会自动屏蔽带有外链的图片，因为不知道这些链接是否指向恶意网站。</p>
+<p>要把图片嵌入到邮件正文中，我们只需按照发送附件的方式，先把邮件作为附件添加进去，然后，在HTML中通过引用<code>src=&quot;cid:0&quot;</code>就可以把附件作为图片嵌入了。如果有多个图片，给它们依次编号，然后引用不同的<code>cid:x</code>即可。</p>
+<p>把上面代码加入<code>MIMEMultipart</code>的<code>MIMEText</code>从<code>plain</code>改为<code>html</code>，然后在适当的位置引用图片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;下面是一个图片&lt;/h1&gt;&lt;br/&gt;&lt;img src=&quot;cid:0&quot;&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="同时支持HTML和Plain格式"><a href="#同时支持HTML和Plain格式" class="headerlink" title="同时支持HTML和Plain格式"></a>同时支持HTML和Plain格式</h2><p>为了兼容旧设备，在发送HTML的同时再附加一个纯文本，如果收件人无法查看HTML格式的邮件，就可以自动降级查看纯文本邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart(<span class="string">&#x27;alternative&#x27;</span>)</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = ...</span><br><span class="line"></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 正常发送msg对象...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="加密SMTP"><a href="#加密SMTP" class="headerlink" title="加密SMTP"></a>加密SMTP</h2><p>使用标准的25端口连接SMTP服务器时，使用的是明文传输，发送邮件的整个过程可能会被窃听。要更安全地发送邮件，可以加密SMTP会话，实际上就是先创建SSL安全连接，然后再使用SMTP协议发送邮件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">465</span>) </span><br><span class="line">server.starttls()</span><br></pre></td></tr></table></figure>
+<p>只需要在创建SMTP对象后，立刻调用starttls()方法，就创建了安全连接。后面的代码和前面的发送邮件代码完全一样。</p>
+<p>构造一个邮件对象就是一个<code>Messag</code>对象，如果构造一个<code>MIMEText</code>对象，就表示一个文本邮件对象，如果构造一个<code>MIMEImage</code>对象，就表示一个作为附件的图片，要把多个对象组合起来，就用<code>MIMEMultipart</code>对象，而<code>MIMEBase</code>可以表示任何对象。它们的继承关系如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Message</span><br><span class="line">+- MIMEBase</span><br><span class="line">   +- MIMEMultipart</span><br><span class="line">   +- MIMENonMultipart</span><br><span class="line">      +- MIMEMessage</span><br><span class="line">      +- MIMEText</span><br><span class="line">      +- MIMEImage</span><br></pre></td></tr></table></figure>
+<p>这种嵌套关系就可以构造出任意复杂的邮件。</p>
+<h1 id="POP3收取邮件"><a href="#POP3收取邮件" class="headerlink" title="POP3收取邮件"></a>POP3收取邮件</h1><p>Python内置一个<code>poplib</code>模块，实现了POP3协议，可以直接用来收邮件。</p>
+<p>注意到POP3协议收取的不是一个已经可以阅读的邮件本身，而是邮件的原始文本，这和SMTP协议很像，SMTP发送的也是经过编码后的一大段文本。</p>
+<p>要把POP3收取的文本变成可以阅读的邮件，还需要用email模块提供的各种类来解析原始文本，变成可阅读的邮件对象。</p>
+<p>所以，收取邮件分两步：</p>
+<p>第一步：用<code>poplib</code>把邮件的原始文本下载到本地；</p>
+<p>第二步：用<code>email</code>解析原始文本，还原为邮件对象。</p>
+<h2 id="通过POP3下载邮件"><a href="#通过POP3下载邮件" class="headerlink" title="通过POP3下载邮件"></a>通过POP3下载邮件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> poplib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入邮件地址, 口令和POP3服务器地址:</span></span><br><span class="line">email = <span class="built_in">input</span>(<span class="string">&#x27;Email: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">pop3_server = <span class="built_in">input</span>(<span class="string">&#x27;POP3 server: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到POP3服务器:</span></span><br><span class="line">server = poplib.POP3(pop3_server)</span><br><span class="line"><span class="comment"># 可以打开或关闭调试信息:</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 可选:打印POP3服务器的欢迎文字:</span></span><br><span class="line"><span class="built_in">print</span>(server.getwelcome().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份认证:</span></span><br><span class="line">server.user(email)</span><br><span class="line">server.pass_(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># stat()返回邮件数量和占用空间:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Messages: %s. Size: %s&#x27;</span> % server.stat())</span><br><span class="line"><span class="comment"># list()返回所有邮件的编号:</span></span><br><span class="line">resp, mails, octets = server.<span class="built_in">list</span>()</span><br><span class="line"><span class="comment"># 可以查看返回的列表类似[b&#x27;1 82923&#x27;, b&#x27;2 2184&#x27;, ...]</span></span><br><span class="line"><span class="built_in">print</span>(mails)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最新一封邮件, 注意索引号从1开始:</span></span><br><span class="line">index = <span class="built_in">len</span>(mails)</span><br><span class="line">resp, lines, octets = server.retr(index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lines存储了邮件的原始文本的每一行,</span></span><br><span class="line"><span class="comment"># 可以获得整个邮件的原始文本:</span></span><br><span class="line">msg_content = <span class="string">b&#x27;\r\n&#x27;</span>.join(lines).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 稍后解析出邮件:</span></span><br><span class="line">msg = Parser().parsestr(msg_content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以根据邮件索引号直接从服务器删除邮件:</span></span><br><span class="line"><span class="comment"># server.dele(index)</span></span><br><span class="line"><span class="comment"># 关闭连接:</span></span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+
+<p>用POP3获取邮件其实很简单，要获取所有邮件，只需要循环使用<code>retr()</code>把每一封邮件内容拿到即可。真正麻烦的是把邮件的原始内容解析为可以阅读的邮件对象。</p>
+<h2 id="解析邮件"><a href="#解析邮件" class="headerlink" title="解析邮件"></a>解析邮件</h2><p>解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">from email.parser import Parser</span><br><span class="line">from email.header import decode_header</span><br><span class="line">from email.utils import parseaddr</span><br><span class="line"></span><br><span class="line">import poplib</span><br></pre></td></tr></table></figure>
+<p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
+<p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
+<p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>15.python网络编程</title>
     <url>/python/15.python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>网络通信是两台计算机上的两个进程之间的通信。</p>
@@ -1144,63 +1201,6 @@
 <p>客户端使用UDP时，首先仍然创建基于UDP的Socket，然后，不需要调用<code>connect()</code>，直接通过<code>sendto()</code>给服务器发数据：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>)):</span><br><span class="line">    <span class="comment"># 发送数据:</span></span><br><span class="line">    s.sendto(<span class="built_in">str</span>(data).encode(<span class="string">&#x27;utf-8&#x27;</span>), (<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">9999</span>))</span><br><span class="line">    <span class="comment"># 接收数据:</span></span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
 <p>从服务器接收数据仍然调用<code>recv()</code>方法。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>16.python电子邮件</title>
-    <url>/python/16.python%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/</url>
-    <content><![CDATA[<p>使用SMTP发送邮件，使用POP3接收邮件。</p>
-<span id="more"></span>
-
-<h1 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h1><p>SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。</p>
-<p>Python对SMTP支持有<code>smtplib</code>和<code>email</code>两个模块，<code>email</code>负责构造邮件，<code>smtplib</code>负责发送邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line">msg = MIMEText(<span class="string">&#x27;测试下邮件发送&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>注意到构造<code>MIMEText</code>对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入<code>&#39;plain&#39;</code>表示纯文本，最终的MIME就是<code>&#39;text/plain&#39;</code>，最后一定要用<code>utf-8</code>编码保证多语言兼容性。</p>
-<p>然后，通过SMTP发出去：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr, parseaddr</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_format_addr</span>(<span class="params">s</span>):</span><br><span class="line">    name, addr = parseaddr(s)</span><br><span class="line">    <span class="keyword">return</span> formataddr((Header(name, <span class="string">&#x27;utf-8&#x27;</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入Email地址和口令:</span></span><br><span class="line">from_addr = <span class="string">&#x27;xxxxxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"><span class="comment"># 输入收件人地址:</span></span><br><span class="line">to_addr = <span class="string">&#x27;xxx@qq.com&#x27;</span></span><br><span class="line"><span class="comment"># 输入SMTP服务器地址:</span></span><br><span class="line">smtp_server = <span class="string">&#x27;xxx.xxx.com&#x27;</span></span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&#x27;哈哈哈哈哈&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;测试下邮件发送 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">25</span>) <span class="comment"># SMTP协议默认端口是25</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.login(from_addr, password)</span><br><span class="line">server.sendmail(from_addr, [to_addr], msg.as_string())</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
-<p>我们用<code>set_debuglevel(1)</code>就可以打印出和SMTP服务器交互的所有信息。SMTP协议就是简单的文本命令和响应。<code>login()</code>方法用来登录SMTP服务器，<code>sendmail()</code>方法就是发邮件，由于可以一次发给多个人，所以传入一个<code>list</code>，邮件正文是一个<code>str</code>，<code>as_string()</code>把<code>MIMEText</code>对象变成<code>str</code>。</p>
-<p>必须把<code>From</code>、<code>To</code>和<code>Subject</code>添加到<code>MIMEText</code>中，才是一封完整的邮件， 否则无法显示主题，收件人等信息。</p>
-<h2 id="发送HTML邮件"><a href="#发送HTML邮件" class="headerlink" title="发送HTML邮件"></a>发送HTML邮件</h2><p>如果我们要发送HTML邮件，方法很简单，在构造<code>MIMEText</code>对象时，把<code>HTML</code>字符串传进去，再把第二个参数由<code>plain</code>变为<code>html</code>就可以了</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEText(<span class="string">&#x27;&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送附件"><a href="#发送附件" class="headerlink" title="发送附件"></a>发送附件</h2><p>可以构造一个<code>MIMEMultipart</code>对象代表邮件本身，然后往里面加上一个<code>MIMEText</code>作为邮件正文，再继续往里面加上表示附件的<code>MIMEBase</code>对象即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart()</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = _format_addr(<span class="string">&#x27;Python爱好者 &lt;%s&gt;&#x27;</span> % from_addr)</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = _format_addr(<span class="string">&#x27;管理员 &lt;%s&gt;&#x27;</span> % to_addr)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;来自SMTP的问候……&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件正文是MIMEText:</span></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;send with file...&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加附件就是加上一个MIMEBase，从本地读取一个图片:</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;D:/oldimg.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 设置附件的MIME和文件名，这里是png类型:</span></span><br><span class="line">    mime = MIMEBase(<span class="string">&#x27;image&#x27;</span>, <span class="string">&#x27;jpg&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=<span class="string">&#x27;oldimg.jpg&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">    mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">    mime.set_payload(f.read())</span><br><span class="line">    <span class="comment"># 用Base64编码:</span></span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    <span class="comment"># 添加到MIMEMultipart:</span></span><br><span class="line">    msg.attach(mime)</span><br></pre></td></tr></table></figure>
-<p>然后，按正常发送流程把msg（注意类型已变为<code>MIMEMultipart</code>）发送出去，就可以收到如下带附件的邮件</p>
-<h2 id="发送图片"><a href="#发送图片" class="headerlink" title="发送图片"></a>发送图片</h2><p>如果要把一个图片嵌入到邮件正文中怎么做？直接在HTML邮件中链接图片地址行不行？答案是，大部分邮件服务商都会自动屏蔽带有外链的图片，因为不知道这些链接是否指向恶意网站。</p>
-<p>要把图片嵌入到邮件正文中，我们只需按照发送附件的方式，先把邮件作为附件添加进去，然后，在HTML中通过引用<code>src=&quot;cid:0&quot;</code>就可以把附件作为图片嵌入了。如果有多个图片，给它们依次编号，然后引用不同的<code>cid:x</code>即可。</p>
-<p>把上面代码加入<code>MIMEMultipart</code>的<code>MIMEText</code>从<code>plain</code>改为<code>html</code>，然后在适当的位置引用图片</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;下面是一个图片&lt;/h1&gt;&lt;br/&gt;&lt;img src=&quot;cid:0&quot;&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="同时支持HTML和Plain格式"><a href="#同时支持HTML和Plain格式" class="headerlink" title="同时支持HTML和Plain格式"></a>同时支持HTML和Plain格式</h2><p>为了兼容旧设备，在发送HTML的同时再附加一个纯文本，如果收件人无法查看HTML格式的邮件，就可以自动降级查看纯文本邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msg = MIMEMultipart(<span class="string">&#x27;alternative&#x27;</span>)</span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = ...</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = ...</span><br><span class="line"></span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">msg.attach(MIMEText(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 正常发送msg对象...</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="加密SMTP"><a href="#加密SMTP" class="headerlink" title="加密SMTP"></a>加密SMTP</h2><p>使用标准的25端口连接SMTP服务器时，使用的是明文传输，发送邮件的整个过程可能会被窃听。要更安全地发送邮件，可以加密SMTP会话，实际上就是先创建SSL安全连接，然后再使用SMTP协议发送邮件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">server = smtplib.SMTP(smtp_server, <span class="number">465</span>) </span><br><span class="line">server.starttls()</span><br></pre></td></tr></table></figure>
-<p>只需要在创建SMTP对象后，立刻调用starttls()方法，就创建了安全连接。后面的代码和前面的发送邮件代码完全一样。</p>
-<p>构造一个邮件对象就是一个<code>Messag</code>对象，如果构造一个<code>MIMEText</code>对象，就表示一个文本邮件对象，如果构造一个<code>MIMEImage</code>对象，就表示一个作为附件的图片，要把多个对象组合起来，就用<code>MIMEMultipart</code>对象，而<code>MIMEBase</code>可以表示任何对象。它们的继承关系如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Message</span><br><span class="line">+- MIMEBase</span><br><span class="line">   +- MIMEMultipart</span><br><span class="line">   +- MIMENonMultipart</span><br><span class="line">      +- MIMEMessage</span><br><span class="line">      +- MIMEText</span><br><span class="line">      +- MIMEImage</span><br></pre></td></tr></table></figure>
-<p>这种嵌套关系就可以构造出任意复杂的邮件。</p>
-<h1 id="POP3收取邮件"><a href="#POP3收取邮件" class="headerlink" title="POP3收取邮件"></a>POP3收取邮件</h1><p>Python内置一个<code>poplib</code>模块，实现了POP3协议，可以直接用来收邮件。</p>
-<p>注意到POP3协议收取的不是一个已经可以阅读的邮件本身，而是邮件的原始文本，这和SMTP协议很像，SMTP发送的也是经过编码后的一大段文本。</p>
-<p>要把POP3收取的文本变成可以阅读的邮件，还需要用email模块提供的各种类来解析原始文本，变成可阅读的邮件对象。</p>
-<p>所以，收取邮件分两步：</p>
-<p>第一步：用<code>poplib</code>把邮件的原始文本下载到本地；</p>
-<p>第二步：用<code>email</code>解析原始文本，还原为邮件对象。</p>
-<h2 id="通过POP3下载邮件"><a href="#通过POP3下载邮件" class="headerlink" title="通过POP3下载邮件"></a>通过POP3下载邮件</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> poplib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入邮件地址, 口令和POP3服务器地址:</span></span><br><span class="line">email = <span class="built_in">input</span>(<span class="string">&#x27;Email: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">pop3_server = <span class="built_in">input</span>(<span class="string">&#x27;POP3 server: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到POP3服务器:</span></span><br><span class="line">server = poplib.POP3(pop3_server)</span><br><span class="line"><span class="comment"># 可以打开或关闭调试信息:</span></span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 可选:打印POP3服务器的欢迎文字:</span></span><br><span class="line"><span class="built_in">print</span>(server.getwelcome().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份认证:</span></span><br><span class="line">server.user(email)</span><br><span class="line">server.pass_(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># stat()返回邮件数量和占用空间:</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Messages: %s. Size: %s&#x27;</span> % server.stat())</span><br><span class="line"><span class="comment"># list()返回所有邮件的编号:</span></span><br><span class="line">resp, mails, octets = server.<span class="built_in">list</span>()</span><br><span class="line"><span class="comment"># 可以查看返回的列表类似[b&#x27;1 82923&#x27;, b&#x27;2 2184&#x27;, ...]</span></span><br><span class="line"><span class="built_in">print</span>(mails)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最新一封邮件, 注意索引号从1开始:</span></span><br><span class="line">index = <span class="built_in">len</span>(mails)</span><br><span class="line">resp, lines, octets = server.retr(index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lines存储了邮件的原始文本的每一行,</span></span><br><span class="line"><span class="comment"># 可以获得整个邮件的原始文本:</span></span><br><span class="line">msg_content = <span class="string">b&#x27;\r\n&#x27;</span>.join(lines).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># 稍后解析出邮件:</span></span><br><span class="line">msg = Parser().parsestr(msg_content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以根据邮件索引号直接从服务器删除邮件:</span></span><br><span class="line"><span class="comment"># server.dele(index)</span></span><br><span class="line"><span class="comment"># 关闭连接:</span></span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
-
-<p>用POP3获取邮件其实很简单，要获取所有邮件，只需要循环使用<code>retr()</code>把每一封邮件内容拿到即可。真正麻烦的是把邮件的原始内容解析为可以阅读的邮件对象。</p>
-<h2 id="解析邮件"><a href="#解析邮件" class="headerlink" title="解析邮件"></a>解析邮件</h2><p>解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">from email.parser import Parser</span><br><span class="line">from email.header import decode_header</span><br><span class="line">from email.utils import parseaddr</span><br><span class="line"></span><br><span class="line">import poplib</span><br></pre></td></tr></table></figure>
-<p>只需要一行代码就可以把邮件内容解析为<code>Message</code>对象：</p>
-<p>但是这个<code>Message</code>对象本身可能是一个<code>MIMEMultipart</code>对象，即包含嵌套的其他<code>MIMEBase</code>对象，嵌套可能还不止一层。</p>
-<p>所以我们要递归地打印出<code>Message</code>对象的层次结构：</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2355,6 +2355,28 @@
       </tags>
   </entry>
   <entry>
+    <title>使用docsify搭建github pages页面</title>
+    <url>/tools/docsify-config/</url>
+    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
+<span id="more"></span>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
+<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
+<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>docsify</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Sublime使用</title>
     <url>/tools/SublimeText%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="配置，安装插件"><a href="#配置，安装插件" class="headerlink" title="配置，安装插件"></a>配置，安装插件</h2><ol>
@@ -2383,117 +2405,6 @@
       </categories>
       <tags>
         <tag>Sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用docsify搭建github pages页面</title>
-    <url>/tools/docsify-config/</url>
-    <content><![CDATA[<p>docsify 可以快速帮你生成文档网站。不同于 GitBook、Hexo 的地方是它不会生成静态的 <code>.html</code> 文件，<br>所有转换工作都是在运行时。如果你想要开始使用它，只需要创建一个 <code>index.html</code> 就可以开始编写文档并直接部署在 GitHub Pages。</p>
-<span id="more"></span>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>可以直接参考官方文档 <a href="https://docsify.js.org/#/zh-cn/quickstart">快速开始</a></p>
-<p>效果参考  <a href="https://cpfe.github.io/#/">docsify页面</a></p>
-<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Description&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-class">.file</span> <span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: <span class="number">700</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: <span class="number">#364149</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.sidebar-nav</span> <span class="selector-class">.folder</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    加载中</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">$docsify</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;文档&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">repo</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">loadSidebar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">subMaxLevel</span>: <span class="number">2</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">coverpage</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">onlyCover</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">auto2top</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">mergeNavbar</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">alias</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;/.*/_sidebar.md&#x27;</span>: <span class="string">&#x27;/_sidebar.md&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">count</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">countable</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">fontsize</span>: <span class="string">&#x27;0.9em&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">color</span>: <span class="string">&#x27;rgb(90,90,90)&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">language</span>: <span class="string">&#x27;chinese&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// docsify-pagination</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">pagination</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapter</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">crossChapterText</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">search</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">maxAge</span>: <span class="number">86400000</span>, <span class="comment">// 过期时间，单位毫秒，默认一天</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">paths</span>: <span class="string">&#x27;auto&#x27;</span>, <span class="comment">// or &#x27;auto&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;搜索&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">noData</span>: <span class="string">&#x27;无结果&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">hideOtherSidebarContent</span>: <span class="literal">false</span>, <span class="comment">// 是否隐藏其他侧边栏内容</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">namespace</span>: <span class="string">&#x27;website-1&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pathNamespaces</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/config&#x27;</span>, <span class="string">&#x27;/guide&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Docsify v4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-count/dist/countable.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- code highlight --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-bash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-csharp.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-java.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-json.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-markdown.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-nginx.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-properties.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-sql.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-xml-doc.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg.com/prismjs@1.27.0/components/prism-yaml.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="readme-md"><a href="#readme-md" class="headerlink" title="readme.md"></a>readme.md</h3><p>默认是使用 readme作为首页的</p>
-<h3 id="sidebar-md"><a href="#sidebar-md" class="headerlink" title="_sidebar.md"></a>_sidebar.md</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- docs/<span class="emphasis">_sidebar.md --&gt;</span></span><br><span class="line"><span class="emphasis">* 首页</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">首页</span>](<span class="link">readme &quot;首页&quot;</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">指南</span>](<span class="link">guide &quot;很厉害的导航页面&quot;</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 配置</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明</span>](<span class="link">config/config</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明1</span>](<span class="link">config/config1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">配置说明2</span>](<span class="link">config/config2</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">* 命令</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令1</span>](<span class="link">command/command1</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令2</span>](<span class="link">command/command2</span>)</span></span><br><span class="line"><span class="emphasis">	* [<span class="string">命令3</span>](<span class="link">command/command3</span>)</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>docsify</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git的使用</title>
-    <url>/tools/git-command/</url>
-    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>配置可以通过gui工具进行。</li>
-<li>git config –list 查看所有配置</li>
-<li>git config user.name 查看用户名。</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
-<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
-<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
-</blockquote>
-</li>
-<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
-<li>文件跟踪和更新到仓库</li>
-</ul>
-<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
-<p>git文件状态变化周期.</p>
-<ul>
-<li><p><strong>git status</strong> 查看文件状态</p>
-</li>
-<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
-</li>
-<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
-</li>
-<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
-</li>
-<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
-</li>
-<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
-</li>
-</ul>
-<blockquote>
-<p>git log –pretty&#x3D;oneline</p>
-</blockquote>
-<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
-<ol>
-<li>修改上次的提交的内容</li>
-</ol>
-<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
-<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
-<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
-<ol start="2">
-<li>还原某次提交</li>
-</ol>
-<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
-<ol start="3">
-<li>撤销工作区中未提交的内容</li>
-</ol>
-<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
-<ol start="4">
-<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
-</ol>
-<ul>
-<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
-</ul>
-<ol start="5">
-<li>Redo after undo “local”</li>
-</ol>
-<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
-<p>reflog 记录有时限，且只在本地才有。</p>
-<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
-<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
-<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
-<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
-<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
-<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
-会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
-<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
-克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -2607,6 +2518,95 @@ Start --> Stop</pre>
       </tags>
   </entry>
   <entry>
+    <title>git的使用</title>
+    <url>/tools/git-command/</url>
+    <content><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>配置可以通过gui工具进行。</li>
+<li>git config –list 查看所有配置</li>
+<li>git config user.name 查看用户名。</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>配置全局的用户名和邮箱<br>如果不是个人机器，可以去掉global选项，仅针对当前仓库配置。</li>
+<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><strong>git init</strong> 在目录中初始化仓库，使用git管理。<br> 初始化仓库之后， 可以git remote add [shortname] [url]，添加到远程仓库中。<blockquote>
+<p>git remote add cpf <a href="https://github.com/cpf929/test.git">https://github.com/cpf929/test.git</a></p>
+</blockquote>
+</li>
+<li><strong>git clone</strong> 克隆仓库的命令格式为 <code>git clone [url]</code></li>
+<li>文件跟踪和更新到仓库</li>
+</ul>
+<p>工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
+<p>git文件状态变化周期.</p>
+<ul>
+<li><p><strong>git status</strong> 查看文件状态</p>
+</li>
+<li><p><strong>git add</strong> 跟踪文件(把文件放入暂存区，文件处于暂存状态)<br>根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
+</li>
+<li><p><strong>git diff</strong><br>比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br>若要看已经暂存起来的文件和上次提交时的快照之间的差异，使用 <code>git diff --staged</code>。</p>
+</li>
+<li><p><strong>git commit</strong> 提交暂存区的文件。<br>git commit -m ‘注释’<br>git commit -a 把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</p>
+</li>
+<li><p><strong>git rm [filename]</strong> 从暂存区和工作空间中移除文件。<br>git rm –cached readme.txt, 只从暂存区移除，而保留在工作空间。</p>
+</li>
+<li><p><strong>重命名</strong> <code>git mv from_name to_name</code><br>相当于执行了三条命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv from_name to_name</span><br><span class="line">git rm from_name</span><br><span class="line">git add to_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git log</strong> 显示日志<br>git log -p -2 , <code>-p</code> 选项展开显示每次提交的内容差异，用 <code>-2</code> 则仅显示最近的两次更新</p>
+</li>
+</ul>
+<blockquote>
+<p>git log –pretty&#x3D;oneline</p>
+</blockquote>
+<h3 id="撤销操作-REDO-UNDO"><a href="#撤销操作-REDO-UNDO" class="headerlink" title="撤销操作 REDO&#x2F;UNDO"></a>撤销操作 REDO&#x2F;UNDO</h3><p>参考 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/">How to undo (almost) anything with Git</a></p>
+<ol>
+<li>修改上次的提交的内容</li>
+</ol>
+<p>有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 <code>--amend</code> 选项重新提交.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file </span><br><span class="line">git commit --amend</span><br><span class="line">or git commit --amend -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
+<p><code>git commit --amend</code> 会打开编辑器，可以修改上次的提交信息。</p>
+<ol start="2">
+<li>还原某次提交</li>
+</ol>
+<p>使用 <code>git revert &lt;SHA&gt;</code> 来直接还原指定的提交，会产生一次新的提交内容，将上次提交的内容删除。</p>
+<ol start="3">
+<li>撤销工作区中未提交的内容</li>
+</ol>
+<p><code>git checkout --filename </code> ，撤销工作区文件的修改，不可逆的， 无法通过git找回。</p>
+<ol start="4">
+<li>重置本地的提交<br>reset到指定的提交版本，丢弃后面产生的提交信息。reset 之后，在git log中没有丢弃后的那些错误的提交记录。</li>
+</ol>
+<ul>
+<li>使用 <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></li>
+</ul>
+<ol start="5">
+<li>Redo after undo “local”</li>
+</ol>
+<p>reset之后，又想要把对应的提交还原回来。<br>使用 <code>git reflog</code> and <code>git reset</code></p>
+<p>reflog 记录有时限，且只在本地才有。</p>
+<p>如果想重新创建某个文件，使用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></p>
+<p>如果只想要把某次的提交内容合并到本地，使用 <code>git cherry-pick &lt;SHA&gt;</code></p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li>查看远程仓库<br>git remote -v ，查看远程仓库和克隆的地址</li>
+<li>添加远程仓库<br>git remote add [shortname] [url]<br>现在可以用[shortname]代替远程地址。如： git fetch [shortname]</li>
+<li>从远程仓库抓取数据<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch [remote-name]</span><br></pre></td></tr></table></figure>
+会到远程仓库中拉取所有你本地仓库中还没有的数据或更新，只是拉取数据，但是并不自动合并到当前工作分支，</li>
+<li>推送数据到远程仓库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+克隆操作会自动使用默认的 master 和 origin 名字,所以可以直接git push</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo使用</title>
     <url>/tools/hexo%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -2652,10 +2652,10 @@ Start --> Stop</pre>
 <p>&#x2F;gh&#x2F;user&#x2F;repo@version&#x2F;file</p>
 </blockquote>
 <h4 id="Load-exact-version"><a href="#Load-exact-version" class="headerlink" title="Load exact version:"></a>Load exact version:</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#x71;&#117;&#x65;&#114;&#x79;&#x40;&#51;&#46;&#49;&#46;&#48;">&#106;&#x71;&#117;&#x65;&#114;&#x79;&#x40;&#51;&#46;&#49;&#46;&#48;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
+<p>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#x71;&#117;&#x65;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;">&#x6a;&#x71;&#117;&#x65;&#114;&#121;&#64;&#x33;&#46;&#x31;&#46;&#x30;</a>&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944&#x2F;dist&#x2F;jquery.min.js</p>
 </blockquote>
 <h4 id="Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions"><a href="#Use-a-version-range-instead-of-an-exact-version-only-works-with-valid-semver-versions" class="headerlink" title="Use a version range instead of an exact version (only works with valid semver versions):"></a>Use a version range instead of an exact version (only works with valid semver versions):</h4><blockquote>
-<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#x6a;&#113;&#x75;&#101;&#114;&#121;&#x40;&#x33;&#46;&#49;">&#x6a;&#113;&#x75;&#101;&#114;&#121;&#x40;&#x33;&#46;&#49;</a>&#x2F;dist&#x2F;jquery.min.js</p>
+<p>&#x2F;gh&#x2F;jquery&#x2F;jquery@3&#x2F;dist&#x2F;jquery.min.js<br>&#x2F;gh&#x2F;jquery&#x2F;<a href="mailto:&#106;&#113;&#x75;&#101;&#x72;&#121;&#x40;&#x33;&#46;&#x31;">&#106;&#113;&#x75;&#101;&#x72;&#121;&#x40;&#x33;&#46;&#x31;</a>&#x2F;dist&#x2F;jquery.min.js</p>
 </blockquote>
 <ul>
 <li>访问方式</li>
@@ -2800,7 +2800,7 @@ Start --> Stop</pre>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">############# 添加配置解决jdk版本问题 ##############</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将jdk修改为es中自带jdk的配置目录</span></span><br><span class="line">export ES_JAVA_HOME=/usr/local/elasticsearch/elasticsearch-7.12.1/jdk</span><br><span class="line">export PATH=$ES_JAVA_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line">if [ -x &quot;$ES_JAVA_HOME/bin/java&quot; ]; then</span><br><span class="line">        JAVA=&quot;$ES_JAVA_HOME/bin/java&quot;</span><br><span class="line">else</span><br><span class="line">        JAVA=`which java`</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>修改内存</li>
+<li>修改内存  <code>config/jvm.options</code></li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">-Xms1024m</span><br><span class="line">-Xmx1024m</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -2823,13 +2823,14 @@ Start --> Stop</pre>
 </blockquote>
 </li>
 </ul>
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><ul>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>修改文件 elasticsearch.yml</p>
+<ul>
 <li><p>修改ip</p>
 <blockquote>
 <p>network.host: 0.0.0.0 </p>
 </blockquote>
 </li>
-<li><p>初始化节点名称</p>
+<li><p>初始化节点名称 </p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cluster.name: elasticsearch </span><br><span class="line">node.name: es-node0</span><br><span class="line">cluster.initial_master_nodes: [&quot;es-node0&quot;]</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><ul>
@@ -2884,6 +2885,161 @@ Start --> Stop</pre>
 </li>
 </ol>
 <p><a href="http://localhost:5601/app/discover">http://localhost:5601/app/discover</a></p>
+<h2 id="配置密码访问"><a href="#配置密码访问" class="headerlink" title="配置密码访问"></a>配置密码访问</h2><p>参考官方文档 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.12/security-minimal-setup.html#_prerequisites_10">security-minimal-setup</a></p>
+<ol>
+<li>Stop both Kibana and Elasticsearch if they are running</li>
+<li>修改 <code>ES_PATH_CONF/elasticsearch.yml</code> 文件， 并设置为 true</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xpack.security.enabled: true </span><br><span class="line">xpack.security.transport.ssl.enabled: true</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>启动es， <code>./elasticsearch -d</code></li>
+<li>生成随机密码 <code>./bin/elasticsearch-setup-passwords auto</code></li>
+<li>设置密码之后， 不能二次执行 <code>elasticsearch-setup-passwords</code></li>
+<li>修改 <code>KIB_PATH_CONF/kibana.yml</code> , 添加</li>
+</ol>
+<blockquote>
+<p>elasticsearch.username: “kibana_system”</p>
+</blockquote>
+<ol start="7">
+<li><p>Create the Kibana keystore</p>
+<blockquote>
+<p>.&#x2F;bin&#x2F;kibana-keystore create</p>
+</blockquote>
+</li>
+<li><p>Add the password for the kibana_system user to the Kibana keystore</p>
+<blockquote>
+<p>.&#x2F;bin&#x2F;kibana-keystore add elasticsearch.password</p>
+</blockquote>
+</li>
+<li><p>启动kibana</p>
+</li>
+</ol>
+<h2 id="ES集群"><a href="#ES集群" class="headerlink" title="ES集群"></a>ES集群</h2><h3 id="集群安装"><a href="#集群安装" class="headerlink" title="集群安装"></a>集群安装</h3><p>因为本地机器有限，所以在同一台机器上进行集群的安装。</p>
+<ol>
+<li><p>将 elasticsearch-7.12.1-linux-x86_64.tar.gz 解压后复制成三份，分别修改对应的配置</p>
+</li>
+<li><p>配置信息如下:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">node-1</span></span><br><span class="line">cluster.initial_master_nodes: [&quot;node-1&quot;, &quot;node-2&quot;, &quot;node-3&quot;]</span><br><span class="line">cluster.name: es-cluster</span><br><span class="line">discovery.seed_hosts: [&quot;node-1:9205&quot;, &quot;node-2:9206&quot;, &quot;node-3:9207&quot;]</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">http.port: 9200</span><br><span class="line">node.name: node-1</span><br><span class="line">transport.port: 9205</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">node-2 前面几项一样</span></span><br><span class="line">http.port: 9201</span><br><span class="line">node.name: node-2</span><br><span class="line">transport.port: 9206</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">node-3</span></span><br><span class="line">http.port: 9202</span><br><span class="line">node.name: node-2</span><br><span class="line">transport.port: 9207</span><br></pre></td></tr></table></figure></li>
+<li><p>修改 hosts 中映射</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">10.1.40.136 node-1</span><br><span class="line">10.1.40.136 node-2</span><br><span class="line">10.1.40.136 node-3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调整 jvm.options 内存，按实际调整</p>
+</li>
+<li><p>分别启动各个node，观察启动日志和状态。</p>
+</li>
+<li><p>查看集群是否启动成功</p>
+<blockquote>
+<p>curl <a href="http://localhost:9202/_cat/nodes?v">http://localhost:9202/_cat/nodes?v</a></p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name</span><br><span class="line">10.1.40.136           54          70   2    0.05    0.05     0.05 cdfhilmrstw *      node-1</span><br><span class="line">10.1.40.136           25          70   2    0.05    0.05     0.05 cdfhilmrstw -      node-2</span><br><span class="line">10.1.40.136           30          70   2    0.05    0.05     0.05 cdfhilmrstw -      node-3</span><br><span class="line"></span><br><span class="line">* 表示是 master 节点</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>查看健康情况</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl http://localhost:9202/_cat/health?v</span><br><span class="line"></span><br><span class="line">epoch      timestamp cluster    status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent</span><br><span class="line">1739178458 09:07:38  es-cluster green           3         3     42  18    0    0        0             0                  -                100.0%</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="集群监控"><a href="#集群监控" class="headerlink" title="集群监控"></a>集群监控</h4><p>推荐使用cerebro来监控es集群状态，官方网址：<a href="https://github.com/lmenezes/cerebro">https://github.com/lmenezes/cerebro</a> </p>
+<p>需要JDK11以上，<a href="https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java11/java11026/jdk-11.0.26_linux-x64_bin.tar.gz">下载地址</a> 。</p>
+<h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><blockquote>
+<p>创建索引库的时候需要设置分片数量（其他还有多少个ES服务在该集群）以及副本数量（本服务的数据拷贝几份）</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">PUT /testshard</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;number_of_shards&quot;: 3, // 分片数量</span><br><span class="line">    &quot;number_of_replicas&quot;: 1 // 副本数量</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      // mapping映射定义 ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在监控上查看分片效果</p>
+<p><img data-src="/images/java/es/2729274-20230205174428188-794591883.png" alt="image"></p>
+<h3 id="集群脑裂问题"><a href="#集群脑裂问题" class="headerlink" title="集群脑裂问题"></a>集群脑裂问题</h3><blockquote>
+<p>master eligible节点的作用是什么？</p>
+<ul>
+<li>参与集群选主</li>
+<li>主节点可以管理集群状态、管理分片信息、处理创建和删除索引库的请求</li>
+</ul>
+<p>data节点的作用是什么？</p>
+<ul>
+<li>数据的CRUD</li>
+</ul>
+<p>coordinator节点的作用是什么？</p>
+<ul>
+<li><p>路由请求到其它节点</p>
+</li>
+<li><p>合并查询到的结果，返回给用户</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="集群职责划分"><a href="#集群职责划分" class="headerlink" title="集群职责划分"></a>集群职责划分</h4><blockquote>
+<p>通过改变配置文件中的 true——&gt; false 来改变职责。如data数据职责节点就只保留data为true其他为false</p>
+<p>注意：每个节点都是路由，这样可以保证不管哪个节点接收到请求可以分给其他人已经从其他人那接收信息。</p>
+</blockquote>
+<p>elasticsearch中集群节点有不同的职责划分：</p>
+<p><img data-src="/images/java/es/2729274-20230205174437248-89466588.png" alt="image"></p>
+<p>默认情况下，集群中的任何一个节点都同时具备上述四种角色。</p>
+<p>但是真实的集群一定要将集群职责分离：（因为不同职责对CPU要求不同）</p>
+<ul>
+<li>master节点：对CPU要求高，但是内存要求低</li>
+<li>data节点：对CPU和内存要求都高</li>
+<li>coordinating节点：对网络带宽、CPU要求高</li>
+</ul>
+<p>职责分离可以让我们根据不同节点的需求分配不同的硬件去部署。而且避免业务之间的互相干扰。</p>
+<p>一个典型的es集群职责划分如图：<br><img data-src="/images/java/es/2729274-20230205174442439-1069765383.png" alt="image"></p>
+<h4 id="脑裂问题"><a href="#脑裂问题" class="headerlink" title="脑裂问题"></a>脑裂问题</h4><blockquote>
+<p>ES 7.0后默认配置了 <strong>( eligible节点数量 + 1 ）&#x2F; 2</strong> 来解决脑裂问题</p>
+</blockquote>
+<p>脑裂是因为集群中的节点失联导致的。</p>
+<p>例如一个集群中，主节点与其它节点失联：</p>
+<p><img data-src="/images/java/es/2729274-20230205174447612-1377452674.png" alt="image"></p>
+<p>此时，node2和node3认为node1宕机，就会重新选主：</p>
+<p><img data-src="/images/java/es/2729274-20230205174453080-1677763578.png" alt="image"></p>
+<p>当node3当选后，集群继续对外提供服务，node2和node3自成集群，node1自成集群，两个集群数据不同步，出现数据差异。</p>
+<p>当网络恢复后，因为集群中有两个master节点，集群状态的不一致，出现脑裂的情况：</p>
+<p><img data-src="/images/java/es/2729274-20230205174457820-447955706.png" alt="image"></p>
+<p>解决脑裂的方案是，要求选票超过 <strong>( eligible节点数量 + 1 ）&#x2F; 2</strong> 才能当选为主，因此eligible节点数量最好是奇数。对应配置项是discovery.zen.minimum_master_nodes，在es7.0以后，已经成为默认配置，因此一般不会发生脑裂问题</p>
+<p>例如：3个节点形成的集群，选票必须超过 （3 + 1） &#x2F; 2 ，也就是2票。node3得到node2和node3的选票，当选为主。node1只有自己1票，没有当选。集群中依然只有1个主节点，没有出现脑裂。</p>
+<h3 id="集群分布式存储"><a href="#集群分布式存储" class="headerlink" title="集群分布式存储"></a>集群分布式存储</h3><p>当新增文档时，应该保存到不同分片，保证数据均衡，那么coordinating node如何确定数据该存储到哪个分片呢？</p>
+<p>多插入几条数据，然后进行查询，可以看到数据分布在不同的分片上</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">GET /testshard1/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;explain&quot;: true, </span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;hits&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_shard&quot;: &quot;[testshard1][0]&quot;,</span><br><span class="line">            &quot;_node&quot;: &quot;cM_rO9NtQQCA6EKgrsTtbw&quot;,</span><br><span class="line">            &quot;_index&quot;: &quot;testshard1&quot;,</span><br><span class="line">            &quot;_type&quot;: &quot;_doc&quot;,</span><br><span class="line">            &quot;_id&quot;: &quot;5&quot;,</span><br><span class="line">            &quot;_score&quot;: 1.0,</span><br><span class="line">            &quot;_source&quot;: &#123;</span><br><span class="line">                &quot;info&quot;: &quot;我是一个测试语句&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_shard&quot;: &quot;[testshard1][1]&quot;,</span><br><span class="line">            &quot;_node&quot;: &quot;WZT09pJTRrC2SLof6wlPVw&quot;,</span><br><span class="line">            &quot;_index&quot;: &quot;testshard1&quot;,</span><br><span class="line">            &quot;_type&quot;: &quot;_doc&quot;,</span><br><span class="line">            &quot;_id&quot;: &quot;2&quot;,</span><br><span class="line">            &quot;_score&quot;: 1.0,</span><br><span class="line">            &quot;_source&quot;: &#123;</span><br><span class="line">                &quot;info&quot;: &quot;我是一个测试语句&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分片存储原理"><a href="#分片存储原理" class="headerlink" title="分片存储原理"></a>分片存储原理</h4><p>elasticsearch会通过hash算法来计算文档应该存储到哪个分片：</p>
+<blockquote>
+<p>shard &#x3D; hash(_routing) % number_of_shards</p>
+</blockquote>
+<p>说明：</p>
+<ul>
+<li>_routing默认是文档的id</li>
+<li>算法与分片数量有关，因此索引库一旦创建，分片数量不能修改！</li>
+</ul>
+<p>新增文档的流程如下：</p>
+<p><img data-src="/images/java/es/2729274-20230205174551794-1811444061.png" alt="image"></p>
+<p>解读：</p>
+<ul>
+<li>1）新增一个id&#x3D;1的文档</li>
+<li>2）对id做hash运算，假如得到的是2，则应该存储到shard-2</li>
+<li>3）shard-2的主分片在node3节点，将数据路由到node3</li>
+<li>4）保存文档</li>
+<li>5）同步给shard-2的副本replica-2，在node2节点</li>
+<li>6）返回结果给coordinating-node节点</li>
+</ul>
+<h4 id="集群分布式查询"><a href="#集群分布式查询" class="headerlink" title="集群分布式查询"></a>集群分布式查询</h4><p><strong>原理：</strong></p>
+<p>elasticsearch的查询分成两个阶段：</p>
+<ul>
+<li><p>scatter phase：分散阶段，coordinating node会把请求分发到每一个分片</p>
+</li>
+<li><p>gather phase：聚集阶段，coordinating node汇总data node的搜索结果，并处理为最终结果集返回给用户</p>
+</li>
+</ul>
+<p><img data-src="/images/java/es/2729274-20230205174557427-1969761296.png" alt="image"></p>
+<h4 id="集群故障转移"><a href="#集群故障转移" class="headerlink" title="集群故障转移"></a>集群故障转移</h4><blockquote>
+<p>ES本身已经配置好了有集群故障转移，不需要我们再去配置</p>
+</blockquote>
+<p>集群的master节点会监控集群中的节点状态，如果发现有节点宕机，会立即将宕机节点的分片数据迁移到其它节点，确保数据安全，这个叫做故障转移。</p>
+<p>1）例如一个集群结构如图：</p>
+<p><img data-src="/images/java/es/2729274-20230205174602086-492617752.png" alt="image"></p>
+<p>现在，node1是主节点，其它两个节点是从节点。</p>
+<p>2）突然，node1发生了故障：</p>
+<p><img data-src="/images/java/es/2729274-20230205174607756-480992428.png" alt="image"></p>
+<p>宕机后的第一件事，需要重新选主，例如选中了node2：</p>
+<p><img data-src="/images/java/es/2729274-20230205174612261-197593780.png" alt="image"></p>
+<p>node2成为主节点后，会检测集群监控状态，发现：shard-1、shard-0没有副本节点。因此需要将node1上的数据迁移到node2、node3：</p>
+<p><img data-src="/images/java/es/2729274-20230205174617803-1364879576.png" alt="image"></p>
 <h2 id="安装分词器"><a href="#安装分词器" class="headerlink" title="安装分词器"></a>安装分词器</h2><ol>
 <li>下载地址  <a href="https://release.infinilabs.com/analysis-ik/stable/">https://release.infinilabs.com/analysis-ik/stable/</a></li>
 </ol>
@@ -2894,6 +3050,7 @@ Start --> Stop</pre>
 </blockquote>
 </li>
 </ul>
+<p>如果是集群的ES，需要每个node下都安装一遍。</p>
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>IK分词器包含两种模式：</p>
 <ul>
 <li><p><code>ik_smart</code>：最少切分</p>
@@ -2936,6 +3093,27 @@ Start --> Stop</pre>
 
 <p>3）重启elasticsearch</p>
 <p>4）测试效果</p>
+<p><strong>参考文章</strong></p>
+<ol>
+<li><a href="https://www.cnblogs.com/buchizicai/p/17093719.html">ElasticSearch (ES从入门到精通一篇就够了)</a></li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>elascitsearch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>es索引和文档操作</title>
+    <url>/java/es/es-02-index-mapping/</url>
+    <content><![CDATA[<p>主要介绍索引和文档的CRUD操作。</p>
+<span id="more"></span>
+
+
 <h1 id="索引库操作"><a href="#索引库操作" class="headerlink" title="索引库操作"></a>索引库操作</h1><p>索引库就类似数据库表，mapping映射就类似表的结构。</p>
 <p>我们要向es中存储数据，必须先创建“库”和“表”。</p>
 <h2 id="Mapping映射属性"><a href="#Mapping映射属性" class="headerlink" title="Mapping映射属性"></a>Mapping映射属性</h2><p>mapping是对索引库中文档的约束，常见的mapping属性包括：</p>
@@ -3115,7 +3293,7 @@ Start --> Stop</pre>
   </entry>
   <entry>
     <title>ES-RestAPI的使用</title>
-    <url>/java/es/es-02-rest-api/</url>
+    <url>/java/es/es-03-rest-api/</url>
     <content><![CDATA[<p>RestAPI的使用 <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.12/java-rest-high.html">Java High Level REST Client 7.12</a></p>
 <p>需要注意的是， 此api对应的es版本为7.12.1，目前此api已被官方标记为deprecated，如果使用新的es版本的话，需要使用新的api <a href="https://www.elastic.co/guide/en/elasticsearch/client/index.html">java-api-client</a> 。</p>
 <span id="more"></span>
@@ -3497,7 +3675,7 @@ Start --> Stop</pre>
   </entry>
   <entry>
     <title>ES搜索查询</title>
-    <url>/java/es/es-03-dsl-search/</url>
+    <url>/java/es/es-04-dsl-search/</url>
     <content><![CDATA[<p>主要介绍ES DSL的查询</p>
 <span id="more"></span>
 
@@ -3919,7 +4097,7 @@ Start --> Stop</pre>
   </entry>
   <entry>
     <title>es自动补全和从mysql同步数据</title>
-    <url>/java/es/es-04-autocomplete-mysql-sync/</url>
+    <url>/java/es/es-05-autocomplete-mysql-sync/</url>
     <content><![CDATA[<p>主要介绍自动补全功能，以及从mysql同步数据到elasticsearch。</p>
 <span id="more"></span>
 
@@ -4072,7 +4250,7 @@ Start --> Stop</pre>
 <li>mysql完成增、删、改操作都会记录在binlog中</li>
 <li>hotel-demo基于canal监听binlog变化，实时更新elasticsearch中的内容</li>
 </ul>
-<h2 id="实现数据同步"><a href="#实现数据同步" class="headerlink" title="实现数据同步"></a>实现数据同步</h2>]]></content>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
