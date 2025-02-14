@@ -15,3 +15,7 @@
 # 使用hexo
 
 ## [🚀直达地址](https://cpfo.github.io/hexoblog)
+
+# 使用docusaurus
+
+## [🛗直达地址](https://cpfo.github.io/docusaurus-blog)
