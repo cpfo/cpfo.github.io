@@ -9,19 +9,16 @@
 
 # 使用vitepress
 
-## [✈️直达地址](https://cpfo.github.io/viteblog)
-
-
+[✈️直达地址](https://cpfo.github.io/viteblog)
 
 
 
 # 使用hexo
 
-## [🚀直达地址](https://cpfo.github.io/hexoblog)
-
+[🚀直达地址](https://cpfo.github.io/hexoblog)
 
 
 
 # 使用docusaurus
 
-## [🛗直达地址](https://cpfo.github.io/docusaurus-blog)
+[🛸直达地址](https://cpfo.github.io/docusaurus-blog)
